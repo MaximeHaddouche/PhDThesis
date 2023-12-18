@@ -17,584 +17,165 @@
 \endgroup
 
 
-\refsection{1}
-  \datalist[entry]{ydnt/global//global/global}
-    \entry{ViallardEmonetGermainHabrardMorvantZantedeschi2022}{inproceedings}{}
-      \name{author}{6}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{haddouche2022online}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=0989a6f32e84829ee6fd57b115007ec3}{%
-           family={Zantedeschi},
-           familyi={Z\bibinitperiod},
-           given={Valentina},
-           giveni={V\bibinitperiod}}}%
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{6a39653fddc8189181fa502679c07d6c}
-      \strng{bibnamehash}{6a39653fddc8189181fa502679c07d6c}
-      \strng{authorbibnamehash}{6a39653fddc8189181fa502679c07d6c}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{6a39653fddc8189181fa502679c07d6c}
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
       \field{extraname}{1}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
+      \field{title}{{Online PAC-Bayes Learning}}
+      \field{year}{2022}
+      \keyw{conference}
+    \endentry
+    \entry{haddouche2023pac}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Intérêt des bornes désintégrées pour la généralisation avec des mesures de complexité}}
-      \field{year}{2022}
-      \true{nocite}
-      \keyw{nat-conference}
+      \field{journaltitle}{Transactions on Machine Learning Research}
+      \field{title}{{PAC-Bayes Generalisation Bounds for Heavy-Tailed Losses through Supermartingales}}
+      \field{year}{2023}
+      \keyw{journal}
     \endentry
-    \entry{ViallardEmonetHabrardMorvantZantedeschi2022}{unpublished}{}
-      \name{author}{5}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+    \entry{haddouche2023wasserstein}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=0989a6f32e84829ee6fd57b115007ec3}{%
-           family={Zantedeschi},
-           familyi={Z\bibinitperiod},
-           given={Valentina},
-           giveni={V\bibinitperiod}}}%
-      }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{bc777ce455bcd250d6981eb50f6fe1ac}
-      \strng{bibnamehash}{bc777ce455bcd250d6981eb50f6fe1ac}
-      \strng{authorbibnamehash}{bc777ce455bcd250d6981eb50f6fe1ac}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{bc777ce455bcd250d6981eb50f6fe1ac}
-      \field{extraname}{2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradate}{2}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{\textit{Submitted to ICLR 2023}}
-      \field{title}{Generalization Bounds with Arbitrary Complexity Measures}
-      \field{year}{2022}
-      \true{nocite}
-      \keyw{report}
-    \endentry
-    \entry{ViallardGermainHabrardMorvant2022}{unpublished}{}
-      \name{author}{4}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
            familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
-           familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{bibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authorbibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{d2f65db2a9726f5ffdab61a252be769f}
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
       \field{extraname}{3}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradate}{3}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{\textit{Submitted to Machine Learning Journal}}
-      \field{title}{A General Framework for the Disintegration of PAC-Bayesian Bounds}
-      \field{year}{2022}
-      \true{nocite}
-      \keyw{report}
-    \endentry
-    \entry{ZantedeschiViallardMorvantEmonetHabrardGermainGuedj2022}{inproceedings}{}
-      \name{author}{7}{}{%
-        {{hash=0989a6f32e84829ee6fd57b115007ec3}{%
-           family={Zantedeschi},
-           familyi={Z\bibinitperiod},
-           given={Valentina},
-           giveni={V\bibinitperiod}}}%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
-           familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
-           family={Guedj},
-           familyi={G\bibinitperiod},
-           given={Benjamin},
-           giveni={B\bibinitperiod}}}%
-      }
-      \strng{namehash}{50a3dac2b81bdeba1e01588ba8e7a2fb}
-      \strng{fullhash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{bibnamehash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{authorbibnamehash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{authornamehash}{50a3dac2b81bdeba1e01588ba8e7a2fb}
-      \strng{authorfullhash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \field{extraname}{1}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Learning Stochastic Majority Votes by Minimizing a PAC-Bayes Generalization Bound}}
-      \field{year}{2022}
-      \true{nocite}
-      \keyw{nat-conference}
-    \endentry
-    \entry{ViallardGermainHabrardMorvant2021}{inproceedings}{}
-      \name{author}{4}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
-           familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{bibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authorbibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{d2f65db2a9726f5ffdab61a252be769f}
-      \field{extraname}{4}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradate}{1}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{{Machine Learning and Knowledge Discovery in Databases (ECML PKDD)}}
-      \field{title}{{Self-bounding Majority Vote Learning Algorithms by the Direct Minimization of a Tight PAC-Bayesian C-Bound}}
-      \field{year}{2021}
-      \true{nocite}
-      \keyw{conference}
-    \endentry
-    \entry{ViallardGermainMorvant2021a}{inproceedings}{}
-      \name{author}{3}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{bibnamehash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{authorbibnamehash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{27694df2b591eaff2a2c77dab28cab80}
-      \field{extraname}{5}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Apprentissage de Vote de Majorité par Minimisation d'une C-Borne PAC-Bayésienne}}
-      \field{year}{2021}
-      \true{nocite}
-      \keyw{nat-conference}
+      \field{journaltitle}{arXiv}
+      \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
+      \field{volume}{abs/2304.07048}
+      \field{year}{2023}
+      \keyw{report}
     \endentry
-    \entry{ViallardGermainMorvant2021b}{inproceedings}{}
-      \name{author}{3}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{bibnamehash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{authorbibnamehash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{27694df2b591eaff2a2c77dab28cab80}
-      \field{extraname}{6}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradate}{3}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Dérandomisation des Bornes PAC-Bayésiennes}}
-      \field{year}{2021}
-      \true{nocite}
-      \keyw{nat-conference}
-    \endentry
-    \entry{ViallardVidotHabrardMorvant2021}{inproceedings}{}
+    \entry{viallard2023learning}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
            family={Viallard},
            familyi={V\bibinitperiod},
            given={Paul},
            giveni={P\bibinitperiod}}}%
-        {{hash=8d7e077d4c1b0aea901dd10149ec73ac}{%
-           family={Vidot},
-           familyi={V\bibinitperiod},
-           given={Guillaume},
-           giveni={G\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{2b32b9243bfd519a17c239a0d6078048}
-      \strng{bibnamehash}{2b32b9243bfd519a17c239a0d6078048}
-      \strng{authorbibnamehash}{2b32b9243bfd519a17c239a0d6078048}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{2b32b9243bfd519a17c239a0d6078048}
-      \field{extraname}{7}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradate}{4}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
-      \field{title}{{A PAC-Bayes Analysis of Adversarial Robustness}}
-      \field{year}{2021}
-      \true{nocite}
-      \keyw{conference}
-    \endentry
-    \entry{VidotViallardMorvant2021}{inproceedings}{}
-      \name{author}{3}{}{%
-        {{hash=8d7e077d4c1b0aea901dd10149ec73ac}{%
-           family={Vidot},
-           familyi={V\bibinitperiod},
-           given={Guillaume},
-           giveni={G\bibinitperiod}}}%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{5f1d42fb7d5338d182c3a0c8c080dc27}
-      \strng{fullhash}{afb02222f41b2cbd0f6e7b9d38bad93d}
-      \strng{bibnamehash}{afb02222f41b2cbd0f6e7b9d38bad93d}
-      \strng{authorbibnamehash}{afb02222f41b2cbd0f6e7b9d38bad93d}
-      \strng{authornamehash}{5f1d42fb7d5338d182c3a0c8c080dc27}
-      \strng{authorfullhash}{afb02222f41b2cbd0f6e7b9d38bad93d}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Une Analyse PAC-Bayésienne de la Robustesse Adversariale}}
-      \field{year}{2021}
-      \true{nocite}
-      \keyw{nat-conference}
-    \endentry
-    \entry{ZantedeschiViallardMorvantEmonetHabrardGermainGuedj2021}{inproceedings}{}
-      \name{author}{7}{}{%
-        {{hash=0989a6f32e84829ee6fd57b115007ec3}{%
-           family={Zantedeschi},
-           familyi={Z\bibinitperiod},
-           given={Valentina},
-           giveni={V\bibinitperiod}}}%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
-           familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=09761c1924ec610e6c70386b093ef79c}{%
+           family={Simsekli},
+           familyi={S\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
         {{hash=dbe4c731302e63fe6b122f974c402be2}{%
            family={Guedj},
            familyi={G\bibinitperiod},
            given={Benjamin},
            giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{50a3dac2b81bdeba1e01588ba8e7a2fb}
-      \strng{fullhash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{bibnamehash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{authorbibnamehash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{authornamehash}{50a3dac2b81bdeba1e01588ba8e7a2fb}
-      \strng{authorfullhash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \field{extraname}{2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{fullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{bibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{authorbibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{authorfullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
-      \field{title}{{Learning Stochastic Majority Votes by Minimizing a PAC-Bayes Generalization Bound}}
-      \field{year}{2021}
-      \true{nocite}
+      \field{title}{{Learning via Wasserstein-Based High Probability Generalisation Bounds}}
+      \field{year}{2023}
       \keyw{conference}
-    \endentry
-    \entry{ViallardEmonetHabrardMorvantGermain2019}{inproceedings}{}
-      \name{author}{5}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
-           familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-      }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{3d16aa4968e88bddbff39e7802189706}
-      \strng{bibnamehash}{3d16aa4968e88bddbff39e7802189706}
-      \strng{authorbibnamehash}{3d16aa4968e88bddbff39e7802189706}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{3d16aa4968e88bddbff39e7802189706}
-      \field{extraname}{8}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{Théorie PAC-Bayésienne pour l’apprentissage en deux étapes de réseaux de neurones}
-      \field{year}{2020}
-      \true{nocite}
-      \keyw{nat-conference}
-    \endentry
-    \entry{ViallardGermainHabrardMorvant2019}{inproceedings}{}
-      \name{author}{4}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
-           familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{bibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authorbibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{d2f65db2a9726f5ffdab61a252be769f}
-      \field{extraname}{9}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{{NeurIPS 2019 Workshop on Machine Learning with Guarantees}}
-      \field{title}{{Interpreting Neural Networks as Majority Votes through the PAC-Bayesian Theory}}
-      \field{year}{2019}
-      \true{nocite}
-      \keyw{workshop}
     \endentry
   \enddatalist
   \datalist[entry]{ynt/global//global/global}
-    \entry{ViallardGermainHabrardMorvant2019}{inproceedings}{}
-      \name{author}{4}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+    \entry{haddouche2022online}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{bibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authorbibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{d2f65db2a9726f5ffdab61a252be769f}
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
       \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -602,127 +183,174 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{{NeurIPS 2019 Workshop on Machine Learning with Guarantees}}
-      \field{title}{{Interpreting Neural Networks as Majority Votes through the PAC-Bayesian Theory}}
-      \field{year}{2019}
-      \true{nocite}
-      \keyw{workshop}
+      \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
+      \field{title}{{Online PAC-Bayes Learning}}
+      \field{year}{2022}
+      \keyw{conference}
     \endentry
-    \entry{ViallardEmonetHabrardMorvantGermain2019}{inproceedings}{}
-      \name{author}{5}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+    \entry{haddouche2023pac}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
            familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{3d16aa4968e88bddbff39e7802189706}
-      \strng{bibnamehash}{3d16aa4968e88bddbff39e7802189706}
-      \strng{authorbibnamehash}{3d16aa4968e88bddbff39e7802189706}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{3d16aa4968e88bddbff39e7802189706}
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
       \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{Théorie PAC-Bayésienne pour l’apprentissage en deux étapes de réseaux de neurones}
-      \field{year}{2020}
-      \true{nocite}
-      \keyw{nat-conference}
+      \field{journaltitle}{Transactions on Machine Learning Research}
+      \field{title}{{PAC-Bayes Generalisation Bounds for Heavy-Tailed Losses through Supermartingales}}
+      \field{year}{2023}
+      \keyw{journal}
     \endentry
-    \entry{ViallardGermainHabrardMorvant2021}{inproceedings}{}
-      \name{author}{4}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+    \entry{haddouche2023wasserstein}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{bibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authorbibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{d2f65db2a9726f5ffdab61a252be769f}
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
       \field{extraname}{3}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradate}{1}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{{Machine Learning and Knowledge Discovery in Databases (ECML PKDD)}}
-      \field{title}{{Self-bounding Majority Vote Learning Algorithms by the Direct Minimization of a Tight PAC-Bayesian C-Bound}}
-      \field{year}{2021}
-      \true{nocite}
-      \keyw{conference}
+      \field{journaltitle}{arXiv}
+      \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
+      \field{volume}{abs/2304.07048}
+      \field{year}{2023}
+      \keyw{report}
     \endentry
-    \entry{ViallardGermainMorvant2021a}{inproceedings}{}
-      \name{author}{3}{}{%
+    \entry{viallard2023learning}{inproceedings}{}
+      \name{author}{4}{}{%
         {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
            family={Viallard},
            familyi={V\bibinitperiod},
            given={Paul},
            giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=09761c1924ec610e6c70386b093ef79c}{%
+           family={Simsekli},
+           familyi={S\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
            familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
       \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{bibnamehash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{authorbibnamehash}{27694df2b591eaff2a2c77dab28cab80}
+      \strng{fullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{bibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{authorbibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
       \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{27694df2b591eaff2a2c77dab28cab80}
-      \field{extraname}{4}
+      \strng{authorfullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
+      \field{title}{{Learning via Wasserstein-Based High Probability Generalisation Bounds}}
+      \field{year}{2023}
+      \keyw{conference}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{1}
+  \datalist[entry]{ydnt/global//global/global}
+    \entry{haddouche2023pac}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transactions on Machine Learning Research}
+      \field{title}{{PAC-Bayes Generalisation Bounds for Heavy-Tailed Losses through Supermartingales}}
+      \field{year}{2023}
+      \true{nocite}
+      \keyw{journal}
+    \endentry
+    \entry{haddouche2023wasserstein}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradate}{2}
@@ -730,173 +358,270 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Apprentissage de Vote de Majorité par Minimisation d'une C-Borne PAC-Bayésienne}}
-      \field{year}{2021}
+      \field{journaltitle}{arXiv}
+      \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
+      \field{volume}{abs/2304.07048}
+      \field{year}{2023}
       \true{nocite}
-      \keyw{nat-conference}
+      \keyw{report}
     \endentry
-    \entry{ViallardGermainMorvant2021b}{inproceedings}{}
+    \entry{haddouche2023optimistic}{misc}{}
       \name{author}{3}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{bibnamehash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{authorbibnamehash}{27694df2b591eaff2a2c77dab28cab80}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{27694df2b591eaff2a2c77dab28cab80}
-      \field{extraname}{5}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradate}{3}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Dérandomisation des Bornes PAC-Bayésiennes}}
-      \field{year}{2021}
-      \true{nocite}
-      \keyw{nat-conference}
-    \endentry
-    \entry{ViallardVidotHabrardMorvant2021}{inproceedings}{}
-      \name{author}{4}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=8d7e077d4c1b0aea901dd10149ec73ac}{%
-           family={Vidot},
-           familyi={V\bibinitperiod},
-           given={Guillaume},
-           giveni={G\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=d2b0ee30a193e30e398df40d4e098ab1}{%
+           family={Wintenberger},
+           familyi={W\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
       }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{2b32b9243bfd519a17c239a0d6078048}
-      \strng{bibnamehash}{2b32b9243bfd519a17c239a0d6078048}
-      \strng{authorbibnamehash}{2b32b9243bfd519a17c239a0d6078048}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{2b32b9243bfd519a17c239a0d6078048}
-      \field{extraname}{6}
+      \strng{namehash}{425338b43dd0931a32162496c1cb2c4c}
+      \strng{fullhash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{bibnamehash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{authorbibnamehash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{authornamehash}{425338b43dd0931a32162496c1cb2c4c}
+      \strng{authorfullhash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradate}{4}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
-      \field{title}{{A PAC-Bayes Analysis of Adversarial Robustness}}
-      \field{year}{2021}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{{Optimistic Dynamic Regret Bounds}}
+      \field{year}{2023}
       \true{nocite}
-      \keyw{conference}
+      \verb{eprint}
+      \verb 2301.07530
+      \endverb
+      \keyw{report}
     \endentry
-    \entry{VidotViallardMorvant2021}{inproceedings}{}
+    \entry{jobic2023federated}{misc}{}
       \name{author}{3}{}{%
-        {{hash=8d7e077d4c1b0aea901dd10149ec73ac}{%
-           family={Vidot},
-           familyi={V\bibinitperiod},
-           given={Guillaume},
-           giveni={G\bibinitperiod}}}%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
+        {{hash=9c788bade08f8b24b71d7a8b9d4a9588}{%
+           family={Jobic},
+           familyi={J\bibinitperiod},
+           given={Pierre},
            giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{5f1d42fb7d5338d182c3a0c8c080dc27}
-      \strng{fullhash}{afb02222f41b2cbd0f6e7b9d38bad93d}
-      \strng{bibnamehash}{afb02222f41b2cbd0f6e7b9d38bad93d}
-      \strng{authorbibnamehash}{afb02222f41b2cbd0f6e7b9d38bad93d}
-      \strng{authornamehash}{5f1d42fb7d5338d182c3a0c8c080dc27}
-      \strng{authorfullhash}{afb02222f41b2cbd0f6e7b9d38bad93d}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Une Analyse PAC-Bayésienne de la Robustesse Adversariale}}
-      \field{year}{2021}
-      \true{nocite}
-      \keyw{nat-conference}
-    \endentry
-    \entry{ZantedeschiViallardMorvantEmonetHabrardGermainGuedj2021}{inproceedings}{}
-      \name{author}{7}{}{%
-        {{hash=0989a6f32e84829ee6fd57b115007ec3}{%
-           family={Zantedeschi},
-           familyi={Z\bibinitperiod},
-           given={Valentina},
-           giveni={V\bibinitperiod}}}%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
         {{hash=dbe4c731302e63fe6b122f974c402be2}{%
            family={Guedj},
            familyi={G\bibinitperiod},
            given={Benjamin},
            giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{50a3dac2b81bdeba1e01588ba8e7a2fb}
-      \strng{fullhash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{bibnamehash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{authorbibnamehash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{authornamehash}{50a3dac2b81bdeba1e01588ba8e7a2fb}
-      \strng{authorfullhash}{f991f8ca9ccc7db2d3880db886f846ea}
+      \strng{namehash}{3085420cf4e9040e10c2363c26e94937}
+      \strng{fullhash}{74b28afce8a8ee385cf1fff87c313a49}
+      \strng{bibnamehash}{74b28afce8a8ee385cf1fff87c313a49}
+      \strng{authorbibnamehash}{74b28afce8a8ee385cf1fff87c313a49}
+      \strng{authornamehash}{3085420cf4e9040e10c2363c26e94937}
+      \strng{authorfullhash}{74b28afce8a8ee385cf1fff87c313a49}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{{Federated Learning with Nonvacuous Generalisation Bounds}}
+      \field{year}{2023}
+      \true{nocite}
+      \verb{eprint}
+      \verb 2310.11203
+      \endverb
+      \keyw{report}
+    \endentry
+    \entry{viallard2023learning}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
+           family={Viallard},
+           familyi={V\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=09761c1924ec610e6c70386b093ef79c}{%
+           family={Simsekli},
+           familyi={S\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{fullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{bibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{authorbibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{authorfullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
+      \field{title}{{Learning via Wasserstein-Based High Probability Generalisation Bounds}}
+      \field{year}{2023}
+      \true{nocite}
+      \keyw{conference}
+    \endentry
+    \entry{haddouche2022online}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
+      \field{title}{{Online PAC-Bayes Learning}}
+      \field{year}{2022}
+      \true{nocite}
+      \keyw{conference}
+    \endentry
+    \entry{haddouche2020upper}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=8feae4ec394a5f6905c74b1a7abff875}{%
+           family={Shawe-Taylor},
+           familyi={S\bibinithyphendelim T\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{425338b43dd0931a32162496c1cb2c4c}
+      \strng{fullhash}{08a24a7f0a2eee43ac9d746034d00a51}
+      \strng{bibnamehash}{08a24a7f0a2eee43ac9d746034d00a51}
+      \strng{authorbibnamehash}{08a24a7f0a2eee43ac9d746034d00a51}
+      \strng{authornamehash}{425338b43dd0931a32162496c1cb2c4c}
+      \strng{authorfullhash}{08a24a7f0a2eee43ac9d746034d00a51}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{{Upper and Lower Bounds on the Performance of Kernel PCA}}
+      \field{year}{2020}
+      \true{nocite}
+      \verb{eprint}
+      \verb 2012.10369
+      \endverb
+      \keyw{report}
+    \endentry
+  \enddatalist
+  \datalist[entry]{ynt/global//global/global}
+    \entry{haddouche2020upper}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=8feae4ec394a5f6905c74b1a7abff875}{%
+           family={Shawe-Taylor},
+           familyi={S\bibinithyphendelim T\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{425338b43dd0931a32162496c1cb2c4c}
+      \strng{fullhash}{08a24a7f0a2eee43ac9d746034d00a51}
+      \strng{bibnamehash}{08a24a7f0a2eee43ac9d746034d00a51}
+      \strng{authorbibnamehash}{08a24a7f0a2eee43ac9d746034d00a51}
+      \strng{authornamehash}{425338b43dd0931a32162496c1cb2c4c}
+      \strng{authorfullhash}{08a24a7f0a2eee43ac9d746034d00a51}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{{Upper and Lower Bounds on the Performance of Kernel PCA}}
+      \field{year}{2020}
+      \true{nocite}
+      \verb{eprint}
+      \verb 2012.10369
+      \endverb
+      \keyw{report}
+    \endentry
+    \entry{haddouche2022online}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
       \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -905,51 +630,31 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
-      \field{title}{{Learning Stochastic Majority Votes by Minimizing a PAC-Bayes Generalization Bound}}
-      \field{year}{2021}
+      \field{title}{{Online PAC-Bayes Learning}}
+      \field{year}{2022}
       \true{nocite}
       \keyw{conference}
     \endentry
-    \entry{ViallardEmonetGermainHabrardMorvantZantedeschi2022}{inproceedings}{}
-      \name{author}{6}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+    \entry{haddouche2023pac}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=0989a6f32e84829ee6fd57b115007ec3}{%
-           family={Zantedeschi},
-           familyi={Z\bibinitperiod},
-           given={Valentina},
-           giveni={V\bibinitperiod}}}%
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{6a39653fddc8189181fa502679c07d6c}
-      \strng{bibnamehash}{6a39653fddc8189181fa502679c07d6c}
-      \strng{authorbibnamehash}{6a39653fddc8189181fa502679c07d6c}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{6a39653fddc8189181fa502679c07d6c}
-      \field{extraname}{7}
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradate}{1}
@@ -957,47 +662,32 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Intérêt des bornes désintégrées pour la généralisation avec des mesures de complexité}}
-      \field{year}{2022}
+      \field{journaltitle}{Transactions on Machine Learning Research}
+      \field{title}{{PAC-Bayes Generalisation Bounds for Heavy-Tailed Losses through Supermartingales}}
+      \field{year}{2023}
       \true{nocite}
-      \keyw{nat-conference}
+      \keyw{journal}
     \endentry
-    \entry{ViallardEmonetHabrardMorvantZantedeschi2022}{unpublished}{}
-      \name{author}{5}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+    \entry{haddouche2023wasserstein}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=0989a6f32e84829ee6fd57b115007ec3}{%
-           family={Zantedeschi},
-           familyi={Z\bibinitperiod},
-           given={Valentina},
-           giveni={V\bibinitperiod}}}%
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{bc777ce455bcd250d6981eb50f6fe1ac}
-      \strng{bibnamehash}{bc777ce455bcd250d6981eb50f6fe1ac}
-      \strng{authorbibnamehash}{bc777ce455bcd250d6981eb50f6fe1ac}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{bc777ce455bcd250d6981eb50f6fe1ac}
-      \field{extraname}{8}
+      \strng{namehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{fullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{bibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorbibnamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authornamehash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \strng{authorfullhash}{8695ed52d51f01e1cd1a83271ab7612d}
+      \field{extraname}{3}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradate}{2}
@@ -1005,99 +695,37 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{\textit{Submitted to ICLR 2023}}
-      \field{title}{Generalization Bounds with Arbitrary Complexity Measures}
-      \field{year}{2022}
+      \field{journaltitle}{arXiv}
+      \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
+      \field{volume}{abs/2304.07048}
+      \field{year}{2023}
       \true{nocite}
       \keyw{report}
     \endentry
-    \entry{ViallardGermainHabrardMorvant2022}{unpublished}{}
-      \name{author}{4}{}{%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
+    \entry{haddouche2023optimistic}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
            familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{fullhash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{bibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authorbibnamehash}{d2f65db2a9726f5ffdab61a252be769f}
-      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
-      \strng{authorfullhash}{d2f65db2a9726f5ffdab61a252be769f}
-      \field{extraname}{9}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradate}{3}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{\textit{Submitted to Machine Learning Journal}}
-      \field{title}{A General Framework for the Disintegration of PAC-Bayesian Bounds}
-      \field{year}{2022}
-      \true{nocite}
-      \keyw{report}
-    \endentry
-    \entry{ZantedeschiViallardMorvantEmonetHabrardGermainGuedj2022}{inproceedings}{}
-      \name{author}{7}{}{%
-        {{hash=0989a6f32e84829ee6fd57b115007ec3}{%
-           family={Zantedeschi},
-           familyi={Z\bibinitperiod},
-           given={Valentina},
-           giveni={V\bibinitperiod}}}%
-        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
-           family={Viallard},
-           familyi={V\bibinitperiod},
-           given={Paul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b3d369757b8c4f98edb454ff8b92dfc6}{%
-           family={Morvant},
-           familyi={M\bibinitperiod},
-           given={Emilie},
-           giveni={E\bibinitperiod}}}%
-        {{hash=540707691b59449b98fb81f7ccc929be}{%
-           family={Emonet},
-           familyi={E\bibinitperiod},
-           given={Rémi},
-           giveni={R\bibinitperiod}}}%
-        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
-           family={Habrard},
-           familyi={H\bibinitperiod},
-           given={Amaury},
-           giveni={A\bibinitperiod}}}%
-        {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
-           family={Germain},
-           familyi={G\bibinitperiod},
-           given={Pascal},
-           giveni={P\bibinitperiod}}}%
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
         {{hash=dbe4c731302e63fe6b122f974c402be2}{%
            family={Guedj},
            familyi={G\bibinitperiod},
            given={Benjamin},
            giveni={B\bibinitperiod}}}%
+        {{hash=d2b0ee30a193e30e398df40d4e098ab1}{%
+           family={Wintenberger},
+           familyi={W\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
       }
-      \strng{namehash}{50a3dac2b81bdeba1e01588ba8e7a2fb}
-      \strng{fullhash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{bibnamehash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{authorbibnamehash}{f991f8ca9ccc7db2d3880db886f846ea}
-      \strng{authornamehash}{50a3dac2b81bdeba1e01588ba8e7a2fb}
-      \strng{authorfullhash}{f991f8ca9ccc7db2d3880db886f846ea}
+      \strng{namehash}{425338b43dd0931a32162496c1cb2c4c}
+      \strng{fullhash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{bibnamehash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{authorbibnamehash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{authornamehash}{425338b43dd0931a32162496c1cb2c4c}
+      \strng{authorfullhash}{29cc2de7242ededf00b126dd1ede1aa6}
       \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -1105,11 +733,96 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Conférence sur l'Apprentissage automatique (CAp)}
-      \field{title}{{Learning Stochastic Majority Votes by Minimizing a PAC-Bayes Generalization Bound}}
-      \field{year}{2022}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{{Optimistic Dynamic Regret Bounds}}
+      \field{year}{2023}
       \true{nocite}
-      \keyw{nat-conference}
+      \verb{eprint}
+      \verb 2301.07530
+      \endverb
+      \keyw{report}
+    \endentry
+    \entry{jobic2023federated}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=9c788bade08f8b24b71d7a8b9d4a9588}{%
+           family={Jobic},
+           familyi={J\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{3085420cf4e9040e10c2363c26e94937}
+      \strng{fullhash}{74b28afce8a8ee385cf1fff87c313a49}
+      \strng{bibnamehash}{74b28afce8a8ee385cf1fff87c313a49}
+      \strng{authorbibnamehash}{74b28afce8a8ee385cf1fff87c313a49}
+      \strng{authornamehash}{3085420cf4e9040e10c2363c26e94937}
+      \strng{authorfullhash}{74b28afce8a8ee385cf1fff87c313a49}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{{Federated Learning with Nonvacuous Generalisation Bounds}}
+      \field{year}{2023}
+      \true{nocite}
+      \verb{eprint}
+      \verb 2310.11203
+      \endverb
+      \keyw{report}
+    \endentry
+    \entry{viallard2023learning}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
+           family={Viallard},
+           familyi={V\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=09761c1924ec610e6c70386b093ef79c}{%
+           family={Simsekli},
+           familyi={S\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{fullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{bibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{authorbibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{authorfullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems (NeurIPS)}
+      \field{title}{{Learning via Wasserstein-Based High Probability Generalisation Bounds}}
+      \field{year}{2023}
+      \true{nocite}
+      \keyw{conference}
     \endentry
   \enddatalist
 \endrefsection
