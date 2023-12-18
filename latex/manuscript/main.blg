@@ -1,0 +1,21 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'main.blg'
+[68] biber-darwin:340> INFO - === Mon Dec 18, 2023, 13:39:05
+[83] Biber.pm:415> INFO - Reading 'main.bcf'
+[170] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[170] Biber.pm:949> INFO - Using all citekeys in bib section 1
+[170] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[196] Biber.pm:4340> INFO - Processing section 1
+[205] Biber.pm:4531> INFO - Looking for bibtex format file 'publications.bib' for section 1
+[206] bibtex.pm:1689> INFO - LaTeX decoding ...
+[216] bibtex.pm:1494> INFO - Found BibTeX data source 'publications.bib'
+[307] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[308] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[308] Biber.pm:4168> INFO - Sorting list 'ydnt/global//global/global' of type 'entry' with template 'ydnt' and locale 'en-US'
+[308] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[328] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[328] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[328] Biber.pm:4168> INFO - Sorting list 'ynt/global//global/global' of type 'entry' with template 'ynt' and locale 'en-US'
+[328] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[338] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[354] bbl.pm:757> INFO - Output to main.bbl

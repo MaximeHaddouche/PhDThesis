@@ -1,4 +1,4 @@
-\ProvidesClass{thesis}[2021/06/21 PhD Thesis]
+\ProvidesClass{thesis}[2024/06/01 PhD Thesis]
 
 \PassOptionsToClass{a4paper}{memoir}
 \PassOptionsToClass{12pt}{memoir}
