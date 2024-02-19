@@ -1,5 +1,5 @@
-\chapter*{Preamble: Generalisation and Optimisation in Machine Learning}
-\addcontentsline{toc}{chapter}{Preamble: Generalisation and Optimisation in Machine Learning}\mtcaddchapter
+\chapter{Preamble: PAC-Bayes Learning, a field of many paradigms}
+%\addcontentsline{toc}{chapter}{Preamble: PAC-Bayes learning, a field of many paradigms}\mtcaddchapter
 \label{chap:gen-ml}
 
 \addtextlist{lof}{Preamble}
@@ -12,7 +12,7 @@ Says that PAC-Bayes spontaneously offer a clear link from generalisation to opti
 
 TODO look if there are links from optimiastion to PAC-Bayes (must have been some with dziugaite, neu with SGD).
 
-Here, we are studying the interplays on both directions. First, we take the opposite perspective and, starting from optimisation benefits/perspectives, we want to understand generalisation, to do so we have several routes within PAC-Bayes. Second, we investigate deeper on the influence of generalisation boudns to derive neovel learning algorithms
+Here, we are studying the interplays on both directions. First, we take the opposite perspective and, starting from optimisation benefits/perspectives, we want to understand generalisation, to do so we have several routes within PAC-Bayes. Second, we investigate deeper on the influence of generalisation bounds to derive novel learning algorithms
 
 Thinking the role of the prior in PAC-Bayes: in a similar manner than initialisation/ goal to attain in optimisation: if we target a data-free posterior (eg GIbbs catoni) then ok: we target the learning objective. Otherwise, it is common to compare to a random initialisation point of a learning procedure: meaningless. Answer: Online PAC-Bayes which allows, among other, to make the prior evolve through time. (note that there is also either the data-dependent prior: its bad and the differential privacy approach, which is nice)
 
@@ -26,12 +26,17 @@ Precise the structure of the document: see it as a natural flow where one questi
 
 Light-tailed losses? --> supermartingales! 
 
-But then : what should we do of the prior? --> if you see it as an initialisation: Online PAC-Bayes with novel online algorithms or Flat Minima to attenuate the impact of the prior through fast rates.
+But then : what should we do of the prior? $\rightarrow$  if you see it as an initialisation: Online PAC-Bayes with novel online algorithms or Flat Minima to attenuate the impact of the prior through fast rates.
 
 What if it should be the optimisation goal? --> Wasserstein PAC-Bayes
 
 
+JURY:
 
+
+Rapporteurs: Alquier (sur)/Chopin (moins)
+
+Membres: Seldin (rapporteur mais peut etre pas fou pour le rapport)/ Pascal Germain (rapporteur) Gérard (si Pierre pas dispo), John Shawe-Taylor (examinateur), Emilie Morvant (présidente) + le Maitre + Arnak Dalalyan (trop proche?), Alessandro Rudi
  
 
 

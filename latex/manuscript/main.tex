@@ -36,7 +36,6 @@
  
 % ----------------------------------------------------------------------------------------------- %
 \counterwithout{figure}{section}
-\input{introduction/introduction}
 \counterwithin{figure}{chapter}
 
 \newrefcontext[sorting=ydnt]
@@ -53,39 +52,31 @@
 % ----------------------------------------------------------------------------------------------- %
 \pagestyle{headings}
 
-\part{Background}
-\label{part:background}
-
+\input{introduction/introduction}
 \include{chapter_1/chapter_1}
 \include{chapter_2/chapter_2}
 \include{chapter_3/chapter_3}
 % ----------------------------------------------------------------------------------------------- %
 
-\part[Generalisation bounds for  Martingales and Online Learning allowing Heavy-Tailed Losses]{Generalisation bounds for  Martingales and Online Learning allowing Heavy-Tailed Losses}
-\label{part:contrib-pac-bayes}
 
 \include{chapter_4/chapter_4}
 \include{chapter_5/chapter_5}
 
 % ----------------------------------------------------------------------------------------------- %
 
-\part[Towards A Better Understanding of Generalisation through Optimisation]{Towards A Better Understanding of Generalisation through Optimisation}
 
-\label{part:contrib-disintegrated}
 
 \include{chapter_6/chapter_6}
 \include{chapter_7/chapter_7}
 
 
-\part{Conclusion and Perspectives}
-\label{part:conclusion}
+
 
 %\include{perspectives/perspectives}
 
 % ----------------------------------------------------------------------------------------------- %
 
 \appendix
-\part{Appendix}
 
 \include{appendix/tools}
 
