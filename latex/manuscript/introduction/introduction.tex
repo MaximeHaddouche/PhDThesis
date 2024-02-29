@@ -1,34 +1,46 @@
-\chapter{Preamble: PAC-Bayes Learning, a field of many paradigms}
-%\addcontentsline{toc}{chapter}{Preamble: PAC-Bayes learning, a field of many paradigms}\mtcaddchapter
-\label{chap:gen-ml}
+\chapter*{Preamble: What is generalisation?}
+\addcontentsline{toc}{chapter}{Preamble: What is generalisation?}\mtcaddchapter
+
 
 \addtextlist{lof}{Preamble}
 
-Detail broadly what generalisation is, to what kind of structures it is applied (neural nets or linear classfier eg). Details on the other hand what optimisation is doing (ERM eg) and explain that interestingly in various methods, reaching minimisers of empirical objectives is enough to ensure a good generalisation ability. From this, discuss about the current limitations of generalisaiton: either not going so often beyond light-tailed assumptions or noticing that the interplays between generalisation (statistical arguments) and optimisation (geometric ones) remains uncharted for a vast range of cases.
+This manuscript tackles the notion of \emph{generalisation} a notion built upon the general notion of \emph{learning}. For a brief moment, let's take the luxury of forgetting about machines and concentrate on learning at its most human. First and foremost, a human being (or learner) is structured around experiences, either lived or passed on by others. 
 
-Vision: after generic paragraphs on generalisation an optimisation, do a broader paragraph on PAC-Bayes and details the problem of exisiting PAC-Bayes approach: 
+The learner then benefit from these experiences in various ways, for instance, by considering a mediated experience to be true (fire burns) and acting on this assumption, whereas reiteration or denial of this same information may be symptoms of zero truth value.  These scenarios can just as easily appear for a lived experience (the question of hallucinations). This first dichotomy in information processing is intrinsically linked to a clearly stated question: does fire burn? Can I trust my senses or have I hallucinated? In these cases, learning has taken place by subjecting the experience to its truth value in relation to a simple question (in this case with two outcomes).  This vision can easily be extended to a multiple (and finite) tree of possibilities. Indeed, we can extend the burning question as follows: what is the intensity of the burn as a function of the temperature of the fire? We can then establish a multitude of answers representing various degrees of burn. 
 
-Says that PAC-Bayes spontaneously offer a clear link from generalisation to optimisation by providing new learning algorithms: this implicitly suggests assumptions on the loss (eg convex) or on the regulariser (KL between gaussians to get a strongly convex function) to make sure the minimisation goes well and thus build a bridge with optimisation.
+However, many questions cannot be reduced to a finite number of possibilities. For example, what is fire? To answer this question, it is nevertheless possible to exploit multiple facets of experience (wood fire, twig, rock) to propose that fire is the chemical reaction of oxygen in the air with a combustible material, with a supply of energy serving as the trigger. 
 
-TODO look if there are links from optimiastion to PAC-Bayes (must have been some with dziugaite, neu with SGD).
+Then, a legitimate question is: why has mankind understood the nature of fire? This fundamental understanding emerged from practical considerations: how can we stop being cold? Can we eat meat other than raw to reduce the risk of illness? It then takes multiple interactions with the environment to generate experiences and then learn from them to gradually respond to a complex need (how to make a fire to keep yourself warm?).
 
-Here, we are studying the interplays on both directions. First, we take the opposite perspective and, starting from optimisation benefits/perspectives, we want to understand generalisation, to do so we have several routes within PAC-Bayes. Second, we investigate deeper on the influence of generalisation bounds to derive novel learning algorithms
+Thus, through this preliminary analysis, we have found several premises of understanding human learning.
 
-Thinking the role of the prior in PAC-Bayes: in a similar manner than initialisation/ goal to attain in optimisation: if we target a data-free posterior (eg GIbbs catoni) then ok: we target the learning objective. Otherwise, it is common to compare to a random initialisation point of a learning procedure: meaningless. Answer: Online PAC-Bayes which allows, among other, to make the prior evolve through time. (note that there is also either the data-dependent prior: its bad and the differential privacy approach, which is nice)
+\begin{itemize}
+    \item How is learning formalised structurally?
+    The learner must base the experience on simple questions to acquire primary certainties. These latter acquired, it is possible to reach complex questions by interweaving more and more elementary considerations.
+    \item Where does the need to learn come from?
+    From a practical point of view, the emergence of these complex questions often arises from a relationship between the being and its environment, making it possible to develop contextual objectives. The learner then gradually becomes capable of responding to complex needs through a succession of simple actions.
+\end{itemize}
+ 
 
-Switching from statistical to geometric assumptions on the loss. Most of the bounds holds for data-free light-tailed losses: do not necessarily fit the reality of losses involved in optimisation, often unbounded, and either convex, gradient lipschitz or smooth. Answer: PAC-Bayes for heavy-tailed martingales and flat minima.
 
-Can the convergence properties of optimisation procedure play a role in generalisation? Direct answer: Wasserstein PAC-Bayes, Indirect one: flat minima. 
 
-Can we derive generalisation-based learning algorithms beyond Gaussian or Gibbs distributions? Answer: Yes as a byproduct: both in Online PAC-Bayes, Flat Minima and Paper with Paul  
+\begin{comment}
+Pour un bref instant, prenons le luxe d'oublier les machines pour se concentrer sur l'apprentissage en ce qu'il a de plus humain. Un humain, en premier lieu, va se structurer autour d'expériences, vécues ou transmises par autrui. L'être apprenant va alors tirer bénéfice de ces vécus via diverses modalités, par exemple, en considérant une expérience médiée comme vraie (le feu brûle) et agir en fonction de ce postulat alors que la réitération ou la négation de cette même information peuvent être des symptômes d'une valeur de vérité nulle.  Ces scénarios peuvent tout aussi bien apparaître pour une expérience vécue (hallucinations). Cette première dichotomie quant au traitement de l'information est intrinsèquement liée à une question clairement énoncée : est-ce que le feu brûle? Puis-je me fier à mes sens ou ai-je halluciné ? Dans ces cas de figure, l'apprentissage a eu lieu à travers l'assujettissement de l'expérience à sa valeur de vérité par rapport à une question simple (ici à deux issues).  Cette vision peut facilement s'étendre à une arborescence multiple (et finie) de possibles. En effet, on peut étendre la question de la brûlure comme suit: quelle est l'intensité de la brûlure en fonction de la température du feu? On peut dès lors établir une multitude de réponses représentant divers degrés de brûlure.
 
-Precise the structure of the document: see it as a natural flow where one question implies another one: 
+Néanmoins, de nombreuses questions ne peuvent se réduire à un nombre fini de possibilités. Par exemple, qu'est-ce que le feu? Pour répondre à cette question, il est néanmoins possible d'exploiter de multiples facettes d'expériences (feu de bois, brindille, roche) pour proposer le feu comme étant la réaction chimique de l'oxygène de l'air avec un matériau combustible, un apport d'énergie servant de déclencheur. 
 
-Light-tailed losses? --> supermartingales! 
+Il est alors légitime de se demander pourquoi l'apprenant a eu besoin de comprendre la vraie nature du feu. Cette  compréhension fondamentale des choses émerge de considérations pratiques : comment ne plus avoir froid? Peut-on manger de la viande autrement que crue pour diminuer les risques de maladie? Il faut alors de multiples interactions avec l'environnement pour générer des expériences et ensuite apprendre d'elles pour répondre graduellement à un besoin complexe (comment faire un feu pour se réchauffer?).
 
-But then : what should we do of the prior? $\rightarrow$  if you see it as an initialisation: Online PAC-Bayes with novel online algorithms or Flat Minima to attenuate the impact of the prior through fast rates.
+Ainsi, par cette analyse préliminaire, nous avons trouvé plusieurs prémices de compréhension de l'apprentissage chez l'homme.
 
-What if it should be the optimisation goal? --> Wasserstein PAC-Bayes
+1/ Comment l'apprentissage se formalise-t-il structurellement ?
+L'apprenant doit abâtardir l'expérience à des questions simples pour acquérir des certitudes primaires. Ces dernières acquises, il est possible d'atteindre des questions complexes en imbriquant de plus en plus de considérations élémentaires. 
+
+2/ D'où provient le besoin d'apprendre ?
+D'un point de vue pratique, l'émergence de ces questions complexes dérive bien souvent d'un rapport de l'être à son environnement, permettant d'élaborer des objectifs contextuels. L'apprenant devient alors graduellement capable de répondre à des besoins complexes par une succession d'actions simples.
+\end{comment}
+
+
 
 
 JURY:
@@ -41,3 +53,4 @@ Membres: Seldin (rapporteur mais peut etre pas fou pour le rapport)/ Pascal Germ
 
 
 CHALLENGE HERE: being very rigorous on the lit review.
+\newpage
