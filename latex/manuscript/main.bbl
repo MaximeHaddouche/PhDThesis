@@ -19,6 +19,33 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{durrett2019probability}{book}{}
+      \name{author}{1}{}{%
+        {{hash=175a15e34b656dab74bea645e2ed84d0}{%
+           family={Durrett},
+           familyi={D\bibinitperiod},
+           given={Rick},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge university press}%
+      }
+      \strng{namehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{fullhash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{bibnamehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{authorbibnamehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{authornamehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{authorfullhash}{175a15e34b656dab74bea645e2ed84d0}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Probability: theory and examples}
+      \field{volume}{49}
+      \field{year}{2019}
+    \endentry
     \entry{haddouche2022online}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
@@ -157,6 +184,33 @@
     \endentry
   \enddatalist
   \datalist[entry]{ynt/global//global/global}
+    \entry{durrett2019probability}{book}{}
+      \name{author}{1}{}{%
+        {{hash=175a15e34b656dab74bea645e2ed84d0}{%
+           family={Durrett},
+           familyi={D\bibinitperiod},
+           given={Rick},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge university press}%
+      }
+      \strng{namehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{fullhash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{bibnamehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{authorbibnamehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{authornamehash}{175a15e34b656dab74bea645e2ed84d0}
+      \strng{authorfullhash}{175a15e34b656dab74bea645e2ed84d0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Probability: theory and examples}
+      \field{volume}{49}
+      \field{year}{2019}
+    \endentry
     \entry{haddouche2022online}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
