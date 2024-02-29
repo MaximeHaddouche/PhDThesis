@@ -1,4 +1,6 @@
 \defcounter {refsection}{0}\relax 
+\vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 1}\vspace {0.2cm}\par 
+\defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 2}\vspace {0.2cm}\par 
 \defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 3}\vspace {0.2cm}\par 
@@ -7,24 +9,10 @@
 \defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 5}\vspace {0.2cm}\par 
 \defcounter {refsection}{0}\relax 
-\vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 6}\vspace {0.2cm}\par 
-\defcounter {refsection}{0}\relax 
-\vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 7}\vspace {0.2cm}\par 
-\defcounter {refsection}{0}\relax 
-\vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 8}\vspace {0.2cm}\par 
-\defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Appendix}\vspace {0.2cm}\par 
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.1.1\else \numberline {A.1.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Jensen}'s Inequality}}{31}{theorem.A.1.1}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.1.1\else \numberline {A.1.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Jensen}'s Inequality}}{25}{theorem.A.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.2.1\else \numberline {A.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Markov}'s Inequality}}{31}{theorem.A.2.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.3.1\else \numberline {A.3.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {2nd Order \textsc {Markov}'s Inequality}}{32}{theorem.A.3.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.4.1\else \numberline {A.4.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Chebyshev}-\textsc {Cantelli} Inequality}}{33}{theorem.A.4.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}A.5.1\else \numberline {A.5.1}\MakeUppercase {l}emma\fi \thmtformatoptarg {\textsc {Young}'s Inequality}}{33}{lemma.A.5.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.5.1\else \numberline {A.5.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Hölder}'s Inequality}}{34}{theorem.A.5.1}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.2.1\else \numberline {A.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Markov}'s Inequality}}{25}{theorem.A.2.1}%

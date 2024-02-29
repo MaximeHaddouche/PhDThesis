@@ -1,5 +1,5 @@
-\chapter[A survey on PAC-Bayes Generalisation Bounds]{A survey on PAC-Bayes Generalisation Bounds}
-\label{chap:intro-stat-learning}
+\chapter[PAC-Bayes Learning, a field of many paradigms]{PAC-Bayes Learning, a field of many paradigms}
+\label{chap:intro-pac-bayes}
 
 \minitoc
 
@@ -8,12 +8,40 @@
 \addchapterloe
 
 \begin{abstract}
-    This chapter provides a brief introduction of statistical learning theory and various modern kind of generalisation bounds (go from uniform convergence bounds to algorithmic stability, search for other kinds of non PAC-Bayes bounds). Need to recall the historical and modern shapes of generalisation bounds in ML. 
-   
+    TODO
 \end{abstract}
 
 \newpage
 
-\section{A brief survey of generalisation bounds}
+Detail broadly what generalisation is, to what kind of structures it is applied (neural nets or linear classfier eg). Details on the other hand what optimisation is doing (ERM eg) and explain that interestingly in various methods, reaching minimisers of empirical objectives is enough to ensure a good generalisation ability. From this, discuss about the current limitations of generalisaiton: either not going so often beyond light-tailed assumptions or noticing that the interplays between generalisation (statistical arguments) and optimisation (geometric ones) remains uncharted for a vast range of cases.
 
-\section{PAC-Bayes learning}
+Vision: after generic paragraphs on generalisation an optimisation, do a broader paragraph on PAC-Bayes and details the problem of exisiting PAC-Bayes approach: 
+
+Says that PAC-Bayes spontaneously offer a clear link from generalisation to optimisation by providing new learning algorithms: this implicitly suggests assumptions on the loss (eg convex) or on the regulariser (KL between gaussians to get a strongly convex function) to make sure the minimisation goes well and thus build a bridge with optimisation.
+
+TODO look if there are links from optimiastion to PAC-Bayes (must have been some with dziugaite, neu with SGD).
+
+Here, we are studying the interplays on both directions. First, we take the opposite perspective and, starting from optimisation benefits/perspectives, we want to understand generalisation, to do so we have several routes within PAC-Bayes. Second, we investigate deeper on the influence of generalisation bounds to derive novel learning algorithms
+
+Thinking the role of the prior in PAC-Bayes: in a similar manner than initialisation/ goal to attain in optimisation: if we target a data-free posterior (eg GIbbs catoni) then ok: we target the learning objective. Otherwise, it is common to compare to a random initialisation point of a learning procedure: meaningless. Answer: Online PAC-Bayes which allows, among other, to make the prior evolve through time. (note that there is also either the data-dependent prior: its bad and the differential privacy approach, which is nice)
+
+Switching from statistical to geometric assumptions on the loss. Most of the bounds holds for data-free light-tailed losses: do not necessarily fit the reality of losses involved in optimisation, often unbounded, and either convex, gradient lipschitz or smooth. Answer: PAC-Bayes for heavy-tailed martingales and flat minima.
+
+Can the convergence properties of optimisation procedure play a role in generalisation? Direct answer: Wasserstein PAC-Bayes, Indirect one: flat minima. 
+
+Can we derive generalisation-based learning algorithms beyond Gaussian or Gibbs distributions? Answer: Yes as a byproduct: both in Online PAC-Bayes, Flat Minima and Paper with Paul  
+
+Precise the structure of the document: see it as a natural flow where one question implies another one: 
+
+Light-tailed losses? --> supermartingales! 
+
+But then : what should we do of the prior? $\rightarrow$  if you see it as an initialisation: Online PAC-Bayes with novel online algorithms or Flat Minima to attenuate the impact of the prior through fast rates.
+
+What if it should be the optimisation goal? --> Wasserstein PAC-Bayes
+
+
+
+ 
+
+
+CHALLENGE HERE: being very rigorous on the lit review.
