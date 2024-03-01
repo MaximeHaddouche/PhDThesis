@@ -142,6 +142,206 @@
       \field{year}{2023}
       \keyw{report}
     \endentry
+    \entry{hasson2020direct}{article}{}
+      \name{author}{3}{}{%
+        {{hash=9f8290b0c59d4aba9138f55107a580cd}{%
+           family={Hasson},
+           familyi={H\bibinitperiod},
+           given={Uri},
+           giveni={U\bibinitperiod}}}%
+        {{hash=44b7414110af6e1cf597419b4e6ff95c}{%
+           family={Nastase},
+           familyi={N\bibinitperiod},
+           given={Samuel\bibnamedelima A},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=3ddec04bc21069542450ec83e7db6766}{%
+           family={Goldstein},
+           familyi={G\bibinitperiod},
+           given={Ariel},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{ec3c8d2488f73357101ce7e5854c8f3c}
+      \strng{fullhash}{b405b98a1385f2c1fe78deb2c408efc8}
+      \strng{bibnamehash}{b405b98a1385f2c1fe78deb2c408efc8}
+      \strng{authorbibnamehash}{b405b98a1385f2c1fe78deb2c408efc8}
+      \strng{authornamehash}{ec3c8d2488f73357101ce7e5854c8f3c}
+      \strng{authorfullhash}{b405b98a1385f2c1fe78deb2c408efc8}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neuron}
+      \field{number}{3}
+      \field{title}{{Direct fit to nature: an evolutionary perspective on biological and artificial neural networks}}
+      \field{volume}{105}
+      \field{year}{2020}
+      \field{pages}{416\bibrangedash 434}
+      \range{pages}{19}
+    \endentry
+    \entry{lu2017expressive}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=a268e32645f2e2e7a04f0036e973447c}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Zhou},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=f400b86f369a2c9c1bb20320d47bb1f2}{%
+           family={Pu},
+           familyi={P\bibinitperiod},
+           given={Hongming},
+           giveni={H\bibinitperiod}}}%
+        {{hash=429997c4f52cc4da358692cf4425dc11}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Feicheng},
+           giveni={F\bibinitperiod}}}%
+        {{hash=d2dfe03a9a79f671f2e9e5c36454134a}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Zhiqiang},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=6b9aebd3540ced6487a5f42863cb5207}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Liwei},
+           giveni={L\bibinitperiod}}}%
+      }
+      \name{editor}{7}{}{%
+        {{hash=284a778b6c8e17f1aae38e288dc06036}{%
+           family={Guyon},
+           familyi={G\bibinitperiod},
+           given={Isabelle},
+           giveni={I\bibinitperiod}}}%
+        {{hash=86714cf89fed80215d15171e9ed5f412}{%
+           family={Luxburg},
+           familyi={L\bibinitperiod},
+           given={Ulrike},
+           giveni={U\bibinitperiod},
+           prefix={von},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=02404a92b0be3f52ec5ac08e41c13445}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Samy},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8e1e7fe0ffce349db319207a99e10487}{%
+           family={Wallach},
+           familyi={W\bibinitperiod},
+           given={Hanna\bibnamedelima M.},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=a6784304d1cc890b2cb6c6c7f2f3fd76}{%
+           family={Fergus},
+           familyi={F\bibinitperiod},
+           given={Rob},
+           giveni={R\bibinitperiod}}}%
+        {{hash=50229a0f87f08a1fdc1e052ba8c93735}{%
+           family={Vishwanathan},
+           familyi={V\bibinitperiod},
+           given={S.\bibnamedelimi V.\bibnamedelimi N.},
+           giveni={S\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=eaf84e3fe4f887967dc3d793d28b9e94}{%
+           family={Garnett},
+           familyi={G\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{9828a8b2d135a1e4538129b0c47eb63a}
+      \strng{fullhash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \strng{bibnamehash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \strng{authorbibnamehash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \strng{authornamehash}{9828a8b2d135a1e4538129b0c47eb63a}
+      \strng{authorfullhash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \strng{editorbibnamehash}{8c6697b820db5e75326258c0d1a3beae}
+      \strng{editornamehash}{e1556a53b433ff03ee66d9c631b120fa}
+      \strng{editorfullhash}{8c6697b820db5e75326258c0d1a3beae}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{The Expressive Power of Neural Networks: {A} View from the Width}}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/32cbf687880eb1674a07bf717761dd3a-Abstract.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/32cbf687880eb1674a07bf717761dd3a-Abstract.html
+      \endverb
+    \endentry
+    \entry{park2021minimum}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=d0d3158fb45a2a1c33d5a838831dcbd2}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Sejun},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0f1473b5f2361f3cf86f8bf9331f648f}{%
+           family={Yun},
+           familyi={Y\bibinitperiod},
+           given={Chulhee},
+           giveni={C\bibinitperiod}}}%
+        {{hash=e9fd86a8a2ac27e648bcaa3454a6db01}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Jaeho},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fee800f0aca3527e8b4b88969a2f9ac3}{%
+           family={Shin},
+           familyi={S\bibinitperiod},
+           given={Jinwoo},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{7dbf6a11ef3d12da8ccd35944d708bf9}
+      \strng{fullhash}{2145a38f4bdaa9b3afd8fdac3195a497}
+      \strng{bibnamehash}{2145a38f4bdaa9b3afd8fdac3195a497}
+      \strng{authorbibnamehash}{2145a38f4bdaa9b3afd8fdac3195a497}
+      \strng{authornamehash}{7dbf6a11ef3d12da8ccd35944d708bf9}
+      \strng{authorfullhash}{2145a38f4bdaa9b3afd8fdac3195a497}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{9th International Conference on Learning Representations, {ICLR} 2021, Virtual Event, Austria, May 3-7, 2021}
+      \field{title}{{Minimum Width for Universal Approximation}}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://openreview.net/forum?id=O-XJwyoIF-k
+      \endverb
+      \verb{url}
+      \verb https://openreview.net/forum?id=O-XJwyoIF-k
+      \endverb
+    \endentry
+    \entry{riesz1955lecons}{book}{}
+      \name{author}{1}{}{%
+        {{hash=b5600587daf156fd75e58203d988c190}{%
+           family={Riesz},
+           familyi={R\bibinitperiod},
+           given={Frigyes},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{b5600587daf156fd75e58203d988c190}
+      \strng{fullhash}{b5600587daf156fd75e58203d988c190}
+      \strng{bibnamehash}{b5600587daf156fd75e58203d988c190}
+      \strng{authorbibnamehash}{b5600587daf156fd75e58203d988c190}
+      \strng{authornamehash}{b5600587daf156fd75e58203d988c190}
+      \strng{authorfullhash}{b5600587daf156fd75e58203d988c190}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Leçons d'Analyse Fonctionelle}}
+      \field{year}{1955}
+    \endentry
     \entry{viallard2023learning}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
@@ -184,6 +384,120 @@
     \endentry
   \enddatalist
   \datalist[entry]{ynt/global//global/global}
+    \entry{riesz1955lecons}{book}{}
+      \name{author}{1}{}{%
+        {{hash=b5600587daf156fd75e58203d988c190}{%
+           family={Riesz},
+           familyi={R\bibinitperiod},
+           given={Frigyes},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{b5600587daf156fd75e58203d988c190}
+      \strng{fullhash}{b5600587daf156fd75e58203d988c190}
+      \strng{bibnamehash}{b5600587daf156fd75e58203d988c190}
+      \strng{authorbibnamehash}{b5600587daf156fd75e58203d988c190}
+      \strng{authornamehash}{b5600587daf156fd75e58203d988c190}
+      \strng{authorfullhash}{b5600587daf156fd75e58203d988c190}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Leçons d'Analyse Fonctionelle}}
+      \field{year}{1955}
+    \endentry
+    \entry{lu2017expressive}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=a268e32645f2e2e7a04f0036e973447c}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Zhou},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=f400b86f369a2c9c1bb20320d47bb1f2}{%
+           family={Pu},
+           familyi={P\bibinitperiod},
+           given={Hongming},
+           giveni={H\bibinitperiod}}}%
+        {{hash=429997c4f52cc4da358692cf4425dc11}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Feicheng},
+           giveni={F\bibinitperiod}}}%
+        {{hash=d2dfe03a9a79f671f2e9e5c36454134a}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Zhiqiang},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=6b9aebd3540ced6487a5f42863cb5207}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Liwei},
+           giveni={L\bibinitperiod}}}%
+      }
+      \name{editor}{7}{}{%
+        {{hash=284a778b6c8e17f1aae38e288dc06036}{%
+           family={Guyon},
+           familyi={G\bibinitperiod},
+           given={Isabelle},
+           giveni={I\bibinitperiod}}}%
+        {{hash=86714cf89fed80215d15171e9ed5f412}{%
+           family={Luxburg},
+           familyi={L\bibinitperiod},
+           given={Ulrike},
+           giveni={U\bibinitperiod},
+           prefix={von},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=02404a92b0be3f52ec5ac08e41c13445}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Samy},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8e1e7fe0ffce349db319207a99e10487}{%
+           family={Wallach},
+           familyi={W\bibinitperiod},
+           given={Hanna\bibnamedelima M.},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=a6784304d1cc890b2cb6c6c7f2f3fd76}{%
+           family={Fergus},
+           familyi={F\bibinitperiod},
+           given={Rob},
+           giveni={R\bibinitperiod}}}%
+        {{hash=50229a0f87f08a1fdc1e052ba8c93735}{%
+           family={Vishwanathan},
+           familyi={V\bibinitperiod},
+           given={S.\bibnamedelimi V.\bibnamedelimi N.},
+           giveni={S\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=eaf84e3fe4f887967dc3d793d28b9e94}{%
+           family={Garnett},
+           familyi={G\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{9828a8b2d135a1e4538129b0c47eb63a}
+      \strng{fullhash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \strng{bibnamehash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \strng{authorbibnamehash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \strng{authornamehash}{9828a8b2d135a1e4538129b0c47eb63a}
+      \strng{authorfullhash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \strng{editorbibnamehash}{8c6697b820db5e75326258c0d1a3beae}
+      \strng{editornamehash}{e1556a53b433ff03ee66d9c631b120fa}
+      \strng{editorfullhash}{8c6697b820db5e75326258c0d1a3beae}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{The Expressive Power of Neural Networks: {A} View from the Width}}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/32cbf687880eb1674a07bf717761dd3a-Abstract.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/32cbf687880eb1674a07bf717761dd3a-Abstract.html
+      \endverb
+    \endentry
     \entry{durrett2019probability}{book}{}
       \name{author}{1}{}{%
         {{hash=175a15e34b656dab74bea645e2ed84d0}{%
@@ -210,6 +524,92 @@
       \field{title}{Probability: theory and examples}
       \field{volume}{49}
       \field{year}{2019}
+    \endentry
+    \entry{hasson2020direct}{article}{}
+      \name{author}{3}{}{%
+        {{hash=9f8290b0c59d4aba9138f55107a580cd}{%
+           family={Hasson},
+           familyi={H\bibinitperiod},
+           given={Uri},
+           giveni={U\bibinitperiod}}}%
+        {{hash=44b7414110af6e1cf597419b4e6ff95c}{%
+           family={Nastase},
+           familyi={N\bibinitperiod},
+           given={Samuel\bibnamedelima A},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=3ddec04bc21069542450ec83e7db6766}{%
+           family={Goldstein},
+           familyi={G\bibinitperiod},
+           given={Ariel},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{ec3c8d2488f73357101ce7e5854c8f3c}
+      \strng{fullhash}{b405b98a1385f2c1fe78deb2c408efc8}
+      \strng{bibnamehash}{b405b98a1385f2c1fe78deb2c408efc8}
+      \strng{authorbibnamehash}{b405b98a1385f2c1fe78deb2c408efc8}
+      \strng{authornamehash}{ec3c8d2488f73357101ce7e5854c8f3c}
+      \strng{authorfullhash}{b405b98a1385f2c1fe78deb2c408efc8}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neuron}
+      \field{number}{3}
+      \field{title}{{Direct fit to nature: an evolutionary perspective on biological and artificial neural networks}}
+      \field{volume}{105}
+      \field{year}{2020}
+      \field{pages}{416\bibrangedash 434}
+      \range{pages}{19}
+    \endentry
+    \entry{park2021minimum}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=d0d3158fb45a2a1c33d5a838831dcbd2}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Sejun},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0f1473b5f2361f3cf86f8bf9331f648f}{%
+           family={Yun},
+           familyi={Y\bibinitperiod},
+           given={Chulhee},
+           giveni={C\bibinitperiod}}}%
+        {{hash=e9fd86a8a2ac27e648bcaa3454a6db01}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Jaeho},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fee800f0aca3527e8b4b88969a2f9ac3}{%
+           family={Shin},
+           familyi={S\bibinitperiod},
+           given={Jinwoo},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{7dbf6a11ef3d12da8ccd35944d708bf9}
+      \strng{fullhash}{2145a38f4bdaa9b3afd8fdac3195a497}
+      \strng{bibnamehash}{2145a38f4bdaa9b3afd8fdac3195a497}
+      \strng{authorbibnamehash}{2145a38f4bdaa9b3afd8fdac3195a497}
+      \strng{authornamehash}{7dbf6a11ef3d12da8ccd35944d708bf9}
+      \strng{authorfullhash}{2145a38f4bdaa9b3afd8fdac3195a497}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{9th International Conference on Learning Representations, {ICLR} 2021, Virtual Event, Austria, May 3-7, 2021}
+      \field{title}{{Minimum Width for Universal Approximation}}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://openreview.net/forum?id=O-XJwyoIF-k
+      \endverb
+      \verb{url}
+      \verb https://openreview.net/forum?id=O-XJwyoIF-k
+      \endverb
     \endentry
     \entry{haddouche2022online}{inproceedings}{}
       \name{author}{2}{}{%
