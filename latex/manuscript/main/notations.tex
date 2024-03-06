@@ -56,8 +56,10 @@ $\displaystyle \KL(\Q\|\P)$ & Kullback-Leibler (KL) divergence between $\Q$ and 
 $\displaystyle D_{\alpha}(\Q\|\P)$ & Rényi Divergence between $\Q$ and $\P$\\
 $\displaystyle \Risk_{\D}(\h)$ & Population Risk of $\h\in\H$ \wrt $\D$, \ie $\Risk_{\D}(\h):= \Ebb_{\z\sim\D}\LB\ell(h,\z)\RB$\\
 $\displaystyle \Riskhat_{\Sm}(h)$ & Empirical Risk on $\S_m$, \ie $\displaystyle \Riskhat_{\Sm}(h) \frac{1}{m} \sum_{i=1}^m \ell(h,\z_i)$ \\
+$\displaystyle \Delta_{\Sm}(h)$ & Generalisation gap $\Delta_{\Sm}(h):= \Risk_\D(h) - \Riskhat_{\Sm}(h)$ \\
 $\Risk_\D(\Q)$ & Expected population risk \wrt $\Q$, \ie $\Risk_\D(\Q) := \Ebb_{h\sim \Q}\LB \Risk_\D(\Q)\RB$\\
-$\Riskhat_{\Sm}(\Q)$ & Expected empirical risk \wrt $\Q$, $\Riskhat_{\Sm}(\Q):= \Ebb_{h\sim \Q}\LB \Riskhat_{\Sm}(\Q)\RB$
+$\Riskhat_{\Sm}(\Q)$ & Expected empirical risk \wrt $\Q$, $\Riskhat_{\Sm}(\Q):= \Ebb_{h\sim \Q}\LB \Riskhat_{\Sm}(\Q)\RB$ \\
+$\displaystyle \Delta_{\Sm}(\Q)$ & Expected generalisation gap \wrt $\Q$, $\Delta_{\Sm}(\Q):= \Ebb_{h\sim \Q}\LB \Delta_{\Sm}(h) \RB$
 \end{tabular}
 
 \vspace{0.7cm}

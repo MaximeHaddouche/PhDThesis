@@ -1,6 +1,10 @@
 \defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 1}\vspace {0.2cm}\par 
 \defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {definition}{\ifthmt@listswap \MakeUppercase {d}efinition\nobreakspace {}1.1.1\else \numberline {1.1.1}\MakeUppercase {d}efinition\fi }{23}{definition.1.1.1}%
+\defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 2}\vspace {0.2cm}\par 
 \defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 3}\vspace {0.2cm}\par 
@@ -11,10 +15,8 @@
 \defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Appendix}\vspace {0.2cm}\par 
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.1.1\else \numberline {A.1.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Jensen}'s Inequality}}{35}{theorem.A.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.1.1\else \numberline {A.1.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Jensen}'s Inequality}}{31}{theorem.A.1.1}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.2.1\else \numberline {A.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Markov}'s Inequality}}{35}{theorem.A.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.2.1\else \numberline {A.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Markov}'s Inequality}}{31}{theorem.A.2.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}A.3.1\else \numberline {A.3.1}\MakeUppercase {l}emma\fi \thmtformatoptarg {Ville's maximal inequality for supermartingales}}{32}{lemma.A.3.1}%
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}A.3.1\else \numberline {A.3.1}\MakeUppercase {l}emma\fi \thmtformatoptarg {Ville's maximal inequality for supermartingales}}{36}{lemma.A.3.1}%

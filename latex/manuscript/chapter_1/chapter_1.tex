@@ -7,8 +7,51 @@
 \addchapterloa
 \addchapterloe
 
+\section{A brief introduction to statistical learning}
 
-Detail broadly what generalisation is, to what kind of structures it is applied (neural nets or linear classfier eg). Details on the other hand what optimisation is doing (ERM eg) and explain that interestingly in various methods, reaching minimisers of empirical objectives is enough to ensure a good generalisation ability. From this, discuss about the current limitations of generalisaiton: either not going so often beyond light-tailed assumptions or noticing that the interplays between generalisation (statistical arguments) and optimisation (geometric ones) remains uncharted for a vast range of cases.
+Statistical learning \citep{vapnik1999overview,james2013introduction} quantifies and identifies how learning algorithms, trained on a specific task using a finite training dataset, generalise to novel, unseen datum. More precisely, a learning agent has to learn how to answer a question, formalised as a \emph{learning problem} being a tuple $(\H,\Z,\ell)$ composed of a \emph{predictor space} on which evolves the agent during the learning process, a \emph{data space} $\Z$ and a \emph{loss function} being the mathematical formulation of the question. Such a minimalistic structure is convenient to encompass a broad range of real-life learning scenarii. To learn, the agent has access to a \emph{training dataset} $\S_m= (\z_i)_{i=1\cdots m}$. The most classical way to learn from $\Sm$ is the empirical risk minimisation (ERM), minimising the \emph{empirical risk} $\Riskhat_{\Sm}:= \frac{1}{m} \sum_{i=1}^m \ell(h,\z_i)$. In this setting, when $\S_m$ is \iid (following the distribution $\D$), two facets of generalisation are commonly studied in statistical learning for a given agent $h\in\H$.
+
+\begin{itemize}
+    \item First, the \emph{population risk} $\Risk_\D(h):= \mathbb{E}_{\z\sim\D}[\ell(h,\z)]$ focus on the average performance of our learning agent \wrt any new situation $\z\in\D$, independent of $\S_m$, possibly faced by the agent. A small population risk ensure then efficient generalisation.   
+    \item Second, the \emph{generalisation gap}  $\Delta_{\Sm}(h):= \Risk_D(h) - \Riskhat{\Sm}(h)$ evaluate the coherence between the empirical risk and the population one. Having a small generalisation gap ensure that the generalisation ability of the agent has the same magnitude than its training performance. 
+\end{itemize}
+Note that the population risk is a stronger notion of generalisation than the generalisation gap. However, a small generalisation gap (in absolute value) as well as a small empirical risk is enough to ensure a good population risk. Given that modern optimisation algorithm are often enough to ensure a small empirical risk, the generalisation gap has received a particular attention in statistical learning. 
+
+\paragraph{Generalisation bounds.} Generalisation bounds are inequalities often controlling the generalisation gap by various quantities depending either on $\H,\Z$ or $\S_m$. We propose below general patterns usually involved in generalisation bounds for an agent $h_{\Sm}\in\H$ depending on $\S_m$ (for instance the output of the ERM). 
+
+\textbf{Expected generalisation bound.} For any training set $\S_m$:
+
+\[ \mathbb{E}_{\S_m}\LB \Delta_{\Sm}(h_{\Sm}) \RB \leq f\LP \textsc{Complexity}, \frac{1}{m}\RP. \]
+
+\textbf{High-probability generalisation bounds.} For any training set $\S_m$, with probability $1-\delta$ pver the draw of $\Sm$:
+
+\[  \Delta_{\Sm}(h_{\Sm}) \leq f\LP \textsc{Complexity}, \frac{1}{m}, \log\frac{1}{\delta}\RP. \]
+
+The nature of $f$ and the \textsc{Complexity} term depend on the facet of the complexity of the learning problem we aim to focus. Celebrated examples are for instance the dimension of $\H$, if euclidean, the VC dimension of $\H$ \citep{vapnik2000learning}, the Rademacher complexity \citep{bartlett2001rademacher,bartlett2002rademacher},  the stability parameter of a learning algorithm \citep{bousquet2000algo} or the subgaussian diameter of $\Z$ \citep{kontorovich2014conc}. 
+Another approach relies on the Bayesian learning paradigm, deriving \emph{posterior} knowledge from data and prior modelling of the environment. 
+Then, the \textsc{Complexity} can be borrowed from information theory \citep{cover2001elements}, \eg mutual information \citep{neal2012bayesian}, or from optimal transport, \eg Wasserstein distances \citep{wang2019information,rodriguez2021tighter}. 
+
+Those two approaches have various benefits. A notable strength of expected bounds is that they may reach fast convergence rates (\ie faster than $\frac{1}{\sqrt{m}}$) contrary to high-probability one, even when $\H$ is a singleton thanks to the central limit theorem \citep{grunwald2021mac}. However, expected bounds often involves a theoretical \textsc{Complexity} which cannot be estimated in practice and may be hard to interpret while high probability bounds may be fully empirical and can be considered with small confidence parameter $\delta$ as it is attenuated by a logarithm.
+
+\paragraph{How to choose the complexity term ? An introductory example.} There is no evidence proving that a certain notion of complexity is preferrable to another. The choice of \textsc{Complexity} may however be driven by practical considerations, emerging from the learning problem of interest. To illustrate this point, let us focus on the following example, providing two learning problems which differs only from the predictor space $\H$ and which have very different interactions with the VC dimension.
+
+First, consider a supervised learning problem with loss $\ell$ where $\Z = \Rbb^k\times\Ycal$ with $k$ smaller than $m$ and assume that $\Hcal$ is the set of linear classifiers; \ie $\H_1:= \left\{ h_{\theta}(x)= sgn(\langle \theta,x\rangle)  \right\}$, where $sgn(a)$ denotes the sign of $a$. In this case, using the VC dimension may lead to non-vacuous generalisation bounds \citep{vapnik2000learning}. 
+
+However, in modern machine learning, deep neural networks are often considered, let us first define a celebrated class of deep neural networks. 
+
+\begin{definition}
+    A multlayer perceptron with depth $K$ and architecture $\{N_1,\cdots,N_K\}$, denoted as $h_{\wbf}(\x) \defeq Wh^{K}(\cdots h^{1}(\x))+b$, is composed of $K$ layers $h^1(\cdot),\dots,h^K(\cdot)$.
+ $W\in\R^{|\Ycal|\times N_K}$ and $b\in\R^{N_K}$ are the weight matrix and the bias of the last layer, and the $i$-th layer $h^{i}$, composed of $N_i$ nodes, is defined by $h^{i}(\xbf)\defeq\sigma_i(W_i \xbf + b_i)$, where $W_i\in\R^{N_i\times N_{i-1}}$ and the bias $b_i\in \R^{N_i}$ are its weight matrix and bias respectively; $\sigma_i : \R^{N_i} \to \R^{N_i} $ is an activation function.
+The weights $\wbf=\vect(\{W, W_{K}, \dots, W_1, b, b_{K}, \dots, b_1\})$ represent the vectorisation of all parameters of the network.
+\end{definition}
+Now, consider the learning problem with the same $\Z,\ell$ as above, but with $\H_2$ being the set of multilayer perceptrons \wrt a fixed depth $K$ and architecture $\{N_1,\cdots,N_K\}$. To be consistent with modern practice, assume also that we are in the \emph{overparametrised setting}, meaning that the space $\H_2$ has a dimension $d$ far greater than $m$.
+In this case, VC dimension fails to explain the good generalisation ability (seen in practice) of multilayer perceptrons \citep{bartlett2003vapnik}.
+Understanding the generalisation ability of deep neural networks remains nowadays a major challenge and in what follows, we focus on a modern branch of learning theory which provided non-vacuous bounds of the generalisation ability of deep neural networks: PAC-Bayes learning.
+
+\section{PAC-Bayes learning}
+
+\newpage
+Detail broadly what generalisation is, to what kind of structures it is applied (neural nets or linear classfier eg). Details on the other hand what optimisation is doing (ERM eg) and explain that interestingly in various methods, reaching minimisers of empirical objectives is enough to ensure a good generalisation ability. From this, discuss about the current limitations of generalisation: either not going so often beyond light-tailed assumptions or noticing that the interplays between generalisation (statistical arguments) and optimisation (geometric ones) remains uncharted for a vast range of cases.
 
 Vision: after generic paragraphs on generalisation an optimisation, do a broader paragraph on PAC-Bayes and details the problem of exisiting PAC-Bayes approach: 
 

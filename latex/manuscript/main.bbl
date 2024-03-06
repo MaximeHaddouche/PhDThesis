@@ -19,6 +19,166 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{bartlett2001rademacher}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=b8fd5618f4e1de62f22a3b78fbc3d5c5}{%
+           family={Bartlett},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=dd6e9c9c70de50b8e6f4d0e928dcdc25}{%
+           family={Mendelson},
+           familyi={M\bibinitperiod},
+           given={Shahar},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{fullhash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{bibnamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authorbibnamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authornamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authorfullhash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Conference on Computational Learning Theory ({COLT})}
+      \field{title}{{Rademacher and Gaussian Complexities: Risk Bounds and Structural Results}}
+      \field{year}{2001}
+    \endentry
+    \entry{bartlett2002rademacher}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b8fd5618f4e1de62f22a3b78fbc3d5c5}{%
+           family={Bartlett},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=dd6e9c9c70de50b8e6f4d0e928dcdc25}{%
+           family={Mendelson},
+           familyi={M\bibinitperiod},
+           given={Shahar},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{fullhash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{bibnamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authorbibnamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authornamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authorfullhash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \field{extraname}{2}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{{Rademacher and Gaussian Complexities: Risk Bounds and Structural Results}}
+      \field{year}{2002}
+    \endentry
+    \entry{bartlett2003vapnik}{article}{}
+      \name{author}{2}{}{%
+        {{hash=51fc11adc82c5171e6b03bb04073d8e6}{%
+           family={Bartlett},
+           familyi={B\bibinitperiod},
+           given={Peter\bibnamedelima L},
+           giveni={P\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=1b7071d23a59fcc869863e969ca2e992}{%
+           family={Maass},
+           familyi={M\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{fullhash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{bibnamehash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{authorbibnamehash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{authornamehash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{authorfullhash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The handbook of brain theory and neural networks}
+      \field{title}{Vapnik-Chervonenkis dimension of neural nets}
+      \field{year}{2003}
+      \field{pages}{1188\bibrangedash 1192}
+      \range{pages}{5}
+    \endentry
+    \entry{bousquet2000algo}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=cf4fea95321213e7dc3532fd33b85112}{%
+           family={Bousquet},
+           familyi={B\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+        {{hash=2d94e9f30443c60219d6654ae426df98}{%
+           family={Elisseeff},
+           familyi={E\bibinitperiod},
+           given={Andre},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{fullhash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{bibnamehash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{authorbibnamehash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{authornamehash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{authorfullhash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 13, Papers from Neural Information Processing Systems {(NIPS)} 2000, Denver, CO, {USA}}
+      \field{title}{{Algorithmic Stability and Generalization Performance}}
+      \field{year}{2000}
+      \verb{urlraw}
+      \verb https://proceedings.neurips.cc/paper/2000/hash/49ad23d1ec9fa4bd8d77d02681df5cfa-Abstract.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.neurips.cc/paper/2000/hash/49ad23d1ec9fa4bd8d77d02681df5cfa-Abstract.html
+      \endverb
+    \endentry
+    \entry{cover2001elements}{book}{}
+      \name{author}{2}{}{%
+        {{hash=fe5b7bbda12c7502f55ddb9eeded8622}{%
+           family={Cover},
+           familyi={C\bibinitperiod},
+           given={Thomas\bibnamedelima M.},
+           giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=e6518a9e085a3ee5221c27f5d8f826dc}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Joy\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{fullhash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{bibnamehash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{authorbibnamehash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{authornamehash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{authorfullhash}{e427ba6c0eda5292558c30c786236c01}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Elements of Information Theory}}
+      \field{year}{2001}
+    \endentry
     \entry{durrett2019probability}{book}{}
       \name{author}{1}{}{%
         {{hash=175a15e34b656dab74bea645e2ed84d0}{%
@@ -45,6 +205,72 @@
       \field{title}{Probability: theory and examples}
       \field{volume}{49}
       \field{year}{2019}
+    \endentry
+    \entry{grunwald2021mac}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=1fb1a40390ce652cbfc18842ed5de9d4}{%
+           family={Grunwald},
+           familyi={G\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=a8ee507f496e43705d0c170feeb81861}{%
+           family={Steinke},
+           familyi={S\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c3db4f150b5a00d935e44cbcdfcffb07}{%
+           family={Zakynthinou},
+           familyi={Z\bibinitperiod},
+           given={Lydia},
+           giveni={L\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=b2aeb0539e71c989e52b170b56b1fabd}{%
+           family={Belkin},
+           familyi={B\bibinitperiod},
+           given={Mikhail},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1162b7ca3f617484861379823b7eca5f}{%
+           family={Kpotufe},
+           familyi={K\bibinitperiod},
+           given={Samory},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{debb6f6e941576ae59cbbbc76cd3fb70}
+      \strng{fullhash}{dd75a8330fc718efb8c877ecc16243b8}
+      \strng{bibnamehash}{dd75a8330fc718efb8c877ecc16243b8}
+      \strng{authorbibnamehash}{dd75a8330fc718efb8c877ecc16243b8}
+      \strng{authornamehash}{debb6f6e941576ae59cbbbc76cd3fb70}
+      \strng{authorfullhash}{dd75a8330fc718efb8c877ecc16243b8}
+      \strng{editorbibnamehash}{9211307f5347b654539e6d0498a80866}
+      \strng{editornamehash}{9211307f5347b654539e6d0498a80866}
+      \strng{editorfullhash}{9211307f5347b654539e6d0498a80866}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of Thirty Fourth Conference on Learning Theory}
+      \field{month}{15--19 Aug}
+      \field{series}{Proceedings of Machine Learning Research}
+      \field{title}{{PAC-Bayes, MAC-Bayes and Conditional Mutual Information: Fast rate bounds that handle general VC classes}}
+      \field{volume}{134}
+      \field{year}{2021}
+      \field{pages}{2217\bibrangedash 2247}
+      \range{pages}{31}
+      \verb{file}
+      \verb http://proceedings.mlr.press/v134/grunwald21a/grunwald21a.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v134/grunwald21a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v134/grunwald21a.html
+      \endverb
     \endentry
     \entry{haddouche2022online}{inproceedings}{}
       \name{author}{2}{}{%
@@ -183,6 +409,87 @@
       \field{pages}{416\bibrangedash 434}
       \range{pages}{19}
     \endentry
+    \entry{james2013introduction}{book}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{4}{}{%
+        {{hash=df184c5fa522ac8a515ec4de13aef234}{%
+           family={James},
+           familyi={J\bibinitperiod},
+           given={Gareth},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1ab16961e0de50711fa6bd9425f9b4a6}{%
+           family={Witten},
+           familyi={W\bibinitperiod},
+           given={Daniela},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0cb8fe4210baa81c4b0e67913b4d2768}{%
+           family={Hastie},
+           familyi={H\bibinitperiod},
+           given={Trevor},
+           giveni={T\bibinitperiod}}}%
+        {{hash=88eea600247d798f8b2ce0b2dc614492}{%
+           family={Tibshirani},
+           familyi={T\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f8f737f83d9e451c1afaa13cdc120516}
+      \strng{fullhash}{090ee61edbbe9615b0c4f61c335a60f9}
+      \strng{bibnamehash}{090ee61edbbe9615b0c4f61c335a60f9}
+      \strng{authorbibnamehash}{090ee61edbbe9615b0c4f61c335a60f9}
+      \strng{authornamehash}{f8f737f83d9e451c1afaa13cdc120516}
+      \strng{authorfullhash}{090ee61edbbe9615b0c4f61c335a60f9}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{An introduction to statistical learning}}
+      \field{volume}{112}
+      \field{year}{2013}
+    \endentry
+    \entry{kontorovich2014conc}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=f099dc3c8738f515483a2653b06f341d}{%
+           family={Kontorovich},
+           familyi={K\bibinitperiod},
+           given={Aryeh},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JMLR.org}%
+      }
+      \strng{namehash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{fullhash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{bibnamehash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{authorbibnamehash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{authornamehash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{authorfullhash}{f099dc3c8738f515483a2653b06f341d}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 31th International Conference on Machine Learning, {ICML} 2014, Beijing, China, 21-26 June 2014}
+      \field{series}{{JMLR} Workshop and Conference Proceedings}
+      \field{title}{{Concentration in unbounded metric spaces and algorithmic stability}}
+      \field{volume}{32}
+      \field{year}{2014}
+      \field{pages}{28\bibrangedash 36}
+      \range{pages}{9}
+      \verb{urlraw}
+      \verb http://proceedings.mlr.press/v32/kontorovicha14.html
+      \endverb
+      \verb{url}
+      \verb http://proceedings.mlr.press/v32/kontorovicha14.html
+      \endverb
+    \endentry
     \entry{lu2017expressive}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=a268e32645f2e2e7a04f0036e973447c}{%
@@ -274,6 +581,32 @@
       \verb https://proceedings.neurips.cc/paper/2017/hash/32cbf687880eb1674a07bf717761dd3a-Abstract.html
       \endverb
     \endentry
+    \entry{neal2012bayesian}{book}{}
+      \name{author}{1}{}{%
+        {{hash=f366a77ba01bf711161e56bcc244e7f2}{%
+           family={Neal},
+           familyi={N\bibinitperiod},
+           given={Radford\bibnamedelima M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{fullhash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{bibnamehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{authorbibnamehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{authornamehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{authorfullhash}{f366a77ba01bf711161e56bcc244e7f2}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Bayesian learning for neural networks}}
+      \field{year}{2012}
+    \endentry
     \entry{park2021minimum}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=d0d3158fb45a2a1c33d5a838831dcbd2}{%
@@ -342,6 +675,104 @@
       \field{title}{{Leçons d'Analyse Fonctionelle}}
       \field{year}{1955}
     \endentry
+    \entry{rodriguez2021tighter}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=fdf707930fffcdb112538a44ae6f440c}{%
+           family={Rodriguez-Galvez},
+           familyi={R\bibinithyphendelim G\bibinitperiod},
+           given={Borja},
+           giveni={B\bibinitperiod}}}%
+        {{hash=f87e369c4979ee06580ca5d310a7b6ab}{%
+           family={Bassi},
+           familyi={B\bibinitperiod},
+           given={German},
+           giveni={G\bibinitperiod}}}%
+        {{hash=cc49581791f0d93fe2ef106f212f9416}{%
+           family={Thobaben},
+           familyi={T\bibinitperiod},
+           given={Ragnar},
+           giveni={R\bibinitperiod}}}%
+        {{hash=cc3e51666857a008fc2771ca4adfaa9f}{%
+           family={Skoglund},
+           familyi={S\bibinitperiod},
+           given={Mikael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{238674357ff66f157d46f0895ec78583}
+      \strng{fullhash}{82c44a2d1b290826821f558fa9f1865c}
+      \strng{bibnamehash}{82c44a2d1b290826821f558fa9f1865c}
+      \strng{authorbibnamehash}{82c44a2d1b290826821f558fa9f1865c}
+      \strng{authornamehash}{238674357ff66f157d46f0895ec78583}
+      \strng{authorfullhash}{82c44a2d1b290826821f558fa9f1865c}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems 2021, NeurIPS 2021, December 6-14, 2021, virtual}
+      \field{title}{{Tighter Expected Generalization Error Bounds via Wasserstein Distance}}
+      \field{year}{2021}
+    \endentry
+    \entry{vapnik1999overview}{article}{}
+      \name{author}{1}{}{%
+        {{hash=c2b3e05872463585b4be6aab10d10d63}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{fullhash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{bibnamehash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{authorbibnamehash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{authornamehash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{authorfullhash}{c2b3e05872463585b4be6aab10d10d63}
+      \field{extraname}{1}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{IEEE} Trans. Neural Networks}
+      \field{title}{{An overview of statistical learning theory}}
+      \field{year}{1999}
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/72.788640
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/72.788640
+      \endverb
+    \endentry
+    \entry{vapnik2000learning}{book}{}
+      \name{author}{1}{}{%
+        {{hash=6755575824e883d922886349815645ff}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir\bibnamedelima Naumovich},
+           giveni={V\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{6755575824e883d922886349815645ff}
+      \strng{fullhash}{6755575824e883d922886349815645ff}
+      \strng{bibnamehash}{6755575824e883d922886349815645ff}
+      \strng{authorbibnamehash}{6755575824e883d922886349815645ff}
+      \strng{authornamehash}{6755575824e883d922886349815645ff}
+      \strng{authorfullhash}{6755575824e883d922886349815645ff}
+      \field{extraname}{2}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Statistics for Engineering and Information Science}
+      \field{title}{{The Nature of Statistical Learning Theory, Second Edition}}
+      \field{year}{2000}
+    \endentry
     \entry{viallard2023learning}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
@@ -382,6 +813,53 @@
       \field{year}{2023}
       \keyw{conference}
     \endentry
+    \entry{wang2019information}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=c8cf19241225247d6d07dbf8a516b8ed}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Hao},
+           giveni={H\bibinitperiod}}}%
+        {{hash=a4037306a58bbcbc82bdea3f76c69433}{%
+           family={Diaz},
+           familyi={D\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+        {{hash=24646bd446516a7fa237697771907c50}{%
+           family={Filho},
+           familyi={F\bibinitperiod},
+           given={Jose\bibnamedelimb Czndido\bibnamedelimb Silveira\bibnamedelima Santos},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=859160b803f162c14e62667bb6fa1cd0}{%
+           family={Calmon},
+           familyi={C\bibinitperiod},
+           given={Flavio\bibnamedelima P.},
+           giveni={F\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{1e55acd1881fcc020a2f6c1953c520d3}
+      \strng{fullhash}{32c63336fd904480716f7dd6898dd74a}
+      \strng{bibnamehash}{32c63336fd904480716f7dd6898dd74a}
+      \strng{authorbibnamehash}{32c63336fd904480716f7dd6898dd74a}
+      \strng{authornamehash}{1e55acd1881fcc020a2f6c1953c520d3}
+      \strng{authorfullhash}{32c63336fd904480716f7dd6898dd74a}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{An Information-Theoretic View of Generalization via Wasserstein Distance}}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/ISIT.2019.8849359
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/ISIT.2019.8849359
+      \endverb
+    \endentry
   \enddatalist
   \datalist[entry]{ynt/global//global/global}
     \entry{riesz1955lecons}{book}{}
@@ -406,6 +884,332 @@
       \field{labeltitlesource}{title}
       \field{title}{{Leçons d'Analyse Fonctionelle}}
       \field{year}{1955}
+    \endentry
+    \entry{vapnik1999overview}{article}{}
+      \name{author}{1}{}{%
+        {{hash=c2b3e05872463585b4be6aab10d10d63}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{fullhash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{bibnamehash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{authorbibnamehash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{authornamehash}{c2b3e05872463585b4be6aab10d10d63}
+      \strng{authorfullhash}{c2b3e05872463585b4be6aab10d10d63}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{IEEE} Trans. Neural Networks}
+      \field{title}{{An overview of statistical learning theory}}
+      \field{year}{1999}
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/72.788640
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/72.788640
+      \endverb
+    \endentry
+    \entry{bousquet2000algo}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=cf4fea95321213e7dc3532fd33b85112}{%
+           family={Bousquet},
+           familyi={B\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+        {{hash=2d94e9f30443c60219d6654ae426df98}{%
+           family={Elisseeff},
+           familyi={E\bibinitperiod},
+           given={Andre},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{fullhash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{bibnamehash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{authorbibnamehash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{authornamehash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \strng{authorfullhash}{c124e27b7aef251fb97ffd0bb57dca35}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 13, Papers from Neural Information Processing Systems {(NIPS)} 2000, Denver, CO, {USA}}
+      \field{title}{{Algorithmic Stability and Generalization Performance}}
+      \field{year}{2000}
+      \verb{urlraw}
+      \verb https://proceedings.neurips.cc/paper/2000/hash/49ad23d1ec9fa4bd8d77d02681df5cfa-Abstract.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.neurips.cc/paper/2000/hash/49ad23d1ec9fa4bd8d77d02681df5cfa-Abstract.html
+      \endverb
+    \endentry
+    \entry{vapnik2000learning}{book}{}
+      \name{author}{1}{}{%
+        {{hash=6755575824e883d922886349815645ff}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir\bibnamedelima Naumovich},
+           giveni={V\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{6755575824e883d922886349815645ff}
+      \strng{fullhash}{6755575824e883d922886349815645ff}
+      \strng{bibnamehash}{6755575824e883d922886349815645ff}
+      \strng{authorbibnamehash}{6755575824e883d922886349815645ff}
+      \strng{authornamehash}{6755575824e883d922886349815645ff}
+      \strng{authorfullhash}{6755575824e883d922886349815645ff}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Statistics for Engineering and Information Science}
+      \field{title}{{The Nature of Statistical Learning Theory, Second Edition}}
+      \field{year}{2000}
+    \endentry
+    \entry{bartlett2001rademacher}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=b8fd5618f4e1de62f22a3b78fbc3d5c5}{%
+           family={Bartlett},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=dd6e9c9c70de50b8e6f4d0e928dcdc25}{%
+           family={Mendelson},
+           familyi={M\bibinitperiod},
+           given={Shahar},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{fullhash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{bibnamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authorbibnamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authornamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authorfullhash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Conference on Computational Learning Theory ({COLT})}
+      \field{title}{{Rademacher and Gaussian Complexities: Risk Bounds and Structural Results}}
+      \field{year}{2001}
+    \endentry
+    \entry{cover2001elements}{book}{}
+      \name{author}{2}{}{%
+        {{hash=fe5b7bbda12c7502f55ddb9eeded8622}{%
+           family={Cover},
+           familyi={C\bibinitperiod},
+           given={Thomas\bibnamedelima M.},
+           giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=e6518a9e085a3ee5221c27f5d8f826dc}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Joy\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{fullhash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{bibnamehash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{authorbibnamehash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{authornamehash}{e427ba6c0eda5292558c30c786236c01}
+      \strng{authorfullhash}{e427ba6c0eda5292558c30c786236c01}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Elements of Information Theory}}
+      \field{year}{2001}
+    \endentry
+    \entry{bartlett2002rademacher}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b8fd5618f4e1de62f22a3b78fbc3d5c5}{%
+           family={Bartlett},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=dd6e9c9c70de50b8e6f4d0e928dcdc25}{%
+           family={Mendelson},
+           familyi={M\bibinitperiod},
+           given={Shahar},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{fullhash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{bibnamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authorbibnamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authornamehash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \strng{authorfullhash}{d28d1b7330a109a3f4658ef25c9bcc94}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{{Rademacher and Gaussian Complexities: Risk Bounds and Structural Results}}
+      \field{year}{2002}
+    \endentry
+    \entry{bartlett2003vapnik}{article}{}
+      \name{author}{2}{}{%
+        {{hash=51fc11adc82c5171e6b03bb04073d8e6}{%
+           family={Bartlett},
+           familyi={B\bibinitperiod},
+           given={Peter\bibnamedelima L},
+           giveni={P\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=1b7071d23a59fcc869863e969ca2e992}{%
+           family={Maass},
+           familyi={M\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{fullhash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{bibnamehash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{authorbibnamehash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{authornamehash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \strng{authorfullhash}{5ab957c2e52e4c582de3e817f1e2aafa}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The handbook of brain theory and neural networks}
+      \field{title}{Vapnik-Chervonenkis dimension of neural nets}
+      \field{year}{2003}
+      \field{pages}{1188\bibrangedash 1192}
+      \range{pages}{5}
+    \endentry
+    \entry{neal2012bayesian}{book}{}
+      \name{author}{1}{}{%
+        {{hash=f366a77ba01bf711161e56bcc244e7f2}{%
+           family={Neal},
+           familyi={N\bibinitperiod},
+           given={Radford\bibnamedelima M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{fullhash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{bibnamehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{authorbibnamehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{authornamehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{authorfullhash}{f366a77ba01bf711161e56bcc244e7f2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Bayesian learning for neural networks}}
+      \field{year}{2012}
+    \endentry
+    \entry{james2013introduction}{book}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{4}{}{%
+        {{hash=df184c5fa522ac8a515ec4de13aef234}{%
+           family={James},
+           familyi={J\bibinitperiod},
+           given={Gareth},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1ab16961e0de50711fa6bd9425f9b4a6}{%
+           family={Witten},
+           familyi={W\bibinitperiod},
+           given={Daniela},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0cb8fe4210baa81c4b0e67913b4d2768}{%
+           family={Hastie},
+           familyi={H\bibinitperiod},
+           given={Trevor},
+           giveni={T\bibinitperiod}}}%
+        {{hash=88eea600247d798f8b2ce0b2dc614492}{%
+           family={Tibshirani},
+           familyi={T\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f8f737f83d9e451c1afaa13cdc120516}
+      \strng{fullhash}{090ee61edbbe9615b0c4f61c335a60f9}
+      \strng{bibnamehash}{090ee61edbbe9615b0c4f61c335a60f9}
+      \strng{authorbibnamehash}{090ee61edbbe9615b0c4f61c335a60f9}
+      \strng{authornamehash}{f8f737f83d9e451c1afaa13cdc120516}
+      \strng{authorfullhash}{090ee61edbbe9615b0c4f61c335a60f9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{An introduction to statistical learning}}
+      \field{volume}{112}
+      \field{year}{2013}
+    \endentry
+    \entry{kontorovich2014conc}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=f099dc3c8738f515483a2653b06f341d}{%
+           family={Kontorovich},
+           familyi={K\bibinitperiod},
+           given={Aryeh},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JMLR.org}%
+      }
+      \strng{namehash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{fullhash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{bibnamehash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{authorbibnamehash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{authornamehash}{f099dc3c8738f515483a2653b06f341d}
+      \strng{authorfullhash}{f099dc3c8738f515483a2653b06f341d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 31th International Conference on Machine Learning, {ICML} 2014, Beijing, China, 21-26 June 2014}
+      \field{series}{{JMLR} Workshop and Conference Proceedings}
+      \field{title}{{Concentration in unbounded metric spaces and algorithmic stability}}
+      \field{volume}{32}
+      \field{year}{2014}
+      \field{pages}{28\bibrangedash 36}
+      \range{pages}{9}
+      \verb{urlraw}
+      \verb http://proceedings.mlr.press/v32/kontorovicha14.html
+      \endverb
+      \verb{url}
+      \verb http://proceedings.mlr.press/v32/kontorovicha14.html
+      \endverb
     \endentry
     \entry{lu2017expressive}{inproceedings}{}
       \name{author}{5}{}{%
@@ -525,6 +1329,53 @@
       \field{volume}{49}
       \field{year}{2019}
     \endentry
+    \entry{wang2019information}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=c8cf19241225247d6d07dbf8a516b8ed}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Hao},
+           giveni={H\bibinitperiod}}}%
+        {{hash=a4037306a58bbcbc82bdea3f76c69433}{%
+           family={Diaz},
+           familyi={D\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+        {{hash=24646bd446516a7fa237697771907c50}{%
+           family={Filho},
+           familyi={F\bibinitperiod},
+           given={Jose\bibnamedelimb Czndido\bibnamedelimb Silveira\bibnamedelima Santos},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=859160b803f162c14e62667bb6fa1cd0}{%
+           family={Calmon},
+           familyi={C\bibinitperiod},
+           given={Flavio\bibnamedelima P.},
+           giveni={F\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{1e55acd1881fcc020a2f6c1953c520d3}
+      \strng{fullhash}{32c63336fd904480716f7dd6898dd74a}
+      \strng{bibnamehash}{32c63336fd904480716f7dd6898dd74a}
+      \strng{authorbibnamehash}{32c63336fd904480716f7dd6898dd74a}
+      \strng{authornamehash}{1e55acd1881fcc020a2f6c1953c520d3}
+      \strng{authorfullhash}{32c63336fd904480716f7dd6898dd74a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{An Information-Theoretic View of Generalization via Wasserstein Distance}}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/ISIT.2019.8849359
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/ISIT.2019.8849359
+      \endverb
+    \endentry
     \entry{hasson2020direct}{article}{}
       \name{author}{3}{}{%
         {{hash=9f8290b0c59d4aba9138f55107a580cd}{%
@@ -565,6 +1416,72 @@
       \field{year}{2020}
       \field{pages}{416\bibrangedash 434}
       \range{pages}{19}
+    \endentry
+    \entry{grunwald2021mac}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=1fb1a40390ce652cbfc18842ed5de9d4}{%
+           family={Grunwald},
+           familyi={G\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=a8ee507f496e43705d0c170feeb81861}{%
+           family={Steinke},
+           familyi={S\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c3db4f150b5a00d935e44cbcdfcffb07}{%
+           family={Zakynthinou},
+           familyi={Z\bibinitperiod},
+           given={Lydia},
+           giveni={L\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=b2aeb0539e71c989e52b170b56b1fabd}{%
+           family={Belkin},
+           familyi={B\bibinitperiod},
+           given={Mikhail},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1162b7ca3f617484861379823b7eca5f}{%
+           family={Kpotufe},
+           familyi={K\bibinitperiod},
+           given={Samory},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{debb6f6e941576ae59cbbbc76cd3fb70}
+      \strng{fullhash}{dd75a8330fc718efb8c877ecc16243b8}
+      \strng{bibnamehash}{dd75a8330fc718efb8c877ecc16243b8}
+      \strng{authorbibnamehash}{dd75a8330fc718efb8c877ecc16243b8}
+      \strng{authornamehash}{debb6f6e941576ae59cbbbc76cd3fb70}
+      \strng{authorfullhash}{dd75a8330fc718efb8c877ecc16243b8}
+      \strng{editorbibnamehash}{9211307f5347b654539e6d0498a80866}
+      \strng{editornamehash}{9211307f5347b654539e6d0498a80866}
+      \strng{editorfullhash}{9211307f5347b654539e6d0498a80866}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of Thirty Fourth Conference on Learning Theory}
+      \field{month}{15--19 Aug}
+      \field{series}{Proceedings of Machine Learning Research}
+      \field{title}{{PAC-Bayes, MAC-Bayes and Conditional Mutual Information: Fast rate bounds that handle general VC classes}}
+      \field{volume}{134}
+      \field{year}{2021}
+      \field{pages}{2217\bibrangedash 2247}
+      \range{pages}{31}
+      \verb{file}
+      \verb http://proceedings.mlr.press/v134/grunwald21a/grunwald21a.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v134/grunwald21a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v134/grunwald21a.html
+      \endverb
     \endentry
     \entry{park2021minimum}{inproceedings}{}
       \name{author}{4}{}{%
@@ -610,6 +1527,45 @@
       \verb{url}
       \verb https://openreview.net/forum?id=O-XJwyoIF-k
       \endverb
+    \endentry
+    \entry{rodriguez2021tighter}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=fdf707930fffcdb112538a44ae6f440c}{%
+           family={Rodriguez-Galvez},
+           familyi={R\bibinithyphendelim G\bibinitperiod},
+           given={Borja},
+           giveni={B\bibinitperiod}}}%
+        {{hash=f87e369c4979ee06580ca5d310a7b6ab}{%
+           family={Bassi},
+           familyi={B\bibinitperiod},
+           given={German},
+           giveni={G\bibinitperiod}}}%
+        {{hash=cc49581791f0d93fe2ef106f212f9416}{%
+           family={Thobaben},
+           familyi={T\bibinitperiod},
+           given={Ragnar},
+           giveni={R\bibinitperiod}}}%
+        {{hash=cc3e51666857a008fc2771ca4adfaa9f}{%
+           family={Skoglund},
+           familyi={S\bibinitperiod},
+           given={Mikael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{238674357ff66f157d46f0895ec78583}
+      \strng{fullhash}{82c44a2d1b290826821f558fa9f1865c}
+      \strng{bibnamehash}{82c44a2d1b290826821f558fa9f1865c}
+      \strng{authorbibnamehash}{82c44a2d1b290826821f558fa9f1865c}
+      \strng{authornamehash}{238674357ff66f157d46f0895ec78583}
+      \strng{authorfullhash}{82c44a2d1b290826821f558fa9f1865c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems 2021, NeurIPS 2021, December 6-14, 2021, virtual}
+      \field{title}{{Tighter Expected Generalization Error Bounds via Wasserstein Distance}}
+      \field{year}{2021}
     \endentry
     \entry{haddouche2022online}{inproceedings}{}
       \name{author}{2}{}{%
