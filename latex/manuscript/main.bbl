@@ -148,6 +148,59 @@
       \verb https://proceedings.neurips.cc/paper/2000/hash/49ad23d1ec9fa4bd8d77d02681df5cfa-Abstract.html
       \endverb
     \endentry
+    \entry{catoni2003pac}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1630a630ef59f1ba99922a75284b7321}{%
+           family={Catoni},
+           familyi={C\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{fullhash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{bibnamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authorbibnamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authornamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authorfullhash}{1630a630ef59f1ba99922a75284b7321}
+      \field{extraname}{1}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{preprint}
+      \field{title}{{A PAC-Bayesian approach to adaptive classification}}
+      \field{volume}{840}
+      \field{year}{2003}
+    \endentry
+    \entry{catoni2007pac}{book}{}
+      \name{author}{1}{}{%
+        {{hash=1630a630ef59f1ba99922a75284b7321}{%
+           family={Catoni},
+           familyi={C\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{fullhash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{bibnamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authorbibnamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authornamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authorfullhash}{1630a630ef59f1ba99922a75284b7321}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{PAC-Bayesian supervised classification: the thermodynamics of statistical learning}}
+      \field{year}{2007}
+    \endentry
     \entry{cover2001elements}{book}{}
       \name{author}{2}{}{%
         {{hash=fe5b7bbda12c7502f55ddb9eeded8622}{%
@@ -271,6 +324,30 @@
       \verb{url}
       \verb https://proceedings.mlr.press/v134/grunwald21a.html
       \endverb
+    \endentry
+    \entry{guedj2019primer}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{fullhash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{bibnamehash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{authorbibnamehash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{authornamehash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{authorfullhash}{dbe4c731302e63fe6b122f974c402be2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the second congress of the French Mathematical Society}
+      \field{title}{{A Primer on {PAC-Bayesian} Learning}}
+      \field{year}{2019}
     \endentry
     \entry{haddouche2022online}{inproceedings}{}
       \name{author}{2}{}{%
@@ -581,6 +658,91 @@
       \verb https://proceedings.neurips.cc/paper/2017/hash/32cbf687880eb1674a07bf717761dd3a-Abstract.html
       \endverb
     \endentry
+    \entry{mcallester1998some}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=98aacd576623b869e8dc8532af60d3bd}{%
+           family={McAllester},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{fullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{bibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorbibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authornamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorfullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the eleventh annual conference on Computational Learning Theory}
+      \field{title}{{Some PAC-Bayesian theorems}}
+      \field{year}{1998}
+      \field{pages}{230\bibrangedash 234}
+      \range{pages}{5}
+    \endentry
+    \entry{mcallester1999pac}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=98aacd576623b869e8dc8532af60d3bd}{%
+           family={McAllester},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{fullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{bibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorbibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authornamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorfullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the twelfth annual conference on Computational Learning Theory}
+      \field{title}{{PAC-Bayesian model averaging}}
+      \field{year}{1999}
+      \field{pages}{164\bibrangedash 170}
+      \range{pages}{7}
+    \endentry
+    \entry{mcallester2003pac}{article}{}
+      \name{author}{1}{}{%
+        {{hash=98aacd576623b869e8dc8532af60d3bd}{%
+           family={McAllester},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{fullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{bibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorbibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authornamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorfullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \field{extraname}{3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Machine Learning}
+      \field{title}{{PAC-Bayesian Stochastic Model Selection}}
+      \field{year}{2003}
+    \endentry
     \entry{neal2012bayesian}{book}{}
       \name{author}{1}{}{%
         {{hash=f366a77ba01bf711161e56bcc244e7f2}{%
@@ -713,6 +875,40 @@
       \field{booktitle}{Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems 2021, NeurIPS 2021, December 6-14, 2021, virtual}
       \field{title}{{Tighter Expected Generalization Error Bounds via Wasserstein Distance}}
       \field{year}{2021}
+    \endentry
+    \entry{shawe1997pac}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=17d84f13777dc856d4bd59366a03c33c}{%
+           family={Shawe-Taylor},
+           familyi={S\bibinithyphendelim T\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=759f29a24c2b55b859cbd7d2a9b29037}{%
+           family={Williamson},
+           familyi={W\bibinitperiod},
+           given={R.\bibnamedelimi C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{fullhash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{bibnamehash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{authorbibnamehash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{authornamehash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{authorfullhash}{0ca98a92d4c3c86f22eee421e2629437}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 10th annual conference on Computational Learning Theory}
+      \field{title}{{A PAC analysis of a Bayes estimator}}
+      \field{year}{1997}
+      \field{pages}{2\bibrangedash 9}
+      \range{pages}{8}
     \endentry
     \entry{vapnik1999overview}{article}{}
       \name{author}{1}{}{%
@@ -884,6 +1080,100 @@
       \field{labeltitlesource}{title}
       \field{title}{{Leçons d'Analyse Fonctionelle}}
       \field{year}{1955}
+    \endentry
+    \entry{shawe1997pac}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=17d84f13777dc856d4bd59366a03c33c}{%
+           family={Shawe-Taylor},
+           familyi={S\bibinithyphendelim T\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=759f29a24c2b55b859cbd7d2a9b29037}{%
+           family={Williamson},
+           familyi={W\bibinitperiod},
+           given={R.\bibnamedelimi C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{fullhash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{bibnamehash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{authorbibnamehash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{authornamehash}{0ca98a92d4c3c86f22eee421e2629437}
+      \strng{authorfullhash}{0ca98a92d4c3c86f22eee421e2629437}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 10th annual conference on Computational Learning Theory}
+      \field{title}{{A PAC analysis of a Bayes estimator}}
+      \field{year}{1997}
+      \field{pages}{2\bibrangedash 9}
+      \range{pages}{8}
+    \endentry
+    \entry{mcallester1998some}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=98aacd576623b869e8dc8532af60d3bd}{%
+           family={McAllester},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{fullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{bibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorbibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authornamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorfullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the eleventh annual conference on Computational Learning Theory}
+      \field{title}{{Some PAC-Bayesian theorems}}
+      \field{year}{1998}
+      \field{pages}{230\bibrangedash 234}
+      \range{pages}{5}
+    \endentry
+    \entry{mcallester1999pac}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=98aacd576623b869e8dc8532af60d3bd}{%
+           family={McAllester},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{fullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{bibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorbibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authornamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorfullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the twelfth annual conference on Computational Learning Theory}
+      \field{title}{{PAC-Bayesian model averaging}}
+      \field{year}{1999}
+      \field{pages}{164\bibrangedash 170}
+      \range{pages}{7}
     \endentry
     \entry{vapnik1999overview}{article}{}
       \name{author}{1}{}{%
@@ -1103,6 +1393,84 @@
       \field{year}{2003}
       \field{pages}{1188\bibrangedash 1192}
       \range{pages}{5}
+    \endentry
+    \entry{catoni2003pac}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1630a630ef59f1ba99922a75284b7321}{%
+           family={Catoni},
+           familyi={C\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{fullhash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{bibnamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authorbibnamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authornamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authorfullhash}{1630a630ef59f1ba99922a75284b7321}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{preprint}
+      \field{title}{{A PAC-Bayesian approach to adaptive classification}}
+      \field{volume}{840}
+      \field{year}{2003}
+    \endentry
+    \entry{mcallester2003pac}{article}{}
+      \name{author}{1}{}{%
+        {{hash=98aacd576623b869e8dc8532af60d3bd}{%
+           family={McAllester},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{fullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{bibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorbibnamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authornamehash}{98aacd576623b869e8dc8532af60d3bd}
+      \strng{authorfullhash}{98aacd576623b869e8dc8532af60d3bd}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Machine Learning}
+      \field{title}{{PAC-Bayesian Stochastic Model Selection}}
+      \field{year}{2003}
+    \endentry
+    \entry{catoni2007pac}{book}{}
+      \name{author}{1}{}{%
+        {{hash=1630a630ef59f1ba99922a75284b7321}{%
+           family={Catoni},
+           familyi={C\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{fullhash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{bibnamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authorbibnamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authornamehash}{1630a630ef59f1ba99922a75284b7321}
+      \strng{authorfullhash}{1630a630ef59f1ba99922a75284b7321}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{PAC-Bayesian supervised classification: the thermodynamics of statistical learning}}
+      \field{year}{2007}
     \endentry
     \entry{neal2012bayesian}{book}{}
       \name{author}{1}{}{%
@@ -1327,6 +1695,30 @@
       \field{labeltitlesource}{title}
       \field{title}{Probability: theory and examples}
       \field{volume}{49}
+      \field{year}{2019}
+    \endentry
+    \entry{guedj2019primer}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{fullhash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{bibnamehash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{authorbibnamehash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{authornamehash}{dbe4c731302e63fe6b122f974c402be2}
+      \strng{authorfullhash}{dbe4c731302e63fe6b122f974c402be2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the second congress of the French Mathematical Society}
+      \field{title}{{A Primer on {PAC-Bayesian} Learning}}
       \field{year}{2019}
     \endentry
     \entry{wang2019information}{inproceedings}{}

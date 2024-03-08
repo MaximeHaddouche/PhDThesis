@@ -8,7 +8,7 @@
 \addchapterloe
 
 \section{A brief introduction to statistical learning}
-
+\label{sec: intro-stat-learning}
 Statistical learning \citep{vapnik1999overview,james2013introduction} quantifies and identifies how learning algorithms, trained on a specific task using a finite training dataset, generalise to novel, unseen datum. More precisely, a learning agent has to learn how to answer a question, formalised as a \emph{learning problem} being a tuple $(\H,\Z,\ell)$ composed of a \emph{predictor space} on which evolves the agent during the learning process, a \emph{data space} $\Z$ and a \emph{loss function} being the mathematical formulation of the question. Such a minimalistic structure is convenient to encompass a broad range of real-life learning scenarii. To learn, the agent has access to a \emph{training dataset} $\S_m= (\z_i)_{i=1\cdots m}$. The most classical way to learn from $\Sm$ is the empirical risk minimisation (ERM), minimising the \emph{empirical risk} $\Riskhat_{\Sm}:= \frac{1}{m} \sum_{i=1}^m \ell(h,\z_i)$. In this setting, when $\S_m$ is \iid (following the distribution $\D$), two facets of generalisation are commonly studied in statistical learning for a given agent $h\in\H$.
 
 \begin{itemize}
@@ -40,6 +40,7 @@ First, consider a supervised learning problem with loss $\ell$ where $\Z = \Rbb^
 However, in modern machine learning, deep neural networks are often considered, let us first define a celebrated class of deep neural networks. 
 
 \begin{definition}
+    \label{def:mlp}
     A multlayer perceptron with depth $K$ and architecture $\{N_1,\cdots,N_K\}$, denoted as $h_{\wbf}(\x) \defeq Wh^{K}(\cdots h^{1}(\x))+b$, is composed of $K$ layers $h^1(\cdot),\dots,h^K(\cdot)$.
  $W\in\R^{|\Ycal|\times N_K}$ and $b\in\R^{N_K}$ are the weight matrix and the bias of the last layer, and the $i$-th layer $h^{i}$, composed of $N_i$ nodes, is defined by $h^{i}(\xbf)\defeq\sigma_i(W_i \xbf + b_i)$, where $W_i\in\R^{N_i\times N_{i-1}}$ and the bias $b_i\in \R^{N_i}$ are its weight matrix and bias respectively; $\sigma_i : \R^{N_i} \to \R^{N_i} $ is an activation function.
 The weights $\wbf=\vect(\{W, W_{K}, \dots, W_1, b, b_{K}, \dots, b_1\})$ represent the vectorisation of all parameters of the network.
@@ -48,7 +49,13 @@ Now, consider the learning problem with the same $\Z,\ell$ as above, but with $\
 In this case, VC dimension fails to explain the good generalisation ability (seen in practice) of multilayer perceptrons \citep{bartlett2003vapnik}.
 Understanding the generalisation ability of deep neural networks remains nowadays a major challenge and in what follows, we focus on a modern branch of learning theory which provided non-vacuous bounds of the generalisation ability of deep neural networks: PAC-Bayes learning.
 
-\section{PAC-Bayes learning}
+\section{The emergence of PAC-Bayes learning}
+
+PAC-Bayes learning is a recent branch of learning theory which emerged in the late 90s via the seminal work of \citep{shawe1997pac,mcallester1998some,mcallester1999pac,mcallester2003pac} and later pursued by \citep{catoni2003pac,catoni2007pac}.  As the various subfields of statistical learning described in \Cref{sec: intro-stat-learning}, PAC-Bayes theory is designed top provide generalisation bounds involving a \textsc{Complexity} term apprehending a facet of the complexity of the learning problem. In PAC-Bayes, \textsc{Complexity} is inspired from the Bayesian paradigm of learning of designing a \emph{posterior} knowledge of the learning problem based on the positive impact of data onto a \emph{prior} knowledge of the considered situation. A concrete example of Bayesian learning would be an explorer mapping an ill-known territory. The explorer has to adapt the existing maps at its disposal before exploration to its discoveries, generating a new map intricating the benefits of both the prior one alongside its findings. From a mathematical perspective, the Bayes approach relies on the Bayes formula, providing an update recipe from prior to posterior through a likelihood. On the contrary, PAC-Bayes, while inspired from the Bayesian philosophy, does not relies on the Bayes formula but instead on tools from information theory. This general approach benefits from additional flexibility as PAC-Bayes can be linked and applied to Bayesian learning (see \citealp{guedj2019primer}) but also blurs the notion of prior and posterior distributions, now independent from the fundamental Bayes formula.
+
+\section{A flexible framework with various applications}
+
+\section{From an information-theoretic perspective to an optimisation one}
 
 \newpage
 Detail broadly what generalisation is, to what kind of structures it is applied (neural nets or linear classfier eg). Details on the other hand what optimisation is doing (ERM eg) and explain that interestingly in various methods, reaching minimisers of empirical objectives is enough to ensure a good generalisation ability. From this, discuss about the current limitations of generalisation: either not going so often beyond light-tailed assumptions or noticing that the interplays between generalisation (statistical arguments) and optimisation (geometric ones) remains uncharted for a vast range of cases.
