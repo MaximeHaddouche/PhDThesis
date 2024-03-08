@@ -21,12 +21,16 @@ Note that the population risk is a stronger notion of generalisation than the ge
 
 \textbf{Expected generalisation bound.} For any training set $\S_m$:
 
-\[ \mathbb{E}_{\S_m}\LB \Delta_{\Sm}(h_{\Sm}) \RB \leq f\LP \textsc{Complexity}, \frac{1}{m}\RP. \]
+\begin{align} 
+  \label{eq: expected-bound}
+  \mathbb{E}_{\S_m}\LB \Delta_{\Sm}(h_{\Sm}) \RB \leq f\LP \textsc{Complexity}, \frac{1}{m}\RP. 
+\end{align}
 
 \textbf{High-probability generalisation bounds.} For any training set $\S_m$, with probability $1-\delta$ pver the draw of $\Sm$:
-
-\[  \Delta_{\Sm}(h_{\Sm}) \leq f\LP \textsc{Complexity}, \frac{1}{m}, \log\frac{1}{\delta}\RP. \]
-
+\begin{align}
+  \label{eq: hp-bound}
+  \Delta_{\Sm}(h_{\Sm}) \leq f\LP \textsc{Complexity}, \frac{1}{m}, \log\frac{1}{\delta}\RP.
+\end{align}
 The nature of $f$ and the \textsc{Complexity} term depend on the facet of the complexity of the learning problem we aim to focus. Celebrated examples are for instance the dimension of $\H$, if euclidean, the VC dimension of $\H$ \citep{vapnik2000learning}, the Rademacher complexity \citep{bartlett2001rademacher,bartlett2002rademacher},  the stability parameter of a learning algorithm \citep{bousquet2000algo} or the subgaussian diameter of $\Z$ \citep{kontorovich2014conc}. 
 Another approach relies on the Bayesian learning paradigm, deriving \emph{posterior} knowledge from data and prior modelling of the environment. 
 Then, the \textsc{Complexity} can be borrowed from information theory \citep{cover2001elements}, \eg mutual information \citep{neal2012bayesian}, or from optimal transport, \eg Wasserstein distances \citep{wang2019information,rodriguez2021tighter}. 
@@ -34,8 +38,9 @@ Then, the \textsc{Complexity} can be borrowed from information theory \citep{cov
 Those two approaches have various benefits. A notable strength of expected bounds is that they may reach fast convergence rates (\ie faster than $\frac{1}{\sqrt{m}}$) contrary to high-probability one, even when $\H$ is a singleton thanks to the central limit theorem \citep{grunwald2021mac}. However, expected bounds often involves a theoretical \textsc{Complexity} which cannot be estimated in practice and may be hard to interpret while high probability bounds may be fully empirical and can be considered with small confidence parameter $\delta$ as it is attenuated by a logarithm.
 
 \paragraph{How to choose the complexity term ? An introductory example.} There is no evidence proving that a certain notion of complexity is preferrable to another. The choice of \textsc{Complexity} may however be driven by practical considerations, emerging from the learning problem of interest. To illustrate this point, let us focus on the following example, providing two learning problems which differs only from the predictor space $\H$ and which have very different interactions with the VC dimension.
-
-First, consider a supervised learning problem with loss $\ell$ where $\Z = \Rbb^k\times\Ycal$ with $k$ smaller than $m$ and assume that $\Hcal$ is the set of linear classifiers; \ie $\H_1:= \left\{ h_{\theta}(x)= sgn(\langle \theta,x\rangle)  \right\}$, where $sgn(a)$ denotes the sign of $a$. In this case, using the VC dimension may lead to non-vacuous generalisation bounds \citep{vapnik2000learning}. 
+\begin{example}
+  \label{ex: neural_net}
+  Consider a supervised learning problem where $\Z = \Rbb^k\times\Ycal$ with $\Ycal=\{0,1\}$, $k$ smaller than $m$ and with loss $\ell(h,(x,y))= \mathds{1}\{h(x) \neq y\}$.  First, assume that $\Hcal$ is the set of linear classifiers; \ie $\H_1:= \left\{ h_{\theta}(x)= sgn(\langle \theta,x\rangle)  \right\}$, where $sgn(a)$ denotes the sign of $a$. In this case, using the VC dimension may lead to non-vacuous generalisation bounds \citep{vapnik2000learning}. 
 
 However, in modern machine learning, deep neural networks are often considered, let us first define a celebrated class of deep neural networks. 
 
@@ -47,13 +52,98 @@ The weights $\wbf=\vect(\{W, W_{K}, \dots, W_1, b, b_{K}, \dots, b_1\})$ represe
 \end{definition}
 Now, consider the learning problem with the same $\Z,\ell$ as above, but with $\H_2$ being the set of multilayer perceptrons \wrt a fixed depth $K$ and architecture $\{N_1,\cdots,N_K\}$. To be consistent with modern practice, assume also that we are in the \emph{overparametrised setting}, meaning that the space $\H_2$ has a dimension $d$ far greater than $m$.
 In this case, VC dimension fails to explain the good generalisation ability (seen in practice) of multilayer perceptrons \citep{bartlett2003vapnik}.
+\end{example}
+
 Understanding the generalisation ability of deep neural networks remains nowadays a major challenge and in what follows, we focus on a modern branch of learning theory which provided non-vacuous bounds of the generalisation ability of deep neural networks: PAC-Bayes learning.
 
-\section{The emergence of PAC-Bayes learning}
+\section{PAC-Bayes learning from an information-theoretic perspective}
 
-PAC-Bayes learning is a recent branch of learning theory which emerged in the late 90s via the seminal work of \citep{shawe1997pac,mcallester1998some,mcallester1999pac,mcallester2003pac} and later pursued by \citep{catoni2003pac,catoni2007pac}.  As the various subfields of statistical learning described in \Cref{sec: intro-stat-learning}, PAC-Bayes theory is designed top provide generalisation bounds involving a \textsc{Complexity} term apprehending a facet of the complexity of the learning problem. In PAC-Bayes, \textsc{Complexity} is inspired from the Bayesian paradigm of learning of designing a \emph{posterior} knowledge of the learning problem based on the positive impact of data onto a \emph{prior} knowledge of the considered situation. A concrete example of Bayesian learning would be an explorer mapping an ill-known territory. The explorer has to adapt the existing maps at its disposal before exploration to its discoveries, generating a new map intricating the benefits of both the prior one alongside its findings. From a mathematical perspective, the Bayes approach relies on the Bayes formula, providing an update recipe from prior to posterior through a likelihood. On the contrary, PAC-Bayes, while inspired from the Bayesian philosophy, does not relies on the Bayes formula but instead on tools from information theory. This general approach benefits from additional flexibility as PAC-Bayes can be linked and applied to Bayesian learning (see \citealp{guedj2019primer}) but also blurs the notion of prior and posterior distributions, now independent from the fundamental Bayes formula.
+PAC-Bayes learning is a recent branch of learning theory which emerged in the late 90s via the seminal work of \citep{shawe1997pac,mcallester1998some,mcallester1999pac,mcallester2003pac} and later pursued by \citep{catoni2003pac,catoni2007pac}. Modern surveys recently emerged to describe the various advances in the field \citep{guedj2019primer,hellstrom2023generalization,alquier2024user}.  Similarly to the various subfields of statistical learning described in \Cref{sec: intro-stat-learning}, PAC-Bayes theory is designed top provide generalisation bounds involving a \textsc{Complexity} term apprehending a facet of the complexity of the learning problem. In PAC-Bayes, this term is inspired from the Bayesian learning paradigm of designing a \emph{posterior} knowledge of the learning problem based on the positive impact of data onto a \emph{prior} knowledge of the considered situation. A concrete example of Bayesian learning would be an explorer mapping an ill-known territory. The explorer has to adapt the existing maps at its disposal before exploration to its discoveries, generating a new map imbricating the benefits of both the prior one alongside its findings. From a mathematical perspective, the Bayes approach relies on the Bayes formula, providing an update recipe from a prior distribution $\P\in\Mcal(\Hcal)$ over the predictor space $\H$ to a posterior $\Q\in\Mcal(\Hcal)$ through a likelihood. On the contrary, PAC-Bayes, while inspired from the Bayesian philosophy, does not relies on the Bayes formula but instead on tools from information theory. This general approach benefits from additional flexibility as PAC-Bayes can be linked and applied to Bayesian learning (see \citealp{guedj2019primer}) but also blurs the notion of prior and posterior distributions, now independent of the fundamental Bayes formula. We further develop those points through two celebrated bounds: the McAllester and Catoni ones. 
 
-\section{A flexible framework with various applications}
+\subsection*{Two fundamental results}
+    The McAllester's bound \citep{mcallester2003pac} enriched with Maurer's trick \citep{maurer2004note} and Catoni's bound (\citealp[Theorem 4.1]{alquier2016properties}, being a relaxation of \citealp[Theorem 1.2.6]{catoni2007pac}) are probably the most known high-probability PAC-Bayes bounds. We recall them in \Cref{prop: mcall-catoni}.
+
+    \begin{proposition}
+        \label{prop: mcall-catoni}
+        Assume $\Sm$ to be \iid.\\
+    \textbf{McAllester's bound, \citep[Theorem 5]{maurer2004note}.}  For any $\delta\in(0,1),\ell\in[0,1]$, any data-free prior $\P\in\Mcal(\Hcal)$, with probability at least $1-\delta$, for any posterior $\Q\in\Mcal(\H)$,
+    \begin{align}
+    \label{eq: mcallester}
+     \Delta_{\Sm}(\Q) \le \sqrt{\frac{\KL(\Q\|\P) + \ln{\frac{2\sqrt{m}}{\delta}}}{2m}}.
+    \end{align}
+
+    \textbf{Catoni's bound, \citep[Theorem 4.1]{alquier2016properties}.}
+    For any $\lambda\in\mathbb{R}/\{0\},\delta\in(0,1),\ell$ being $\sigma^2$-subgaussian and a data-free prior $\P$, with probability at least $1-\delta$ over $\S$, for any $\Q\in \Mcal(\Hcal)$,
+
+  \begin{align}
+    \label{eq: catoni}
+    \Delta_{\Sm}(\Q) \leq  \frac{\KL(\Q,\P) + \log(1/\delta)}{\lambda} + \frac{\lambda\sigma^2}{2m}.  
+  \end{align}
+
+    For both results, $\Delta_{\Sm}(\Q)$ denotes the expected generalisation gap \wrt $\Q$ and $\KL$ denotes the Kullback-Leibler divergence.
+    \end{proposition}
+
+Recall that a random variable $X$ is $\sigma^2$-subgaussian if for any $\lambda\in\Rbb$, $\Ebb[\exp(\lambda(X-\Ebb[X]))] \leq \exp\LP \frac{\lambda^2 \sigma^2}{2} \RP$ and that any loss $\loss\in[0,C]$ is $C$-subgaussian. Both McAllester and Catoni bounds fit the general shape of \eqref{eq: hp-bound}. In both cases, $\textsc{Complexity}= \KL(\Q,\P)$ and $f$ varies. The immediate link with the Bayesian philosophy of learning is that the prior has to be data-free. However, \eqref{eq: mcallester} and \eqref{eq: catoni} are both valid simultaneously for any posterior, which is strictly more general than considering the Bayesian posterior. Note that if $\lambda$ is optimised, then Catoni's bound would boil down to an upgraded McAllester bound without the $\log(\sqrt{m})$ term, but such an optimisation is not feasible as $\lambda$ has to be chosen independently of the dataset $\Sm$. 
+Note that this gap has been recently filled by \citet[Theorem 33]{dupuis2024generalization}. While the theoretical links between those two bounds are clear, they involve two different toolboxes: McAllester's bound heavily relies on the KL divergence between Bernoullis alongisde calculation tricks exploiting the boundedness of the loss while the original Catoni's bound \citep[Theorem 1.2.6]{catoni2007pac} exploits tools from statistical physics. 
+The relaxation \eqref{eq: catoni} proposed here is reachable by a few key arguments, involved in a vast majority of PAC-Bayes proofs. We propose it below for pedagogical purpose. 
+
+\begin{proof}[of \Cref{eq: catoni}]
+Note that the first part of the proof holds for a large part of PAC-Bayes literature.
+  \textbf{A generic pattern for PAC-Bayes bounds.}
+    This part is designed upon two cornerstones, retrievable in many existing results: the change of measure inequality (\citealp{csizar1975divergence,donsker1976asymp} -- see also \citealp{banerjee2006bayesian,guedj2019primer} for a proof) and Markov's inequality.
+
+  \begin{lemma}[Change of measure inequality]
+    \label{l: change_meas} 
+    For any measurable function $\psi :\mathcal{H}\rightarrow \mathbb{R}$ and any distributions $\Q,\P$ on $\mathcal{H}$:
+    
+    \[ \mathbb{E}_{h\sim \Q}[\psi (h)] \leq \operatorname{KL}(\Q,\P) + \log\left( \mathbb{E}_{h\sim \P}[\exp(\psi(h))]  \right).  \]
+    \end{lemma}
+For a given $\lambda>0$, the change of measure inequality is then applied to a certain function $f_m: \Hcal \mathbb{R}$, possibly involving $\Sm$: for all posteriors $Q$,
+\begin{align}
+\label{eq: change_meas_pacb}
+\mathbb{E}_{h\sim \Q}[f_m(h)] \leq \operatorname{KL}(\Q,\P) + \log\left( \mathbb{E}_{h\sim \P}[\exp(f_m(h))]  \right).
+\end{align}
+To deal with the random variable  $X(\Sm):=\mathbb{E}_{h\sim \P}[\exp(f_m(h))] $, our second building block is Markov's inequality $\left(\mathbb{P}(X>a) \leq \frac{\mathbb{E}[X]}{a}\right)$ which we apply for a fixed $\delta\in (0,1)$ on $X(\Sm)$ with $a= \mathbb{E}_{\Sm}[X(\Sm)]/\delta$.
+Taking the complementary event gives that for any $m$, with probability at least $1-\delta$ over the sample $\Sm$, $X(\Sm)\leq \mathbb{E}_{\Sm}[X(\Sm)]/\delta$, thus:
+
+
+\begin{equation}
+  \label{eq: prelim_pb_bound}
+  \mathbb{E}_{h\sim \Q}[f_m(h)] \leq \operatorname{KL}(\Q,\P) + \log(1/\delta) + \log\left( \mathbb{E}_{h\sim P}\mathbb{E}_{\Sm}[\exp(f_m(h))]  \right).
+\end{equation}
+
+Note that in \eqref{eq: prelim_pb_bound}, we swapped the two expectations in the last term thanks to Fubini's theorem and the fact that $\P$ is data-free.
+
+\textbf{Proving Catoni's bound.}
+Now, we take $f_m(h)= \lambda\Delta_{\Sm}$ and consider for any $h\in\Hcal, A(h)= \mathbb{E}_{\Sm}[\exp(f_m(h))]$. 
+
+Note that, given $\Sm$ is iid, 
+\begin{align*}
+  A(h) &= \prod_{i=1}^m \mathbb{E}_{\Sm}\LB\exp\LP\frac{\lambda}{m}(\Risk_\D(h)-\ell(h,\z_i))\RP\RB, 
+  \intertext{and thanks to Heoffding's lemma alongside $\ell$ being $\sigma^2$-subgaussian,}
+  A(h) &\leq \prod_{i=1}^m \exp\LP \frac{\lambda^2 \sigma^2}{2m^2} \RP = \exp\LP \frac{\lambda^2 \sigma^2}{2m} \RP.
+\end{align*}
+
+Plugging this upper bound in \eqref{eq: prelim_pb_bound} and dividing by $\lambda$ concludes the proof.
+\end{proof}
+
+The generic pattern \eqref{eq: prelim_pb_bound}, allows to retrieve many PAC-Bayes bounds, starting with McAllester's one, where $f_m= kl(\Risk_\D(h),\Riskhat_{\Sm}(h)), kl$ being the KL divergence between Bernoullis and completing with the subtle calculations of \citet{maurer2004note}. This pattern is also valid, for instance, for the results of \citet{germain2009pac}, the Bernstein PAC-Bayesian bounds of \citet{tolstikhin2013pac,mhammedi2019pac} and many other results, \eg \citet{thiemann2017strongly,guedj2018pac,holland2019pac,wu2022split}. This then pins two major points for a large part of PAC-Bayes literature: 
+
+\begin{enumerate}
+  \item Interpreting PAC-Bayes from a Bayesian perspective is legitimated by the change of measure inequality, yet the KL divergence. More generally, this property allows interpreting PAC-Bayes under a more general information theoretic paradigm, where information from the prior is partially transferred to the posterior (here by absolute continuity to keep the KL finite). This vision encompasses the Bayesian one, while being less restrictive.
+  \item The statistical properties of the learning problem are linked to the exponential moment coming from the change of measure inequality, this often implies the strong assumptions of \Cref{prop: mcall-catoni}: data-free prior, bounded or subgaussian losses (sometimes attenuated to subexponentiality \citealp{catoni2004statistical}).
+\end{enumerate}
+
+\paragraph{A theory suited for \Cref{ex: neural_net}?}
+The two previous points show that \Cref{prop: mcall-catoni} holds for learning problem with light-tailed losses (often bounded), \iid data, encompassing classification tasks for instance. Then, PAC-Bayes learning seems particularly suited to understand, on such problems, the generalisation ability of a learner trained via an information-theoretic method. 
+Those assumptions are suited to the learning problem $(\Hcal_2,\Z,\ell)$ of \Cref{ex: neural_net} and \citet{dziugaite2017computing} showed that a PAC-Bayesian training allowed to obtain non-vacuous generalisaiton bounds, meaning that using a KL divergence as complexity alongside an information-theoretic training helps to understand the generalisation ability of neural networks. However the assumptions of \Cref{prop: mcall-catoni} raise several points of inquiry:
+
+\textit{(i)} Modern machine learning often implies learning problems where such assumptions does not hold and \textit{(ii)} where the most efficient training method is not necessarily an information-theoretic one. 
+
+\subsection*{Modern extensions of PAC-Bayes}
+
+
+\section{From theory to machine learning}
 
 \section{From an information-theoretic perspective to an optimisation one}
 
