@@ -136,16 +136,23 @@ The generic pattern \eqref{eq: prelim_pb_bound}, allows to retrieve many PAC-Bay
 
 \paragraph{A theory suited for \Cref{ex: neural_net}?}
 The two previous points show that \Cref{prop: mcall-catoni} holds for learning problem with light-tailed losses (often bounded), \iid data, encompassing classification tasks for instance. Then, PAC-Bayes learning seems particularly suited to understand, on such problems, the generalisation ability of a learner trained via an information-theoretic method. 
-Those assumptions are suited to the learning problem $(\Hcal_2,\Z,\ell)$ of \Cref{ex: neural_net} and \citet{dziugaite2017computing} showed that a PAC-Bayesian training allowed to obtain non-vacuous generalisaiton bounds, meaning that using a KL divergence as complexity alongside an information-theoretic training helps to understand the generalisation ability of neural networks. However the assumptions of \Cref{prop: mcall-catoni} raise several points of inquiry:
+Those assumptions are suited to the learning problem $(\Hcal_2,\Z,\ell)$ of \Cref{ex: neural_net} 
 
-\textit{(i)} Modern machine learning often implies learning problems where such assumptions does not hold and \textit{(ii)} where the most efficient training method is not necessarily an information-theoretic one. 
+% Rework this paragraph, do not talk about dziugaite now, just say that the  theoretical framework fits the learning problem of example 1.1.1. But it still needs to be verified that this complexity measure will be small for neural nets, and thus, non-vacuous bound can be attained in this case.
 
-\subsection*{Modern extensions of PAC-Bayes}
+% Then, go with the practical part, show how to derive algorithms for Mcall and catoni (and even more) and then, redo a similar paragraph using what is below
+%and \citet{dziugaite2017computing} showed that a PAC-Bayesian training allowed to obtain non-vacuous generalisaiton bounds, meaning that using a KL divergence as complexity alongside an information-theoretic training helps to understand the generalisation ability of neural networks. However the assumptions of \Cref{prop: mcall-catoni} raise several points of inquiry:
+%\textit{(i)} Modern machine learning often implies learning problems where such assumptions does not hold and \textit{(ii)} where the most efficient training method is not necessarily an information-theoretic one. 
+% Also in the practical part, mention the various practical settings where variations of MCAllester or Catoni are used to obtain algorithms with non-vacuous guarantees.
+
+%After this, goes to the modern extension part with many other pac bounds beyond classical paradigm, reuse the paragraph of supermartingale to help the bibliography part. 
 
 
-\section{From theory to machine learning}
+\section{From PAC-Bayesian theory to machine learning}
 
-\section{From an information-theoretic perspective to an optimisation one}
+\section{Modern extensions of PAC-Bayes}
+
+\section{An optimisation perspective on PAC-Bayes learning}
 
 \newpage
 Detail broadly what generalisation is, to what kind of structures it is applied (neural nets or linear classfier eg). Details on the other hand what optimisation is doing (ERM eg) and explain that interestingly in various methods, reaching minimisers of empirical objectives is enough to ensure a good generalisation ability. From this, discuss about the current limitations of generalisation: either not going so often beyond light-tailed assumptions or noticing that the interplays between generalisation (statistical arguments) and optimisation (geometric ones) remains uncharted for a vast range of cases.
