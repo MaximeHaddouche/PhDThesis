@@ -13,7 +13,7 @@ Statistical learning \citep{vapnik1999overview,james2013introduction} quantifies
 
 \begin{itemize}
     \item First, the \emph{population risk} $\Risk_\D(h):= \mathbb{E}_{\z\sim\D}[\ell(h,\z)]$ focus on the average performance of our learning agent \wrt any new situation $\z\in\D$, independent of $\S_m$, possibly faced by the agent. A small population risk ensure then efficient generalisation.   
-    \item Second, the \emph{generalisation gap}  $\Delta_{\Sm}(h):= \Risk_D(h) - \Riskhat{\Sm}(h)$ evaluate the coherence between the empirical risk and the population one. Having a small generalisation gap ensure that the generalisation ability of the agent has the same magnitude than its training performance. 
+    \item Second, the \emph{generalisation gap}  $\Delta_{\Sm}(h):= \Risk_D(h) - \Riskhat_{\Sm}(h)$ evaluate the coherence between the empirical risk and the population one. Having a small generalisation gap ensure that the generalisation ability of the agent has the same magnitude than its training performance. 
 \end{itemize}
 Note that the population risk is a stronger notion of generalisation than the generalisation gap. However, a small generalisation gap (in absolute value) as well as a small empirical risk is enough to ensure a good population risk. Given that modern optimisation algorithm are often enough to ensure a small empirical risk, the generalisation gap has received a particular attention in statistical learning. 
 
@@ -69,7 +69,7 @@ PAC-Bayes learning is a recent branch of learning theory which emerged in the la
     \textbf{McAllester's bound, \citep[Theorem 5]{maurer2004note}.}  For any $\delta\in(0,1),\ell\in[0,1]$, any data-free prior $\P\in\Mcal(\Hcal)$, with probability at least $1-\delta$, for any posterior $\Q\in\Mcal(\H)$,
     \begin{align}
     \label{eq: mcallester}
-     \Delta_{\Sm}(\Q) \le \sqrt{\frac{\KL(\Q\|\P) + \ln{\frac{2\sqrt{m}}{\delta}}}{2m}}.
+     \Delta_{\Sm}(\Q) \le \sqrt{\frac{\KL(\Q,\P) + \ln{\frac{2\sqrt{m}}{\delta}}}{2m}}.
     \end{align}
 
     \textbf{Catoni's bound, \citep[Theorem 4.1]{alquier2016properties}.}
@@ -135,10 +135,55 @@ The generic pattern \eqref{eq: prelim_pb_bound}, allows to retrieve many PAC-Bay
 \end{enumerate}
 
 \paragraph{A theory suited for \Cref{ex: neural_net}?}
-The two previous points show that \Cref{prop: mcall-catoni} holds for learning problem with light-tailed losses (often bounded), \iid data, encompassing classification tasks for instance. Then, PAC-Bayes learning seems particularly suited to understand, on such problems, the generalisation ability of a learner trained via an information-theoretic method. 
-Those assumptions are suited to the learning problem $(\Hcal_2,\Z,\ell)$ of \Cref{ex: neural_net} 
+The two previous points show that \Cref{prop: mcall-catoni} holds for learning problem with light-tailed losses (often bounded), \iid data, encompassing classification tasks for instance. Then, PAC-Bayes learning seems suited to understand, on such problems, the McAllester and Catoni bounds are suited to the learning problem $(\Hcal_2,\Z,\ell)$ of \Cref{ex: neural_net}. 
+
+However, the question of their tightness is unsolved as we do not know the behavior of the KL term in practice. Furthermore the question of which distribution $\Q$ should be taken in \Cref{prop: mcall-catoni} remains open.
 
 % Rework this paragraph, do not talk about dziugaite now, just say that the  theoretical framework fits the learning problem of example 1.1.1. But it still needs to be verified that this complexity measure will be small for neural nets, and thus, non-vacuous bound can be attained in this case.
+
+\section{From theory to learning algorithms}
+
+\subsection*{Algorithms associated to McAllester and Catoni bounds}
+A shared particularity of McAllester and Catoni bounds is that they are both fully empirical. Then it is possible to minimise them in practice and thus, deriving new theory-driven learning algorithms which are expected to have at worse, a small generalisation gap and at best, a small population risk. More precisely, learning algorithms associated to \Cref{prop: mcall-catoni} are stated below: 
+
+\begin{align}
+  \label{eq: alg-mcall}
+  \Q_{M}:= \underset{\Q\in\mathcal{C}}{\operatorname{argmin}}\; \Riskhat_{\Sm}(\Q) + \sqrt{\frac{\KL(\Q,\P)}{2m}}.
+  \intertext{For any $\lambda>0$,}
+  \label{eq: alg-catoni}
+  \Q_{C}:= \underset{\Q\in\mathcal{C}}{\operatorname{argmin}}\; \Riskhat_{\Sm}(\Q) +\frac{\KL(\Q,\P)}{\lambda}.
+\end{align}
+In both cases, $\mathcal{C}\subseteq \Mcal(\Hcal)$ is the class of distributions on which we optimise. The choice of $\mathcal{C}$ can come from a priori knowledge of the problem or from an optimisation perspective to make the KL divergence tractable.  
+
+Knowing Catoni's bound is a relaxation of McAllester's one, it seems more natural to consider $\Q_{M}$ over $\Q_{C}$. However, the presence of a square root in \eqref{eq: alg-mcall} can be challenging from an optimisation perspective. We illustrate this below.
+\begin{example}
+  \label{ex: gaussian-kl}
+  Consider the case where, for a given $\sigma>0$, $\mathcal{C}= \{\Ncal(\mu,\sigma^2 \mathrm{Id}) \mid \mu\in\Rbb^d\}$. Then the for any $\P= \Ncal(\mu_1,\sigma^2 \mathrm{Id}), \Q= \Ncal(\mu_2,\sigma^2 \mathrm{Id})$, $ \KL(\Q,\P)= \frac{\|\mu_1-\mu_2\|^2}{2\sigma^2}$. 
+  Then, optimising \eqref{eq: alg-mcall} in this case implies to lose the strong convexity of the KL divergence while it is retained for \eqref{eq: alg-catoni}.
+\end{example}
+  
+Another practical advantage of \eqref{eq: alg-catoni} over \eqref{eq: alg-mcall} emerges when $\mathcal{C}= \Mcal(\Hcal)$. In this case, Catoni's bound admits a closed form solution, while McAllester's one should be numerically optimised on all the space of distributions, which is not feasible. This closed form, extracted from \citet[Section 5.1]{catoni2003pac}, is recalled below.
+
+\begin{align}
+  \label{eq: catoni-gibbs}
+  \text{When}\; \mathcal{C}= \Mcal(\Hcal),\; d\Q_{C}(h) = \frac{\exp(-\lambda \Riskhat_{\Sm}(h))}{\Ebb_{h\sim\P}[\exp(-\lambda \Riskhat_{\Sm}(h))]} d\P(h)
+\end{align}
+
+Then, $\Q_{C} = \P_{-\lambda \Riskhat_{\Sm}}$ is the \emph{Gibbs posterior} associated to $\P,\lambda\Riskhat_{\Sm}$. By introducing Gibbs posterior in statistical learning, \citet{catoni2007pac} draws a theoretical link between statistical physics and learning theory.
+
+\subsection*{Instantiation and efficiency of PAC-Bayesian algorithms}
+
+\paragraph{A general pattern for PAC-Bayesian algorithms}
+
+The introductory examples \eqref{eq: alg-mcall},\eqref{eq: alg-catoni} unveil a general design for any KL-based PAC-Bayesian algorithm. satisfy a tradeoff between \textit{(i)} the empirical risk, showing that the learner has to fit the training dataset, and \textit{(ii)} a \emph{regulariser} being a function of $\KL(\Q,\P)$. This regulariser ensures that, during training, the learner will not overfit on training data. This training ensures a good generalisation ability as long as the associated generalisation bound is small. 
+
+We then understand better the ins and outs of PAC-Bayes algorithms from a conceptual perspective, two unanswered questions remains: 
+
+\begin{enumerate}
+  \item How are those algorithms instantiated in practice?
+  \item Are these algorithms efficient and do they come with non-vacuous theoretical guarantees? 
+\end{enumerate}
+
 
 % Then, go with the practical part, show how to derive algorithms for Mcall and catoni (and even more) and then, redo a similar paragraph using what is below
 %and \citet{dziugaite2017computing} showed that a PAC-Bayesian training allowed to obtain non-vacuous generalisaiton bounds, meaning that using a KL divergence as complexity alongside an information-theoretic training helps to understand the generalisation ability of neural networks. However the assumptions of \Cref{prop: mcall-catoni} raise several points of inquiry:
@@ -146,9 +191,6 @@ Those assumptions are suited to the learning problem $(\Hcal_2,\Z,\ell)$ of \Cre
 % Also in the practical part, mention the various practical settings where variations of MCAllester or Catoni are used to obtain algorithms with non-vacuous guarantees.
 
 %After this, goes to the modern extension part with many other pac bounds beyond classical paradigm, reuse the paragraph of supermartingale to help the bibliography part. 
-
-
-\section{From PAC-Bayesian theory to machine learning}
 
 \section{Modern extensions of PAC-Bayes}
 
