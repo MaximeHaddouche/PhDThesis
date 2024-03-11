@@ -169,7 +169,7 @@ Another practical advantage of \eqref{eq: alg-catoni} over \eqref{eq: alg-mcall}
   \text{When}\; \mathcal{C}= \Mcal(\Hcal),\; d\Q_{C}(h) = \frac{\exp(-\lambda \Riskhat_{\Sm}(h))}{\Ebb_{h\sim\P}[\exp(-\lambda \Riskhat_{\Sm}(h))]} d\P(h)
 \end{align}
 
-Then, $\Q_{C} = \P_{-\lambda \Riskhat_{\Sm}}$ is the \emph{Gibbs posterior} associated to $\P,\lambda\Riskhat_{\Sm}$. By introducing Gibbs posterior in statistical learning, \citet{catoni2007pac} draws a theoretical link between statistical physics and learning theory.
+Then, $\Q_{C} = \P_{-\lambda \Riskhat_{\Sm}}$ is the \emph{Gibbs posterior} associated to $\P,\lambda\Riskhat_{\Sm}$. By introducing Gibbs posterior in statistical learning, \citet{catoni2007pac} draws a theoretical link between statistical physics and learning theory. Unfortunately, Gibbs posteriors often requires Monte Carlo methods to be implemented, which can be in practice time-consuming. Below we then focus on PAC-Bayes algorithms working on a subset $\mathcal{C}$ of $\Mcal(\Hcal)$. 
 
 \subsection*{Instantiation and efficiency of PAC-Bayesian algorithms}
 
@@ -184,15 +184,30 @@ We then understand better the ins and outs of PAC-Bayes algorithms from a concep
   \item Are these algorithms efficient and do they come with non-vacuous theoretical guarantees? 
 \end{enumerate}
 
+\paragraph{Instantiating a PAC-Bayes algorithm}
+  In practice, using a single prior $\P$ usually does not work but it remains theoretically possible to consider a finite set of priors. Indeed, if one wants to consider $k$ priors, then it is possible to consider $k$ PAC-Bayes bounds holding for each of those priors with probability at least $1-\frac{\delta}{k}$ and then consider a union bound, such a set of priors is called a grid. This method has been widely used in many PAC-Bayes work with clever grids, deteriorating initial bounds at the cost of supplementary $\log(n)$ or $\log\log(n)$ (divided by $m$), see \eg \citet{alquier2024user}. 
+  Similarly, for Catoni-typed algorithms where a parameter $\lambda$ is involved, it is also possible to consider grids for it. In both cases, considering grids allows to optimise on both the prior, the posterior (and possibly $\lambda$ when involved) and then taking the closest value of those optimised parameters on the grid to still obtain theoretical guarantees. Another technique to ensure a good prior is to sacrifice a part of the training set to pre-train $\P$. 
+  Doing so, the prior is then data-dependent and yields tighter bounds alongside increased performance \citep{perez2021tighter}.
 
-% Then, go with the practical part, show how to derive algorithms for Mcall and catoni (and even more) and then, redo a similar paragraph using what is below
-%and \citet{dziugaite2017computing} showed that a PAC-Bayesian training allowed to obtain non-vacuous generalisaiton bounds, meaning that using a KL divergence as complexity alongside an information-theoretic training helps to understand the generalisation ability of neural networks. However the assumptions of \Cref{prop: mcall-catoni} raise several points of inquiry:
-%\textit{(i)} Modern machine learning often implies learning problems where such assumptions does not hold and \textit{(ii)} where the most efficient training method is not necessarily an information-theoretic one. 
-% Also in the practical part, mention the various practical settings where variations of MCAllester or Catoni are used to obtain algorithms with non-vacuous guarantees.
+\paragraph{Efficiency of PAC-Bayes algorithms on supervised learning problems.}
+The work of \citet{dziugaite2017computing} showed that optimising \eqref{eq: alg-mcall} when $\mathcal{C}$ is a class of Gaussian measures for the weights of a deep neural network yields non-vacuous generalisation bound, meaning that the benefits of PAC-Bayesian training on deep nets can be ensured from a theoretical perspective to understand the generalisation ability of neural networks. In their work, authors used the instantiation toolbox described above, alongside a preliminary use of Stochastic Gradient Descent (SGD) to update $\Q$ before the PAC-Bayes training algorithm. This promising work paved the way to various extensions, providing non-vacuous guarantees for a wide range PAC-Bayes algorithms \citep{rivasplata2019pac,letarte2019dichotomize,perezortiz2021learning,perez2021progress,perez2021tighter,dziugaite2021role,biggs2022non,biggs2023tighter}, showing that the PAC-Bayes toolbox provides elements of answer to understand the generalisation ability of neural networks. Beyond generalisation guarantees, PAC-Bayes bounds may also be useful to propose original training methods, even if the associated guarantees are vacuous \citep{biggs2021differentiable,biggs2022margin}. Another important empirical use is to exploit PAC-Bayes bounds as correlation measures, to see whether a decrease of the bound is related to an increased generalisation ability of the learner. For instance \citet{neyshabur2017explor} used McAllester's bound \eqref{eq: mcallester} as a 'flatness' measure and showed that it correlates well with a good generalisation ability for a few learning problems. This conclusion has been extended to a wider range of problems in \citet{jiang2020fantastic,dziugaite2020search}. 
+\\
+\paragraph{PAC-Bayes algorithms beyond supervised learning.} While supervised learning is a widely used setting to perform experiments in PAC-Bayes learning (often involving celebrated datasets such as MNIST or CIFAR-10), the McAllester bound holds for any learning problem with bounded loss, going beyond this setting. This theoretical flexibility has been exploited to derive PAC-Bayesian algorithm for various learning settings reinforcement learning \citep{fard2010pac}, multi-armed bandits \citep{seldin2011pac,seldin2012pac,sakhi2023pac}, meta-learning \citep{amit2018meta,farid2021generalization,rothfuss2021pacoh,rothfuss2022pac,ding2021bridging} to name but a few. 
+\\
+\paragraph{Is \Cref{ex: neural_net} tackled now?}
+\citep{dziugaite2017computing} and following works have provided a positive answer by obtaining non-vacuous guarantees (sometimes tight) for $(\Hcal_2,\Zcal,\ell)$ of \Cref{ex: neural_net} for various $\Z$ (being, \eg, set of images for MNIST CIFAR-10 etc...). To obtain such guarantees, a PAC-Bayesian training needs to be performed to minimise its associated theoretical bound. That being said, several questions then legitimately emerge.
 
-%After this, goes to the modern extension part with many other pac bounds beyond classical paradigm, reuse the paragraph of supermartingale to help the bibliography part. 
+\begin{itemize}
+  \item Modern machine learning often implies learning problems where assumptions such as bounded (or subgaussian) losses or \iid data do not hold. Is PAC-Bayes theory extendable beyond those assumptions? 
+  \item As shown in \citet{dziugaite2017computing}, the PAC-Bayesian training is often combined to another procedure (\eg ERM) to yield non-vacuous bounds. However, PAC-Bayes bounds do not bring the theoretical understanding of such additional methods, often outputting deterministic predictors (\ie Dirac distributions). This kind of predictor is not allowed in \eqref{eq: mcallester}, \eqref{eq: catoni}. Is it possible to obtain PAC-Bayes bounds valid for such methods? 
+\end{itemize}
+
+
+
 
 \section{Modern extensions of PAC-Bayes}
+
+%After this, goes to the modern extension part with many other pac bounds beyond classical paradigm, reuse the paragraph of supermartingale to help the bibliography part. 
 
 \section{An optimisation perspective on PAC-Bayes learning}
 
