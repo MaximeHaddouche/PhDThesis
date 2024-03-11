@@ -205,11 +205,18 @@ The work of \citet{dziugaite2017computing} showed that optimising \eqref{eq: alg
 
 
 
-\section{Modern extensions of PAC-Bayes}
+\section{Towards an optimisation perspective of PAC-Bayes learning}
+% Say that this vision is important when considering the promising practical performances of PAC-Bayes with useful theoretical guarantees.
+%paragraph on need of having small statistical assumptions to encompass most of the learning situations where optimisation algorithms are applied. Also explain that the second question shwo the limitation of the information theoretic perspective of PAC-Bayes, exhibiting a theoretical gap between the information theory (1 prior) and real-life situations where we are forced to use a sort of artifical grid to perform efficient optimisation: insist on this discrepancy.
 
-%After this, goes to the modern extension part with many other pac bounds beyond classical paradigm, reuse the paragraph of supermartingale to help the bibliography part. 
+\subsection*{PAC-Bayes with weak statistical assumptions}
+%Go to the modern extension part with many other pac bounds beyond classical paradigm, reuse the paragraph of supermartingale to help the bibliography part.
+\subsection*{On the role of the prior from an optimisation perspective}
+%Talk about data-dependent priors here as well as their nonsense when taking an optimisation perspective.
 
-\section{An optimisation perspective on PAC-Bayes learning}
+\subsection{Contributions of this thesis}
+
+ 
 
 \newpage
 Detail broadly what generalisation is, to what kind of structures it is applied (neural nets or linear classfier eg). Details on the other hand what optimisation is doing (ERM eg) and explain that interestingly in various methods, reaching minimisers of empirical objectives is enough to ensure a good generalisation ability. From this, discuss about the current limitations of generalisation: either not going so often beyond light-tailed assumptions or noticing that the interplays between generalisation (statistical arguments) and optimisation (geometric ones) remains uncharted for a vast range of cases.
