@@ -497,6 +497,50 @@
       \field{title}{{PAC-Bayesian supervised classification: the thermodynamics of statistical learning}}
       \field{year}{2007}
     \endentry
+    \entry{clerico2022generalisation}{article}{}
+      \name{author}{5}{}{%
+        {{hash=8cd55bed26dcacc99111cabad6b54edd}{%
+           family={Clerico},
+           familyi={C\bibinitperiod},
+           given={Eugenio},
+           giveni={E\bibinitperiod}}}%
+        {{hash=43a26fd3cef9ae8df2eecdbd3c472f27}{%
+           family={Farghly},
+           familyi={F\bibinitperiod},
+           given={Tyler},
+           giveni={T\bibinitperiod}}}%
+        {{hash=b8dd237872b59cd9eb631773937e23b7}{%
+           family={Deligiannidis},
+           familyi={D\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=aca5faad8b57b96b59c12fc59d0b6eb4}{%
+           family={Doucet},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{5b7b16f267b73effe5d2335d2dfdc629}
+      \strng{fullhash}{f24429fe2d4ec5b663ee1793b8bef87d}
+      \strng{bibnamehash}{f24429fe2d4ec5b663ee1793b8bef87d}
+      \strng{authorbibnamehash}{f24429fe2d4ec5b663ee1793b8bef87d}
+      \strng{authornamehash}{5b7b16f267b73effe5d2335d2dfdc629}
+      \strng{authorfullhash}{f24429fe2d4ec5b663ee1793b8bef87d}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2209.02525}
+      \field{title}{{Generalisation under gradient descent via deterministic PAC-Bayes}}
+      \field{year}{2022}
+    \endentry
     \entry{cover2001elements}{book}{}
       \name{author}{2}{}{%
         {{hash=fe5b7bbda12c7502f55ddb9eeded8622}{%
@@ -811,6 +855,7 @@
       \strng{authorbibnamehash}{fe29b4762da3901357ad9cf72f634e32}
       \strng{authornamehash}{fe29b4762da3901357ad9cf72f634e32}
       \strng{authorfullhash}{fe29b4762da3901357ad9cf72f634e32}
+      \field{extraname}{1}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{extradatescope}{labelyear}
@@ -820,6 +865,42 @@
       \field{booktitle}{Conference on Uncertainty in Artificial Intelligence (UAI)}
       \field{title}{{Computing Nonvacuous Generalization Bounds for Deep (Stochastic) Neural Networks with Many More Parameters than Training Data}}
       \field{year}{2017}
+    \endentry
+    \entry{dziugaite2018entropy}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=9226e3e9f40624082119487c644bc224}{%
+           family={Dziugaite},
+           familyi={D\bibinitperiod},
+           given={Gintare\bibnamedelima Karolina},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=cff63378430d700e77259baacbaefc3b}{%
+           family={Roy},
+           familyi={R\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{fullhash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{bibnamehash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{authorbibnamehash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{authornamehash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{authorfullhash}{fe29b4762da3901357ad9cf72f634e32}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 35th International Conference on Machine Learning}
+      \field{title}{Entropy-{SGD} optimizes the prior of a {PAC}-{B}ayes bound: Generalization properties of Entropy-{SGD} and data-dependent priors}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v80/dziugaite18a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v80/dziugaite18a.html
+      \endverb
     \endentry
     \entry{fard2010pac}{inproceedings}{}
       \name{author}{2}{}{%
@@ -1149,6 +1230,61 @@
       \field{volume}{abs/2304.07048}
       \field{year}{2023}
       \keyw{report}
+    \endentry
+    \entry{haghifam2023limit}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=3df9883d7cd9141adcb47b0f925ca44b}{%
+           family={Haghifam},
+           familyi={H\bibinitperiod},
+           given={Mahdi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a9efda35e81715ebf2fe7aa37a6e0085}{%
+           family={Rodríguez-Gálvez},
+           familyi={R\bibinithyphendelim G\bibinitperiod},
+           given={Borja},
+           giveni={B\bibinitperiod}}}%
+        {{hash=cc49581791f0d93fe2ef106f212f9416}{%
+           family={Thobaben},
+           familyi={T\bibinitperiod},
+           given={Ragnar},
+           giveni={R\bibinitperiod}}}%
+        {{hash=cc3e51666857a008fc2771ca4adfaa9f}{%
+           family={Skoglund},
+           familyi={S\bibinitperiod},
+           given={Mikael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=894ff73ba07cfd061baa5d82e3184983}{%
+           family={M.\bibnamedelimi Roy},
+           familyi={M\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=e9a5168689ddcaea596e07de50b92ec8}{%
+           family={Karolina\bibnamedelima Dziugaite},
+           familyi={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           given={Gintare},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{c80604a31f0591b337615a90f0bd18cc}
+      \strng{fullhash}{a24ae82b12e57b3655dd4fd716017a08}
+      \strng{bibnamehash}{a24ae82b12e57b3655dd4fd716017a08}
+      \strng{authorbibnamehash}{a24ae82b12e57b3655dd4fd716017a08}
+      \strng{authornamehash}{c80604a31f0591b337615a90f0bd18cc}
+      \strng{authorfullhash}{a24ae82b12e57b3655dd4fd716017a08}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of The 34th International Conference on Algorithmic Learning Theory}
+      \field{title}{{Limitations of Information-Theoretic Generalization Bounds for Gradient Descent Methods in Stochastic Convex Optimization}}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v201/haghifam23a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v201/haghifam23a.html
+      \endverb
     \endentry
     \entry{hasson2020direct}{article}{}
       \name{author}{3}{}{%
@@ -1511,6 +1647,36 @@
       \verb https://proceedings.neurips.cc/paper/2019/hash/7ec3b3cf674f4f1d23e9d30c89426cce-Abstract.html
       \endverb
     \endentry
+    \entry{london2017pac}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=0d384a493e9316b51e8acc450bcf7587}{%
+           family={London},
+           familyi={L\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{fullhash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{bibnamehash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{authorbibnamehash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{authornamehash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{authorfullhash}{0d384a493e9316b51e8acc450bcf7587}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 30: Annual Conference on Neural Information Processing Systems 2017, December 4-9, 2017, Long Beach, CA, {USA}}
+      \field{title}{{A PAC-Bayesian Analysis of Randomized Learning with Application to Stochastic Gradient Descent}}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/7fea637fd6d02b8f0adf6f7dc36aed93-Abstract.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/7fea637fd6d02b8f0adf6f7dc36aed93-Abstract.html
+      \endverb
+    \endentry
     \entry{lu2017expressive}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=a268e32645f2e2e7a04f0036e973447c}{%
@@ -1777,6 +1943,51 @@
       \field{labeltitlesource}{title}
       \field{title}{{Bayesian learning for neural networks}}
       \field{year}{2012}
+    \endentry
+    \entry{neu2021info}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=089be5c431fa95b113391f63810eff06}{%
+           family={Neu},
+           familyi={N\bibinitperiod},
+           given={Gergely},
+           giveni={G\bibinitperiod}}}%
+        {{hash=9226e3e9f40624082119487c644bc224}{%
+           family={Dziugaite},
+           familyi={D\bibinitperiod},
+           given={Gintare\bibnamedelima Karolina},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=3df9883d7cd9141adcb47b0f925ca44b}{%
+           family={Haghifam},
+           familyi={H\bibinitperiod},
+           given={Mahdi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=8c119ee3a501e8daf8a47ae46559c666}{%
+           family={Roy},
+           familyi={R\bibinitperiod},
+           given={Daniel\bibnamedelima M.},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{d6b84c2be4ba0d2e9e7be95592e382be}
+      \strng{fullhash}{070f1ba6c4fa705085aedb74bfca5e78}
+      \strng{bibnamehash}{070f1ba6c4fa705085aedb74bfca5e78}
+      \strng{authorbibnamehash}{070f1ba6c4fa705085aedb74bfca5e78}
+      \strng{authornamehash}{d6b84c2be4ba0d2e9e7be95592e382be}
+      \strng{authorfullhash}{070f1ba6c4fa705085aedb74bfca5e78}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of Thirty Fourth Conference on Learning Theory}
+      \field{title}{{Information-Theoretic Generalization Bounds for Stochastic Gradient Descent}}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v134/neu21a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v134/neu21a.html
+      \endverb
     \endentry
     \entry{neyshabur2017explor}{inproceedings}{}
       \name{author}{4}{}{%
@@ -2601,6 +2812,46 @@
       \endverb
       \verb{url}
       \verb https://proceedings.neurips.cc/paper_files/paper/2022/file/49ffa271264808cf500ea528ed8ec9b3-Paper-Conference.pdf
+      \endverb
+    \endentry
+    \entry{zhou2023toward}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=63c57d8408e1ffebb4c1567d361dc419}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Sijia},
+           giveni={S\bibinitperiod}}}%
+        {{hash=96205a74d51a1d6c4e6bc2119c32caf5}{%
+           family={Lei},
+           familyi={L\bibinitperiod},
+           given={Yunwen},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=aef7dbca7e4f1d8ed9a86674887e6b7e}{%
+           family={Kaban},
+           familyi={K\bibinitperiod},
+           given={Ata},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{626cd969976b991028a41499b56aec6b}
+      \strng{fullhash}{2cb1c164d9712ca59045c2a4095cc847}
+      \strng{bibnamehash}{2cb1c164d9712ca59045c2a4095cc847}
+      \strng{authorbibnamehash}{2cb1c164d9712ca59045c2a4095cc847}
+      \strng{authornamehash}{626cd969976b991028a41499b56aec6b}
+      \strng{authorfullhash}{2cb1c164d9712ca59045c2a4095cc847}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 36: Annual Conference on Neural Information Processing Systems 2023, NeurIPS 2023, New Orleans, LA, USA, December 10 - 16, 2023}
+      \field{title}{{Toward Better PAC-Bayes Bounds for Uniformly Stable Algorithms}}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb http://papers.nips.cc/paper\_files/paper/2023/hash/5e8309c9ca683e11672e3dbcd4b87776-Abstract-Conference.html
+      \endverb
+      \verb{url}
+      \verb http://papers.nips.cc/paper%5C_files/paper/2023/hash/5e8309c9ca683e11672e3dbcd4b87776-Abstract-Conference.html
       \endverb
     \endentry
   \enddatalist
@@ -3499,6 +3750,7 @@
       \strng{authorbibnamehash}{fe29b4762da3901357ad9cf72f634e32}
       \strng{authornamehash}{fe29b4762da3901357ad9cf72f634e32}
       \strng{authorfullhash}{fe29b4762da3901357ad9cf72f634e32}
+      \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
@@ -3508,6 +3760,36 @@
       \field{booktitle}{Conference on Uncertainty in Artificial Intelligence (UAI)}
       \field{title}{{Computing Nonvacuous Generalization Bounds for Deep (Stochastic) Neural Networks with Many More Parameters than Training Data}}
       \field{year}{2017}
+    \endentry
+    \entry{london2017pac}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=0d384a493e9316b51e8acc450bcf7587}{%
+           family={London},
+           familyi={L\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{fullhash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{bibnamehash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{authorbibnamehash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{authornamehash}{0d384a493e9316b51e8acc450bcf7587}
+      \strng{authorfullhash}{0d384a493e9316b51e8acc450bcf7587}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 30: Annual Conference on Neural Information Processing Systems 2017, December 4-9, 2017, Long Beach, CA, {USA}}
+      \field{title}{{A PAC-Bayesian Analysis of Randomized Learning with Application to Stochastic Gradient Descent}}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/7fea637fd6d02b8f0adf6f7dc36aed93-Abstract.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/7fea637fd6d02b8f0adf6f7dc36aed93-Abstract.html
+      \endverb
     \endentry
     \entry{lu2017expressive}{inproceedings}{}
       \name{author}{5}{}{%
@@ -3715,6 +3997,42 @@
       \field{booktitle}{International Conference on Machine Learning (ICML)}
       \field{title}{{Meta-Learning by Adjusting Priors Based on Extended PAC-Bayes Theory}}
       \field{year}{2018}
+    \endentry
+    \entry{dziugaite2018entropy}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=9226e3e9f40624082119487c644bc224}{%
+           family={Dziugaite},
+           familyi={D\bibinitperiod},
+           given={Gintare\bibnamedelima Karolina},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=cff63378430d700e77259baacbaefc3b}{%
+           family={Roy},
+           familyi={R\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{fullhash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{bibnamehash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{authorbibnamehash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{authornamehash}{fe29b4762da3901357ad9cf72f634e32}
+      \strng{authorfullhash}{fe29b4762da3901357ad9cf72f634e32}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 35th International Conference on Machine Learning}
+      \field{title}{Entropy-{SGD} optimizes the prior of a {PAC}-{B}ayes bound: Generalization properties of Entropy-{SGD} and data-dependent priors}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v80/dziugaite18a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v80/dziugaite18a.html
+      \endverb
     \endentry
     \entry{guedj2018pac}{article}{}
       \name{author}{2}{}{%
@@ -4461,6 +4779,51 @@
       \verb https://proceedings.mlr.press/v134/grunwald21a.html
       \endverb
     \endentry
+    \entry{neu2021info}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=089be5c431fa95b113391f63810eff06}{%
+           family={Neu},
+           familyi={N\bibinitperiod},
+           given={Gergely},
+           giveni={G\bibinitperiod}}}%
+        {{hash=9226e3e9f40624082119487c644bc224}{%
+           family={Dziugaite},
+           familyi={D\bibinitperiod},
+           given={Gintare\bibnamedelima Karolina},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=3df9883d7cd9141adcb47b0f925ca44b}{%
+           family={Haghifam},
+           familyi={H\bibinitperiod},
+           given={Mahdi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=8c119ee3a501e8daf8a47ae46559c666}{%
+           family={Roy},
+           familyi={R\bibinitperiod},
+           given={Daniel\bibnamedelima M.},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{d6b84c2be4ba0d2e9e7be95592e382be}
+      \strng{fullhash}{070f1ba6c4fa705085aedb74bfca5e78}
+      \strng{bibnamehash}{070f1ba6c4fa705085aedb74bfca5e78}
+      \strng{authorbibnamehash}{070f1ba6c4fa705085aedb74bfca5e78}
+      \strng{authornamehash}{d6b84c2be4ba0d2e9e7be95592e382be}
+      \strng{authorfullhash}{070f1ba6c4fa705085aedb74bfca5e78}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of Thirty Fourth Conference on Learning Theory}
+      \field{title}{{Information-Theoretic Generalization Bounds for Stochastic Gradient Descent}}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v134/neu21a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v134/neu21a.html
+      \endverb
+    \endentry
     \entry{park2021minimum}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=d0d3158fb45a2a1c33d5a838831dcbd2}{%
@@ -4809,6 +5172,50 @@
       \verb https://proceedings.mlr.press/v151/biggs22a.html
       \endverb
     \endentry
+    \entry{clerico2022generalisation}{article}{}
+      \name{author}{5}{}{%
+        {{hash=8cd55bed26dcacc99111cabad6b54edd}{%
+           family={Clerico},
+           familyi={C\bibinitperiod},
+           given={Eugenio},
+           giveni={E\bibinitperiod}}}%
+        {{hash=43a26fd3cef9ae8df2eecdbd3c472f27}{%
+           family={Farghly},
+           familyi={F\bibinitperiod},
+           given={Tyler},
+           giveni={T\bibinitperiod}}}%
+        {{hash=b8dd237872b59cd9eb631773937e23b7}{%
+           family={Deligiannidis},
+           familyi={D\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=aca5faad8b57b96b59c12fc59d0b6eb4}{%
+           family={Doucet},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{5b7b16f267b73effe5d2335d2dfdc629}
+      \strng{fullhash}{f24429fe2d4ec5b663ee1793b8bef87d}
+      \strng{bibnamehash}{f24429fe2d4ec5b663ee1793b8bef87d}
+      \strng{authorbibnamehash}{f24429fe2d4ec5b663ee1793b8bef87d}
+      \strng{authornamehash}{5b7b16f267b73effe5d2335d2dfdc629}
+      \strng{authorfullhash}{f24429fe2d4ec5b663ee1793b8bef87d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2209.02525}
+      \field{title}{{Generalisation under gradient descent via deterministic PAC-Bayes}}
+      \field{year}{2022}
+    \endentry
     \entry{haddouche2022online}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
@@ -5020,6 +5427,61 @@
       \field{year}{2023}
       \keyw{report}
     \endentry
+    \entry{haghifam2023limit}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=3df9883d7cd9141adcb47b0f925ca44b}{%
+           family={Haghifam},
+           familyi={H\bibinitperiod},
+           given={Mahdi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a9efda35e81715ebf2fe7aa37a6e0085}{%
+           family={Rodríguez-Gálvez},
+           familyi={R\bibinithyphendelim G\bibinitperiod},
+           given={Borja},
+           giveni={B\bibinitperiod}}}%
+        {{hash=cc49581791f0d93fe2ef106f212f9416}{%
+           family={Thobaben},
+           familyi={T\bibinitperiod},
+           given={Ragnar},
+           giveni={R\bibinitperiod}}}%
+        {{hash=cc3e51666857a008fc2771ca4adfaa9f}{%
+           family={Skoglund},
+           familyi={S\bibinitperiod},
+           given={Mikael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=894ff73ba07cfd061baa5d82e3184983}{%
+           family={M.\bibnamedelimi Roy},
+           familyi={M\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=e9a5168689ddcaea596e07de50b92ec8}{%
+           family={Karolina\bibnamedelima Dziugaite},
+           familyi={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           given={Gintare},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{c80604a31f0591b337615a90f0bd18cc}
+      \strng{fullhash}{a24ae82b12e57b3655dd4fd716017a08}
+      \strng{bibnamehash}{a24ae82b12e57b3655dd4fd716017a08}
+      \strng{authorbibnamehash}{a24ae82b12e57b3655dd4fd716017a08}
+      \strng{authornamehash}{c80604a31f0591b337615a90f0bd18cc}
+      \strng{authorfullhash}{a24ae82b12e57b3655dd4fd716017a08}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of The 34th International Conference on Algorithmic Learning Theory}
+      \field{title}{{Limitations of Information-Theoretic Generalization Bounds for Gradient Descent Methods in Stochastic Convex Optimization}}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v201/haghifam23a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v201/haghifam23a.html
+      \endverb
+    \endentry
     \entry{hellstrom2023generalization}{article}{}
       \name{author}{4}{}{%
         {{hash=fb51a088e348a771e8d69621363e3886}{%
@@ -5132,6 +5594,46 @@
       \field{title}{{Learning via Wasserstein-Based High Probability Generalisation Bounds}}
       \field{year}{2023}
       \keyw{conference}
+    \endentry
+    \entry{zhou2023toward}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=63c57d8408e1ffebb4c1567d361dc419}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Sijia},
+           giveni={S\bibinitperiod}}}%
+        {{hash=96205a74d51a1d6c4e6bc2119c32caf5}{%
+           family={Lei},
+           familyi={L\bibinitperiod},
+           given={Yunwen},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=aef7dbca7e4f1d8ed9a86674887e6b7e}{%
+           family={Kaban},
+           familyi={K\bibinitperiod},
+           given={Ata},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{626cd969976b991028a41499b56aec6b}
+      \strng{fullhash}{2cb1c164d9712ca59045c2a4095cc847}
+      \strng{bibnamehash}{2cb1c164d9712ca59045c2a4095cc847}
+      \strng{authorbibnamehash}{2cb1c164d9712ca59045c2a4095cc847}
+      \strng{authornamehash}{626cd969976b991028a41499b56aec6b}
+      \strng{authorfullhash}{2cb1c164d9712ca59045c2a4095cc847}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 36: Annual Conference on Neural Information Processing Systems 2023, NeurIPS 2023, New Orleans, LA, USA, December 10 - 16, 2023}
+      \field{title}{{Toward Better PAC-Bayes Bounds for Uniformly Stable Algorithms}}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb http://papers.nips.cc/paper\_files/paper/2023/hash/5e8309c9ca683e11672e3dbcd4b87776-Abstract-Conference.html
+      \endverb
+      \verb{url}
+      \verb http://papers.nips.cc/paper%5C_files/paper/2023/hash/5e8309c9ca683e11672e3dbcd4b87776-Abstract-Conference.html
+      \endverb
     \endentry
     \entry{alquier2024user}{article}{}
       \name{author}{1}{}{%

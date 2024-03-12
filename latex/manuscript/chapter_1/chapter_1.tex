@@ -204,8 +204,17 @@ The work of \citet{dziugaite2017computing} showed that optimising \eqref{eq: alg
 
 
 
-
 \section{Towards an optimisation perspective of PAC-Bayes learning}
+
+The questions raised at the end of the previous part are important as they underline a gap between the information-theoretic approach of PAC-Bayes bounds and practical optimisation. A supplementary example of this is the grid required in practice to optimise the prior (and/or $\lambda$ in Catoni's bound). Indeed this hybrid solution is required to be consistent with both theory, which initially exploit a single prior, and practice, which optimises the prior on a continuous space. Those point then raises the following fundamental question:
+\[ \textbf{Can we think PAC-Bayes learning from an optimisation perspective?} \]
+
+The elements of answer to this question are multiple. First, one can mix PAC-Bayes argument with geometric properties of optimisation procedure to obtain generalisation bounds designed for specific algorithms exploiting their geometric properties and assumptions, including but not limited to, SGD, Langevin dynamics  \citep{london2017pac,dziugaite2018entropy,neu2021info,clerico2022generalisation,haghifam2023limit,zhou2023toward}. Those works shows both convergence properties as well as minimax rates, showing the impact of PAC-Bayes learning to provide a better theoretical understanding of the generalisation ability of concrete algorithms. 
+
+A second approach consists in describe general principles that should be satisfied by the various terms and assumptions in PAC-Bayes from an optimisation perspective. We propose such an analysis below.
+
+
+
 % Say that this vision is important when considering the promising practical performances of PAC-Bayes with useful theoretical guarantees.
 %paragraph on need of having small statistical assumptions to encompass most of the learning situations where optimisation algorithms are applied. Also explain that the second question shwo the limitation of the information theoretic perspective of PAC-Bayes, exhibiting a theoretical gap between the information theory (1 prior) and real-life situations where we are forced to use a sort of artifical grid to perform efficient optimisation: insist on this discrepancy.
 
