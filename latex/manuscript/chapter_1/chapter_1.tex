@@ -242,8 +242,26 @@ data-generating distribution, \citet{parradohernandez2012pac,oneto2016pac,dziuga
 
 These works have sometimes been explicitly driven by optimisation considerations (\citealp{dziugaite2018data} involved differential privacy to numerically tighten their bound without sacrificing data). However, in many cases, the information-theoretic vision of PAC-Bayes remained majoritary. In what follows, the contributions of this manuscript are designed \wrt the optimisation view of PAC-Bayes detailed above. 
 
-\subsection{Contributions of this thesis}
+\subsubsection*{Contributions of this thesis}
 
+The contributions of this manuscript are motivated by optimisation considerations and are structured as follows: 
+
+\begin{itemize}
+  \item In Chapter 2, we propose novel PAC-Bayes bounds for martingale, with an application to multi-armed bandits. Those bounds are anytime-valid (\ie for any dataset size simultaneously) and holds at the sole assumption of finite order 2 moments on both the posterior and the data distribution. Such weak statistical assumptions make these results applicable, for instance, for heavy-tailed SGD or many learning problems where optimisation procedure are performed regardless of the training set noise.
+  \item Chapter 3 introduces \emph{Online PAC-Bayes learning}, proposing theoretical bounds and learning algorithms involving a sequence of pairs $(\Q_i,\P_i)$, evolving through the optimisation process. Contrary to PAC-Bayes in a batch setting, the impact of $\P=\P_1$ is attenuated during the learning process, making Online PAC-Bayes useful when there is no prior information available, which is consistent with the vision of $\P$ as initialisation of a learning algorithm, while being only applicable, for now, to stochastic predictors as a KL divergence is involved.
+  \item Chapter 4 still consider the prior as an initialisation point, but this time, considering batch learning algorithms. It is shown that the impact of the prior is attenuated by \emph{flat minima}, \ie minima such that their neighbourhood nearly minimises the loss. More generally, this chapter exhibits theoretical links between flat minima and generalisation and thus draw links between the benefits of a successful optimisation process (small gradients) and generalisation.
+  \item Considering $\P$ as the learning objective allows to draw more explicit links between optimisation and generalisation. In Chapter 5, it is shown that the convergence guarantees of \emph{Bures-Wasserstein SGD}, a SGD-like algorithm on Gaussian measure spaces, can be directly incorporated within PAC-Bayes bounds, yielding interpretable results. This is possible by exploiting \emph{Wasserstein PAC-Bayes learning}, which uses as \textsc{Complexity} term a 1-Wasserstein distance, allowing to trade statistical assumptions to geometric ones such as lipschtz or gradient-lipschitz losses. 
+  \item Wasserstein PAC-Bayes learning can also be exploited when $\P$ is seen as an initialisation point. In Chapter 6, we propose Wasserstein PAC-Bayes algorithms with associated theoretical bound for both batch and online learning. A notable strength of these methods is that they hold for deterministic predictors (Dirac distributions), making PAC-Bayes in line with a large part of optimisation algorithms.
+\end{itemize}
+
+To conclude this introduction we recap in \Cref{fig: recap} the classical information-theoretic vision of PAC-Bayes alongside the original optimisation view proposed above. 
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{chapter_1/recap-intro.pdf}
+  \caption{Comparison with the two vision of PAC-Bayes described above. }
+  \label{fig: recap}
+\end{figure}
  
 
 \newpage
