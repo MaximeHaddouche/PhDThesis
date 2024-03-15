@@ -1642,6 +1642,75 @@
       \field{title}{{Direct fit to nature: an evolutionary perspective on biological and artificial neural networks}}
       \field{year}{2020}
     \endentry
+    \entry{hellstrom2020gene}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=fb51a088e348a771e8d69621363e3886}{%
+           family={Hellström},
+           familyi={H\bibinitperiod},
+           given={Fredrik},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ee49259cfab897bfca386f52cfa93990}{%
+           family={Durisi},
+           familyi={D\bibinitperiod},
+           given={Giuseppe},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{fullhash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{bibnamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authorbibnamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authornamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authorfullhash}{7cc1dc11959240911bec49505f244ae0}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Journal on Selected Areas in Information Theory}
+      \field{title}{{Generalization Bounds via Information Density and Conditional Information Density}}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1109/JSAIT.2020.3040992
+      \endverb
+    \endentry
+    \entry{hellstrom2022new}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=fb51a088e348a771e8d69621363e3886}{%
+           family={Hellström},
+           familyi={H\bibinitperiod},
+           given={Fredrik},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ee49259cfab897bfca386f52cfa93990}{%
+           family={Durisi},
+           familyi={D\bibinitperiod},
+           given={Giuseppe},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{fullhash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{bibnamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authorbibnamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authornamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authorfullhash}{7cc1dc11959240911bec49505f244ae0}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 35: Annual Conference on Neural Information Processing Systems 2022, NeurIPS 2022, New Orleans, LA, USA, November 28 - December 9, 2022}
+      \field{title}{{A New Family of Generalization Bounds Using Samplewise Evaluated CMI}}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb http://papers.nips.cc/paper\_files/paper/2022/hash/41b6674c28a9b93ec8d22a53ca25bc3b-Abstract-Conference.html
+      \endverb
+      \verb{url}
+      \verb http://papers.nips.cc/paper%5C_files/paper/2022/hash/41b6674c28a9b93ec8d22a53ca25bc3b-Abstract-Conference.html
+      \endverb
+    \endentry
     \entry{hellstrom2023generalization}{article}{}
       \name{author}{4}{}{%
         {{hash=fb51a088e348a771e8d69621363e3886}{%
@@ -3051,6 +3120,41 @@
       \field{volume}{abs/2211.07206}
       \field{year}{2022}
     \endentry
+    \entry{russo2016control}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=6cd1fc5cc33fef507f455f564944f1bc}{%
+           family={Russo},
+           familyi={R\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=1b868d50048a635fa27ffa744323fa41}{%
+           family={Zou},
+           familyi={Z\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{fullhash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{bibnamehash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{authorbibnamehash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{authornamehash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{authorfullhash}{0120db302b6a3b546b138cddac1a7286}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 19th International Conference on Artificial Intelligence and Statistics, {AISTATS} 2016, Cadiz, Spain, May 9-11, 2016}
+      \field{title}{{Controlling Bias in Adaptive Data Analysis Using Information Theory}}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb http://proceedings.mlr.press/v51/russo16.html
+      \endverb
+      \verb{url}
+      \verb http://proceedings.mlr.press/v51/russo16.html
+      \endverb
+    \endentry
     \entry{sakhi2023pac}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=e22ed2198e660ff50ba0225bafa1e185}{%
@@ -3299,6 +3403,44 @@
       \field{booktitle}{International Conference on Machine Learning (ICML)}
       \field{title}{{A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks}}
       \field{year}{2019}
+    \endentry
+    \entry{steinke2020reason}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=a8ee507f496e43705d0c170feeb81861}{%
+           family={Steinke},
+           familyi={S\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c3db4f150b5a00d935e44cbcdfcffb07}{%
+           family={Zakynthinou},
+           familyi={Z\bibinitperiod},
+           given={Lydia},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{fullhash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{bibnamehash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{authorbibnamehash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{authornamehash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{authorfullhash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of Thirty Third Conference on Learning Theory}
+      \field{title}{{R}easoning {A}bout {G}eneralization via {C}onditional {M}utual {I}nformation}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v125/steinke20a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v125/steinke20a.html
+      \endverb
     \endentry
     \entry{thiemann2017strongly}{inproceedings}{}
       \name{author}{4}{}{%
@@ -3593,6 +3735,40 @@
       \endverb
       \verb{url}
       \verb https://proceedings.neurips.cc/paper_files/paper/2022/file/49ffa271264808cf500ea528ed8ec9b3-Paper-Conference.pdf
+      \endverb
+    \endentry
+    \entry{xu2017info}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=f5e9d696722c2dc2422fc28cf1f9d33d}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Aolin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=1762c6d4ace229f7656ee9fa9eff446a}{%
+           family={Raginsky},
+           familyi={R\bibinitperiod},
+           given={Maxim},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{fullhash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{bibnamehash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{authorbibnamehash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{authornamehash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{authorfullhash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Information-theoretic analysis of generalization capability of learning algorithms}}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/ad71c82b22f4f65b9398f76d8be4c615-Abstract.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/ad71c82b22f4f65b9398f76d8be4c615-Abstract.html
       \endverb
     \endentry
     \entry{zhang2020adaptive}{inproceedings}{}
@@ -4888,6 +5064,41 @@
       \field{title}{{PAC-Bayesian analysis of distribution dependent priors: Tighter risk bounds and stability analysis}}
       \field{year}{2016}
     \endentry
+    \entry{russo2016control}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=6cd1fc5cc33fef507f455f564944f1bc}{%
+           family={Russo},
+           familyi={R\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=1b868d50048a635fa27ffa744323fa41}{%
+           family={Zou},
+           familyi={Z\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{fullhash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{bibnamehash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{authorbibnamehash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{authornamehash}{0120db302b6a3b546b138cddac1a7286}
+      \strng{authorfullhash}{0120db302b6a3b546b138cddac1a7286}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 19th International Conference on Artificial Intelligence and Statistics, {AISTATS} 2016, Cadiz, Spain, May 9-11, 2016}
+      \field{title}{{Controlling Bias in Adaptive Data Analysis Using Information Theory}}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb http://proceedings.mlr.press/v51/russo16.html
+      \endverb
+      \verb{url}
+      \verb http://proceedings.mlr.press/v51/russo16.html
+      \endverb
+    \endentry
     \entry{catoni2017dimension}{article}{}
       \name{author}{2}{}{%
         {{hash=1630a630ef59f1ba99922a75284b7321}{%
@@ -5155,6 +5366,40 @@
       \field{booktitle}{International Conference on Algorithmic Learning Theory}
       \field{title}{{A strongly quasiconvex PAC-Bayesian bound}}
       \field{year}{2017}
+    \endentry
+    \entry{xu2017info}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=f5e9d696722c2dc2422fc28cf1f9d33d}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Aolin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=1762c6d4ace229f7656ee9fa9eff446a}{%
+           family={Raginsky},
+           familyi={R\bibinitperiod},
+           given={Maxim},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{fullhash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{bibnamehash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{authorbibnamehash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{authornamehash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \strng{authorfullhash}{c87c42a0e1ba5004a3fe120b8a88b171}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Information-theoretic analysis of generalization capability of learning algorithms}}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/ad71c82b22f4f65b9398f76d8be4c615-Abstract.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.neurips.cc/paper/2017/hash/ad71c82b22f4f65b9398f76d8be4c615-Abstract.html
+      \endverb
     \endentry
     \entry{alquier2018simpler}{article}{}
       \name{author}{2}{}{%
@@ -5831,6 +6076,39 @@
       \field{title}{{Direct fit to nature: an evolutionary perspective on biological and artificial neural networks}}
       \field{year}{2020}
     \endentry
+    \entry{hellstrom2020gene}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=fb51a088e348a771e8d69621363e3886}{%
+           family={Hellström},
+           familyi={H\bibinitperiod},
+           given={Fredrik},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ee49259cfab897bfca386f52cfa93990}{%
+           family={Durisi},
+           familyi={D\bibinitperiod},
+           given={Giuseppe},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{fullhash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{bibnamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authorbibnamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authornamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authorfullhash}{7cc1dc11959240911bec49505f244ae0}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Journal on Selected Areas in Information Theory}
+      \field{title}{{Generalization Bounds via Information Density and Conditional Information Density}}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1109/JSAIT.2020.3040992
+      \endverb
+    \endentry
     \entry{jiang2020fantastic}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=725b5836073457d08899d109ac082a2e}{%
@@ -5920,6 +6198,44 @@
       \field{journaltitle}{Advances in Neural Information Processing Systems (NeurIPS)}
       \field{title}{{PAC-Bayes analysis beyond the usual bounds}}
       \field{year}{2020}
+    \endentry
+    \entry{steinke2020reason}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=a8ee507f496e43705d0c170feeb81861}{%
+           family={Steinke},
+           familyi={S\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c3db4f150b5a00d935e44cbcdfcffb07}{%
+           family={Zakynthinou},
+           familyi={Z\bibinitperiod},
+           given={Lydia},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{fullhash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{bibnamehash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{authorbibnamehash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{authornamehash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \strng{authorfullhash}{3c3a48b66b0bcf2d6b4981afb1635efa}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of Thirty Third Conference on Learning Theory}
+      \field{title}{{R}easoning {A}bout {G}eneralization via {C}onditional {M}utual {I}nformation}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v125/steinke20a.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v125/steinke20a.html
+      \endverb
     \endentry
     \entry{zhang2020adaptive}{inproceedings}{}
       \name{author}{7}{}{%
@@ -6855,6 +7171,42 @@
       \field{title}{{Online PAC-Bayes Learning}}
       \field{year}{2022}
       \keyw{conference}
+    \endentry
+    \entry{hellstrom2022new}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=fb51a088e348a771e8d69621363e3886}{%
+           family={Hellström},
+           familyi={H\bibinitperiod},
+           given={Fredrik},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ee49259cfab897bfca386f52cfa93990}{%
+           family={Durisi},
+           familyi={D\bibinitperiod},
+           given={Giuseppe},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{fullhash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{bibnamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authorbibnamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authornamehash}{7cc1dc11959240911bec49505f244ae0}
+      \strng{authorfullhash}{7cc1dc11959240911bec49505f244ae0}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 35: Annual Conference on Neural Information Processing Systems 2022, NeurIPS 2022, New Orleans, LA, USA, November 28 - December 9, 2022}
+      \field{title}{{A New Family of Generalization Bounds Using Samplewise Evaluated CMI}}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb http://papers.nips.cc/paper\_files/paper/2022/hash/41b6674c28a9b93ec8d22a53ca25bc3b-Abstract-Conference.html
+      \endverb
+      \verb{url}
+      \verb http://papers.nips.cc/paper%5C_files/paper/2022/hash/41b6674c28a9b93ec8d22a53ca25bc3b-Abstract-Conference.html
+      \endverb
     \endentry
     \entry{picard2022change}{article}{}
       \name{author}{2}{}{%
