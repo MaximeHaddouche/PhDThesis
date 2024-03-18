@@ -1,853 +1,277 @@
-\chapter{Appendix of Chapter~\ref{chap:pac-bayes}}
-\label{ap:pac-bayes}
+\chapter{Appendix of Chapter~\ref{chap: pb-ht}}
+\label{ap: pb-ht}
 
 \begin{noaddcontents}
-\section{Proof of \Cref{chap:pac-bayes:theorem:2gibbs}}
-\label{ap:pac-bayes:sec:proof-2gibbs}
+    %!TEX root = main.tex
 
-\theoremgibbs*
-\begin{proof}
-The proof is given by \citet{GermainLacasseLavioletteMarchandRoy2015}.
-First of all, remark that 
-\begin{align*}
-    \indic\LB \MVQ(\x) \ne \y \RB \le \indic\LB \OmMaQ(\x,\y)\le 0 \RB.
-\end{align*}
-Hence, by taking the expectation, we have 
-\begin{align*}
-    \Risk_{\Dp}(\MVQ) \le \PP_{(\x,\y)\sim\Dp}\LB \OmMaQ(\x,\y)\le 0 \RB.
-\end{align*}
-From \textsc{Markov}'s inequality (\Cref{ap:tools:theorem:first-markov}), we have 
-\begin{align*}
-    \PP_{(\x,\y)\sim\Dp}\LB \OmMaQ(\x,\y)\le 0 \RB &= \PP_{(\x,\y)\sim\Dp}\LB 1-\OmMaQ(\x,\y)\ge 1 \RB\\
-    &= \PP_{(\x,\y)\sim\Dp}\LB 1-2\LB\PP_{\h\sim\Q}\LB \h(\x)=\y \RB - \frac{1}{2}\RB\ge 1 \RB\\
-    &= \PP_{(\x,\y)\sim\Dp}\LB 1-\LB\PP_{\h\sim\Q}\LB \h(\x)=\y \RB\RB\ge \frac{1}{2} \RB\\
-    &\le 2\EE_{(\x,\y)\sim\Dp}\LB 1-\PP_{\h\sim\Q}\LB \h(\x)=\y \RB\RB\\
-    &= 2r_{\Dp}(\Q).
-\end{align*}
-\end{proof}
+\section{Some PAC-Bayesian background}
+\label{sec: pac_b_background}
 
-\section{Proof of \Cref{chap:pac-bayes:theorem:4joint}}
-\label{ap:pac-bayes:sec:proof-4joint}
+We present below an immediate corollary of \citet[Thm 2.1]{seldin2012bandit} where we upper bounded the cumulative by an empirical quantity (the sum of squared upper bound of the martingale difference sequence).
 
-\theoremjoint*
-\begin{proof}
-    The proof is given by \citet{MasegosaLorenzenIgelSeldin2020}.
-First of all, remark that 
-\begin{align*}
-    \indic\LB \MVQ(\x) \ne \y \RB \le \indic\LB \OmMaQ(\x,\y)\le 0 \RB.
-\end{align*}
-Hence, by taking the expectation, we have 
-\begin{align*}
-    \Risk_{\Dp}(\MVQ) \le \PP_{(\x,\y)\sim\Dp}\LB \OmMaQ(\x,\y)\le 0 \RB.
-\end{align*}
-From \textsc{Markov}'s inequality (\Cref{ap:tools:theorem:snd-markov}), we have 
-\begin{align*}
-    \PP_{(\x,\y)\sim\Dp}\LB \OmMaQ(\x,\y)\le 0 \RB &= \PP_{(\x,\y)\sim\Dp}\LB 1-\OmMaQ(\x,\y)\ge 0 \RB\\
-    &= \PP_{(\x,\y)\sim\Dp}\LB 1-2\LB\PP_{\h\sim\Q}\LB \h(\x)=\y \RB - \frac{1}{2}\RB\ge 1 \RB\\
-    &= \PP_{(\x,\y)\sim\Dp}\LB 1-\LB\PP_{\h\sim\Q}\LB \h(\x)=\y \RB\RB\ge \frac{1}{2} \RB\\
-    &\le 4\EE_{(\x,\y)\sim\Dp}\LP1-\PP_{\h\sim\Q}\LB \h(\x)=\y \RB\RP^2\\
-    &= 4e_{\Dp}(\Q).
-\end{align*}
-\end{proof}
+\begin{theorem}[\citealp{seldin2012bandit}, Theorem 2.1]
+\label{th: seldin_thm_mart}
+Let $\left\{C_1, C_2, \ldots\right\}$ be an increasing sequence set in advance, such that $\left|X_i(\\S_i,h)\right| \leq C_i$ for all $\\S_i,h$ with probability 1.   Let $\left\{P_1, P_2, \ldots\right\}$ be a sequence of data-free prior distributions over $\mathcal{H}$. Let $(\lambda_i)_{i\geq 1}$ be a sequence of positive numbers such that
+$$
+\lambda_m \leq \frac{1}{C_m}.
+$$
+Then with probability $1-\delta$ over $\S=(\z_i)_{i\geq 1}$,
+for all $m\geq 1$, any posterior $\Q$ over $\mathcal{H}$,
+$$
+\left|M_m\left(Q\right)\right| \leq \frac{\KL\left(\Q , \P_m\right)+2 \log (m+1)+\log \frac{2}{\delta}}{\lambda_m}+(e-2) \lambda_m V_m(\Q),
+$$
+where $V_m(\Q)$ is defined in \cref{subsec: comparison_seldin}.
 
-\section{Proof of \Cref{chap:pac-bayes:theorem:cbound}}
-\label{ap:pac-bayes:sec:proof-cbound}
-
-\theoremgeneralcbound*
-\begin{proof}
-To prove \Cref{chap:pac-bayes:eq:multi-class-cbound}, we start from the definition of $\Risk_{\Dp}(\MVQ)$ to have
-\begin{align*}
-    \Risk_{\Dp}(\MVQ) &\le \PP_{(\x,\y)\sim\Dp}\LP\OmMaQ(\x,\y) \le 0\RP\\
-    &= \PP_{(\x,\y)\sim\Dp}\LP -\OmMaQ(\x,\y) + \EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) \ge \EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP\\
-    &\le \frac{\VAR_{(\x,\y)\sim\Dp}(\OmMaQ(\x,\y))}{\VAR_{(\x,\y)\sim\Dp}(\OmMaQ(\x,\y)) + \LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2}\\
-    &= \frac{\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)^2-\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2 }{\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)^2-\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2 + \LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2}\\
-    &= \frac{\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)^2-\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2 }{\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)^2}\\
-    &= 1 - \frac{\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2}{\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)^2},
-\end{align*}
-where the second inequality comes from \textsc{Chebyshev}-\textsc{Cantelli}'s inequality (\Cref{ap:tools:theorem:cantelli}) and $\VAR_{A\sim\Acal}(A)$ is the variance of the random variable $A\sim\Acal$.
-\Cref{chap:pac-bayes:eq:cbound-e-d} is obtained by rewriting \Cref{chap:pac-bayes:eq:multi-class-cbound} with \Cref{chap:pac-bayes:eq:gibbs-margin,chap:pac-bayes:eq:disagreement-margin}.
-Indeed, we have 
-\begin{align*}
-    \EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) = 1-2r_{\Dp}(\Q) \quad\text{and}\quad \EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)^2 = 1-2d_{\Dp}(\Q), 
-\end{align*}
-which gives \Cref{chap:pac-bayes:eq:cbound-r-d}.\\
-Moreover, thanks to \Cref{chap:pac-bayes:eq:disagreement-risk-joint}, we can rewrite the Gibbs risk as
-\begin{align*}
-    r_{\Dp}(\Q) = \LB e_{\Dp}(\Q) + \frac{1}{2}d_{\Dp}(\Q)\RB,
-\end{align*}
-which allows us to obtain \Cref{chap:pac-bayes:eq:cbound-e-d} by rewriting \Cref{chap:pac-bayes:eq:cbound-r-d}.
-\end{proof}
-
-\section{Proof of \Cref{chap:pac-bayes:theorem:relationship}}
-\label{ap:pac-bayes:sec:proof-relationship}
-
-\theoremrelationship*
-\begin{proof}
-We first prove that $\CBound_{\Dp}(\Q) \le 2r_{\Dp}(\Q)$ is equivalent to $\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) \ge \EE_{(\x,\y)\sim\Dp}\LB\OmMaQ(\x,\y)\RB^2$, \ie, we have
-\begin{align*}
-&\CBound_{\Dp}(\Q) \le 2r_{\Dp}(\Q)\\
-\iff &1-\frac{\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2}{\EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2} \le 1-\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\\
-\iff &\frac{\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2}{\EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2} \ge \EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\\
-\iff &\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2 \ge \LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP\LP\EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2\RP\\
-\iff &\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) \ge \EE_{(\x,\y)\sim\Dp}\LB\OmMaQ(\x,\y)\RB^2.
-\end{align*}
-
-Then, we prove that $4e_{\Dp}(\Q) \le 2r_{\Dp}(\Q)$ is equivalent to $\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) \ge \EE_{(\x,\y)\sim\Dp}\LB\OmMaQ(\x,\y)\RB^2$, \ie, we have
-\begin{align*}
-    &4e_{\Dp}(\Q) \le 2r_{\Dp}(\Q)\\
-    \iff &1- 2\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) + \EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2 \le 1-\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\\
-    \iff &2\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) - \EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2 \ge \EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\\
-    \iff &\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) \ge \EE_{(\x,\y)\sim\Dp}\LB\OmMaQ(\x,\y)\RB^2.
-\end{align*}
-
-Additionally, we prove that $\CBound_{\Dp}(\Q) \le 4e_{\Dp}(\Q)$, \ie, we have
-\begin{align*}
-&\CBound_{\Dp}(\Q) \le 4e_{\Dp}(\Q)\\
-\iff &1-\frac{\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2}{\EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2} \le 1- 2\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) + \EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2\\
-\iff &\frac{\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y)\RP^2}{\EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2} \ge 2\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) - \EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2\\
-\iff &\LP\EE_{(\x,\y)\sim\Dp}\OmMaQ(\x,\y) -  \EE_{(\x,\y)\sim\Dp}\LP \OmMaQ(\x,\y)\RP^2 \RP^2 \ge 0.
-\end{align*}
-
-Finally, by merging the three equivalence, we obtain the claimed result.
-\end{proof}
-
-\section{About the KL Divergence}
-\label{ap:pac-bayes:sec:kl}
-
-\subsection{Basic Properties}
-
-The KL divergence has the following properties:
-\begin{enumerate}[label={\it (\arabic*)}]
-    \item It is positive, \ie, we have $\KL(\Q\|\P) \ge 0$ for all $\Q\in\M(\H)$ and $\P \in \M^{*}(\H)$.
-    \item We have $\KL(\P\|\P) = 0$ for all $\P\in\M(\H)$.
-    \item In general, it is not symmetric: $\KL(\Q\|\P) \ne \KL(\P\|\Q)$ for all $\Q,\P \in \M(\H)$.
-\end{enumerate}
-\begin{proof} We prove the points {\it (1)}, {\it (2)} and {\it (3)} separately.\\
-\textbf{Concerning {\it (1)}.} Since $-\ln()$ is convex, we have from \textsc{Jensen}'s inequality (\Cref{ap:tools:theorem:jensen})
-\begin{align*}
-    \KL(\Q\|\P) = \EE_{\h\sim\Q}\ln\frac{\Q(\h)}{\P(\h)} = \EE_{\h\sim\Q}\LB-\ln\frac{\P(\h)}{\Q(\h)}\RB \ge  -\ln\LB\EE_{\h\sim\Q}\frac{\P(\h)}{\Q(\h)}\RB = 0.
-\end{align*}
-
-\textbf{Concerning {\it (2)}.} The property follows directly by developing the KL divergence, \ie, we have  
-\begin{align*}
-    \KL(\P\|\P) = \EE_{\h\sim\P}\ln\frac{\P(\h)}{\P(\h)} = \EE_{\h\sim\P} \ln(1)  = 0.
-\end{align*}
-
-\textbf{Concerning {\it (3)}.} For example, we have $\KL(\Bernoulli(0.1)\|\Bernoulli(0.5)) \ne \KL(\Bernoulli(0.5)\|\Bernoulli(0.1))$, where $\Bernoulli(p)$ is a Bernoulli distribution with bias $p$.
-\end{proof}
-
-Moreover, since we have (from l'Hôpital's rule) $\lim_{x\rightarrow 0^+} x\ln x = 0$, we adopt several conventions. 
-Indeed, we consider that {\it (i)} $\Q(\h)\ln\frac{\Q(\h)}{\P(\h)}=0$ whenever $\Q(\h)=0$ and $\P(\h)\ge 0$ and {\it (ii)} if $\P(\h)=0$ and $\Q(\h)>0$, $\Q(\h)\ln\frac{\Q(\h)}{\P(\h)}=+\infty$ (which implies that $\KL(\Q\|\P)=+\infty$).
-
-
-\subsection{Joint Convexity}
-
-The following proposition shows that the KL divergence is jointly convex.
-\begin{proposition}
-For any pairs $(\Q_1, \Q_2)\in\M(\H)^2$ and $(\P_1, \P_2)\in\M^{*}(\H)^2$ of distributions, we have for all $\lambda\in[0, 1]$
-\begin{align*}
-    \KL(\lambda\Q_1+(1{-}\lambda)\Q_2\|\lambda\P_1+(1{-}\lambda)\P_2) \le \lambda\KL(\Q_1\|\P_1) + (1{-}\lambda)\KL(\Q_2\|\P_2).
-\end{align*}
-\label{ap:pac-bayes:proposition:kl-convex}
-\end{proposition}
-
-In order to provide a proof for \Cref{ap:pac-bayes:proposition:kl-convex}. 
-We need the log-sum inequality; a proof (based on \citet[Theorem~2.7.1]{CoverThomas2006}) is given bellow.
-
-\begin{lemma}[Log-sum inequality] For any strictly positive reals $p_1,\dots, p_n \ge 0$ and $q_1,\dots, q_n \ge 0$, we have
-\begin{align*}
-    \LB\sum_{i=1}^{n}q_i\RB\ln\frac{\sum_{i=1}^{n}q_i}{\sum_{i=1}^{n}p_i} \le \sum_{i=1}^{n}q_i\ln\frac{q_i}{p_i}.
-\end{align*}
-\label{ap:pac-bayes:lemma:log-sum}
-\end{lemma}
-\begin{proof}
-First of all, note that $f(x)=x\ln x$ is convex \wrt $x\in\Rbb_{*}^{+}$ since $\frac{\partial f}{\partial x}(x)=\frac{1}{x}$ for all $x\in\Rbb_{*}^{+}$.
-Then, from \textsc{Jensen}'s inequality (\Cref{ap:tools:theorem:jensen}) we have 
-\begin{align*}
-    &f\LP\sum_{i=1}^{n}\frac{p_i}{\|\pbf\|_1}\frac{q_i}{p_i}\RP \le \sum_{i=1}^{n}\frac{p_i}{\|\pbf\|_1}f\LP\frac{q_i}{p_i}\RP\\
-    \iff\quad &\|\pbf\|_1f\LP\sum_{i=1}^{n}\frac{p_i}{\|\pbf\|_1}\frac{q_i}{p_i}\RP \le \|\pbf\|_1\sum_{i=1}^{n}\frac{p_i}{\|\pbf\|_1}f\LP\frac{q_i}{p_i}\RP,
-\end{align*}
-where $\|\pbf\|_1=\sum_{i=1}^{n}p_i$.
-Then, we can develop right-hand side of the inequality, \ie, we have
-\begin{align*}
-    \|\pbf\|_1f\LP\sum_{i=1}^{n}\frac{p_i}{\|\pbf\|_1}\frac{q_i}{p_i}\RP = \|\pbf\|_1f\LP\frac{\|\qbf\|_1}{\|\pbf\|_1}\RP=\|\qbf\|_1\ln\frac{\|\qbf\|_1}{\|\pbf\|_1}=\LB\sum_{i=1}^{n}q_i\RB\ln\frac{\sum_{i=1}^{n}q_i}{\sum_{i=1}^{n}p_i},
-\end{align*}
-where $\|\qbf\|_1=\sum_{i=1}^{n}q_i$.
-Similarly for the left-hand side, we have 
-\begin{align*}
-    \|\pbf\|_1\sum_{i=1}^{n}\frac{p_i}{\|\pbf\|_1}f\LP\frac{q_i}{p_i}\RP = \sum_{i=1}^{n}p_if\LP\frac{q_i}{p_i}\RP = \sum_{i=1}^{n}q_i\ln\frac{q_i}{p_i}.
-\end{align*}
-\end{proof}
-
-We are now able to prove \Cref{ap:pac-bayes:proposition:kl-convex} based on the proof of \citet[Theorem 2.7.2]{CoverThomas2006}.
-
-
-\begin{proof}[of \Cref{ap:pac-bayes:proposition:kl-convex}]
-From the log-sum inequality (\Cref{ap:pac-bayes:lemma:log-sum}) with $q_1=\lambda\Q_1(\h)$, $q_2=(1-\lambda)\Q_2(\h)$, $p_1=\lambda\P_1(\h)$, $p_2=(1-\lambda)\P_2(\h)$, we have
-\begin{align*}
-\hspace{-3cm}&\LB\lambda\Q_1(\h) + (1{-}\lambda)\Q_2(\h)\RB\ln\!\LB \frac{\lambda\Q_1(\h) + (1{-}\lambda)\Q_2(\h)}{\lambda\P_1(\h) + (1{-}\lambda)\P_2(\h)}\RB\\ 
-&\hspace{3cm}\le \lambda\Q_1(\h)\ln\frac{\Q_1(\h)}{\P_1(\h)} + (1-\lambda)\Q_2(\h)\ln\frac{\Q_2(\h)}{\P_2(\h)}.
-\end{align*}
-Hence, by integrating over all $\h$, gives us the desired result.
-\end{proof}
-
-\subsection{Pinsker's Inequality}
-
-We present a special case of \textsc{Pinsker}'s inequality when we deal with two Bernoulli distributions.
-The presented proof is due to \citet{Wu2020} (see also \citet{Canonne2022}).
-
-\begin{theorem}[Pinsker's inequality]
-For any $p\in[0,1]$ and $q\in[0,1]$, we have
-\begin{align*}
-    2(q-p)^2 \le \kl(q\|p),
-\end{align*}
-where $\kl(q\|p) \defeq q\ln\frac{q}{p}+(1-q)\ln\frac{1-q}{1-p}$.
-\label{ap:pac-bayes:theorem:pinsker}
+Furthermore, if we bound the variance term, we would have:
+$$
+\left|M_m\left(\Q\right)\right| \leq \frac{\KL\left(\Q , \P_m\right)+2 \log (m+1)+\log \frac{2}{\delta}}{\lambda_m}+(e-2) \lambda_m \sum_{i=1}^m C_i^2.
+$$
 \end{theorem}
-\begin{proof}
-For any $p\in\{0,1\}$ and $q\in\{0,1\}$, we can easily verify that the inequality holds.
-Then, with $p\in(0,1)$ and $q\in(0,1)$, we have from the fundamental theorem of calculus
+Below, we use the definitions introduced in \Cref{sec: iid_case}.
+We study here a particular case of \cite{alquier2016properties} for bounded losses which are especially subgaussian thanks to Hoeffding's lemma.
+\begin{theorem}[Adapted from  \citealp{alquier2016properties}, Theorem 4.1]
+\label{th: naive_pac_bayes}
+Let $m>0$,$\S_m=(\z_1,...,\z_m)$ be an \iid sample from the same law $\mu$.
+For any data-free prior $\P$, for any loss function $\ell$ bounded by $K$, any $\lambda>0,\delta\in ]0;1[$, one has with probability $1-\delta$ for any posterior $Q\in\mathcal{M}_1(\mathcal{H})$
+\[ \mathbb{E}_{h\sim \Q}[\Risk(h)] \leq  \mathbb{E}_{h\sim \Q}[\Riskhat_{\Sm}(h)] + \frac{\operatorname{KL}(\Q, \P) + \log(1/\delta)}{\lambda} + \frac{\lambda K^2}{2m}. \]
+\end{theorem}
+
+\begin{theorem}[\citealp{haddouche2021pac}, Theorem 3]
+\label{th: haddouche_thm}
+Let the loss $\ell$ be $\mathrm{HYPE}(K)$ compliant. For any $\P\in\mathcal{M}(\mathcal{H})$ with no data dependency, for any $\alpha\in\mathbb{R}$ and for any $\delta\in[0,1]$, we have with probability at least $1-\delta$ over size-$m$ samples S,
+for any $\Q$% such that $Q \ll P$% and $P \ll Q$
 \begin{align*}
-    \kl(q\|p) = f(q)-f(p) = \int_{q}^{p}\frac{\partial f}{\partial x}(x) dx,
+\mathbb{E}_{h\sim \Q}\left[ \Risk(h)\right]
+\leq \mathbb{E}_{h\sim \Q}\left[ \Riskhat_{\Sm}(h)\right] + \frac{\operatorname{KL}(\Q,\P) + \log\left(\frac{1}{\delta}\right)}{m^{\alpha}}
++\frac{1}{m^{\alpha}}\log\left(\mathbb{E}_{h\sim \P} \left[\exp\left( \frac{K(h)^2}{2m^{1-2\alpha}} \right) \right]\right).
 \end{align*}
-where $f(x)=q\ln x+(1-q)\ln(1-x)$.
-Hence, we have 
-\begin{align*}
-    \int_{q}^{p}\frac{\partial f}{\partial x}(x) dx = \int_{q}^{p} \frac{(q-x)}{(1-x)x} dx \le 4\int_{q}^{p} (q-x)dx=4\frac{1}{2}(q-p)^2 = 2(q-p)^2.
-\end{align*}
-\end{proof}
+\end{theorem}
 
 
-\section{Proof of \Cref{chap:pac-bayes:theorem:general-germain}}
-\label{ap:pac-bayes:sec:proof-general-germain}
+\section{Extensions of previous results}
+\label{sec: extensions}
 
-\generalgermain*
-\begin{proof}
-We start by developing $\EE_{\h\sim\Q}\varphi(\h, \S)$, \ie, we obtain
-\begingroup
-\allowdisplaybreaks
-\begin{align*}
-    \EE_{\h\sim\Q}\varphi(\h, \S) &= \EE_{\h\sim\Q}\ln\LB\exp(\varphi(\h, \S))\RB\\
-    &= \EE_{\h\sim\Q}\ln\LB\frac{\Q(\h)}{\P(\h)}\frac{\P(\h)}{\Q(\h)}\exp(\varphi(\h, \S))\RB\\
-    &= \EE_{\h\sim\Q}\ln\frac{\Q(\h)}{\P(\h)}+\EE_{\h'\sim\Q}\ln\LB\frac{\P(\h')}{\Q(\h')}\exp(\varphi(\h', \S))\RB\\
-    &= \KL(\Q\|\P) + \EE_{\h'\sim\Q}\ln\LB\frac{\P(\h')}{\Q(\h')}\exp(\varphi(\h', \S))\RB.
-\end{align*}
-\endgroup
-Since $\ln$ is concave, we can apply \textsc{Jensen}'s inequality  (\Cref{ap:tools:theorem:jensen}) on the right-most term to obtain
-\begin{align*}
-    \EE_{\h\sim\Q}\ln\frac{\Q(\h)}{\P(\h)}+\EE_{\h'\sim\Q}\ln\LB\frac{\P(\h')}{\Q(\h')}\exp(\varphi(\h', \S))\RB &\le \EE_{\h'\sim\Q}\ln\LB\frac{\P(\h')}{\Q(\h')}\exp(\varphi(\h', \S))\RB\\
-    &= \ln\LB\EE_{\h'\sim\P}\exp(\varphi(\h', \S))\RB.
-\end{align*}
-Hence, we can deduce the following inequality:
+Here we gather several corollaries of our main result in order to show how our \Cref{th: main_thm} extends the validity of some classical results in the literature. More precisely we show that our result extends (up to numerical factors) the PAC-Bayes Bernstein inequality of \citet{seldin2012bandit}.
+Then, going back to the bounded case, we generalise a result from \citet{catoni2007pac} reformulated in \citet{alquier2016properties} and we also show how our work strictly improves on the bound of \citet{haddouche2021pac}.
+
+\subsection{Extension of the PAC-Bayes Bernstein inequality}
+\label{subsec: comparison_seldin}
+
+Here we rename two terms for consistency with Theorem 2.1 of \citet{seldin2012bandit} (see \Cref{th: seldin_thm_mart}). For a martingale $M_m(h)= \sum_{i=1}^m X_i(\S_i,h)$, we define, at time $m$, \emph{empirical cumulative variance } to be $\hat{V}_m(h)= [M]_m(h) = \sum_{i=1}^m X_i(\S_i,h)^2$ and
+the \emph{cumulative variance} as $V_m(h)= \langle M\rangle_m(h) = \sum_{i=1}^m \mathbb{E}_{i-1}[X_i(\S_i,h)^2]$.
+
+We provide below a corollary containing two bounds: the first one being a straightforward corollary of \cref{th: main_thm}, the second being valid for bounded martingales and formally close to Theorem 2.1 of \citet{seldin2012bandit}.
+\begin{corollary}
+\label{cor: bound_mart}
+Let $\left\{\P_1, \P_2, \ldots\right\}$ be a sequence of data-free prior distributions over $\mathcal{H}$. Let $(\lambda_i)_{i\geq 1}$ be a sequence of positive numbers.
+Then the following holds with probability $1-\delta$ over $\S=(\z_i)_{i\geq 1}$: for any tuple $(m,\lambda_k,\P_k)$ with $m,k\geq 1$, any posterior $\Q$ over $\mathcal{H}$,
 \begin{align}
-    \EE_{\h\sim\Q}\varphi(\h, \S) \le \KL(\Q\|\P) + \ln\LB\EE_{\h'\sim\P}\exp(\varphi(\h', \S))\RB.\label{chap:pac-bayes:eq:proof-general-germain-1}
+\label{eq: bound_mart_1}
+\left|M_m\left(\Q\right)\right| \leq \frac{\KL\left(\Q, \P_k\right)+2 \log (k+1)+\log (2/\delta)}{\lambda_k}+ \frac{\lambda_k}{2}\left( \hat{V}_m(\Q) + V_m(\Q) \right),
 \end{align}
-
-Since the exponential function $\exp(a)$ is positive for all $a\in\Rbb$, thus, the term $\EE_{\h'\sim\P}\exp(\varphi(\h', \S))$ is positive for all $\S\in(\X\times\Y)^\m$ as well.
-We can apply \textsc{Markov}'s inequality (\Cref{ap:tools:theorem:first-markov}) to have
+with $\hat{V}_m(\Q)= \mathbb{E}_{h\sim \Q}[\hat{V}_m(h)], V_m(\Q)= \mathbb{E}_{h\sim \Q}[V_m(h)]$.
+Furthermore, if we assume that for any $i$, there exists $C_i>0$ such that $|X_i(\S_i,h)|\leq C_i$ for all $\S_i,h$ then we have the following corollary: with probability $1-\delta$ over $S$, for any tuple $(m,\lambda_m,\P_m)$ $m\geq 1$, any posterior $\Q$,
 \begin{align}
-    &\PP_{\S\sim\D^\m}\LB\EE_{\h'\sim\P}\exp(\varphi(\h', \S)) \le \frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}\exp(\varphi(\h', \S'))\RB\ge 1-\delta\nonumber\\
-    \iff &\PP_{\S\sim\D^\m}\LB\ln\LP\EE_{\h'\sim\P}\exp(\varphi(\h', \S))\RP \le \ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}\exp(\varphi(\h', \S'))\RP\RB\ge 1-\delta\nonumber\\
-    \iff &\PP_{\S\sim\D^\m}\Bigg[\forall\Q\in\M(\H),\  \KL(\Q\|\P)+\ln\LP\EE_{\h'\sim\P}\exp(\varphi(\h', \S))\RP\nonumber\\
-    &\hspace{3cm}\le \KL(\Q\|\P)+\ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}\exp(\varphi(\h', \S'))\RP\Bigg]\ge 1-\delta\label{chap:pac-bayes:eq:proof-general-germain-2}
+\label{eq: bound_mart_2}
+\left|M_m\left(Q\right)\right| \leq \frac{\KL\left(\Q, \P_m\right)+2 \log (m+1)+\log (2/\delta)}{\lambda_m}+ \lambda_m\sum_{i=1}^m C_i^2.
 \end{align}
-By combining \Cref{chap:pac-bayes:eq:proof-general-germain-1,chap:pac-bayes:eq:proof-general-germain-2}, we can deduce the claimed result.
-\end{proof}
+\end{corollary}
+The proof is deferred to \cref{sec: proofs}.
+Note that \cref{eq: bound_mart_1} holds uniformly on all tuples $\{(\lambda_k,\P_k,m) \mid k\geq 1, m\geq 1\}$ while \cref{eq: bound_mart_2}, as well as Theorem 2.1 of \citet{seldin2012bandit} holds uniformly on the tuples
+$\{(\lambda_m,\P_m,m) \mid m\geq 1\}$ which is a strictly smaller collection. Hence our approach gives guarantees for a larger event with the same confidence level.
 
-\section{Proof of \Cref{chap:pac-bayes:theorem:mcallester}}
-\label{ap:pac-bayes:sec:proof-mcallester}
+Furthermore, Theorem 2.1 of \citet{seldin2012bandit} involves the cumulative variance $V_m(\Q)$ (and not its empirical counterpart). Because this term is theoretical, we bound it in \cref{th: seldin_thm_mart} by $\sum_{i=1}^m C_i^2$ which is supposedly empirical.
+In this context, \cref{eq: bound_mart_2}, recovers nearly exactly the bound of \cite{seldin2012bandit} with the transformation of a factor $(e-2)$ into $1$.
+Notice also that \cref{eq: bound_mart_2} stands with no assumption on the range of the $\lambda_i$, which is not the case in \cref{th: seldin_thm_mart}.
 
-\mcallester*
+Finally, we stress two fundamental differences between our work and the one of \citet{seldin2012bandit}. First, we replace Markov's inequality by Ville's inequality; second, we exploited the exponential inequality of Lemma \ref{l: bercu_touati} instead of the Bernstein inequality. These allow for results for unbounded martingales for all $m$ simultaneously.
+
+
+\subsection{Extensions of learning theory results}
+
+
+\subsubsection{A general result for bounded losses}
+
+
+We use definitions from \Cref{sec: iid_case} and provide a corollary of our main result when the loss is bounded by a positive constant $K>0$. We assume our data are iid.
+\begin{corollary}
+\label{cor: bounded_case}
+For any data-free prior $P\in \mathcal{M}(\mathcal{H})$, any $\lambda>0$ the following holds with probability $1-\delta$ over the sample $S=(z_i)_{i\in\mathbb{N}}$, for all $m\in\mathbb{N}/\{0\}$, $\Q\in\mathcal{M}(\mathcal{H})$
+\[ \left | \mathbb{E}_{h\sim \Q} [\Risk(h)] -  \mathbb{E}_{h\sim \Q} \left[\Riskhat_{\S_m}(h) \right] \right |  \leq \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda m } + \lambda K^2.  \]
+We also have the local bound: for any $m\geq 1$, with probability $1-\delta$ over $S$, for all $\Q\in\mathcal{M}(\mathcal{H})$
+\[ \mathbb{E}_{h\sim \Q} [\Risk(h)] \leq  \mathbb{E}_{h\sim \Q} \left[\Riskhat_{\S_m}(h) \right] + \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda} + \frac{\lambda K^2}{m}.  \]
+\end{corollary}
+The proof is deferred to \cref{sec: proofs}. Remark that the second bound of Corollary \ref{cor: bounded_case} is exactly the Catoni bound stated in \citet{alquier2016properties} (see \Cref{th: naive_pac_bayes} in \Cref{sec: pac_b_background}) up to a numerical factor of $2$.
+
+
+The first bound is, to our knowledge, the first PAC-Bayesian bound for bounded losses holding uniformly (for a given parameter $\lambda$) on the choice of $Q,m$ and thus extends the scope of Catoni's bound which holds for a single $m$ with high probability.  Indeed, if we want for instance \Cref{th: naive_pac_bayes} to hold for any $i\in\{1..m\}$, we then have to take an union bound on $m$ events which turns the term $\log(1/\delta)$ into $\log(m/\delta)$ (but with the benefit of holding for $m$ parameters $\lambda_1,...,\lambda_m$). This point is common to the most classical PAC-Bayesian bounds
+(including McAllester and Catoni's ones \eqref{eq: mcallester}, \eqref{eq: catoni})
+and impeach us to have a bound uniformly on all $m\in\mathbb{N}/\{0\}$ as $\log(m)$ goes to infinity asymptotically.
+
+
+\subsubsection{An extension of \citet{haddouche2021pac}}
+
+We now focus on the work of \citet{haddouche2021pac} which provides general PAC-Bayesian bounds for unbounded losses. Their theorems hold for iid data and under the so-called \emph{HYPE} (for HYPothesis-dependent rangE) condition. It states that a loss function $\ell$ is \emph{HYPE}$(K)$ compliant if there exists a function $K:\mathcal{H} \rightarrow \mathbb{R}^+ $ (supposedly accessible)  such that $\forall z\in\mathcal{Z}, \ell(h,\z) \leq K(h)$.
+We provide \Cref{cor: haddouche_comparison} to compare ourselves with their main result (stated in  \Cref{th: haddouche_thm} for convenience).
+\begin{corollary}
+\label{cor: haddouche_comparison}
+For any data-free prior $\P\in \mathcal{M}(\mathcal{H})$, any loss function $\ell$ being \emph{HYPE}$(K)$ compliant, any $\alpha\in[0,1],m\geq 1$, the following holds with probability $1-\delta$ over the sample $\S=(\z_i)_{i\in\mathbb{N}}$, for all $\Q\in\mathcal{M}(\mathcal{H})$
+\begin{multline*}
+\mathbb{E}_{h\sim \Q} [\Risk(h)] \leq   \mathbb{E}_{h\sim \Q} \left[\frac{1}{m}\sum_{i=1}^m\left(\ell(h,\z_i) + \frac{1}{2m^{1-\alpha}} \ell(h,\z_i)^2\right)\right] \\
++ \frac{\operatorname{KL}(\Q,\P) +\log(1/\delta)}{m^{\alpha}}  + \frac{1}{2m^{1-\alpha}}\mathbb{E}_{h\sim \Q} [K^2(h)].
+\end{multline*}
+\end{corollary}
+
 \begin{proof}
-It is a direct consequence of \textsc{Pinsker}'s inequality (\Cref{ap:pac-bayes:theorem:pinsker}), \ie, we have
-\begin{align*}
-    2\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)-\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RP^2 \le \kl\!\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\|\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RP,
-\end{align*}
-and from \Cref{chap:pac-bayes:theorem:seeger} by rearranging the terms.
+The proof is a straightforward application of \cref{th: main_thm_iid} by fixing $m\geq 1$ choosing $\lambda= m^{\alpha-1}$ (thus we localise \Cref{th: main_thm_iid} to a single $m$),  and bounding $\mathrm{Quad}(h)$ by $K^2(h)$.
 \end{proof}
+The main improvement of our bound over \Cref{th: haddouche_thm} is that we do not have to assume the convergence of an exponential moment to obtain a non-trivial bound. Indeed, we transformed the (implicit) assumption $\mathbb{E}_{h\sim \P} \left[\exp\left( \frac{K(h)^2}{2m^{1-2\alpha}} \right) \right] < +\infty $ onto $\mathbb{E}_{h\sim \Q}[K(h)^2] < +\infty$, which is significantly less restrictive.
+Furthermore, \Cref{th: haddouche_thm} holds for a single choice of $m$ while ours still holds uniformly over all integers $m>0$.
 
-\section{Proof of \Cref{chap:pac-bayes:theorem:catoni}}
-\label{ap:pac-bayes:sec:proof-catoni}
+Cor. \ref{cor: haddouche_comparison} also sheds new light on the \emph{HYPE} condition. Indeed, in \citet{haddouche2021pac}, $K$ only intervenes in an exponential moment involving the prior $\P$, while ours considers a second-order moment on $K$ implying the posterior $\Q$. The difference is major as $\mathbb{E}_{h\sim \Q}[K(h)^2] $ can be controlled by a wise choice of posterior. Thus it can be incorporated in our optimisation route, acting now as an optimisation constraint instead of an environment constraint.
 
-\catoni*
+
+
+\section{Proofs}
+\label{sec: proofs}
+
+\subsection{Proof of \cref{th: main_thm_iid}}
+
 \begin{proof}
-We apply \Cref{chap:pac-bayes:theorem:general-germain} with $\varphi(\h,\S) = \m\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB$, where $\catF(\RiskLoss_{\D}(\h))\defeq-\ln\!\LP 1-\RiskLoss_{\D}(\h)\!\LB1-e^{-\cat}\RB\RP$.
-We have
+Let $\P$ a fixed data-free prior, set $(\mathcal{F}_i)_{i\geq 0}$ such that for all $i$, $\z_i$ is $\mathcal{F}_i$ measurable. We also set for any fixed $h\in\mathcal{H}, M_m(h):= \sum_{i=1}^m \ell(h,\z_i) - \Risk(h)$. Note that because data are \iid, for any fixed $h$, the sequence $(M_m(h))_m$ is indeed a martingale.
+We set for any $m\geq 1, h\in\mathcal{H}$
+$$[M]_m(h) = \sum_{i=1}^m \left(\ell(h,\z_i) - \Risk(h)\right)^2 $$ and
+$$\langle M \rangle_m(h) =  \sum_{i=1}^m \mathbb{E}_{i-1}[\left(\ell(h,\z_i) - \Risk(h)\right)^2] = \sum_{i=1}^m \mathbb{E}_{\z\sim \D}[\left(\ell(h,\z) - \Risk(h)\right)^2].$$
+The last equality holds because data is assumed iid. Thus, we can apply \cref{th: main_thm} to obtain with probability $1-\delta$
+\[|M_m(\Q)| \leq   \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda } + \frac{\lambda}{2}\left([M]_m(Q)^2 + \langle M\rangle_m(Q)^2 \right) . \]
+Now, we notice that $|M_m(\Q)| = m| \mathbb{E}_{h\sim \Q}[\Risk(h) - \Riskhat_{\Sm}(h)] |$  and that  for any $m,h$, because $\ell$ is nonnegative
 \begin{align*}
-    \PP_{\S\sim\D^\m}\Bigg[\forall\Q\in\M(\H),\   &\EE_{\h\sim\Q}\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB\\
-    &\hspace{-1cm}\le \frac{1}{\m}\!\LB\KL(\Q\|\P){+}\ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB}\RP\RB\Bigg] \ge 1{-}\delta.
+[M]_m(h) +  \langle M\rangle_m(h) & = \sum_{i=1}^m (\ell(h,\z_i) - \Risk(h))^2 + \mathbb{E}_{\z\sim \D}[ (\ell(h,\z) - \Risk(h))^2] \\
+& \leq  \sum_{i=1}^m \ell(h,\z_i)^2 + \Risk(h)^2 + \mathbb{E}_{\z\sim \D}[\ell(h,\z)^2] - \Risk(h)^2.\\
+\intertext{ Thus integrating over $h$ gives: }
+[M]_m(Q) +  \langle M\rangle_m(Q) & \leq \sum_{i=1}^m \mathbb{E}_{h\sim \Q} [\ell(h,\z_i)^2] + m\mathbb{E}_{h\sim \Q} [\mathrm{Quad}(h)].
 \end{align*}
-Since the distribution $\pi$ on $\H$ does not depend on the $\S'\sim\D^\m$, we can exchange the two expectations (with \textsc{Fubini}'s theorem), \ie, we have 
-\begin{align*}
-\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB} = \EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB}.
-\end{align*}
-Then, from \Cref{ap:pac-bayes:lemma:catoni-1}, we have
-\begin{align*}
-    \EE_{\S\sim\D^\m}e^{\m\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB} \le 1 \Longrightarrow  \ln\LP\frac{1}{\delta}\EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB}\RP \le \ln\frac{1}{\delta}.
-\end{align*}
-
-The function $\catF(x)$ is convex, since its second derivative is $\frac{\partial^2\catF}{\partial x^2}(x) {=} \frac{(e^\cat-1)^2}{(x-e^\cat(x-1))^2}{\ge} 0$.
-In this case, easily conclude that $\catF(p)-\cat q$ is jointly convex in $q$ and $p$.
-Hence, from \textsc{Jensen}'s inequality (\Cref{ap:tools:theorem:jensen}) we have for all $\Q\in\M(\H)$
-\begin{align*}
-\catF\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\RP-\cat\LB\EE_{\h\sim\Q}\RiskLoss_{\S}(\h)\RB \le \EE_{\h\sim\Q}\LB \catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\S}(\h) \RB.
-\end{align*}
-Hence, this gives the bound 
-\begin{align*}
-    \PP_{\S\sim\D^\m}\Bigg[\forall\Q\in\M(\H),\ \catF\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\RP&-\cat\LB\EE_{\h\sim\Q}\RiskLoss_{\S}(\h)\RB\\
-    &\le \frac{1}{\m}\!\LB\KL(\Q\|\P){+}\ln\frac{1}{\delta}\RB\Bigg] \ge 1{-}\delta,
-\end{align*}
-and by rearranging the terms we obtain the desired result.
+Then dividing by $m$ and applying the last inequality gives
+\begin{multline*}
+\mathbb{E}_{h\sim \Q} [\Risk(h)]  \leq  \mathbb{E}_{h\sim \Q} \left[\frac{1}{m}\sum_{i=1}^m\left(\ell(h,\z_i) + \frac{\lambda}{2} \ell(h,\z_i)^2\right)\right] \\
++ \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda m} + \frac{\lambda}{2}\mathbb{E}_{h\sim \Q} [\mathrm{Quad}(h)].
+\end{multline*}
+This concludes the proof.
 \end{proof}
 
-\section{Proof of \Cref{chap:pac-bayes:theorem:seeger}}
-\label{ap:pac-bayes:sec:proof-seeger}
 
-\seeger*
+
+
+
+
+\subsection{Proof of \cref{th: bandits_bound}}
+
 \begin{proof}
-We can apply~\Cref{chap:pac-bayes:theorem:general-germain} with  $\varphi(\h, \S)=\m\kl\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\|\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RP$, \ie, we have
+Let $(\lambda_m)_{i\geq 1}$ be a countable sequence of positive scalars.
+As precised earlier $M_m(a):= m\left(\hat{\Delta}_m(a)-\Delta(a)\right)$ is a martingale.
+We then apply \Cref{th: main_thm} with the uniform prior ($\forall a, P(a)= \frac{1}{K}$) and $\lambda= \lambda_m$  (depending possibly on $m$): with probability $1- \delta/2$, for any tuple $(m,\lambda_m)$ with $m\geq 1$, any posterior $\Q$,
 \begin{align*}
-    \PP_{\S\sim\D^\m}\Bigg[\forall\Q\in\M(\H),\   &\EE_{\h\sim\Q}\kl\!\LP\RiskLoss_{\D}(\h)\|\RiskLoss_{\dS}(\h)\RP\\
-    &\le \frac{1}{\m}\!\LB\KL(\Q\|\P){+}\ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\kl\LP\RiskLoss_{\D}(\h')\|\RiskLoss_{\dS'}(\h')\RP}\RP\RB\Bigg] \ge 1{-}\delta.
+\left|M_m\left(\Q\right)\right| \leq \frac{\operatorname{KL}\left(\Q, \P\right)+2 +\log (4/\delta)}{\lambda_m}+ \frac{\lambda_m}{2}\left( \hat{V}_m(\Q) + V_m(\Q) \right).
 \end{align*}
-Since the distribution $\pi$ on $\H$ does not depend on the $\S'\sim\D^\m$, we can exchange the two expectations (with \textsc{Fubini}'s theorem), \ie, we have 
+Notice that for any $\Q$, $\operatorname{KL}(\Q,\P)\leq \log(K)$ by concavity of the log.
+We now fix an horizon $M>0$, we then have in particular, with probability $1- \delta/2$: for any posterior $\Q$,
 \begin{align*}
-\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\kl\LP\RiskLoss_{\D}(\h')\|\RiskLoss_{\dS'}(\h')\RP} = \EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\kl\LP\RiskLoss_{\D}(\h')\|\RiskLoss_{\dS'}(\h')\RP}.
+\left|M_m\left(Q\right)\right| \leq \frac{\log(K)+2 \log (k+1)+\log (4/\delta)}{\lambda_k}+ \frac{\lambda_m}{2}\left( \hat{V}_m(\Q) + V_m(\Q) \right).
 \end{align*}
-Then, from \Cref{ap:pac-bayes:lemma:2-sqrt-m}, we have
-\begin{align*}
-    &\EE_{\S'\sim\D^\m}e^{\m\kl\LP\RiskLoss_{\D}(\h')\|\RiskLoss_{\dS'}(\h')\RP} \le 2\sqrt{\m}\\
-    \Longrightarrow & \ln\LP\frac{1}{\delta}\EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\kl\LP\RiskLoss_{\D}(\h')\|\RiskLoss_{\dS'}(\h')\RP}\RP \le \ln\frac{2\sqrt{\m}}{\delta}.
-\end{align*}
-Finally, thanks to the joint convexity of the KL divergence (\Cref{ap:pac-bayes:proposition:kl-convex}), $\kl(q\|p)$ is jointly convex in $q$ and $p$.
-Hence, we have from \textsc{Jensen}'s inequality (\Cref{ap:tools:theorem:jensen}), for all $\Q\in\M(\H)$
-\begin{align*}
-\kl\!\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\|\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RP \le \EE_{\h\sim\Q}\kl\!\LP\RiskLoss_{\D}(\h)\|\RiskLoss_{\dS}(\h)\RP.
-\end{align*}
-\end{proof}
-
-\section{Proof of \Cref{chap:pac-bayes:proposition:representation-KL}}
-\label{ap:pac-bayes:sec:proof-representation-KL}
-
-\representationKL*
-\begin{proof}
-Let $\Q'(\h)=\P(\h)\frac{e^{\varphi(\h,\S)}}{\EE_{\h'\sim\P}e^{\varphi(\h',\S)}}$, then, we develop the term $\KL(\Q\|\Q')$.
-We have
-\begin{align*}
-    \KL(\Q\|\Q') &= \EE_{\h\sim\Q}\ln\LP \frac{\Q(\h)}{\Q'(\h)}\RP\\
-    &= \EE_{\h\sim\Q}\ln\LP \frac{\Q(\h)}{\P(\h)e^{\varphi(\h,\S)}}\EE_{\h\sim\Q}e^{\varphi(\h,\S)}\RP\\
-    &= \EE_{\h\sim\Q}\ln\LP\frac{\Q(\h)}{\P(\h)}\RP - \EE_{\h\sim\P}\varphi(\h,\S) + \ln\LP\EE_{\h\sim\P}e^{\varphi(\h,\S)}\RP.
-\end{align*}
-Hence, by setting $\Q=\Q'$, we have $\KL(\Q\|\Q')=0$ which leads to the desired result by rearranging the terms.
-\end{proof}
-
-\section{Proof of \Cref{chap:pac-bayes:theorem:general-begin}}
-\label{ap:pac-bayes:sec:proof-general-begin}
-
-\generalbegin*
-\begin{proof}
-We start by developing $\frac{\lambda}{\lambda{-}1}
-   \ln \LB\EE_{\h{\sim}\Q}\varphi(\h,\S)\RB$, \ie, we have for all $\Q\in\M(\H)$
-\begin{align}
-\tfrac{\lambda}{\lambda{-}1} \ln \LB\EE_{\h{\sim}\Q}\varphi(\h,\S)\RB 
-&= \tfrac{\lambda}{\lambda{-}1} \ln\LB\EE_{\h\sim\Q}\frac{\Q(\h)}{\P(\h)}\frac{\P(\h)}{\Q(\h)}\varphi(\h, \S)\RB = \tfrac{\lambda}{\lambda{-}1} \ln\LB\EE_{\h\sim\P}\frac{\Q(\h)}{\P(\h)}\varphi(\h, \S)\RB\!.\label{chap:pac-bayes:eq:proof-general-begin-1}
-\end{align}
-We apply \textsc{Hölder}'s inequality (\Cref{ap:tools:theorem:holder}) to have 
-\begin{align*}
-    \EE_{\h\sim\P}\frac{\Q(\h)}{\P(\h)}\varphi(\h, \S) \le \LB\EE_{\h\sim\P}\LB \frac{\Q(\h)}{\P(\h)}\RB^\lambda\RB^\frac{1}{\lambda} \LB\EE_{\h\sim\P}\varphi(\h, \S)^{\frac{\lambda}{\lambda-1}}\RB^{\frac{\lambda-1}{\lambda}}.
-\end{align*}
-By taking the logarithm (since both sides are positive) and multiplying by $\frac{\lambda}{\lambda-1}$ both sides of the inequality, we have
-\begin{align}
-    \frac{\lambda}{\lambda{-}1}\ln\LP\EE_{\h\sim\P}\frac{\Q(\h)}{\P(\h)}\varphi(\h, \S)\RP &\le \frac{1}{\lambda{-}1}\ln\LP\EE_{\h\sim\P}\LB \frac{\Q(\h)}{\P(\h)}\RB^\lambda\RP +  \ln\LP\EE_{\h'\sim\P}\varphi(\h', \S)^{\frac{\lambda}{\lambda-1}}\RP\nonumber\\
-    &= \Renyi_{\lambda}(\Q\|\P) + \ln\LP\EE_{\h'\sim\P}\varphi(\h', \S)^{\frac{\lambda}{\lambda-1}}\RP\label{chap:pac-bayes:eq:proof-general-begin-2}.
-\end{align}
-
-Since the function $\varphi:\H\times(\X\times\Y)^\m \to \mathbb{R}^{+}_{*}$ is positive and $\frac{\lambda}{\lambda-1}>0$, we can deduce that $\EE_{\h'\sim\P}\varphi(\h', \S)^{\frac{\lambda}{\lambda{-}1}}>0$ for all $\S\in(\X\times\Y)^\m$.
-Then, we can apply \textsc{Markov}'s inequality (\Cref{ap:tools:theorem:first-markov}), we have
-\begin{align}
-    &\PP_{\S\sim\D^\m}\LB\EE_{\h'\sim\P}\varphi(\h', \S)^{\frac{\lambda}{\lambda-1}} \le \frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}\varphi(\h', \S')^{\frac{\lambda}{\lambda-1}}\RB\ge 1-\delta\nonumber\\
-    \iff &\PP_{\S\sim\D^\m}\LB\ln\LP\EE_{\h'\sim\P}\varphi(\h', \S)^{\frac{\lambda}{\lambda-1}}\RP \le \ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}\varphi(\h', \S')^{\frac{\lambda}{\lambda-1}}\RP\RB\ge 1-\delta\nonumber\\
-    \iff &\PP_{\S\sim\D^\m}\Bigg[\forall\Q\in\M(\H),\  \Renyi_{\lambda}(\Q\|\P)+\ln\LP\EE_{\h'\sim\P'}\varphi(\h', \S)^{\frac{\lambda}{\lambda-1}}\RP\nonumber\\
-    &\hspace{3cm}\le \Renyi_{\lambda}(\Q\|\P)+\ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}\varphi(\h', \S')^{\frac{\lambda}{\lambda-1}}\RP\Bigg]\ge 1-\delta\label{chap:pac-bayes:eq:proof-general-begin-3}
-\end{align}
-By combining \Cref{chap:pac-bayes:eq:proof-general-begin-1,chap:pac-bayes:eq:proof-general-begin-2,chap:pac-bayes:eq:proof-general-begin-3}, we can deduce the claimed result.
-\end{proof}
-
-\section{About the Bounds Derived From \Cref{chap:pac-bayes:theorem:general-begin}}
-\label{ap:pac-bayes:sec:corollary-begin}
-
-In this section, we provide a \citeauthor{Seeger2002}, \citeauthor{McAllester2003} and \citeauthor{Catoni2007}-like PAC-Bayesian generalization bound.
-
-\subsection{\citeauthor{McAllester2003}-like Bound}
-\label{ap:pac-bayes:sec:proof-mcallester-begin}
-
-Based on \Cref{ap:pac-bayes:corollary:seeger-begin}, we can obtain the following \citeauthor{McAllester2003}-like bound.
-
-\begin{restatable}{corollary}{corollarymcallesterbegin}
-For any distribution $\D$ on $\X\times\Y$, for any hypothesis $\H$, for any prior distribution $\P\in\M^{*}(\H)$, for any loss $\loss: \H{\times}(\X\times\Y)^\m \to [0, 1]$, for any $\lambda>1$, for any $\delta\in(0, 1]$, we have
-\begin{align*}
-    \PP_{\S\sim\D^\m}\LB \forall\Q\in\M(\H), \LN\EE_{\h\sim\Q}\RiskLoss_{\D}(\h){-}\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RN \le \sqrt{\frac{1}{2\m}\!\LB\Renyi_{\lambda}(\Q\|\P){+}\ln\tfrac{2\sqrt{\m}}{\delta}\RB}\RB \ge 1{-}\delta.
-\end{align*}
-\label{ap:pac-bayes:corollary:mcallester-begin}
-\end{restatable}
-\begin{proof}
-It is a direct consequence of \textsc{Pinsker}'s inequality (\Cref{ap:pac-bayes:theorem:pinsker}), \ie, we have
-\begin{align*}
-    2\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)-\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RP^2 \le \kl\!\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\|\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RP,
-\end{align*}
-and from \Cref{ap:pac-bayes:corollary:seeger-begin} by rearranging the terms.
-\end{proof}
-
-\subsection{\citeauthor{Seeger2002}-like Bound}
-\label{ap:pac-bayes:sec:proof-seeger-begin}
-
-The \citeauthor{Seeger2002}-like obtained from \Cref{chap:pac-bayes:theorem:general-begin} is the following.
-
-\begin{restatable}{corollary}{corollaryseegerbegin}
-For any distribution $\D$ on $\X\times\Y$, for any hypothesis $\H$, for any prior distribution $\P\in\M^{*}(\H)$, for any loss $\loss: \H{\times}(\X\times\Y)^\m \to [0, 1]$, for any $\lambda>1$, for any $\delta\in(0, 1]$, we have
-\begin{align*}
-    \PP_{\S\sim\D^\m}\LB\forall\Q\in\M(\H),\   \kl\!\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\|\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RP \le \frac{1}{\m}\!\LB\Renyi_{\lambda}(\Q\|\P){+}\ln\tfrac{2\sqrt{\m}}{\delta}\RB\RB \ge 1{-}\delta.    
-\end{align*}
-\label{ap:pac-bayes:corollary:seeger-begin}
-\end{restatable}
-\begin{proof}
-We apply~\Cref{chap:pac-bayes:theorem:general-begin} with   $\varphi(\h, \S)=\frac{\lambda{-}1}{\lambda}\m\kl\LB\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\|\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RB$, \ie, we have
-\begin{align*}
-    \PP_{\S\sim\D^\m}\Bigg[\forall\Q\in\M(\H),\   &\frac{\lambda}{\lambda{-}1}\ln \LB\EE_{\h{\sim}\Q}e^{\m\frac{\lambda{-}1}{\lambda}\kl\LP\RiskLoss_{\D}(\h)\|\RiskLoss_{\dS}(\h)\RP}\RB\\
-    &\hspace{-0.5cm}\le \Renyi_{\lambda}(\Q\|\P){+}\ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\kl\LP\RiskLoss_{\D}(\h')\|\RiskLoss_{\dS'}(\h')\RP}\RP\Bigg] \ge 1{-}\delta.
-\end{align*}
-Since the distribution $\pi$ on $\H$ does not depend on the $\S'\sim\D^\m$, we can exchange the two expectations (with \textsc{Fubini}'s theorem), \ie, we have 
-\begin{align*}
-\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\kl\LP\RiskLoss_{\D}(\h')\|\RiskLoss_{\dS'}(\h')\RP} = \EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\kl\LP\RiskLoss_{\D}(\h')\|\RiskLoss_{\dS'}(\h')\RP}.
-\end{align*}
-Then, from \Cref{ap:pac-bayes:lemma:2-sqrt-m}, we have
-\begin{align*}
-    &\EE_{\S\sim\D^\m}e^{\m\kl\LP\RiskLoss_{\D}(\h)\|\RiskLoss_{\dS}(\h)\RP} \le 2\sqrt{\m}\\
-    \Longrightarrow & \ln\LP\frac{1}{\delta}\EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\kl\LP\RiskLoss_{\D}(\h')\|\RiskLoss_{\dS'}(\h')\RP}\RP \le \ln\frac{2\sqrt{\m}}{\delta}.
-\end{align*}
-
-Thanks to the joint convexity of the KL divergence (\Cref{ap:pac-bayes:proposition:kl-convex}), the function $q,p \mapsto \exp\LP \frac{\lambda-1}{\lambda}\m\kl(q\|p)\RP$ is jointly convex in $q$ and $p$ by composition (see, \eg, \citet{BoydVandenberghe2014}).
-Hence, we have from \textsc{Jensen}'s inequality (\Cref{ap:tools:theorem:jensen}), for all $\Q\in\M(\H)$
-\begin{align*}
-&e^{\m\frac{\lambda{-}1}{\lambda}\kl(\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\|\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h))} \le \EE_{\h\sim\Q}e^{\m\frac{\lambda{-}1}{\lambda}\kl\LP\RiskLoss_{\D}(\h)\|\RiskLoss_{\dS}(\h)\RP}\\
-\iff &\m\kl\!\LB\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\|\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RB \le \frac{\lambda}{\lambda{-}1}\ln\LP \EE_{\h\sim\Q}e^{\m\frac{\lambda{-}1}{\lambda}\kl\LP\RiskLoss_{\D}(\h)\|\RiskLoss_{\dS}(\h)\RP}\RP\!.
-\end{align*}
-Finally, by rearranging the terms, we have the stated result.
-\end{proof}
-
-\subsection{\citeauthor{Catoni2007}-like Bound}
-
-The derivation of a \citet{Catoni2007}-like generalization bound based on \Cref{chap:pac-bayes:theorem:general-begin} is the following.
-
-\begin{restatable}{corollary}{corollarycatonibegin}
-For any distribution $\D$ on $\X\times\Y$, for any hypothesis $\H$, for any prior distribution $\P\in\M^{*}(\H)$, for any loss $\loss: \H{\times}(\X\times\Y)^\m \to [0, 1]$, for any $\cat>0$, for any $\lambda>1$, for any $\delta\in(0, 1]$, we have
-\begin{align*}
-    \PP_{\S\sim\D^\m}\Bigg[ \forall\Q\in\M(\H), 
-    -\ln\!\LP 1{-}\LB1{-}e^{{-}\cat}\RB\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\RP&-\cat\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\nonumber\\
-    &\hspace{-2cm}\le \frac{1}{\m}\LB\Renyi_{\lambda}(\Q\|\P){+}\ln\frac{1}{\delta}\RB\Bigg] \ge 1-\delta.
-\end{align*}
-\label{ap:pac-bayes:corollary:catoni-begin}
-\end{restatable}
-\begin{proof}
-We apply \Cref{chap:pac-bayes:theorem:general-begin} with $\varphi(\h,\S) = \m\frac{\lambda{-}1}{\lambda}\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB$, where $\catF(\RiskLoss_{\D}(\h))\defeq-\ln\!\LP 1-\RiskLoss_{\D}(\h)\!\LB1-e^{-\cat}\RB\RP$.
-We have
-\begin{align*}
-    \PP_{\S\sim\D^\m}\Bigg[\forall\Q\in\M(\H),\   
-    &\frac{\lambda}{\lambda{-}1}\ln \LB\EE_{\h{\sim}\Q}e^{\m\frac{\lambda-1}{\lambda}\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)}\RB\\
-    &\hspace{-1cm}\le \Renyi_{\lambda}(\Q\|\P){+}\ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB}\RP\Bigg] \ge 1{-}\delta.
-\end{align*}
-Since the distribution $\pi$ on $\H$ does not depend on the $\S'\sim\D^\m$, we can exchange the two expectations (with \textsc{Fubini}'s theorem), \ie, we have 
-\begin{align*}
-\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB} = \EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB}.
-\end{align*}
-Then, from \Cref{ap:pac-bayes:lemma:catoni-1}, we have
-\begin{align*}
-    \EE_{\S\sim\D^\m}e^{\m\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB} \le 1 \Longrightarrow  \ln\LP\frac{1}{\delta}\EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB}\RP \le \ln\frac{1}{\delta}.
-\end{align*}
-
-The function $\catF(x)$ is convex, since its second derivative is $\frac{\partial^2\catF}{\partial x^2}(x) {=} \frac{(e^\cat-1)^2}{(x-e^\cat(x-1))^2}{\ge} 0$.
-Hence, we conclude that $\catF(p)-\cat q$ is jointly convex in $q$ and $p$.
-Moreover, we can deduce that the function $q,p \mapsto \exp\LP \m\frac{\lambda-1}{\lambda}\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB\RP$ is jointly convex in $q$ and $p$ by composition (see, \eg, \citet{BoydVandenberghe2014}).
-Hence, from \textsc{Jensen}'s inequality (\Cref{ap:tools:theorem:jensen}) we have for all $\Q\in\M(\H)$
-\begin{align*}
-&e^{\m\frac{\lambda-1}{\lambda}\LB\catF(\EE_{\h\sim\Q}\RiskLoss_{\D}(\h))-\cat\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RB} \le \EE_{\h\sim\Q}e^{\m\frac{\lambda-1}{\lambda}\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB}\\
-\iff &\m\LB\catF\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\RP-\cat\EE_{\h\sim\Q}\RiskLoss_{\dS}(\h)\RB \le \frac{\lambda}{\lambda{-}1}\ln\LP\EE_{\h\sim\Q}e^{\m\frac{\lambda-1}{\lambda}\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB}\RP\!.
-\end{align*}
-Finally, by rearranging the terms, we have the stated result.
-\end{proof}
-
-\section{Proof of \Cref{chap:pac-bayes:theorem:general-disintegrated-rivasplata}}
-\label{ap:pac-bayes:sec:proof-general-disintegrated-rivasplata}
-
-\generaldisintegratedrivasplata*
-\begin{proof}
-Note that $\exp\LB\varphi(\h,\S)-\ln\frac{\AQ(\h)}{\P(\h)}\RB$ is a non-negative random variable.
-Thus, we can apply \textsc{Markov}'s inequality (\Cref{ap:tools:theorem:first-markov}) to obtain 
-\begin{align*}
-    \PP_{\S\sim\D^\m, \h\sim\AQ} &\Bigg[\exp\LP\varphi(\h,\S)-\ln\frac{\AQ(\h)}{\P(\h)}\RP\\
-    &\le \frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\AQ}\exp\LP\varphi(\h',\S')-\ln\frac{\AQp(\h')}{\P(\h')}\RP \Bigg] \ge 1-\delta.
-\end{align*}
-Hence, by rearranging the terms, we have
-\begin{align*}
-    &\PP_{\S\sim\D^\m, \h\sim\AQ} \!\Bigg[\!\exp\!\LP\varphi(\h,\S){-}\ln\frac{\AQ(\h)}{\P(\h)}\RP \le \frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\AQ}\frac{\P(\h')}{\AQp(\h')}e^{\varphi(\h',\S')} \Bigg]{\ge}1{-}\delta\\
-    \iff &\PP_{\S\sim\D^\m, \h\sim\AQ} \!\Bigg[\!\exp\!\LP\varphi(\h,\S){-}\ln\frac{\AQ(\h)}{\P(\h)}\RP \le \frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\varphi(\h',\S')} \Bigg] \ge 1{-}\delta.
-\end{align*}
-Since both sides of the inequality are strictly positive, we can apply the logarithm, \ie, we have
-\begin{align*}
-    \PP_{\S\sim\D^\m, \h\sim\AQ}\LB \varphi(\h,\S)\le \ln\frac{\AQ(\h)}{\P(\h)} +\ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\varphi(\h',\S')}\RP \RB \ge 1-\delta,
-\end{align*}
-which is the desired result.
-\end{proof}
-
-\section{Proof of \Cref{chap:pac-bayes:theorem:disintegrated-catoni}}
-\label{ap:pac-bayes:sec:proof-disintegrated-catoni}
-
-\disintegratedcatoni*
-\begin{proof}
-We apply \Cref{chap:pac-bayes:theorem:general-disintegrated-rivasplata} with $\varphi(\h,\S) = \m\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB$, where $\catF(\RiskLoss_{\D}(\h))\defeq-\ln\!\LP 1-\RiskLoss_{\D}(\h)\!\LB1-e^{-\cat}\RB\RP$.
-We have
-\begin{align*}
-    \PP_{\S\sim\D^\m}\Bigg[\forall\Q\in\M(\H),\   &\EE_{\h\sim\Q}\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB\\
-    &\hspace{-1cm}\le \frac{1}{\m}\!\LB\ln\frac{\AQ(\h)}{\P(\h)}{+}\ln\LP\frac{1}{\delta}\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB}\RP\RB\Bigg] \ge 1{-}\delta.
-\end{align*}
-Since the distribution $\pi$ on $\H$ does not depend on the $\S'\sim\D^\m$, we can exchange the two expectations (with \textsc{Fubini}'s theorem), \ie, we have 
-\begin{align*}
-\EE_{\S'\sim\D^\m}\EE_{\h'\sim\P}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB} = \EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB}.
-\end{align*}
-Then, from \Cref{ap:pac-bayes:lemma:catoni-1}, we have
-\begin{align*}
-    \EE_{\S\sim\D^\m}e^{\m\LB\catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB} \le 1 \Longrightarrow  \ln\LP\frac{1}{\delta}\EE_{\h'\sim\P}\EE_{\S'\sim\D^\m}e^{\m\LB\catF(\RiskLoss_{\D}(\h'))-\cat\RiskLoss_{\dS'}(\h')\RB}\RP \le \ln\frac{1}{\delta}.
-\end{align*}
-
-The function $\catF(x)$ is convex, since its second derivative is $\frac{\partial^2\catF}{\partial x^2}(x) {=} \frac{(e^\cat-1)^2}{(x-e^\cat(x-1))^2}{\ge} 0$.
-In this case, easily conclude that $\catF(p)-\cat q$ is jointly convex in $q$ and $p$.
-Hence, from \textsc{Jensen}'s inequality (\Cref{ap:tools:theorem:jensen}) we have for all $\Q\in\M(\H)$
-\begin{align*}
-\catF\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\RP-\cat\LB\EE_{\h\sim\Q}\RiskLoss_{\S}(\h)\RB \le \EE_{\h\sim\Q}\LB \catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\S}(\h) \RB.
-\end{align*}
-Hence, this gives the bound 
-\begin{align*}
-    \PP_{\S\sim\D^\m}\Bigg[\forall\Q\in\M(\H),\ \catF\LP\EE_{\h\sim\Q}\RiskLoss_{\D}(\h)\RP&-\cat\LB\EE_{\h\sim\Q}\RiskLoss_{\S}(\h)\RB\\
-    &\le \frac{1}{\m}\!\LB\ln\frac{\AQ(\h)}{\P(\h)}{+}\ln\frac{1}{\delta}\RB\Bigg] \ge 1{-}\delta,
-\end{align*}
-and by rearranging the terms we obtain the desired result.
-\end{proof}
-
-\section{Proof of \Cref{chap:pac-bayes:theorem:disintegrated-blanchard}}
-\label{ap:pac-bayes:sec:proof-disintegrated-blanchard}
-
-The proof of \Cref{chap:pac-bayes:theorem:disintegrated-blanchard} relies on another theorem from \citet[Theorem~2.4]{BlanchardFleuret2007} called \textsc{Occam}'s Hammer.
-
-\begin{lemma}[\textsc{Occam}'s Hammer] \label{ap:pac-bayes:lemma:hammer}
-Given a measurable function measurable function $\varphi: \H\times(\X\times\Y)^\m\to \Rbb$, assume that for any distribution $\D$ on $\X\times\Y$, for any hypothesis set $\H$, for any distribution $\P\in\M^{*}(\H)$ on $\H$, for any $\delta\in(0, 1]$, we have
-\begin{align*}
-    \PP_{\S\sim\D^\m,\h\sim\P}\LB \varphi(\h,\S) \ge \Phi(\delta) \RB \le \delta,
-\end{align*}
-\looseness=-1
-where $\Phi: (0,1] \to \Rbb$ is a decreasing function.
-
-It implies that for any distribution $\D$ on $\X\times\Y$, for any hypothesis set $\H$, for any distribution $\P$ on $\H$,  for any $\delta\in(0, 1]$, we have
-\begin{align*}
-    \PP_{\S\sim\D^\m,\h\sim\AQ}\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP\Theta(\h)^{-1}\RP\RP \RB \le \delta,
-\end{align*}
-where $\Theta(\h)\triangleq\frac{\AQ(\h)}{\P(\h)}$ and $\Phi'(\delta) \triangleq\Phi\Big(\!\max\!\Big(\delta, 1\Big)\Big)$ and $f: \Rbb^+ \to \Rbb^+_{*}$ a measurable increasing function \st 
-\begin{align*}
-\int_{y>0}y^{-2}f\LP y\RP dy\le 1.
-\end{align*}
-\end{lemma}
-\begin{proof}
-The proof consists in upper-bounding the probability
-\begin{align*}
-\PP_{\S\sim\D^\m,\h\sim\AQ}\LB \varphi(\h,\S) \ge \Big(\delta f\LP\Theta(\h)^{-1}\RP\Big) \RB.
-\end{align*}
-We rewrite this term as 
-\begin{align*}
-    &\hspace{-2cm}\PP_{\S\sim\D^\m,\h\sim\AQ}\LB \varphi(\h,\S) \ge \Phi'\Big(\delta f\LP\Theta(\h)^{-1}\RP\Big) \RB\\
-    &= \EE_{\S\sim\D^\m}\EE_{\h\sim\AQ} \indic\LB \varphi(\h,\S) \ge \Phi'\Big(\delta f\LP\Theta(\h)^{-1}\RP\Big) \RB\\
-    &= \EE_{\S\sim\D^\m}\EE_{\h\sim\AQ}\frac{\AQ(\h)}{\P(\h)}\frac{\P(\h)}{\AQ(\h)} \indic\LB \varphi(\h,\S) \ge \Phi'\Big(\delta f\LP\Theta(\h)^{-1}\RP\Big) \RB\\
-    &= \EE_{\S\sim\D^\m}\EE_{\h\sim\P}\frac{\AQ(\h)}{\P(\h)} \indic\LB \varphi(\h,\S) \ge \Phi'\Big(\delta f\LP\Theta(\h)^{-1}\RP\Big) \RB\\
-    &= \EE_{\S\sim\D^\m}\EE_{\h\sim\P}\Theta(\h) \indic\LB \varphi(\h,\S) \ge \Phi'\Big(\delta f\LP\Theta(\h)^{-1}\RP\Big) \RB.
-\end{align*}
-We can actually express the term $\Theta(\h)$ in a form of integral. 
-Indeed, we have
-\begin{align*}
-    \Theta(\h) = \int_{\Theta(\h)^{-1}}^{+\infty}y^{-2}dy = \int_{y>0}y^{-2}\indic\LB y\ge \Theta(\h)^{-1} \RB dy.
-\end{align*}
-Then, thanks to \textsc{Fubini}'s theorem, we can rewrite the probability as
-\begin{align*}
-    &\hspace{-0.3cm}\EE_{\S\sim\D^\m}\EE_{\h\sim\P}\Theta(\h) \indic\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP\Theta(\h)^{-1}\RP\RP \RB\\
-    &= \EE_{\S\sim\D^\m}\EE_{\h\sim\P} \LB \int_{y>0}y^{-2}\indic\LB y\ge \Theta(\h)^{-1} \RB dy \RB \indic\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP\Theta(\h)^{-1}\RP\RP \RB\\
-    &= \int_{y>0}y^{-2}\EE_{\S\sim\D^\m}\EE_{\h\sim\P}\indic\LB y\ge \Theta(\h)^{-1}\RB \indic\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP\Theta(\h)^{-1}\RP\RP \RB dy.
-\end{align*}
-
-Since $f()$ is increasing, \ie, for all $y>0$ \st $\Theta(\h)^{-1} < y$, we have $f(\Theta(\h)^{-1}) \le f(y)$.
-Moreover, since $\Phi()$ is decreasing, we have $\Phi'(f(y)) \le \Phi'(f(\Theta(\h)^{-1}))$.
-This implies that 
-\begin{align*}
-    \indic\LB y\ge \Theta(\h)^{-1}\RB \indic\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP\Theta(\h)^{-1}\RP\RP \RB \le \indic\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP y\RP\RP \RB.
-\end{align*}
-Based on this inequality, we have
-\begin{align*}
-    &\hspace{-1cm}\int_{y>0}y^{-2}\EE_{\S\sim\D^\m}\EE_{\h\sim\P}\indic\LB y\ge \Theta(\h)^{-1}\RB \indic\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP\Theta(\h)^{-1}\RP\RP \RB dy\\
-    &\le \int_{y>0}y^{-2}\EE_{\S\sim\D^\m}\EE_{\h\sim\P}\indic\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP y\RP\RP \RB dy\\
-    &= \int_{y>0}y^{-2}\PP_{\S\sim\D^\m,\h\sim\P}\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP y\RP\RP \RB dy.
-\end{align*}
-By assumption, we have $\int_{y>0}y^{-2}f\LP y\RP dy\le 1$ and $\PP_{\S\sim\D^\m,\h\sim\P}\LB \varphi(\h,\S){\ge}\Phi(\delta) \RB \le \delta$, which leads to
-\begin{align*}
-    \int_{y>0}y^{-2}\PP_{\S\sim\D^\m,\h\sim\P}\LB \varphi(\h,\S) \ge \Phi'\LP\delta f\LP y\RP\RP \RB dy \le \int_{y>0}y^{-2}\delta f\LP y\RP dy \le \delta.
-\end{align*}
-\end{proof}
-
-This theorem is further used in addition to the two following lemmas.
-We first one known as \citeauthor{Chernoff1952}'s bound is originally due to \citet{Chernoff1952} but the proof is from \citet[Lemma~3.6]{Langford2005}.
-
-\begin{lemma}[\citeauthor{Chernoff1952}'s bound]\label{ap:pac-bayes:lemma:chenoff}
-For any 
-\begin{align*}
-    \PP_{\Xbf\sim\Bernoulli(p)^\m}\LB \sum_{i=1}^{\m}X_i \le k \RB \le e^{-\m\kl_{+}\LP\frac{k}{\m}\|p\RP},
-\end{align*}
-where $\kl_{+}\!\LP\frac{k}{\m}\|p\RP=\kl(\frac{k}{\m}\|p)$ if $\frac{k}{\m} < p$ and $0$ otherwise.
-\end{lemma}
-\begin{proof}
-First remark that we have
-\begin{align*}
-    \PP_{\Xbf\sim\Bernoulli(p)^\m}\LB \sum_{i=1}^{\m}X_i \le k \RB = \PP_{\Xbf \sim\Bernoulli(p)^\m}\LB e^{-\m\lambda\frac{1}{\m}\sum_{i=1}^{\m}X_i}\ge e^{-\m\lambda\frac{k}{\m}}\RB.
-\end{align*}
-Then, from \textsc{Markov}'s inequality (\Cref{ap:tools:theorem:first-markov}), we have
-\begin{align*}
-    \PP_{\Xbf \sim\Bernoulli(p)^\m}\LB e^{-\m\lambda\frac{1}{\m}\sum_{i=1}^{\m}X_i}\ge e^{-\m\lambda\frac{k}{\m}}\RB \le \frac{\EE_{\Xbf \sim\Bernoulli(p)^\m} e^{-\lambda \sum_{i=1}^{\m} X_i}}{e^{-\lambda k}}.
-\end{align*}
-Then, using the fact that $X_1,\dots,X_\m$ are \iid and from the expression of the moment generating function of the Bernoulli distribution $\Bernoulli(p)$, we have
-\begin{align*}
-    \frac{\EE_{\Xbf \sim\Bernoulli(p)^\m} e^{-\lambda \sum_{i=1}^{\m} X_i}}{e^{-\lambda k}} = e^{\lambda k}\LB\EE_{\Xbf \sim\Bernoulli(p)} e^{-\lambda X}\RB^\m = e^{\lambda k}\LB pe^{\lambda} + (1{-}p)\RB^\m.
-\end{align*}
-Actually, we can find the optimal value $\lambda^*$, which is 
-\begin{align*}
-    \lambda^* = \ln\LB p\LP 1-\frac{k}{\m}\RP\RB - \ln\LB \frac{k}{\m}\LP 1-p\RP \RB,
-\end{align*}
-for all $p>\frac{k}{\m}$.
-Finally, setting $\lambda=\lambda^*$, we obtain
-\begin{align*}
-    e^{\lambda k}\LB pe^{\lambda} + (1{-}p)\RB^\m = e^{-\m\kl_{+}\LP\frac{k}{\m}\|p\RP}.
-\end{align*}
-\end{proof}
-
-\citeauthor{Chernoff1952}'s bound is actually used to prove the test set bound of \citet[Theorem~3.3~and~Corollary~3.7]{Langford2005}.
-We prove, with more details, his theorem in the following lemma.
-
-\begin{lemma} For any distribution $\D$ on $\X\times\Y$, for any hypothesis set $\H$, for any hypothesis $h\in\H$, for any loss $\loss: \H\times(\X\times\Y)\to \{0,1\}$, for any $\delta\in(0, 1]$, we have
-\begin{align*}
-\PP_{\S\sim\D^\m}\LB \kl_{+}(\RiskLoss_{\dS}(\h)\|\RiskLoss_{\D}(\h)) \ge \frac{\ln\frac{1}{\delta}}{\m} \RB \le \delta.
-\end{align*}
-\label{ap:pac-bayes:lemma:kl-langford}
-\end{lemma}
-\begin{proof}
-\textbf{Step 1.} First of all, we prove that 
-\begin{align}
-\PP_{Y_1,\dots,Y_\m \sim \Bernoulli(p)^\m}\LB \PP_{X_1,\dots,X_\m \sim \Bernoulli(p)^\m}\LB\sum_{i=1}^{\m}X_i \le \sum_{i=1}^{\m}Y_i\RB \le \delta \RB \le \delta.\label{ap:pac-bayes:eq:proof-kl-langford-1}
-\end{align}
-To do so, let $k^*=\max\LC k\in\{0,\dots, \m\} \;\middle|\; \PP_{X_1,\dots,X_\m \sim \Bernoulli(p)^\m}\LB\sum_{i=1}^{\m}X_i \le k\RB \le \delta \RC$. 
-Then, we have
-\begingroup
-\allowdisplaybreaks
-\begin{align*}
-    &\PP_{Y_1,\dots,Y_\m \sim \Bernoulli(p)^\m}\LB \PP_{X_1,\dots,X_\m \sim \Bernoulli(p)^\m}\LB\sum_{i=1}^{\m}X_i \le \sum_{i=1}^{\m}Y_i\RB \le \delta \RB\\
-    &= \EE_{Y_1,\dots,Y_\m \sim \Bernoulli(p)^\m}\indic\LB \PP_{X_1,\dots,X_\m \sim \Bernoulli(p)^\m}\LB\sum_{i=1}^{\m}X_i \le \sum_{i=1}^{\m}Y_i\RB \le \delta \RB\\
-    &= \sum_{k=0}^{\m} \PP_{X_1,\dots,X_\m \sim \Bernoulli(p)^\m}\LB \sum_{i=1}^{\m}X_i = k\RB\cdot\indic\LB \PP_{X_1,\dots,X_\m \sim \Bernoulli(p)^\m}\LB\sum_{i=1}^{\m}X_i \le \sum_{i=1}^{\m}Y_i\RB \le \delta \RB\\
-    &= \sum_{k=0}^{k^*} \PP_{X_1,\dots,X_\m \sim \Bernoulli(p)^\m}\LB \sum_{i=1}^{\m}X_i = k\RB\\
-    &= \PP_{X_1,\dots,X_\m \sim \Bernoulli(p)^\m}\LB \sum_{i=1}^{\m}X_i \le k^*\RB\\
-    &\le \delta.
-\end{align*}
-\endgroup
-
-\textbf{Step 2.} From \Cref{ap:pac-bayes:eq:proof-kl-langford-1}, we can deduce that
-\begin{align*}
- &\PP_{\RiskLoss_{\Scal}(\h)\sim\Bernoulli(\RiskLoss_{\D}(\h))^\m}\LB \PP_{\Xbf\sim\Bernoulli(\RiskLoss_{\D}(\h))^\m}\LB \frac{1}{\m}\sum_{i=1}^{\m}X_i \le \RiskLoss_{\Scal}(\h) \RB \le \delta \RB \le \delta,
- \end{align*}
-where $\RiskLoss_{\Scal}(\h)\sim\Bernoulli(\RiskLoss_{\D}(\h))^\m$ is a slight abuse of notations since $\m\RiskLoss_{\Scal}(\h)$ is the sum of the successes.
-From Chernoff's inequality (\Cref{ap:pac-bayes:lemma:chenoff}), we can deduce that 
-\begin{align*}
-    \PP_{\S\sim\D^\m}\Big[ \exp\!\LP-\m\kl_{+}\LB\RiskLoss_{\dS}(\h)\|\RiskLoss_{\D}(\h)\RB\RP \le \delta \Big] \le \delta.
-\end{align*}
-Finally, by rearranging the terms, we obtain the desired result.
-\end{proof}
-
-Finally, we are able to prove \Cref{ap:pac-bayes:lemma:hammer} using \Cref{ap:pac-bayes:lemma:hammer,ap:pac-bayes:lemma:chenoff}.
-
-\disintegratedblanchard*
-\begin{proof}
-The proof consist of applying \textsc{Occam}'s Hammer (\Cref{ap:pac-bayes:lemma:hammer}).
-To do so, given $\blan>1$, let $f: \R^{+} \to \R^{+}_{*}$ the function defined as
-\begin{align*}
-    f(y) \defeq \frac{1}{\blan{+}1}\min\LP y^{1+\frac{1}{\blan}}, 1\RP
-\end{align*}
-Indeed, $f()$ is increasing and we have
-\begin{align*}
-\int_{y>0}y^{-2}f\LP y\RP dy &= \int_{0}^{1}y^{-2}f\LP y\RP dy + \int_{1}^{+\infty}y^{-2}f\LP y\RP dy\\
-&= \frac{1}{\blan+1}\LB \int_{0}^{1}y^{-2}\cdot y^{1+\frac{1}{\blan}} dy + \int_{1}^{+\infty} y^{-2}dy \RB\\
-&= \frac{1}{\blan+1}\LB \int_{0}^{1}y^{-2}\cdot y^{1+\frac{1}{\blan}} dy + 1 \RB\\
-&= \frac{1}{\blan+1}\LB \int_{0}^{1} y^{\frac{1}{\blan}-1} dy + 1 \RB\\
-&= \frac{1}{\blan+1}\LB \blan\cdot\LB1^{\frac{1}{\blan}}-0^{\frac{1}{\blan}}\RB + 1 \RB\\
-&= 1.
-\end{align*}
-Moreover, note that with \Cref{ap:pac-bayes:lemma:kl-langford}, we have $\varphi(\h,\S)=\kl_{+}(\RiskLoss_{\dS}(\h)\|\RiskLoss_{\D}(\h))$ and $\Phi(\delta) = \frac{\ln\frac{1}{\delta}}{\m}$.
-Hence, we apply \textsc{Occam}'s Hammer (\Cref{ap:pac-bayes:lemma:hammer}) to obtain
-    \begin{align*}
-    \PP_{\S\sim\D^\m,\h\sim\AQ}\LB \varphi(\h,\S) \le \Phi'\LP\delta f\LP\Theta(\h)^{-1}\RP\RP \RB \ge 1-\delta,
-\end{align*}
-To obtain the final bound, we upper-bound the term $\Phi'(\delta f(\Theta(\h)^{-1}))$, \ie, we have 
-\begingroup
-\allowdisplaybreaks
-\begin{align*}
-    \Phi'(\delta f(\Theta(\h)^{-1})) &= -\frac{1}{\m}\ln\LP \min(\delta f(\Theta(\h)^{-1}), 1)\RP\\
-    &= \frac{1}{\m}\max\LP\ln\LP\frac{1}{\delta f(\Theta(\h)^{-1})}\RP, 0\RP\\
-    &\le \frac{1}{\m}\ln\frac{1}{\delta}+\frac{1}{\m}\max\LP -\ln\LP f(\Theta(\h)^{-1})\RP, 0\RP\\
-    &= \frac{1}{\m}\ln\frac{1}{\delta}+\frac{1}{\m}\max\LP -\ln\LP \frac{1}{\blan+1}\min(\Theta(\h)^{-(1+\frac{1}{\blan})}, 1)\RP, 0\RP\\
-    &\le \frac{1}{\m}\ln\frac{\blan+1}{\delta}+\frac{1}{\m}\max\LP -\ln\LP \min(\Theta(\h)^{-(1+\frac{1}{\blan})}, 1)\RP, 0\RP\\
-    &= \frac{1}{\m}\ln\frac{\blan+1}{\delta}+\frac{1}{\m}\ln_{+}\LP\Theta(\h)^{1+\frac{1}{\blan}}\RP\\
-    &= \frac{1}{\m}\LB\ln\frac{\blan+1}{\delta}+\LP1+\frac{1}{\blan}\RP\ln_{+}\frac{\AQ(\h)}{\P(\h)}\RB.
-\end{align*}
-\endgroup
-\end{proof}
-
-\section{Proof of~\Cref{ap:pac-bayes:lemma:2-sqrt-m,ap:pac-bayes:lemma:catoni-1}}
-
-In this section, we prove the lemmas necessary to prove \Cref{chap:pac-bayes:theorem:seeger,chap:pac-bayes:theorem:catoni,chap:pac-bayes:theorem:disintegrated-catoni} and \Cref{ap:pac-bayes:corollary:seeger-begin}.
-The proof of \Cref{ap:pac-bayes:lemma:2-sqrt-m} is due to \citet{Maurer2004} and \Cref{ap:pac-bayes:lemma:catoni-1} was proven by \citet{GermainLacasseLavioletteMarchand2009}.
+We now have to deal with $V_k(\Q), \hat{V}_k(\Q)$ for all $k\leq m$. To do so, we propose the two following lemmas.
 \begin{lemma}
-For any distribution $\D$ on $\X\times\Y$, for any hypothesis set $\H$, for any loss $\loss:\H\times(\X\times\Y) \to [0,1]$, we have 
-    \begin{align*}
-    \forall \h\in\H,\quad \EE_{\S\sim\D^\m}\exp\LB\m\kl(\RiskLoss_{\dS}(\h)\|\RiskLoss_{\D}(\h))\RB \le 2\sqrt{\m}.
-    \end{align*}
-    \label{ap:pac-bayes:lemma:2-sqrt-m}
+\label{l: bandit_lemma_1}
+For all $m\geq 1$, $a\in\mathcal{A}$, $V_m(a)\leq \frac{2Cm}{\varepsilon_m}$.
+Then, we have for any $m,Q$, $V_m(\Q)\leq \frac{2Cm}{\varepsilon_m}$.
 \end{lemma}
+
+\begin{proof} We have
+\begin{align*}
+V_t(a) &=\sum_{i=1}^m \mathbb{E}\left[\left(\left[R_i^{a^*}-R_i^a\right]-\Delta(a)\right)^2 \mid \mathcal{F}_{i-1}\right] \\
+&=\sum_{i=1}^m \mathbb{E}\left[\left(R_i^{a^*}-R_i^a\right)^2 \mid \mathcal{F}_{i-1}\right]-m \Delta(a)^2\\
+& \leq \sum_{i=1}^m \mathbb{E}\left[\left(R_i^{a^*}-R_i^a\right)^2 \mid \mathcal{F}_{i-1}\right]  \\
+&  = \sum_{i=1}^m \mathbb{E}\left[\mathbb{E}_{A_i\sim \pi_i}\mathbb{E}_{R_i}\left[\frac{1}{\pi_i(a^*)^2} R_i(a^*)^2\mathds{1}(A_i=a^*) +\frac{1}{\pi_i(a)^2}R_i(a)^2\mathds{1}(A_i=a) \right] \mid \mathcal{F}_{i-1}\right].\\
+\intertext{The last line holding because $R_i$ is independent of $\mathcal{F}_{i-1}$, $A_i$ is independent of $R_i$ and $\pi$ is $\mathcal{F}_{i-1}$ measurable.
+We now use that for all $i,a$, $\mathbb{E}_{R_i}[R_i(a)^2] \leq C$ }
+& = \sum_{i=1}^m \mathbb{E}\left[\mathbb{E}_{A_i\sim \pi_i}
+\left[\frac{1}{\pi_i(a^*)^2} C\mathds{1}(A_i=a^*) +\frac{1}{\pi_i(a)^2}C\mathds{1}(A_i=a) \right] \mid \mathcal{F}_{i-1}\right]\\
+& =\sum_{i=1}^m C\left(\frac{\pi_i(a)}{\pi_i(a)^2}+\frac{\pi_i\left(a^*\right)}{\pi_i\left(a^*\right)^2}\right) \\ &=\sum_{i=1}^m C\left(\frac{1}{\pi_i(a)}+\frac{1}{\pi_i\left(a^*\right)} \right) \\
+& \leq \frac{2C m}{\varepsilon_m}.
+\end{align*}
+\end{proof}
+
 
 \begin{lemma}
-    For any distribution $\D$ on $\X\times\Y$, for any hypothesis set $\H$, for any loss $\loss:\H\times(\X\times\Y) \to [0,1]$, we have 
-    \begin{align*}
-    \forall \h\in\H,\quad \EE_{\S\sim\D^\m}\exp\LB\m \LB \catF(\RiskLoss_{\D}(\h))-\cat\RiskLoss_{\dS}(\h)\RB\RB \le 1,
-    \end{align*}
-    where $\displaystyle \catF(\RiskLoss_{\D}(\h))\defeq-\ln\!\LP 1-\RiskLoss_{\D}(\h)\!\LB1-e^{-\cat}\RB\RP$.
-    \label{ap:pac-bayes:lemma:catoni-1}
+\label{l: bandit_lemma_2}
+Let $m\geq 1$, with probability $1-\delta/2$, for any posterior $\Q$, we have
+\[ \hat{V}_m(\Q) \leq \frac{4CKm}{\varepsilon_m\delta}. \]
 \end{lemma}
 
-However, before giving the proofs, we need to prove two lemmas.
-
-\begin{lemma}
-For any $\m\in\Nbb_{*}$, any point $\x\in [0,1]^\m$ can be written as a convex combination of the extremes points $\etabf\in\{0,1\}^\m$, \ie, we have
-\begin{align*}
-    \forall \x\in[0, 1]^\m,\quad \x=\sum_{\etabf\in\{0,1\}^\m} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1-x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB\etabf,
-\end{align*}
-where $\sum_{\etabf\in\{0,1\}^\m} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1-x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB=1$.
-\label{ap:pac-bayes:lemma:extreme}
-\end{lemma}
 \begin{proof}
-We prove this fact by induction.\\
-For $\m=1$, we can easily prove the claim, \ie, we have 
+Let $\Q$ a distribution over $\mathcal{A}$. Recall that
 \begin{align*}
-    \forall \x\in[0, 1],\quad \x = x_1 \cdot 1 + (1-x_1)\cdot 0, \quad\text{and}\quad  (x_1)+(1-x_1)=1.
+\hat{V}_m(\Q) & = \sum_{i=1}^m \left(R_i^{a^*}-R_i^a-\left[R\left(a^*\right)-R(a)\right]\right)^2 \\
+& = \sum_{a\in\mathcal{A}} Q(a) \hat{V}_m(a).
 \end{align*}
-For $\m>1$, we assume that the claim is true for a particular $\m$ (from our induction hypothesis) and we prove the equality for $\m+1$.
+Notice that for any $a$, $(\hat{SM}_m^a)_m$ is a  nonnegative random variable. We then apply Markov's inequality for any $a$, with probability $1-\delta/2K$
+\[ \hat{V}_m(a)\leq  \frac{2K\mathbb{E}[\hat{V}_m(a)]}{\delta} .  \]
+Noticing that $\mathbb{E}[\hat{V}_m(a)] = \mathbb{E}[V_m(a)]$, we can apply \cref{l: bandit_lemma_1} to conclude that
+$$\mathbb{E}[\hat{V}_m(a)] \leq \frac{2Cm}{\varepsilon_m}.$$
+Finally, taking an union bound on thoser events for all $a\in\mathcal{A}$ gives us, with probability $1-\delta/2$, for any posterior $\Q$
 \begin{align*}
-    \forall \x\in[0, 1]^{\m+1},\ &\sum_{\etabf\in\{0,1\}^{\m+1}} \LB \prod_{\substack{i\in\{1,\dots,\m+1\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m+1\}\\ \text{\st}\ \eta_i=1}} x_i \RB\etabf,\\
-    &= \sum_{\etabf\in\{0,1\}^{\m+1}} \LB \prod_{\substack{i\in\{1,\dots,\m+1\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m+1\}\\ \text{\st}\ \eta_i=1}} x_i \RB\LB\eta_1, \dots, \eta_{\m+1}\RB^\transp\\
-    &= \sum_{\etabf\in\{0,1\}^{\m}} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB x_{\m+1}\LB\eta_1, \dots, 1\RB^\transp\\
-    &+ \sum_{\etabf\in\{0,1\}^{\m}} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB (1{-}x_{\m+1})\LB\eta_1, \dots, 0\RB^\transp.
+V_m(\Q) & \leq \sum_{a\in\mathcal{A}} Q(a) \hat{V}_m(a) \\
+& \leq \sum_{a\in\mathcal{A}} Q(a) \frac{4CKm}{\varepsilon_m\delta} \\
+&= \frac{4CKm}{\varepsilon_m\delta}.
 \end{align*}
+This concludes the proof.
+\end{proof}
+To conclude, we apply \cref{l: bandit_lemma_1,l: bandit_lemma_2} to get that with probability $1-\delta$, for any posterior $\Q$
+\begin{align*}
+\left|M_m\left(\Q\right)\right| & \leq \frac{\operatorname{KL}\left(\Q, \P\right) +\log (4/\delta)}{\lambda_m}+ \frac{Cm\lambda_m}{\varepsilon_m} \left(1+ \frac{2K}{\delta}    \right).
+\end{align*}
+Dividing by $m$ and taking $$\lambda_m= \sqrt{\frac{\left(\log(K) +\log (4/\delta)\right) \varepsilon_m}{Cm\left(1+ \frac{2K}{\delta}    \right)}}$$ concludes the proof.
 
-For any $\x\in[0, 1]^{\m+1}$, its $\m{+}1$-th component is
-\begin{align*}
-    \underbrace{\LP\sum_{\etabf\in\{0,1\}^{\m}} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB\RP}_{=1 \text{ by the induction hypothesis}}\LP x_{\m+1}\cdot1 + (1{-}x_{\m+1})\cdot0\RP = x_{\m+1}.
-\end{align*}
-
-Moreover, from the $1$-st to the $m$-th component , we have
-\begingroup
-\allowdisplaybreaks
-\begin{align*}
-    &\sum_{\etabf\in\{0,1\}^{\m}} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB x_{\m+1}\cdot\etabf\\
-    &+ \sum_{\etabf\in\{0,1\}^{\m}} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB (1{-}x_{\m+1})\cdot\etabf\\
-    &= \sum_{\etabf\in\{0,1\}^{\m}} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB\LB x_{\m+1} + (1{-}x_{\m+1}) \RB \cdot \etabf\\
-    &= \sum_{\etabf\in\{0,1\}^{\m}} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB\cdot \etabf\\
-    &= [x_1, \dots, x_{\m}]^\transp,
-\end{align*}
-\endgroup
-where the last equality holds by the induction hypothesis.
-Finally, we prove that it sums to $\sum_{\etabf\in\{0,1\}^\m} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1-x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB=1$, \ie, we have
-\begin{align*}
-    \forall \x\in[0, 1]^{\m+1},\ &\sum_{\etabf\in\{0,1\}^{\m+1}} \LB \prod_{\substack{i\in\{1,\dots,\m+1\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m+1\}\\ \text{\st}\ \eta_i=1}} x_i \RB\\
-    &= \sum_{\etabf\in\{0,1\}^{\m}} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB x_{\m+1}\\
-    &+ \sum_{\etabf\in\{0,1\}^{\m}} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=0}} (1{-}x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \text{\st}\ \eta_i=1}} x_i \RB (1-x_{\m+1})\\
-    &= 1,
-\end{align*}
-by the induction hypothesis.
 \end{proof}
 
-The second lemma that we have to prove is the following.
 
-\begin{lemma}
-Let $X\sim\Xcal$ be a random variable such that $X\in[0,1]$ and $X'$ be a random variable following a Bernoulli distribution of parameter $\EE_{X\sim\Xcal}[X]$, \ie, $X'\sim\Bernoulli(\EE_{X\sim\Xcal}[X])$.
-We define as $\Xbf\sim\Xcal^{\m}$ (\resp $\Xbf'\sim\Bernoulli(\EE_{X\sim\Xcal}[X])^\m$) the $\m$ independent copies of $X\sim\Xcal$ (\resp $X'\sim\Bernoulli(\EE_{X\sim\Xcal}[X])$).\\
-If $f: [0,1]^\m\to \Rbb$ is a convex function and permutation symmetric, we have
-\begin{align*}
-    {\textstyle\EE_{\Xbf\sim\Xcal^\m}}[\catF(\Xbf)] \le {\textstyle\EE_{\Xbf'\sim\Bernoulli(\EE_{X\sim\Xcal}[X])^\m}}[\catF(\Xbf')].
-\end{align*}
-\label{ap:pac-bayes:lemma:real-binary}
-\end{lemma}
+
+
+
+\subsection{Proof of Cor. \ref{cor: bound_mart}}
+
+
 \begin{proof}
-From \Cref{ap:pac-bayes:lemma:extreme}, we have 
+Fix $\delta>0$. For any pair $(\lambda_k,P_k), k\geq 1$, we apply \Cref{th: main_thm} with $$\delta_k := \frac{\delta}{k(k+1)} \geq \frac{\delta}{(k+1)^2}. $$
+Notice that we have $\sum_{k=1}^{+\infty} \delta_k = \delta$.
+We then have with probability $1-\delta_k$ over $S$, for any $m\geq 1$, any posterior $\Q$,
+\[ \left|M_m\left(\Q\right)\right| \leq \frac{\KL\left(\Q, \P_k\right)+2 \log (k+1)+\log (2/\delta)}{\lambda_k}+ \frac{\lambda_k}{2}\left( \hat{V}_m(\Q) + V_m(\Q) \right).\]
+Taking an union bound on all those event, gives the final result, valid with probability $1-\delta$ over the sample $S$, for any any tuple $(m,\lambda_k,P_k)$ with $m,k\geq 1$, any posterior $\Q$ over $\mathcal{H}$. This gives \Cref{eq: bound_mart_1}.
+
+To obtain \cref{eq: bound_mart_2}, we restrict the range of \cref{eq: bound_mart_1} to the tuples $(m,\lambda_m,P_m), m\geq 1$ (the restricted set of tuples where $k=m$) and we bound both $\hat{V}_m(\Q),V_m(\Q)$ by $\sum_{i=1}^m C_i^2$ to conclude.
+\end{proof}
+
+\subsection{Proof of Cor. \ref{cor: bounded_case}}
+
+
+\begin{proof}
+For the first bound we start from the intermediary result \cref{eq: intermediary_result_main} of  \cref{th: main_thm}. Using the same marrtingale as in \cref{th: main_thm_iid} gives, for any $\eta\in\mathbb{R}$, holding with probability $1-\delta$ for any $m>0,Q\in\mathcal{M}(\mathcal{H})$
+\begin{multline*}
+\eta \left(\sum_{i=1}^m \mathbb{E}_{h\sim \Q}[\ell(h,\z_i)]  -m \mathbb{E}_{h\sim \Q}[ \Risk(h) ] \right) \\
+\leq  \operatorname{KL}(\Q,\P) +\log(1/\delta) + \frac{\eta^2}{2}\sum_{i=1}^m \mathbb{E}_{h\sim \Q}[\Delta[M]_i(h) + \Delta \langle M\rangle_i(h) ].
+\end{multline*}
+Taking $\eta= \pm\lambda$ with $\lambda>0$ gives
 \begin{align}
-    \xbf = \sum_{\etabf\in\{0,1\}^\m} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=0}}(1-x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=1}}x_i\RB\etabf.\label{ap:pac-bayes:eq:proof-real-binary-1}
+\label{eq: temp_result}
+\lambda m\left | \mathbb{E}_{h\sim \Q}[ \Risk(h) -\Riskhat_{\Sm}(h)] \right | & \leq \operatorname{KL}(\Q,\P) +\log(1/\delta) \\
+& + \frac{\lambda^2}{2}\sum_{i=1}^m \mathbb{E}_{h\sim \Q}[\Delta[M]_i(h) + \Delta \langle M\rangle_i(h) ].
 \end{align}
-Hence from~\Cref{ap:pac-bayes:eq:proof-real-binary-1} and from \textsc{Jensen}'s inequality (\Cref{ap:tools:theorem:jensen}), we have 
-\begin{align*}
-    \catF(\xbf) &= f\LP \sum_{\etabf\in\{0,1\}^\m} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=0}}(1-x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=1}}x_i\RB\etabf \RP\\
-    &\le \sum_{\etabf \in \{0,1\}^\m} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=0}}(1-x_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=1}}x_i\RB \catF(\etabf).
-\end{align*}
-Taking the expectation gives us
-\begingroup
-\allowdisplaybreaks
-\begin{align*}
-    \EE_{\Xbf\sim\Xcal^\m}\catF(\Xbf) &\le \EE_{\Xbf\sim\Xcal^\m}\LP\sum_{\etabf \in \{0,1\}^\m} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=0}}(1-X_i)\prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=1}}X_i\RB \catF(\etabf)\RP\\
-    &= \sum_{\etabf \in \{0,1\}^\m} \LB \prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=0}}\LP1-\EE_{X_i\sim\Xcal}\LB X_i\RB\RP\prod_{\substack{i\in\{1,\dots,\m\}\\ \eta_i=1}}\EE_{X_i\sim\Xcal}\LB X_i\RB\RB \catF(\etabf)\\
-    &= \sum_{\etabf \in \{0,1\}^\m} \LB \LP1-\EE_{X\sim\Xcal}\LB X\RB\RP^{\card(\{i \,:\, \eta_i=0\})}\LP\EE_{X\sim\Xcal}\LB X\RB\RP^{\card(\{i \,:\, \eta_i=1\})}\RB \catF(\etabf)\\
-    &= \sum_{k=0}^{\m}\binom{\m}{k}\LP1-\EE_{X\sim\Xcal}\LB X\RB\RP^{\m-k}\LP\EE_{X\sim\Xcal}\LB X\RB\RP^{k}\catF(\underbrace{1, \dots, 1}_{k\text{ times}}, \underbrace{0, \dots, 0}_{\m-k\text{ times}})\\
-    &= \EE_{\Xbf'\sim\Bernoulli(\EE_{X\sim\Xcal}[X])^\m} \catF(\Xbf').
-\end{align*}
-\endgroup
+Finally, divide by $\lambda m$ and bound $\Delta[M]_i(h) + \Delta \langle M\rangle_i(h)$ by $2K^2$ to conclude.
+
+
+For the second bound, we start from \Cref{eq: temp_result} again and for a fixed $m$, we now apply our result with $\lambda'=\lambda/m$. We then have for any $m$, with probability $1-\delta$, for any $\Q$
+\[ \lambda\left |  \mathbb{E}_{h\sim \Q}[ \Risk(h) -\Riskhat_{\Sm}(h)] \right |  \leq \operatorname{KL}(\Q,\P) +\log(1/\delta) + \frac{\lambda^2}{2m^2}\sum_{i=1}^m \mathbb{E}_{h\sim \Q}[\Delta[M]_i(h) + \Delta \langle M\rangle_i(h) ].\]
+Finally, dividing by $\lambda$, bounding $\Delta[M]_i(h) + \Delta \langle M\rangle_i(h)$ by $2K^2$ and rearranging the terms concludes the proof.
 \end{proof}
 
-We are now ready to prove \Cref{ap:pac-bayes:lemma:2-sqrt-m}.
 
-\begin{proof}[of \Cref{ap:pac-bayes:lemma:2-sqrt-m}]
-Since the KL divergence is jointly convex so is the function $\exp\LB\m\kl(\cdot\|\RiskLoss_{\D}(\h))\RB$ (see, \eg, \citet[Section~3.2.4]{BoydVandenberghe2014}).
-Then, we can apply \Cref{ap:pac-bayes:lemma:real-binary} to have
-\begin{align*}
-    &\hspace{-0.8cm}\EE_{\S\sim\D^\m}\exp\LB\m\kl(\RiskLoss_{\dS}(\h)\|\RiskLoss_{\D}(\h))\RB\\
-    &\le \EE_{\Xbf\sim\Bernoulli(\RiskLoss_{\D}(\h))^\m}\exp\LB\m\kl\LP\frac{1}{\m}\sum_{i=1}^{\m}X_i\|\RiskLoss_{\D}(\h)\RP\RB\\
-    &= \EE_{\Xbf\sim\Bernoulli(\RiskLoss_{\D}(\h))^\m}\LB\frac{\frac{1}{\m}\sum_{i=1}^{\m}X_i}{\RiskLoss_{\D}(\h)}\RB^{\sum_{i=1}^{\m}X_i}\LB\frac{1-\frac{1}{\m}\sum_{i=1}^{\m}X_i}{1-\RiskLoss_{\D}(\h)}\RB^{\m-\sum_{i=1}^{\m}X_i}\\
-    &= \sum_{k=0}^{\m}\PP_{\Xbf\sim\Bernoulli(\RiskLoss_{\D}(\h))^\m}\LB \sum_{i=1}^{\m}X_i=k\RB\LB\frac{\frac{k}{\m}}{\RiskLoss_{\D}(\h)}\RB^{k}\LB\frac{1-\frac{k}{\m}}{1-\RiskLoss_{\D}(\h)}\RB^{\m-k}\\
-    &= \sum_{k=0}^{\m} \binom{\m}{k}\LP1-\RiskLoss_{\D}(\h)\RP^{\m-k}\LP\RiskLoss_{\D}(\h)\RP^{k}\LB\frac{\frac{k}{\m}}{\RiskLoss_{\D}(\h)}\RB^{k}\LB\frac{1-\frac{k}{\m}}{1-\RiskLoss_{\D}(\h)}\RB^{\m-k}\\
-    &= \sum_{k=0}^{\m}\binom{\m}{k}\LB\frac{k}{\m}\RB^{k}\LB1-\frac{k}{\m}\RB^{\m-k}.
-\end{align*}
-Finally, \citet{Maurer2004} proves that $\sum_{k=0}^{\m}\binom{\m}{k}\LB\frac{k}{\m}\RB^{k}\LB1-\frac{k}{\m}\RB^{\m-k}\le 2\sqrt{\m}$ for $\m\ge8$ and \citet{GermainLacasseLavioletteMarchandRoy2015} verify computationally that the inequality holds also for $\m\in\{1,\dots, 7\}$.
-\end{proof}
-
-We can prove \Cref{ap:pac-bayes:lemma:catoni-1}.
-\begin{proof}[of \Cref{ap:pac-bayes:lemma:catoni-1}] 
-We have
-\begingroup
-\allowdisplaybreaks
-\begin{align}
-&\hspace{-2.0cm}\EE_{\S\sim\D^\m}\exp\LP \m \LB \catF(\RiskLoss_{\D}(\h)) - \cat\RiskLoss_{\dS}(\h)\RB\RP\nonumber\\
-&\le \EE_{\Xbf\sim\Bernoulli(\RiskLoss_{\D}(\h))^\m}\exp\LP \m \catF(\RiskLoss_{\D}(\h)) - \cat\LP\sum_{i=1}^{\m}X_i\RP\RP\label{ap:pac-bayes:eq:proof-catoni-1-1}\\
-&= \sum_{k=0}^{\m}\PP_{\Xbf\sim\Bernoulli(\RiskLoss_{\D}(\h))^\m}\LB \sum_{i=1}^{\m}X_i=k\RB \exp\LP\m \catF(\RiskLoss_{\D}(\h))-\cat k\RP\nonumber\\
-&= \sum_{k=0}^{\m}\binom{\m}{\k}\RiskLoss_{\D}(\h)^k(1-\RiskLoss_{\D}(\h))^{\m-k}\exp\LP\m \catF(\RiskLoss_{\D}(\h))-\cat k\RP\nonumber\\
-&= e^{\m \catF(\RiskLoss_{\D}(\h))}\sum_{k=0}^{\m}\binom{\m}{\k}(\RiskLoss_{\D}(\h)e^{-\cat})^k(1-\RiskLoss_{\D}(\h))^{\m-k}\nonumber\\
-&= e^{\m \catF(\RiskLoss_{\D}(\h))}\LP1-\RiskLoss_{\D}(\h)\LB 1-e^{-\cat}\RB\RP^{\m}\label{ap:pac-bayes:eq:proof-catoni-1-2}\\
-&= \LP1-\RiskLoss_{\D}(\h)\LB 1-e^{-\cat}\RB\RP^{-\m}\LP1-\RiskLoss_{\D}(\h)\LB 1-e^{-\cat}\RB\RP^{\m}\label{ap:pac-bayes:eq:proof-catoni-1-3}\\
-&= 1\nonumber,
-\end{align}
-\endgroup
-where we apply \Cref{ap:pac-bayes:lemma:real-binary} to obtain \Cref{ap:pac-bayes:eq:proof-catoni-1-1}, with the Binomial theorem we have \Cref{ap:pac-bayes:eq:proof-catoni-1-2}, and we deduce \Cref{ap:pac-bayes:eq:proof-catoni-1-3} by definition of $\catF(\RiskLoss_{\D}(\h))$.
-\end{proof}
 \end{noaddcontents}

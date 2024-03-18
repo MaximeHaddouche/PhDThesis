@@ -1,3 +1,4 @@
+%!TEX root = main.tex
 \chapter[PAC-Bayes Learning, a field of many paradigms]{PAC-Bayes Learning, a field of many paradigms}
 \label{chap:intro-pac-bayes}
 
@@ -38,13 +39,13 @@ Then, the \textsc{Complexity} can be borrowed from information theory \citep{cov
 Those two approaches have various benefits. A notable strength of expected bounds is that they may reach fast convergence rates (\ie faster than $\frac{1}{\sqrt{m}}$) contrary to high-probability one, even when $\H$ is a singleton thanks to the central limit theorem \citep{grunwald2021mac}. However, expected bounds often involves a theoretical \textsc{Complexity} which cannot be estimated in practice and may be hard to interpret while high probability bounds may be fully empirical and can be considered with small confidence parameter $\delta$ as it is attenuated by a logarithm.
 
 \paragraph{How to choose the complexity term ? An introductory example.} There is no evidence proving that a certain notion of complexity is preferrable to another. The choice of \textsc{Complexity} may however be driven by practical considerations, emerging from the learning problem of interest. To illustrate this point, let us focus on the following example, providing two learning problems which differs only from the predictor space $\H$ and which have very different interactions with the VC dimension.
-\begin{example}
+\begin{example}[VC dimension of multilayer perceptrons]
   \label{ex: neural_net}
   Consider a supervised learning problem where $\Z = \Rbb^k\times\Ycal$ with $\Ycal=\{0,1\}$, $k$ smaller than $m$ and with loss $\ell(h,(x,y))= \mathds{1}\{h(x) \neq y\}$.  First, assume that $\Hcal$ is the set of linear classifiers; \ie $\H_1:= \left\{ h_{\theta}(x)= sgn(\langle \theta,x\rangle)  \right\}$, where $sgn(a)$ denotes the sign of $a$. In this case, using the VC dimension may lead to non-vacuous generalisation bounds \citep{vapnik2000learning}. 
 
 However, in modern machine learning, deep neural networks are often considered, let us first define a celebrated class of deep neural networks. 
 
-\begin{definition}
+\begin{definition}[Multlilayer perceptron]
     \label{def:mlp}
     A multilayer perceptron with depth $K$ and architecture $\{N_1,\cdots,N_K\}$, denoted as $h_{\wbf}(\x) \defeq Wh^{K}(\cdots h^{1}(\x))+b$, is composed of $K$ layers $h^1(\cdot),\dots,h^K(\cdot)$.
  $W\in\R^{|\Ycal|\times N_K}$ and $b\in\R^{N_K}$ are the weight matrix and the bias of the last layer, and the $i$-th layer $h^{i}$, composed of $N_i$ nodes, is defined by $h^{i}(\xbf)\defeq\sigma_i(W_i \xbf + b_i)$, where $W_i\in\R^{N_i\times N_{i-1}}$ and the bias $b_i\in \R^{N_i}$ are its weight matrix and bias respectively; $\sigma_i : \R^{N_i} \to \R^{N_i} $ is an activation function.
@@ -63,7 +64,7 @@ PAC-Bayes learning is a recent branch of learning theory which emerged in the la
 \subsection*{Two fundamental results}
     The McAllester's bound \citep{mcallester2003pac} enriched with Maurer's trick \citep{maurer2004note} and Catoni's bound (\citealp[Theorem 4.1]{alquier2016properties}, being a relaxation of \citealp[Theorem 1.2.6]{catoni2007pac}) are probably the most known high-probability PAC-Bayes bounds. We recall them in \Cref{prop: mcall-catoni}.
 
-    \begin{proposition}
+    \begin{proposition}[McAllester and Catoni's bounds]
         \label{prop: mcall-catoni}
         Assume $\Sm$ to be \iid.\\
     \textbf{McAllester's bound, \citep[Theorem 5]{maurer2004note}.}  For any $\delta\in(0,1),\ell\in[0,1]$, any data-free prior $\P\in\Mcal(\Hcal)$, with probability at least $1-\delta$, for any posterior $\Q\in\Mcal(\H)$,
@@ -89,6 +90,7 @@ The relaxation \eqref{eq: catoni} proposed here is reachable by a few key argume
 
 \begin{proof}[of \Cref{eq: catoni}]
 Note that the first part of the proof holds for a large part of PAC-Bayes literature.
+
   \textbf{A generic pattern for PAC-Bayes bounds.}
     This part is designed upon two cornerstones, retrievable in many existing results: the change of measure inequality (\citealp{csizar1975divergence,donsker1976asymp} -- see also \citealp{banerjee2006bayesian,guedj2019primer} for a proof) and Markov's inequality.
 
@@ -98,7 +100,7 @@ Note that the first part of the proof holds for a large part of PAC-Bayes litera
     
     \[ \mathbb{E}_{h\sim \Q}[\psi (h)] \leq \operatorname{KL}(\Q,\P) + \log\left( \mathbb{E}_{h\sim \P}[\exp(\psi(h))]  \right).  \]
     \end{lemma}
-For a given $\lambda>0$, the change of measure inequality is then applied to a certain function $f_m: \Hcal \mathbb{R}$, possibly involving $\Sm$: for all posteriors $Q$,
+For a given $\lambda>0$, the change of measure inequality is then applied to a certain function $f_m: \Hcal \rightarrow\mathbb{R}$, possibly involving $\Sm$: for all posteriors $Q$,
 \begin{align}
 \label{eq: change_meas_pacb}
 \mathbb{E}_{h\sim \Q}[f_m(h)] \leq \operatorname{KL}(\Q,\P) + \log\left( \mathbb{E}_{h\sim \P}[\exp(f_m(h))]  \right).
@@ -156,7 +158,7 @@ A shared particularity of McAllester and Catoni bounds is that they are both ful
 In both cases, $\mathcal{C}\subseteq \Mcal(\Hcal)$ is the class of distributions on which we optimise. The choice of $\mathcal{C}$ can come from a priori knowledge of the problem or from optimisation concerns to make the KL divergence tractable.  
 
 Knowing Catoni's bound is a relaxation of McAllester's one, it seems more natural to consider $\Q_{M}$ over $\Q_{C}$. However, the presence of a square root in \eqref{eq: alg-mcall} can be challenging for practical optimisation. We illustrate this below.
-\begin{example}
+\begin{example}[A celebrated class of measures for PAC-Bayes algorithms]
   \label{ex: gaussian-kl}
   Consider the case where, for a given $\sigma>0$, $\mathcal{C}= \{\Ncal(\mu,\sigma^2 \mathrm{Id}) \mid \mu\in\Rbb^d\}$. Then the for any $\P= \Ncal(\mu_1,\sigma^2 \mathrm{Id}), \Q= \Ncal(\mu_2,\sigma^2 \mathrm{Id})$, $ \KL(\Q,\P)= \frac{\|\mu_1-\mu_2\|^2}{2\sigma^2}$. 
   Then, optimising \eqref{eq: alg-mcall} in this case implies to lose the strong convexity of the KL divergence while it is retained for \eqref{eq: alg-catoni}.
@@ -216,8 +218,8 @@ A second approach consists in describe general principles that should be satisfi
 \subsubsection*{An optimisation-driven view of PAC-Bayes}
 
 \begin{itemize}
-  \item \textbf{Statistical assumptions.} While $\ell$ satisfies desirable geometric properties (convexity, gradient lipschitz ...), no statistical assumption is needed. However, the output of two runs of a stochastic optimisation algorithm on the same training set may vary a lot.  For the specific case of SGD, many works shows that SGD exhibits a heavy-tailed behavior (see \eg \citealp{simsekli2019tail,zhang2020adaptive,gurbuzbalaban2020heavy}). Given that such heavy-tailed consideration emerges from the most celebrated algorithm, generalisation bounds, from an optimisation point of view, should hold with weak statistical assumptions on the dataset, even if additional geometric assumptions on the loss may emerge.
-  \item \textbf{The role of the prior.} The information-theoretic approach justify the Bayesian view of the prior as discussed earlier. In this spirit it is also possible to sacrifice a part of the training set (\ie of the available information) to enrich $\P$ and then partially explain the efficiency of an information-theoretic training.  Those two vision are not easily linked to optimisation concerns as the first one would be linked to a 'good' initialisation, something we cannot know in advance, while the second makes little sense as $\P$ is obtained through a first, unexplained, optimisation process which is necessary to understand the efficiency of the second part of training, outputting $\Q$. From an optimisation stance, we suggest to assign only two possible roles to $\P$: \textit{(i)} the initialisation of the optimisation algorithm, then its impact should be attenuated through the learning process and \textit{(ii)} a minimiser we aim to reach through optimisation. In this case, its impact is crucial as it translates the speed of convergence of our learning algorithms.
+  \item \textbf{Statistical assumptions.} While $\ell$ satisfies desirable geometric properties (convexity, gradient lipschitz ...), no statistical assumption is needed to have optimisation algorithms with convergence properties, on then may wonder about the generalisation abilities of the reached empirical minima. It happens that the output of two runs of a stochastic optimisation algorithm on the same training set may vary a lot, for instance, the specific case of SGD shows that  heavy-tailed behaviour (see \eg \citealp{simsekli2019tail,zhang2020adaptive,gurbuzbalaban2020heavy}) may emerge in practice. Given such behaviours, generalisation bounds, from an optimisation point of view, should hold with weak statistical assumptions on the dataset, possibly at the cost of additional geometric assumptions on the loss.
+  \item \textbf{The role of the prior.} The information-theoretic approach justifies the Bayesian view of the prior, as discussed earlier. In this spirit it is also possible to sacrifice a part of the training set (\ie of the available information) to enrich $\P$. Doing so, we accept to not understand what happens during the training of $\P$ and thus, to explain partially the efficiency of an information-theoretic training. Those two visions (Bayesian prior or data-dependent prior) are not easily linked to optimisation concerns as the first one would be linked to a 'good' initialisation, something we cannot know in advance, while the second makes little sense as $\P$ is obtained through a first, unexplained, optimisation process which is necessary to understand the efficiency of the second part of training, outputting $\Q$. From an optimisation stance, we suggest to assign only two possible roles to $\P$: \textit{(i)} the initialisation of the optimisation algorithm, then its impact should be attenuated through the learning process and \textit{(ii)} a minimiser we aim to reach through optimisation. In this case, its impact is crucial as it translates the speed of convergence of our learning algorithms.
   \item \textbf{The place of stochastic predictors.} Involving a KL divergence as a complexity brings a particular focus on stochastic predictors, drawn from a distribution $\Q$. Classical PAC-Bayes bounds usually focus on the average performance of such a predictor (hence the expectation over $\Q$ in \eqref{eq: mcallester},\eqref{eq: catoni}), but recent extensions directly proposed guarantees for a single draw over $\Q$ \citep{rivasplata2020pac,viallard2023general}. However, involving a KL implies that $\Q$ has to be absolutely continuous \wrt $\P$,  meaning that the support of $\Q$ cannot go beyond the one of $\P$: this excludes the case of Dirac distributions, \ie deterministic predictors. This is a clear limitation of the information-theoretic approach, as many learning algorithms outputs a deterministic predictor and thus, should be avoided to be in line with common practice in optimisation.
 \end{itemize}
 
@@ -247,7 +249,7 @@ These works have sometimes been explicitly driven by optimisation considerations
 The contributions of this manuscript are motivated by optimisation considerations and are structured as follows: 
 
 \begin{itemize}
-  \item In Chapter 2, we propose novel PAC-Bayes bounds for martingale, with an application to multi-armed bandits. Those bounds are anytime-valid (\ie for any dataset size simultaneously) and holds at the sole assumption of finite order 2 moments on both the posterior and the data distribution. Such weak statistical assumptions make these results applicable, for instance, for heavy-tailed SGD or many learning problems where optimisation procedure are performed regardless of the training set noise.
+  \item In Chapter 2, we propose novel PAC-Bayes bounds for martingales, batch learning, with an application to multi-armed bandits. Those bounds are anytime-valid (\ie for any dataset size simultaneously) and holds at the sole assumption of finite order 2 moments on both the posterior and the data distribution. Such weak statistical assumptions make these results applicable, for instance, for heavy-tailed SGD or many learning problems where optimisation procedure are performed regardless of the training set noise.
   \item Chapter 3 introduces \emph{Online PAC-Bayes learning}, proposing theoretical bounds and learning algorithms involving a sequence of pairs $(\Q_i,\P_i)$, evolving through the optimisation process. Contrary to PAC-Bayes in a batch setting, the impact of $\P=\P_1$ is attenuated during the learning process, making Online PAC-Bayes useful when there is no prior information available, which is consistent with the vision of $\P$ as initialisation of a learning algorithm, while being only applicable, for now, to stochastic predictors as a KL divergence is involved.
   \item Chapter 4 still consider the prior as an initialisation point, but this time, considering batch learning algorithms. It is shown that the impact of the prior is attenuated by \emph{flat minima}, \ie minima such that their neighbourhood nearly minimises the loss. More generally, this chapter exhibits theoretical links between flat minima and generalisation and thus draw links between the benefits of a successful optimisation process (small gradients) and generalisation.
   \item Considering $\P$ as the learning objective allows to draw more explicit links between optimisation and generalisation. In Chapter 5, it is shown that the convergence guarantees of \emph{Bures-Wasserstein SGD}, a SGD-like algorithm on Gaussian measure spaces, can be directly incorporated within PAC-Bayes bounds, yielding interpretable results. This is possible by exploiting \emph{Wasserstein PAC-Bayes learning}, which uses as \textsc{Complexity} term a 1-Wasserstein distance, allowing to trade statistical assumptions to geometric ones such as lipschtz or gradient-lipschitz losses. 
