@@ -37,8 +37,8 @@
 \RequirePackage{framed}
 \RequirePackage{mdframed}
 \RequirePackage[many]{tcolorbox}
-\RequirePackage[chapter]{algorithm}
-\RequirePackage[noend]{algpseudocode}
+\RequirePackage[ruled,vlined,linesnumbered]{algorithm2e}
+%\RequirePackage[noend]{algpseudocode}
 \RequirePackage{appendix}
 \RequirePackage[shortlabels]{enumitem}
 \RequirePackage{float}
@@ -286,6 +286,7 @@ notefont=\normalfont\itshape,%
 \declaretheorem[style=theoremstyle, numberwithin=section]{lemma}
 \declaretheorem[style=theoremstyle, numberwithin=section]{corollary}
 \declaretheorem[style=theoremstyle, numberwithin=section]{example}
+\declaretheorem[style=theoremstyle, numberwithin=section]{remark}
 
 \let\oldproof\proof
 \let\endoldproof\endproof

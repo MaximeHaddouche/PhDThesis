@@ -23,7 +23,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{45}{thmt@dummyctr.dummy.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}2.1.2\else \numberline {2.1.2}\MakeUppercase {l}emma\fi \thmtformatoptarg {Towards the design of a supermartingale}}{46}{lemma.2.1.2}%
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}2.1.2\else \numberline {2.1.2}\MakeUppercase {l}emma\fi \thmtformatoptarg {Towards the design of a supermartingale}}{45}{lemma.2.1.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}2.2.1\else \numberline {2.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {A PAC-Bayesian bound for unbounded martingales}}{47}{theorem.2.2.1}%
 \defcounter {refsection}{0}\relax 
@@ -41,13 +41,31 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}3.1.1\else \numberline {3.1.1}\MakeUppercase {t}heorem\fi }{58}{theorem.3.1.1}%
+\contentsline {definition}{\ifthmt@listswap \MakeUppercase {d}efinition\nobreakspace {}3.2.1\else \numberline {3.2.1}\MakeUppercase {d}efinition\fi \thmtformatoptarg {Stochastic kernels}}{60}{definition.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{60}{thmt@dummyctr.dummy.17}%
+\contentsline {definition}{\ifthmt@listswap \MakeUppercase {d}efinition\nobreakspace {}3.2.2\else \numberline {3.2.2}\MakeUppercase {d}efinition\fi }{60}{definition.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}3.1.1\else \numberline {3.1.1}\MakeUppercase {l}emma\fi }{60}{lemma.3.1.1}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}3.2.1\else \numberline {3.2.1}\MakeUppercase {t}heorem\fi }{60}{theorem.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{61}{thmt@dummyctr.dummy.19}%
+\contentsline {remark}{\ifthmt@listswap \MakeUppercase {r}emark\nobreakspace {}3.2.1\else \numberline {3.2.1}\MakeUppercase {r}emark\fi }{61}{remark.3.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}3.3.1\else \numberline {3.3.1}\MakeUppercase {c}orollary\fi \thmtformatoptarg {\normalfont \textsc {OPBTrain}}}{62}{corollary.3.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {remark}{\ifthmt@listswap \MakeUppercase {r}emark\nobreakspace {}3.3.1\else \numberline {3.3.1}\MakeUppercase {r}emark\fi }{63}{remark.3.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}3.3.2\else \numberline {3.3.2}\MakeUppercase {c}orollary\fi \thmtformatoptarg {\normalfont \textsc {OPBTest}}}{63}{corollary.3.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}3.4.1\else \numberline {3.4.1}\MakeUppercase {c}orollary\fi }{67}{corollary.3.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}3.4.2\else \numberline {3.4.2}\MakeUppercase {c}orollary\fi }{69}{corollary.3.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}3.7.1\else \numberline {3.7.1}\MakeUppercase {t}heorem\fi }{72}{theorem.3.7.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{74}{thmt@dummyctr.dummy.26}%
+\defcounter {refsection}{0}\relax 
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}3.7.1\else \numberline {3.7.1}\MakeUppercase {l}emma\fi }{75}{lemma.3.7.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{76}{thmt@dummyctr.dummy.28}%
 \defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 4}\vspace {0.2cm}\par 
 \defcounter {refsection}{0}\relax 
@@ -59,10 +77,10 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.1.1\else \numberline {A.1.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Jensen}'s Inequality}}{69}{theorem.A.1.1}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.1.1\else \numberline {A.1.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Jensen}'s Inequality}}{85}{theorem.A.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.2.1\else \numberline {A.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Markov}'s Inequality}}{69}{theorem.A.2.1}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.2.1\else \numberline {A.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\textsc {Markov}'s Inequality}}{85}{theorem.A.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}A.3.1\else \numberline {A.3.1}\MakeUppercase {l}emma\fi \thmtformatoptarg {Ville's maximal inequality for supermartingales}}{70}{lemma.A.3.1}%
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}A.3.1\else \numberline {A.3.1}\MakeUppercase {l}emma\fi \thmtformatoptarg {Ville's maximal inequality for supermartingales}}{86}{lemma.A.3.1}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }

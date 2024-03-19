@@ -28,19 +28,19 @@ This chapter stands in the continuation of this spirit while developing and expl
 To better highlight the novelty of our approach, we first present the two classical building blocks of PAC-Bayes.
 
 \subsection{Understanding PAC-Bayes: a celebrated route of proof}
-In this part, we exploit again, for the sake of pedagagogy, the general pattern of proof for PAC-Bayes bounds described in \Cref{eq: catoni} to prove Catoni's bound. 
+In the following subsection, we exploit again, for the sake of pedagagogy, the general pattern of proof for PAC-Bayes bounds described in \Cref{eq: catoni} to prove Catoni's bound. 
 \subsubsection{Two essential building blocks for a preliminary bound}
 
-Similarly to \Cref{chap:intro-pac-bayes}, we  assume access to a non-negative loss function $\ell(h,z)$ taking as argument a predictor $h\in\mathcal{H}$  and data $z\in\mathcal{Z}$ (think of $z$ as a pair input-output $(x,y)$ for supervised learning problems, or as a single datum $x$ in unsupervised learning). We also assume access to a $m$-sized sample $\Sm= (z_1,...,z_m)\in\mathcal{Z}^m$. $\Sm$ is then used to learn a posterior distribution $\Q$ on $\mathcal{H}$, from a prior $\P$.
+For the rest of this section, similarly to \Cref{chap:intro-pac-bayes}, we assume access to a non-negative loss function $\ell(h,z)$ taking as argument a predictor $h\in\mathcal{H}$  and data $z\in\mathcal{Z}$ (think of $z$ as a pair input-output $(x,y)$ for supervised learning problems, or as a single datum $x$ in unsupervised learning). We also assume access to a $m$-sized sample $\Sm= (z_1,...,z_m)\in\mathcal{Z}^m$. $\Sm$ is then used to learn a posterior distribution $\Q$ on $\mathcal{H}$, from a prior $\P$.
 
 PAC-Bayesian proofs are built upon two cornerstones. The first one is the change of measure inequality, recalled in \Cref{l: change_meas}.
 This property is applied to a certain function $f_m: \mathcal{Z}^m \times \mathcal{H}\rightarrow \mathbb{R}$ of the data and a candidate predictor: for all posteriors $\Q$,
 \begin{align}
 \label{eq: change_meas_pacb-chap-2}
-\mathbb{E}_{h\sim \Q}[f_m(\S,h)] \leq \KL(\Q,\P) + \log\left( \mathbb{E}_{h\sim \P}[\exp(f_m(\Sm,h))]  \right).
+\mathbb{E}_{h\sim \Q}[f_m(\Sm,h)] \leq \KL(\Q,\P) + \log\left( \mathbb{E}_{h\sim \P}[\exp(f_m(\Sm,h))]  \right).
 \end{align}
-To deal with the random variable  $X(S):=\mathbb{E}_{h\sim \P}[\exp(f_m(\S,h))] $, our second building block is Markov's inequality $\left(\mathbb{P}(X>a) \leq \frac{\mathbb{E}[X]}{a}\right)$ which we apply for a fixed $\delta\in ]0,1[$ on $X(S)$ with $a= \mathbb{E}_S[X(S)]/\delta$.
-Taking the complementary event gives that for any $m$, with probability at least $1-\delta$ over the sample $\S$, $X(S)\leq \mathbb{E}_S[X(S)]/\delta$, thus:
+To deal with the random variable  $X(\Sm):=\mathbb{E}_{h\sim \P}[\exp(f_m(\Sm,h))] $, our second building block is Markov's inequality $\left(\mathbb{P}(X>a) \leq \frac{\mathbb{E}[X]}{a}\right)$ which we apply for a fixed $\delta\in (0,1)$ on $X(\Sm)$ with $a= \mathbb{E}_{\Sm}[X(\Sm)]/\delta$.
+Taking the complementary event gives that for any $m$, with probability at least $1-\delta$ over the sample $\Sm$, $X(\Sm)\leq \mathbb{E}_{\Sm}[X(\Sm)]/\delta$, thus:
 %\begin{lemma}
 %\label{l: markov}
 %For any non-negative integrable random variable $X$, the following holds for any $a>0$:
@@ -51,7 +51,7 @@ Taking the complementary event gives that for any $m$, with probability at least
 
 \begin{equation}
   \label{eq: prelim_pb_bound-chap-2}
-  \mathbb{E}_{h\sim \Q}[f_m(\S,h)] \leq \operatorname{KL}(\Q,\P) + \log(1/\delta) + \log\left( \mathbb{E}_{h\sim \P}\mathbb{E}_{S}[\exp(f_m(\S,h))]  \right).
+  \mathbb{E}_{h\sim \Q}[f_m(\Sm,h)] \leq \operatorname{KL}(\Q,\P) + \log(1/\delta) + \log\left( \mathbb{E}_{h\sim \P}\mathbb{E}_{\Sm}[\exp(f_m(\Sm,h))]  \right).
 \end{equation}
 
 \subsubsection{From preliminary to complete bounds}
@@ -112,9 +112,8 @@ A major interest of Ville's result is that it holds for a countable sequence of 
 
 To fully exploit Lemma \ref{l: ville_ineq}, we now take a countable dataset $\S= (\z_i)_{i\geq 1}\in\mathcal{Z}^{\Nbb}$.
 Recall that, because we use the change of measure inequality, we have to deal with the following exponential random variable appearing in \cref{eq: change_meas_pacb-chap-2} for any $m\geq 1$:
-\[ Z_m:= \mathbb{E}_{h\sim \P}[\exp(f_m(\S,h))],   \]
-where for any $m$, $\Sm$ is the restriction of $\S$ to its first $m$ data.
-Our goal is to choose a sequence of functions $f_m$ such that $(Z_m)_m$ is a supermartingale. A way to do so comes from \citet{bercu2008exponential}.
+\[ Z_m:= \mathbb{E}_{h\sim \P}[\exp(f_m(\S,h))].   \]
+Our goal is to choose a sequence of functions $f_m:\Zcal^\Nbb \times \Hcal \rightarrow \Rbb$ such that $(Z_m)_{m\geq 1}$ is a supermartingale. A way to do so comes from \citet{bercu2008exponential}.
 \begin{lemma}[Towards the design of a supermartingale]
 \label{l: bercu_touati}
 Let $\left(M_{m}\right)$ be a locally square-integrable martingale with respect to the filtration $(\mathcal{F}_m)$. For all $\eta \in \mathbb{R}$ and $m \geq 0$, one has:
@@ -370,4 +369,5 @@ We believe there is room for improvement in \cref{th: bandits_bound}. Indeed, th
 
 \textbf{Current Limitations.} Doing so, we made a first step towards concrete optimisation perspective of PAC-Bayes by showing generalisation bounds are attainable with weak statistical assumptions and thus, compatible with many practical settings where optimisation is performed. However, \Cref{chap: pb-ht} still presents some strong links with the information-theoretic approach such as: \textit{(i)} the presence of a prior $\P$ in \Cref{th: main_thm_iid} which does no fit the optimisation views of the prior (see \Cref{fig: recap-optim}), and \textit{(ii)} the presence of a KL divergence, suggesting an information-theoretic perspective of learning. Point \textit{(i)} will be later developed in \Cref{chap:online-pb,chap:gen-flat-minima,chap: wpb-practical} when $\P$ is seen as an initialisation point and in \Cref{chap: wass-pb} when $\P$ is the learning objective. \textit{(ii)} will be later developed in \Cref{chap: wass-pb,chap: wpb-practical}. 
 
-\textbf{Extensions of this work.} The supermartingale framework presented here are extracted from \citet{haddouche2023pac} and has inspired many follow-up works. \citet{chugg2023unified} extended the approach of this chapter to other supermartingales as well as reversed submartingales, allowing to recover a vast majority of existing PAC-Bayes literature. The tools presented in this work (\eg Ville's inequality) are also useful to obtain fast rate PAC-Bayes bounds based on the coin-betting approach \citet{jang2023tight,kuzborskij2024better}. The coin-betting approach originally in online learning \citep{orabona2016coin}. In \Cref{chap:online-pb}, we take a deeper focus on online learning, showing that an online approach of PAC-Bayes is possible, and allows to consider prior distribution as an initialisation point of a learning algorithm.
+\textbf{Extensions of this work.} The supermartingale framework presented here are extracted from \citet{haddouche2023pac} and has inspired many follow-up works. \citet{chugg2023unified} extended the approach of this chapter to other supermartingales as well as reversed submartingales, allowing to recover a vast majority of existing PAC-Bayes literature, also, \citet{rodriguez2023more} tightened the theorems presented here by allowing the optimisation in $\lambda$. The tools presented in this work (\eg Ville's inequality) are also useful to obtain fast rate PAC-Bayes bounds based on the coin-betting approach \citet{jang2023tight,kuzborskij2024better}. The coin-betting approach originally in online learning \citep{orabona2016coin}. In \Cref{chap:online-pb}, we take a deeper focus on online learning, showing that an online approach of PAC-Bayes is possible, and allows to consider prior distribution as an initialisation point of a learning algorithm.
+  
