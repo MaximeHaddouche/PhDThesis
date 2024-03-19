@@ -42,7 +42,7 @@ We emphasize that our PAC-Bayesian results only require a bounded loss to hold: 
 
 \textbf{Outline.} \cref{sec: main_bound} introduces the  theoretical framework as well as our main result. \cref{sec: online_pacb_procedure} presents an online PAC-Bayesian algorithm and draws links between PAC-Bayes and OL results.
 \cref{sec: OPBD_procedure} details online PAC-Bayesian disintegrated procedures with reduced computational time and \cref{sec: experiments} gathers supporting experiments.
-We include reminders on OL and PAC-Bayes in \cref{sec: OGD_reminder,sec: disintegrated_bounds}. \cref{sec: discussion_main_thm} provide disucssion about our main result. All proofs are deferred to \cref{sec: proofs}.
+We include reminders on OL and PAC-Bayes in \cref{sec: OGD_reminder,sec: disintegrated_bounds}. \cref{sec: discussion_main_thm} provide disucssion about our main result. All proofs are deferred to \cref{sec: proofs-chap3}.
 
 \section{An online PAC-Bayesian bound}
 \label{sec: main_bound}
@@ -286,7 +286,7 @@ and we optimise w.r.t. $\Psi$ to find $\hat{w}_{i+1}$.
 
 \end{corollary}
 
-Proof is deferred to \cref{sec: proofs_sec4}. Note that in \cref{cor: OPBD_optim_funcs}, we identified $\hat{Q}_i$ to $\hat{w}_i$ and for the last formula, $\Psi$ has no dependency on $h_i$.
+Proof is deferred to \cref{sec: proofs-chap3_sec4}. Note that in \cref{cor: OPBD_optim_funcs}, we identified $\hat{Q}_i$ to $\hat{w}_i$ and for the last formula, $\Psi$ has no dependency on $h_i$.
 
 \textbf{Comparison with \cref{eq: pacb_online_alg}.} The main difference with \cref{eq: pacb_online_alg} provided by the disintegrated framework is that the optimisation route does not include an expected term within the optimisation objective. The main advantage is a weaker computational cost when we restrict to Gaussian distributions. The main weakness is a lack of stability as our algorithm now depends at time $i$ on $\ell(h+\varepsilon_i,z_i)$ so on $\varepsilon_i$ directly.
 We denote that \cref{eq: rivasplata_OPBD} is less stable than \cref{eq: viallard_OPBD} as it involves another dependency on $\varepsilon_i$ through $\Psi$.
@@ -324,7 +324,7 @@ We now state a corollary which gives disintegrated guarantees for any online pre
   Where the notation $\normalfont1, \normalfont2$ denote whether the functions have been derived from adapted theorems of \citealp{rivasplata2020pac,viallard2023general} recalled in \cref{sec: disintegrated_bounds}. The optimised $\lambda$ gives in both cases a $O(\sqrt{m\log(1/\delta)}$.
 \end{corollary}
 
- Proof is deferred to \cref{sec: proofs_sec4}.
+ Proof is deferred to \cref{sec: proofs-chap3_sec4}.
 
 \section{Experiments}
 \label{sec: experiments}
@@ -434,7 +434,7 @@ We also say that a sequence of stochastic kernels $(P_i)_{i\geq 1}$ is an \emph{
   With for all $i$, $\hat{V}_i(h_i,z_i)= (\ell(h_i,z_i)-\mathbb{E}_{i-1}[\ell(h_i,z_i)])^2$ is the empirical variance at time $i$ and $V_i(h_i)= \mathbb{E}_{i-1}[\hat{V}(h_i,z_i)]$ is the true conditional variance.
 \end{theorem}
 
-Proof lies in \Cref{sec: proof_main_thm_online}.
+Proof lies in \Cref{sec: proof_main_thm_online-ht}.
 
 \textbf{Analysis of the bound.} This bound is, to our knowledge, the first Online PAC-Bayes bound in literature holding for unbounded losses. It is semi-empirical as the variance and empirical variance terms have theoretical components. However, these terms can be controlled with assumptions on conditional second-order moments and not on exponential ones (as made in \citealp{haddouche2022online} where the bounded loss assumption was used to obtain conditional subgaussianity). To emphasise our point, we consider as in \Cref{sec: iid_case} the case of the quadratic loss $\ell(h,z)= (h-z)^2$. Here, we only need to assume that our data have a finite variance if we restrict our posteriors to have both bounded means and variance. Also the meaning of the online predictive sequence $P_i$ is that we must be able to design properly a sequence of priors before drawing our data, this can be for instance an online algorithm whihc generate a prior distribution from past data at each time step.
 
@@ -456,7 +456,7 @@ Finally, we note that if we assume being able to bound simultaneaously all condt
  Online PAC-Bayes as presented in \citet{haddouche2022online} relies on a conditional subgaussiannity assumption to control an exponential moment. They did not exploit a martingale-type structure to do so. Our supermartingale approach has proven to be well suited to Online PAC-Bayes as we provided atheorem valid for unbounded losses holding simultaneously on all posteriors: two points which have not been reached in \citet{haddouche2022online}.
 
 \subsection{Proof of \Cref{th: main_thm_onl}}
-\label{sec: proof_main_thm_online}
+\label{sec: proof_main_thm_online-ht}
  \begin{proof}
    We fix $m\geq 1$, $\S$ a countable dataset and $(P_i)_{i\geq 1}$ an online predictive sequence. We aim to design a $m$-tuple of probabilities. Thus, our predictor set of interest is $\mathcal{H}_m:= \mathcal{H}^{\otimes m}$ and then, our predictor $h$ is a tuple $(h_1,..,h_m)\in\mathcal{H}$.
 

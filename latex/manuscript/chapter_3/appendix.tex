@@ -1,11 +1,9 @@
-\chapter{Appendix of Chapter~\ref{chap: online-pb}}
+%!TEX root = main.tex
+\chapter{Appendix of Chapter~\ref{chap:online-pb}}
 \label{ap: online-pb}
-
-\minitoc
 
 \begin{noaddcontents}
 
-    %!TEX root = main.tex
 \section{Background}
 
 \subsection{Reminder on Online Gradient Descent }
@@ -114,13 +112,13 @@ where $KL$ is the Kullback-Leibler divergence.
 The goal of this section is to show how good \cref{th: main_thm_online} compared to a naive approach which consists in applying classical PAC-Bayes results sequentially. The interest of this section is twofold:
 
 \begin{itemize}
-  \item First, presenting a classical PAC-Bayes result extracted and adapted from \cite{alquier2016variational} which is formally close to what we propose.
+  \item First, presenting a classical PAC-Bayes result extracted and adapted from \cite{alquier2016properties} which is formally close to what we propose.
   \item Second, showing that a naive (yet natural) approach to obtain online PAC-Bayes bound leads to a deteriorated bound.
 \end{itemize}
 
 We first state our PAC-Bayes bound of interest.
 
-\begin{theorem}[Adapted from  \cite{alquier2016variational}, Thm 4.1]
+\begin{theorem}[Adapted from  \cite{alquier2016properties}, Thm 4.1]
   \label{th: naive_pac_bayes}
   Let $S=(z_1,...,z_m)$ be an iid sample from the same law $\mu_0$.
   For any data-free prior $P$, for any loss function $\ell$ bounded by $K$, any $\lambda>0,\delta\in ]0;1[$, one has with probability $1-\delta$ for any posterior $Q\in\mathcal{M}_1(\mathcal{H})$:
@@ -132,7 +130,7 @@ We first state our PAC-Bayes bound of interest.
 
 
   \begin{itemize}
-    \item \cref{th: naive_pac_bayes} is a particular case of the original theorem from \cite{alquier2016variational} as we take the case of a bounded loss which implies the subgaussianity of the random variables $\ell(.,z_i)$ and then allows us to recover the factor $\frac{\lambda K^2}{m}$
+    \item \cref{th: naive_pac_bayes} is a particular case of the original theorem from \cite{alquier2016properties} as we take the case of a bounded loss which implies the subgaussianity of the random variables $\ell(.,z_i)$ and then allows us to recover the factor $\frac{\lambda K^2}{m}$
     \item This theorem is derived from \cite{catoni2007pac} and constitutes a good basis to compare ourselves with as it similar formally similar.
   \end{itemize}
 \end{remark}
@@ -194,7 +192,7 @@ This section includes discussion about our proof technique and why all the assum
 
 \paragraph{Why do we need an online predictive sequence as priors? }
 
-This condition is fully exploited when dealing with the exponential moment $\xi_m$ in the proof (see \cref{l: exp_moment_online} proof). Indeed, the fact of having $P_i$ being $\mathcal{F}_{i-1}$-measurable is essential to apply conditional Fubini (\cref{l: cond_fubini}). Note that the condition $\forall i , P_{i-1}\ll P_{i}$ is not necessary as the weaker condition $\forall i, P_1 \ll P_i$ would suffice here.
+This condition is fully exploited when dealing with the exponential moment $\xi_m$ in the proof (see \cref{l: exp_moment_online} proof). Indeed, the fact of having $P_i$ being $\mathcal{F}_{i-1}$-measurable is essential to apply conditional Fubini (\cref{l: cond_fubini-chap3}). Note that the condition $\forall i , P_{i-1}\ll P_{i}$ is not necessary as the weaker condition $\forall i, P_1 \ll P_i$ would suffice here.
 However, note that when we particularise our theorem, for instance if we choose in \cref{cor: online_procedure} $P_i= \hat{Q_i}$, one recovers the condition $\hat{Q}_{i}\ll\hat{Q}_{i+1}$ to have finite KL divergences. Hence the interest of taking directly an online predictive sequence.
 
 \paragraph{About the boundedness assumption}
@@ -393,7 +391,7 @@ Combining Equation \cref{eq: viallard_dis_eq11} and \cref{eq: viallard_dis_eq12}
 
 
 \section{Proofs}
-\label{sec: proofs}
+\label{sec: proofs-chap3}
 
 \subsection{Proof of \cref{th: main_thm_online}}
 
@@ -482,7 +480,7 @@ with $\Tilde{\ell}_i(h_i,z_i)= \mathbb{E}[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}]- 
 One has for any $m$, $\xi_m \leq \exp\left(\frac{\lambda^2m K^2}{2}\right)$ with $K$ bounding $\ell$.
 \end{lemma}
 
-The proof of this lemma is deferred to \cref{sec: proof_exp_moment_online}
+The proof of this lemma is deferred to Section \ref{sec: proof_exp_moment_online}
 
 
 To conclude the proof, we just bound $\xi_m$ by the result of \cref{l: exp_moment_online} within \cref{eq: temp_result_online_thm}.
@@ -517,7 +515,7 @@ The last line  holding because for any $h_1\in\mathcal{H}$, $\Tilde{\ell}_1(h_1,
 Now our next step is to use a variant of Fubini valid for $\mathcal{F}_{m-1}$- measurable measures.
 
 \begin{lemma}[Conditional Fubini]
-  \label{l: cond_fubini}
+  \label{l: cond_fubini-chap3}
   Let $f: \mathcal{H}\times \mathcal{Z} \rightarrow \mathbb{R}^+$.
   For a $sigma$-algebra $\mathcal{F}$ over $\mathcal{Z}$ and a measure $P$ over $\mathcal{H}$ such that
   \begin{itemize}
@@ -531,7 +529,7 @@ Now our next step is to use a variant of Fubini valid for $\mathcal{F}_{m-1}$- m
 
 \noindent The proof of this lemma lies at the end of this section.
 
-\noindent We then fix $\mathcal{F}= \mathcal{F}_{m-1}$ and $f(h,z)= \exp(\lambda\Tilde{\ell}_i(h,z))$. Furthermore, because we assumed the sequence $(P_i)$ to be an online predictive sequence, $P_m$ is $\mathcal{F}_{m-1}$-measurable and $P_m>>P_1$ with $P_1$ a data-free prior. One then applies \cref{l: cond_fubini}:
+\noindent We then fix $\mathcal{F}= \mathcal{F}_{m-1}$ and $f(h,z)= \exp(\lambda\Tilde{\ell}_i(h,z))$. Furthermore, because we assumed the sequence $(P_i)$ to be an online predictive sequence, $P_m$ is $\mathcal{F}_{m-1}$-measurable and $P_m>>P_1$ with $P_1$ a data-free prior. One then applies \cref{l: cond_fubini-chap3}:
 
 \[ \mathbb{E}
 \left[ \mathbb{E}_{h_m\sim P_m} [\exp(\lambda \Tilde{\ell}_m(h_m,z_m))] \mid \mathcal{F}_{m-1} \right] =  \mathbb{E}_{h_m\sim P_m} \left[ \mathbb{E}
@@ -556,7 +554,7 @@ One then has $\xi_m \leq \exp\left( \frac{\lambda^2K^2}{2}   \right) \xi_{m-1}$.
 
 
 
-\begin{proof}[Proof of \cref{l: cond_fubini}]
+\begin{proof}[Proof of \cref{l: cond_fubini-chap3}]
  Let $A$ be a $\mathcal{F}$-measurable event. One wants to show that
   \[ \mathbb{E}\left[\mathbb{E}_{h\sim P} [f(h,z)]\mathds{1}_A \right] = \mathbb{E}\left[\mathbb{E}_{h\sim P} \left[ \mathbb{E}[f(h,z)\mid \mathcal{F}] \right] \mathds{1}_A \right]. \]
   \noindent Where the first expectation in each term is taken over $z$. This will be enough to conclude that
@@ -662,7 +660,7 @@ In this section we perform error bars for our OPBD methods in order to evaluate 
 We ran $n=50$ times our algorithms and then show in the table below for each data set the means and the standard deviation of our averaged cumulative losses at regular time steps. We denote for $i\in\{1,2\}$ 'OPBD $\Psi_i$' to indicate that this algorithm is our OPBD method used with thev optimisation objective $\Psi_i$.
 
 
-\begin{table}[]
+\begin{table}
 \label{tab: error_bars}
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|}

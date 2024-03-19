@@ -30,7 +30,7 @@ $$
 Below, we use the definitions introduced in \Cref{sec: iid_case}.
 We study here a particular case of \cite{alquier2016properties} for bounded losses which are especially subgaussian thanks to Hoeffding's lemma.
 \begin{theorem}[Adapted from  \citealp{alquier2016properties}, Theorem 4.1]
-\label{th: naive_pac_bayes}
+\label{th: naive_pac_bayes-chap3}
 Let $m>0$,$\S_m=(\z_1,...,\z_m)$ be an \iid sample from the same law $\mu$.
 For any data-free prior $\P$, for any loss function $\ell$ bounded by $K$, any $\lambda>0,\delta\in ]0;1[$, one has with probability $1-\delta$ for any posterior $Q\in\mathcal{M}_1(\mathcal{H})$
 \[ \mathbb{E}_{h\sim \Q}[\Risk(h)] \leq  \mathbb{E}_{h\sim \Q}[\Riskhat_{\Sm}(h)] + \frac{\operatorname{KL}(\Q, \P) + \log(1/\delta)}{\lambda} + \frac{\lambda K^2}{2m}. \]
@@ -101,10 +101,10 @@ For any data-free prior $P\in \mathcal{M}(\mathcal{H})$, any $\lambda>0$ the fol
 We also have the local bound: for any $m\geq 1$, with probability $1-\delta$ over $S$, for all $\Q\in\mathcal{M}(\mathcal{H})$
 \[ \mathbb{E}_{h\sim \Q} [\Risk(h)] \leq  \mathbb{E}_{h\sim \Q} \left[\Riskhat_{\S_m}(h) \right] + \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda} + \frac{\lambda K^2}{m}.  \]
 \end{corollary}
-The proof is deferred to \cref{sec: proofs}. Remark that the second bound of Corollary \ref{cor: bounded_case} is exactly the Catoni bound stated in \citet{alquier2016properties} (see \Cref{th: naive_pac_bayes} in \Cref{sec: pac_b_background}) up to a numerical factor of $2$.
+The proof is deferred to \cref{sec: proofs}. Remark that the second bound of Corollary \ref{cor: bounded_case} is exactly the Catoni bound stated in \citet{alquier2016properties} (see \Cref{th: naive_pac_bayes-chap3} in \Cref{sec: pac_b_background}) up to a numerical factor of $2$.
 
 
-The first bound is, to our knowledge, the first PAC-Bayesian bound for bounded losses holding uniformly (for a given parameter $\lambda$) on the choice of $Q,m$ and thus extends the scope of Catoni's bound which holds for a single $m$ with high probability.  Indeed, if we want for instance \Cref{th: naive_pac_bayes} to hold for any $i\in\{1..m\}$, we then have to take an union bound on $m$ events which turns the term $\log(1/\delta)$ into $\log(m/\delta)$ (but with the benefit of holding for $m$ parameters $\lambda_1,...,\lambda_m$). This point is common to the most classical PAC-Bayesian bounds
+The first bound is, to our knowledge, the first PAC-Bayesian bound for bounded losses holding uniformly (for a given parameter $\lambda$) on the choice of $Q,m$ and thus extends the scope of Catoni's bound which holds for a single $m$ with high probability.  Indeed, if we want for instance \Cref{th: naive_pac_bayes-chap3} to hold for any $i\in\{1..m\}$, we then have to take an union bound on $m$ events which turns the term $\log(1/\delta)$ into $\log(m/\delta)$ (but with the benefit of holding for $m$ parameters $\lambda_1,...,\lambda_m$). This point is common to the most classical PAC-Bayesian bounds
 (including McAllester and Catoni's ones \eqref{eq: mcallester}, \eqref{eq: catoni})
 and impeach us to have a bound uniformly on all $m\in\mathbb{N}/\{0\}$ as $\log(m)$ goes to infinity asymptotically.
 

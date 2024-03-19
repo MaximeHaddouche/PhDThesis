@@ -1636,6 +1636,43 @@
       \field{title}{{PAC-Bayesian learning of linear classifiers}}
       \field{year}{2009}
     \endentry
+    \entry{gil2013renyi}{article}{}
+      \name{author}{3}{}{%
+        {{hash=58705d0e7ab3869c9867c5be83422daf}{%
+           family={Gil},
+           familyi={G\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=70f252cde0897a76298d8549b292a9bc}{%
+           family={Alajaji},
+           familyi={A\bibinitperiod},
+           given={Fady},
+           giveni={F\bibinitperiod}}}%
+        {{hash=893028806e4d5a0180e09fe75e64a382}{%
+           family={Linder},
+           familyi={L\bibinitperiod},
+           given={Tamas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{c01b2c43c1c878dadfbebf7253166731}
+      \strng{fullhash}{f6175901d541ea7615109eabd58c667c}
+      \strng{bibnamehash}{f6175901d541ea7615109eabd58c667c}
+      \strng{authorbibnamehash}{f6175901d541ea7615109eabd58c667c}
+      \strng{authornamehash}{c01b2c43c1c878dadfbebf7253166731}
+      \strng{authorfullhash}{f6175901d541ea7615109eabd58c667c}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Sciences}
+      \field{title}{Rényi divergence measures for commonly used univariate continuous distributions}
+      \field{year}{2013}
+    \endentry
     \entry{grunwald2021mac}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=1fb1a40390ce652cbfc18842ed5de9d4}{%
@@ -1654,30 +1691,12 @@
            given={Lydia},
            giveni={L\bibinitperiod}}}%
       }
-      \name{editor}{2}{}{%
-        {{hash=b2aeb0539e71c989e52b170b56b1fabd}{%
-           family={Belkin},
-           familyi={B\bibinitperiod},
-           given={Mikhail},
-           giveni={M\bibinitperiod}}}%
-        {{hash=1162b7ca3f617484861379823b7eca5f}{%
-           family={Kpotufe},
-           familyi={K\bibinitperiod},
-           given={Samory},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {PMLR}%
-      }
       \strng{namehash}{debb6f6e941576ae59cbbbc76cd3fb70}
       \strng{fullhash}{dd75a8330fc718efb8c877ecc16243b8}
       \strng{bibnamehash}{dd75a8330fc718efb8c877ecc16243b8}
       \strng{authorbibnamehash}{dd75a8330fc718efb8c877ecc16243b8}
       \strng{authornamehash}{debb6f6e941576ae59cbbbc76cd3fb70}
       \strng{authorfullhash}{dd75a8330fc718efb8c877ecc16243b8}
-      \strng{editorbibnamehash}{9211307f5347b654539e6d0498a80866}
-      \strng{editornamehash}{9211307f5347b654539e6d0498a80866}
-      \strng{editorfullhash}{9211307f5347b654539e6d0498a80866}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
       \field{extradatescope}{labelyear}
@@ -1685,16 +1704,8 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of Thirty Fourth Conference on Learning Theory}
-      \field{month}{15--19 Aug}
-      \field{series}{Proceedings of Machine Learning Research}
       \field{title}{{PAC-Bayes, MAC-Bayes and Conditional Mutual Information: Fast rate bounds that handle general VC classes}}
-      \field{volume}{134}
       \field{year}{2021}
-      \field{pages}{2217\bibrangedash 2247}
-      \range{pages}{31}
-      \verb{file}
-      \verb http://proceedings.mlr.press/v134/grunwald21a/grunwald21a.pdf
-      \endverb
       \verb{urlraw}
       \verb https://proceedings.mlr.press/v134/grunwald21a.html
       \endverb
@@ -6907,6 +6918,43 @@
       \verb https://dl.acm.org/doi/10.5555/2567709.2502589
       \endverb
     \endentry
+    \entry{gil2013renyi}{article}{}
+      \name{author}{3}{}{%
+        {{hash=58705d0e7ab3869c9867c5be83422daf}{%
+           family={Gil},
+           familyi={G\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=70f252cde0897a76298d8549b292a9bc}{%
+           family={Alajaji},
+           familyi={A\bibinitperiod},
+           given={Fady},
+           giveni={F\bibinitperiod}}}%
+        {{hash=893028806e4d5a0180e09fe75e64a382}{%
+           family={Linder},
+           familyi={L\bibinitperiod},
+           given={Tamas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{c01b2c43c1c878dadfbebf7253166731}
+      \strng{fullhash}{f6175901d541ea7615109eabd58c667c}
+      \strng{bibnamehash}{f6175901d541ea7615109eabd58c667c}
+      \strng{authorbibnamehash}{f6175901d541ea7615109eabd58c667c}
+      \strng{authornamehash}{c01b2c43c1c878dadfbebf7253166731}
+      \strng{authorfullhash}{f6175901d541ea7615109eabd58c667c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Sciences}
+      \field{title}{Rényi divergence measures for commonly used univariate continuous distributions}
+      \field{year}{2013}
+    \endentry
     \entry{guedj2013pac}{article}{}
       \name{author}{2}{}{%
         {{hash=dbe4c731302e63fe6b122f974c402be2}{%
@@ -9044,30 +9092,12 @@
            given={Lydia},
            giveni={L\bibinitperiod}}}%
       }
-      \name{editor}{2}{}{%
-        {{hash=b2aeb0539e71c989e52b170b56b1fabd}{%
-           family={Belkin},
-           familyi={B\bibinitperiod},
-           given={Mikhail},
-           giveni={M\bibinitperiod}}}%
-        {{hash=1162b7ca3f617484861379823b7eca5f}{%
-           family={Kpotufe},
-           familyi={K\bibinitperiod},
-           given={Samory},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {PMLR}%
-      }
       \strng{namehash}{debb6f6e941576ae59cbbbc76cd3fb70}
       \strng{fullhash}{dd75a8330fc718efb8c877ecc16243b8}
       \strng{bibnamehash}{dd75a8330fc718efb8c877ecc16243b8}
       \strng{authorbibnamehash}{dd75a8330fc718efb8c877ecc16243b8}
       \strng{authornamehash}{debb6f6e941576ae59cbbbc76cd3fb70}
       \strng{authorfullhash}{dd75a8330fc718efb8c877ecc16243b8}
-      \strng{editorbibnamehash}{9211307f5347b654539e6d0498a80866}
-      \strng{editornamehash}{9211307f5347b654539e6d0498a80866}
-      \strng{editorfullhash}{9211307f5347b654539e6d0498a80866}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
@@ -9075,16 +9105,8 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of Thirty Fourth Conference on Learning Theory}
-      \field{month}{15--19 Aug}
-      \field{series}{Proceedings of Machine Learning Research}
       \field{title}{{PAC-Bayes, MAC-Bayes and Conditional Mutual Information: Fast rate bounds that handle general VC classes}}
-      \field{volume}{134}
       \field{year}{2021}
-      \field{pages}{2217\bibrangedash 2247}
-      \range{pages}{31}
-      \verb{file}
-      \verb http://proceedings.mlr.press/v134/grunwald21a/grunwald21a.pdf
-      \endverb
       \verb{urlraw}
       \verb https://proceedings.mlr.press/v134/grunwald21a.html
       \endverb
