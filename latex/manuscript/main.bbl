@@ -3878,12 +3878,15 @@
       \field{extraname}{1}
       \field{sortinit}{R}
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
-      \field{labeldatesource}{nodate}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 26th Annual Conference on Learning Theory}
       \field{series}{Proceedings of Machine Learning Research}
       \field{title}{{Online Learning with Predictable Sequences}}
+      \field{year}{2013}
       \verb{urlraw}
       \verb https://proceedings.mlr.press/v30/Rakhlin13.html
       \endverb
@@ -3913,6 +3916,7 @@
       \field{extraname}{2}
       \field{sortinit}{R}
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -7075,6 +7079,47 @@
       \field{pages}{4\bibrangedash 28}
       \range{pages}{25}
     \endentry
+    \entry{rakhlin2013online}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=fc1e69061b667f713b5c9e492ce2acfa}{%
+           family={Rakhlin},
+           familyi={R\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=816698cda686443bc07bd46a33cf20aa}{%
+           family={Sridharan},
+           familyi={S\bibinitperiod},
+           given={Karthik},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{58f269097866472ab5e3fea45e846322}
+      \strng{fullhash}{58f269097866472ab5e3fea45e846322}
+      \strng{bibnamehash}{58f269097866472ab5e3fea45e846322}
+      \strng{authorbibnamehash}{58f269097866472ab5e3fea45e846322}
+      \strng{authornamehash}{58f269097866472ab5e3fea45e846322}
+      \strng{authorfullhash}{58f269097866472ab5e3fea45e846322}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 26th Annual Conference on Learning Theory}
+      \field{series}{Proceedings of Machine Learning Research}
+      \field{title}{{Online Learning with Predictable Sequences}}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v30/Rakhlin13.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v30/Rakhlin13.html
+      \endverb
+    \endentry
     \entry{rakhlin2013practical}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=537f935e46c4020f6f96dd7e67e5e7a3}{%
@@ -7094,9 +7139,10 @@
       \strng{authorbibnamehash}{f7d89d3d49a138e8e277b9870592b4db}
       \strng{authornamehash}{f7d89d3d49a138e8e277b9870592b4db}
       \strng{authorfullhash}{f7d89d3d49a138e8e277b9870592b4db}
-      \field{extraname}{1}
+      \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -10552,44 +10598,6 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1214/18-EJS1479
-      \endverb
-    \endentry
-    \entry{rakhlin2013online}{inproceedings}{}
-      \name{author}{2}{}{%
-        {{hash=fc1e69061b667f713b5c9e492ce2acfa}{%
-           family={Rakhlin},
-           familyi={R\bibinitperiod},
-           given={Alexander},
-           giveni={A\bibinitperiod}}}%
-        {{hash=816698cda686443bc07bd46a33cf20aa}{%
-           family={Sridharan},
-           familyi={S\bibinitperiod},
-           given={Karthik},
-           giveni={K\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {PMLR}%
-      }
-      \strng{namehash}{58f269097866472ab5e3fea45e846322}
-      \strng{fullhash}{58f269097866472ab5e3fea45e846322}
-      \strng{bibnamehash}{58f269097866472ab5e3fea45e846322}
-      \strng{authorbibnamehash}{58f269097866472ab5e3fea45e846322}
-      \strng{authornamehash}{58f269097866472ab5e3fea45e846322}
-      \strng{authorfullhash}{58f269097866472ab5e3fea45e846322}
-      \field{extraname}{2}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
-      \field{labeldatesource}{nodate}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the 26th Annual Conference on Learning Theory}
-      \field{series}{Proceedings of Machine Learning Research}
-      \field{title}{{Online Learning with Predictable Sequences}}
-      \verb{urlraw}
-      \verb https://proceedings.mlr.press/v30/Rakhlin13.html
-      \endverb
-      \verb{url}
-      \verb https://proceedings.mlr.press/v30/Rakhlin13.html
       \endverb
     \endentry
     \entry{zhang2018strong}{inproceedings}{}
