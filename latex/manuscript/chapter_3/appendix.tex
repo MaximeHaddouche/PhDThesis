@@ -56,47 +56,6 @@ Now we state a regret bound which can be found in \cite[Eq 2.5]{shalev2012online
 \end{proposition}
 
 
-\subsection{About PAC-Bayes learning}
-
-We provide here more information about PAC-Bayes learning. We propose a local framework; then expose what APC-Bayes lerning ais to do and finally state two celebrated PAC-Bayes theorems.
-
-\paragraph{An usual framework}
-We first state the following framework:
-\begin{itemize}
-  \item $\mathcal{H}$ is a space of considered predictors
-  \item $\mathcal{Z}$ is a data space. $z$ can be an unlabeled data $x$ or a couple $(x,y)$ of a point with its label. We assume that $\mu$ is a distribution over $\mathcal{Z}$ which rules the distribution of our data.
-  \item $\ell: \mathcal{H}\times \mathcal{Z}\rightarrow \mathbb{R}^+$ is a loss function i.e. the learning objective we want to minimise.
-  \item $S=(z_1,...z_m)$ an iid dataset following $\mu$.
-  \item The generalisation risk for $h\in\mathbb{H}$: $R(h)= \mathbb{E}_{z\sim \mu}[\ell(h,z)]$.
-  \item The empirical risk $R_m(h)= \frac{1}{m}\sum_{i=1}^m \ell(h,z_i)$.
-\end{itemize}
-
-
-\paragraph{What is PAC-Bayes learning?}
-PAC-Bayes learning is about learning a meaningful data-dependent posterior distribution $Q$ from a (classically data-free) prior $P$ without necessarily exploiting the Bayes formula. PAC-Bayes learning controls the \emph{expected generalisation error}:
-\[  \mathbb{E}_{h\sim Q}[R(h)] := \mathbb{E}_{h\sim Q}\mathbb{E}_{z\sim \mu} [\ell(h,z)], \]
- which is the averaged error that would make a predictor drawn from our posterior distribution on a new point (usually this objective holds under an iid assumption on our dataset).
-
-
-
-\paragraph{Two classical theorems.} We state below two celebrated PAC-Bayesian results: the McAllester bound enriched with Maurer's remark as stated in \cite[Thm.1]{guedj2019primer} and Catoni's bound (\citealp[Thm 1.2.6]{catoni2007pac}). Those theorems both holds with the assumptions of iid data and loss bounded by $1$. Note that in \cref{th: naive_pac_bayes}, we also proposed another bound which is a corollary of Catoni's one.
-
-\begin{theorem}[McAllester' bound]
-  For any prior distribution $P$, we have with probability $1-\delta$ over the $m$-sample $S$, for any posterior distribution $Q$ such that $Q\ll P$:
-
-\[  \mathbb{E}_{h\sim Q}\left[ R(h)\right] \leq \mathbb{E}_{h\sim Q}\left[ R_m(h)\right] + \sqrt{\frac{KL(Q,P) + \log(2\sqrt{m}/\delta)}{2m}},    \]
-where $KL$ is the Kullback-Leibler divergence.
-
-\end{theorem}
-
-\begin{theorem}
-  For any prior distribution $P$, any $\lambda>0$, we have with probability $1-\delta$ over the $m$-sample $S$, for any posterior distribution $Q$ such that $Q\ll P$:
-
-\[  \mathbb{E}_{h\sim Q}\left[ R(h)\right] \leq \frac{1-\exp \left\{-\frac{\lambda \mathbb{E}_{h\sim Q}\left[ R_m(h)\right]}{m}-\frac{KL(Q || P)-\log (\delta)}{m}\right\}}{1-\exp \left(-\frac{\lambda}{m}\right)},    \]
-where $KL$ is the Kullback-Leibler divergence.
-
-\end{theorem}
-
 
 
 
@@ -724,4 +683,68 @@ More precisely, we notice that the standard deviation of OPBD with $\Psi_1$ is a
 
 This fact is particurlaly noticeable on the California Housing dataset where both the means and variance of OPBD with $\Psi_1$ increase drastically between t=16000 and t=20000 while the increase is more attenuated for OPBD with $\Psi_2$. This fact is also visible on \cref{fig: exp_results}.
 
+
+\subsection{Proof of \Cref{th: opb-ht}}
+\label{sec: proof_main_thm_online-ht}
+ \begin{proof}
+   We fix $m\geq 1$, $\S$ a countable dataset and $(\P_{i})_{i\geq 1}$ an online predictive sequence. We aim to design a $m$-tuple of probabilities. Thus, our predictor set of interest is $\mathcal{H}_m:= \mathcal{H}^{\otimes m}$ and then, our predictor $h$ is a tuple $(h_1,..,h_m)\in\mathcal{H}$.
+
+   Our goal is to apply the change of measure inequality on $\mathcal{H}_m$ to a specific function $f_m$ inspired from Lemma \ref{l: bercu_touati}. We define this function below, for any sample $\S$ and any predictor $h^m=(h_1,...,h_m)$
+
+   \begin{align*}
+   f_m(S,h^m) & := \sum_{i=1}^m \lambda X_i(h_i,z_i)  - \frac{\lambda^2}{2}\sum_{i=1}^m(\hat{V}_i(h_i,z_i) + V_i(h_i)),
+   \end{align*}
+   where $X_i(h_i,z_i)= \mathbb{E}_{i-1}[\ell(h_i,z_i)]- \ell(h_i,\z_i)$. Notice that for fixed $h$, the sequence $(f_m(\S,h))_{m\geq 1}$ is a supermartingale according to Lemma \ref{l: bercu_touati}.
+
+   Now for a given posterior tuple $Q_1,...Q_m$ we define $Q= Q_1 \otimes ...\otimes Q_m$ and also $P^m_S = P_{1,S}\otimes...\otimes P_{m,S}$. We can now properly apply the change of measure inequality for any $m$:
+   \begin{align*}
+    \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\lambda X_i(h_i,z_i)  - \frac{\lambda^2}{2}(\hat{V}_i(h_i,z_i) + V_i(h_i))] & = \mathbb{E}_{h^m\sim Q}\left[ f_m(S,h^m) \right] \\
+    & \leq \operatorname{KL}(Q,P^m_S) + \log \left( \mathbb{E}_{h^m\sim P^m_S}\exp(f_m(S,h^m))  \right).
+   \end{align*}
+
+   Noticing that $\operatorname{KL}(Q,P^m_S)= \sum_{i=1}^m \operatorname{KL}(\Q_{i},\P_{i,\Sm})$, the only remaining term to deal with is the exponential rv.
+
+   To do so we prove the following lemma:
+
+   \begin{lemma}
+     The sequence $(M_m:=\mathbb{E}_{h^m\sim P^m_S}\exp(f_m(S,h^m))_{m\geq 1}$ is a non-negative supermartingale.
+   \end{lemma}
+   \begin{proof}
+   We fix $m\geq 1$ and we recall that for any $i$, $\P_{i,\Sm}$ is $\mathcal{F}_{i-1}$-measurable. We show that $\mathbb{E}_{m-1}[M_m] \leq M_{m-1}$. We first recover $M_{m-1}$ from $\mathbb{E}_{m-1}[M_m]$.
+
+     \begin{align*}
+       \mathbb{E}_{m-1}[M_m]& =\mathbb{E}_{m-1}\left[\mathbb{E}_{h^m\sim P^m_S}\exp(f_m(S,h^m)\right] \\
+       & = \mathbb{E}_{m-1}\left[\mathbb{E}_{h_1,..,h_m\sim P_{1,S}\otimes...\otimes P_{m,S}}\exp(f_m(S,h^m)\right] \\
+       & = \mathbb{E}_{m-1}\left[\mathbb{E}_{h_1,..,h_m\sim P_{1,S}\otimes...\otimes P_{m,S}}\left[\Pi_{i=1}^m\exp\left(\lambda X_i(h_i,z_i)  - \frac{\lambda^2}{2}(\hat{V}_i(h_i,z_i) + V_i(h_i))\right)\right] \right] \\
+        & = M_{m-1} \mathbb{E}_{m-1}\left[ \mathbb{E}_{h_m\sim P_{m,S}}\left[\exp\left(\lambda X_m(h_m,z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,z_m) + V_m(h_m))\right) \right]\right].
+     \end{align*}
+ The last line holding because $P^{m-1}_S = P_{1,S}\otimes...\otimes P_{m-1,S}$ is $\mathcal{F}_{m-1}$ measurable.
+
+
+   Now we exploit the fact that $P_{m,S}$ is $\mathcal{F}_{m-1}$ measurable to apply a conditional Fubini lemma stated in \citet[][Lemma D.3]{haddouche2022online}. We have:
+
+   \begin{multline*}
+     \mathbb{E}_{m-1}\left[ \mathbb{E}_{h_m\sim P_{m,S}}\left[\exp\left(\lambda X_m(h_m,z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,z_m) + V_m(h_m))\right) \right]\right] \\ =  \mathbb{E}_{h_m\sim P_{m,S}}\left[\mathbb{E}_{m-1}\left[\exp\left(\lambda X_m(h_m,z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,z_m) + V_m(h_m))\right) \right]\right].
+   \end{multline*}
+
+ Now we can apply Lemma \ref{l: bercu_touati} for any $h_m\in\mathcal{H}$ with $\Delta M_{m}=X_m(h_m,z_m), \Delta[M]_{m}=\hat{V}(h_m,z_m)$ and $\Delta\langle M\rangle_{m}= V_m(h_m)$. We then have for all $h_m\in\mathcal{H}$:
+
+ \[ \mathbb{E}_{m-1}\left[\exp\left(\lambda X_m(h_m,z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,z_m) + V_m(h_m))\right) \right] \leq 1.  \]
+
+ Thus $\mathbb{E}_{m-1}[M_m] \leq M_{m-1}$, this concludes the lemma's proof.
+   \end{proof}
+
+ Now we can apply Ville's inequality which implies that with probability at least $1-\delta$, for any $m\geq 1$:
+
+ \[ \mathbb{E}_{h^m\sim P^m_S}\exp(f_m(S,h^m)) \leq \frac{1}{\delta}. \]
+
+ Thus we have with probability at least $1-\delta$, for any posterior sequence $(\Q_{i})_{i\geq 1}$, the data-dependent measures $P_{1,S},...,P_{m,S}$ and any $m\geq 1$:
+
+ \begin{align*}
+  \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[\lambda X_i(h_i,z_i)  - \frac{\lambda^2}{2}(\hat{V}_i(h_i,z_i) + V_i(h_i))\right] \leq \sum_{i=1}^m \operatorname{KL}(\Q_{i},\P_{i,\Sm}) + \log \left( \frac{1}{\delta}  \right).
+ \end{align*}
+
+ Re-organising the terms in this bound and dividing by $\lambda$ concludes the proof.
+
+ \end{proof}
 

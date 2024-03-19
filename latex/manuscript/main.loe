@@ -45,7 +45,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {definition}{\ifthmt@listswap \MakeUppercase {d}efinition\nobreakspace {}3.2.2\else \numberline {3.2.2}\MakeUppercase {d}efinition\fi \thmtformatoptarg {Online Predictive Sequence}}{60}{definition.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}3.2.1\else \numberline {3.2.1}\MakeUppercase {t}heorem\fi }{60}{theorem.3.2.1}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}3.2.1\else \numberline {3.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {An OPB bound for bounded losses}}{60}{theorem.3.2.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {remark}{\ifthmt@listswap \MakeUppercase {r}emark\nobreakspace {}3.2.1\else \numberline {3.2.1}\MakeUppercase {r}emark\fi }{61}{remark.3.2.1}%
 \defcounter {refsection}{0}\relax 
@@ -55,17 +55,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}3.3.2\else \numberline {3.3.2}\MakeUppercase {c}orollary\fi \thmtformatoptarg {\normalfont \textsc {OPBTest}}}{64}{corollary.3.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}3.4.1\else \numberline {3.4.1}\MakeUppercase {c}orollary\fi }{68}{corollary.3.4.1}%
+\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}3.4.1\else \numberline {3.4.1}\MakeUppercase {c}orollary\fi \thmtformatoptarg {Two OPB disintegrated learning algorithms}}{68}{corollary.3.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}3.4.2\else \numberline {3.4.2}\MakeUppercase {c}orollary\fi }{69}{corollary.3.4.2}%
+\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}3.4.2\else \numberline {3.4.2}\MakeUppercase {c}orollary\fi \thmtformatoptarg {OPB disintegrated test bounds}}{69}{corollary.3.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}3.6.1\else \numberline {3.6.1}\MakeUppercase {t}heorem\fi }{73}{theorem.3.6.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{74}{thmt@dummyctr.dummy.26}%
-\defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}3.6.1\else \numberline {3.6.1}\MakeUppercase {l}emma\fi }{75}{lemma.3.6.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{76}{thmt@dummyctr.dummy.28}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}3.6.1\else \numberline {3.6.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {An OPB bound for heavy-tailed losses}}{72}{theorem.3.6.1}%
 \defcounter {refsection}{0}\relax 
 \vspace {0.3cm}{\relax \fontsize {17.28}{22}\selectfont \bf Chapter 4}\vspace {0.2cm}\par 
 \defcounter {refsection}{0}\relax 
@@ -75,38 +69,70 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.1.1\else \numberline {A.1.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\citealp {seldin2012bandit}, Theorem 2.1}}{81}{theorem.A.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.1.2\else \numberline {A.1.2}\MakeUppercase {t}heorem\fi \thmtformatoptarg {Adapted from \citealp {alquier2016properties}, Theorem 4.1}}{81}{theorem.A.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}A.1.3\else \numberline {A.1.3}\MakeUppercase {t}heorem\fi \thmtformatoptarg {\citealp {haddouche2021pac}, Theorem 3}}{82}{theorem.A.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}A.2.1\else \numberline {A.2.1}\MakeUppercase {c}orollary\fi }{82}{corollary.A.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}A.2.2\else \numberline {A.2.2}\MakeUppercase {c}orollary\fi }{83}{corollary.A.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {corollary}{\ifthmt@listswap \MakeUppercase {c}orollary\nobreakspace {}A.2.3\else \numberline {A.2.3}\MakeUppercase {c}orollary\fi }{84}{corollary.A.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{84}{thmt@dummyctr.dummy.32}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{85}{thmt@dummyctr.dummy.33}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{86}{thmt@dummyctr.dummy.34}%
+\defcounter {refsection}{0}\relax 
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}A.3.1\else \numberline {A.3.1}\MakeUppercase {l}emma\fi }{86}{lemma.A.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{87}{thmt@dummyctr.dummy.36}%
+\defcounter {refsection}{0}\relax 
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}A.3.2\else \numberline {A.3.2}\MakeUppercase {l}emma\fi }{87}{lemma.A.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{88}{thmt@dummyctr.dummy.38}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{89}{thmt@dummyctr.dummy.39}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{89}{thmt@dummyctr.dummy.40}%
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {definition}{\ifthmt@listswap \MakeUppercase {d}efinition\nobreakspace {}B.1.1\else \numberline {B.1.1}\MakeUppercase {d}efinition\fi }{96}{definition.B.1.1}%
+\contentsline {definition}{\ifthmt@listswap \MakeUppercase {d}efinition\nobreakspace {}B.1.1\else \numberline {B.1.1}\MakeUppercase {d}efinition\fi }{92}{definition.B.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {proposition}{\ifthmt@listswap \MakeUppercase {p}roposition\nobreakspace {}B.1.1\else \numberline {B.1.1}\MakeUppercase {p}roposition\fi }{96}{proposition.B.1.1}%
+\contentsline {proposition}{\ifthmt@listswap \MakeUppercase {p}roposition\nobreakspace {}B.1.1\else \numberline {B.1.1}\MakeUppercase {p}roposition\fi }{92}{proposition.B.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}B.1.1\else \numberline {B.1.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {McAllester' bound}}{97}{theorem.B.1.1}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}B.2.1\else \numberline {B.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {Adapted from \cite {alquier2016properties}, Thm 4.1}}{92}{theorem.B.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}B.1.2\else \numberline {B.1.2}\MakeUppercase {t}heorem\fi }{97}{theorem.B.1.2}%
+\contentsline {remark}{\ifthmt@listswap \MakeUppercase {r}emark\nobreakspace {}B.2.1\else \numberline {B.2.1}\MakeUppercase {r}emark\fi }{93}{remark.B.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}B.2.1\else \numberline {B.2.1}\MakeUppercase {t}heorem\fi \thmtformatoptarg {Adapted from \cite {alquier2016properties}, Thm 4.1}}{98}{theorem.B.2.1}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}B.2.2\else \numberline {B.2.2}\MakeUppercase {t}heorem\fi }{93}{theorem.B.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {remark}{\ifthmt@listswap \MakeUppercase {r}emark\nobreakspace {}B.2.1\else \numberline {B.2.1}\MakeUppercase {r}emark\fi }{98}{remark.B.2.1}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{93}{thmt@dummyctr.dummy.46}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}B.2.2\else \numberline {B.2.2}\MakeUppercase {t}heorem\fi }{98}{theorem.B.2.2}%
+\contentsline {proposition}{\ifthmt@listswap \MakeUppercase {p}roposition\nobreakspace {}B.3.1\else \numberline {B.3.1}\MakeUppercase {p}roposition\fi \thmtformatoptarg {Th 1) i) \cite {rivasplata2020pac}}}{98}{proposition.B.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{99}{thmt@dummyctr.dummy.51}%
+\contentsline {proposition}{\ifthmt@listswap \MakeUppercase {p}roposition\nobreakspace {}B.3.2\else \numberline {B.3.2}\MakeUppercase {p}roposition\fi \thmtformatoptarg {Adapted from Th. 2 of \cite {viallard2023general}}}{98}{proposition.B.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {proposition}{\ifthmt@listswap \MakeUppercase {p}roposition\nobreakspace {}B.3.1\else \numberline {B.3.1}\MakeUppercase {p}roposition\fi \thmtformatoptarg {Th 1) i) \cite {rivasplata2020pac}}}{103}{proposition.B.3.1}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof}}{99}{thmt@dummyctr.dummy.49}%
 \defcounter {refsection}{0}\relax 
-\contentsline {proposition}{\ifthmt@listswap \MakeUppercase {p}roposition\nobreakspace {}B.3.2\else \numberline {B.3.2}\MakeUppercase {p}roposition\fi \thmtformatoptarg {Adapted from Th. 2 of \cite {viallard2023general}}}{104}{proposition.B.3.2}%
+\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}B.4.1\else \numberline {B.4.1}\MakeUppercase {t}heorem\fi }{101}{theorem.B.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof}}{104}{thmt@dummyctr.dummy.54}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof of \cref {th: main_thm_online}}}{102}{thmt@dummyctr.dummy.51}%
 \defcounter {refsection}{0}\relax 
-\contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}B.4.1\else \numberline {B.4.1}\MakeUppercase {t}heorem\fi }{107}{theorem.B.4.1}%
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.4.1\else \numberline {B.4.1}\MakeUppercase {l}emma\fi }{103}{lemma.B.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof of \cref {th: main_thm_online}}}{107}{thmt@dummyctr.dummy.56}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof of \cref {l: exp_moment_online}}}{103}{thmt@dummyctr.dummy.53}%
 \defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.4.1\else \numberline {B.4.1}\MakeUppercase {l}emma\fi }{109}{lemma.B.4.1}%
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.4.2\else \numberline {B.4.2}\MakeUppercase {l}emma\fi \thmtformatoptarg {Conditional Fubini}}{104}{lemma.B.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof of \cref {l: exp_moment_online}}}{109}{thmt@dummyctr.dummy.58}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof of \cref {l: cond_fubini-chap3}}}{105}{thmt@dummyctr.dummy.55}%
 \defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.4.2\else \numberline {B.4.2}\MakeUppercase {l}emma\fi \thmtformatoptarg {Conditional Fubini}}{110}{lemma.B.4.2}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{110}{thmt@dummyctr.dummy.56}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof of \cref {l: cond_fubini-chap3}}}{110}{thmt@dummyctr.dummy.60}%
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.5.1\else \numberline {B.5.1}\MakeUppercase {l}emma\fi }{111}{lemma.B.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{111}{thmt@dummyctr.dummy.58}%
