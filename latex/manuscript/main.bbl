@@ -2867,51 +2867,6 @@
       \verb https://doi.org/10.1214/18-EJS1479
       \endverb
     \endentry
-    \entry{lobo2020spiking}{article}{}
-      \name{author}{4}{}{%
-        {{hash=cfd4ab1b9ac209c8b66443464ec9ce7c}{%
-           family={Lobo},
-           familyi={L\bibinitperiod},
-           given={Jesus\bibnamedelima L},
-           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=cad385a9bc804164f8a02ca66c24913e}{%
-           family={Del\bibnamedelima Ser},
-           familyi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
-           given={Javier},
-           giveni={J\bibinitperiod}}}%
-        {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
-           family={Bifet},
-           familyi={B\bibinitperiod},
-           given={Albert},
-           giveni={A\bibinitperiod}}}%
-        {{hash=e9449f8f815b6f64bf83ee7f76682448}{%
-           family={Kasabov},
-           familyi={K\bibinitperiod},
-           given={Nikola},
-           giveni={N\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{c68758fef31f4525951450a7ffe64d19}
-      \strng{fullhash}{10a532be87bd1bc16a2d243bf100e10e}
-      \strng{bibnamehash}{10a532be87bd1bc16a2d243bf100e10e}
-      \strng{authorbibnamehash}{10a532be87bd1bc16a2d243bf100e10e}
-      \strng{authornamehash}{c68758fef31f4525951450a7ffe64d19}
-      \strng{authorfullhash}{10a532be87bd1bc16a2d243bf100e10e}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Neural Networks}
-      \field{title}{{Spiking neural networks and online learning: An overview and perspectives}}
-      \field{volume}{121}
-      \field{year}{2020}
-      \field{pages}{88\bibrangedash 100}
-      \range{pages}{13}
-    \endentry
     \entry{london2017pac}{inproceedings}{}
       \name{author}{1}{}{%
         {{hash=0d384a493e9316b51e8acc450bcf7587}{%
@@ -8736,51 +8691,6 @@
       \verb{url}
       \verb https://openreview.net/forum?id=SJgIPJBFvH
       \endverb
-    \endentry
-    \entry{lobo2020spiking}{article}{}
-      \name{author}{4}{}{%
-        {{hash=cfd4ab1b9ac209c8b66443464ec9ce7c}{%
-           family={Lobo},
-           familyi={L\bibinitperiod},
-           given={Jesus\bibnamedelima L},
-           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=cad385a9bc804164f8a02ca66c24913e}{%
-           family={Del\bibnamedelima Ser},
-           familyi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
-           given={Javier},
-           giveni={J\bibinitperiod}}}%
-        {{hash=9e432ecb5f30e4b9b6eb8dde24e2ba38}{%
-           family={Bifet},
-           familyi={B\bibinitperiod},
-           given={Albert},
-           giveni={A\bibinitperiod}}}%
-        {{hash=e9449f8f815b6f64bf83ee7f76682448}{%
-           family={Kasabov},
-           familyi={K\bibinitperiod},
-           given={Nikola},
-           giveni={N\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{c68758fef31f4525951450a7ffe64d19}
-      \strng{fullhash}{10a532be87bd1bc16a2d243bf100e10e}
-      \strng{bibnamehash}{10a532be87bd1bc16a2d243bf100e10e}
-      \strng{authorbibnamehash}{10a532be87bd1bc16a2d243bf100e10e}
-      \strng{authornamehash}{c68758fef31f4525951450a7ffe64d19}
-      \strng{authorfullhash}{10a532be87bd1bc16a2d243bf100e10e}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Neural Networks}
-      \field{title}{{Spiking neural networks and online learning: An overview and perspectives}}
-      \field{volume}{121}
-      \field{year}{2020}
-      \field{pages}{88\bibrangedash 100}
-      \range{pages}{13}
     \endentry
     \entry{rivasplata2020pac}{article}{}
       \name{author}{4}{}{%
