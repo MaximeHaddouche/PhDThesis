@@ -83,7 +83,7 @@ We can now state our main result.
   For any distribution $\Dm$ over $\mathcal{Z}^m$, any $\lambda>0$ and any online predictive sequence (used as priors) $(\P_{i})_{i=1\cdots m}$, for any sequence of stochastic kernels $(\Q_{i})_{i=1\cdots m}$ we have with probability $1-\delta$ over the sample $\Sm\sim\Dm$, the following, holding for the data-dependent measures $\Q_{i,\Sm}:= \Q_{i}(\Sm,.), \P_{i,\Sm}:= \P_{i}(\Sm,.)$ :
 
   \begin{multline*} 
-    \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i,\Sm}}\left[ \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]    \right]  \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i,\Sm}}\left[ \ell(h_i,\z_i) \right] \\
+    \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i,\Sm}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right]  \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i,\Sm}}\left[ \ell(h_i,\z_i) \right] \\
     + \frac{\operatorname{KL}(\Q_{i,\Sm}, \P_{i,\Sm})}{\lambda} + \frac{\lambda m K^2}{2} + \frac{\log(1/\delta)}{\lambda}. \end{multline*}
 
 \end{theorem}
@@ -128,7 +128,7 @@ OL algorithms (we refer to \citealp{hazan2016introduction}  an introduction to t
   For any distribution $\Dm$ over $\mathcal{Z}^m$, any $\lambda>0$ and any online predictive sequences $\hat{\Q},P$, the following holds with probability $1-\delta$ over the sample $\Sm\sim\Dm$ :
 
   \begin{align*}
-    \sum_{i=1}^m \mathbb{E}_{h_i\sim \hat{\Q}_{i+1}}\left[ \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]    \right] & \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \hat{\Q}_{i+1}}\left[ \ell(h_i,\z_i) \right] \\
+    \sum_{i=1}^m \mathbb{E}_{h_i\sim \hat{\Q}_{i+1}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right] & \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \hat{\Q}_{i+1}}\left[ \ell(h_i,\z_i) \right] \\
     & + \frac{\operatorname{KL}(\hat{\Q}_{i+1}, \P_{i})}{\lambda} + \frac{\lambda m K^2}{2} + \frac{\log(1/\delta)}{\lambda}.
   \end{align*}
 \end{corollary}
@@ -141,7 +141,7 @@ Note that in this case, our posterior sequence is an online predictive sequence 
 
 \begin{align}
   \label{eq: pacb_online_alg}
-  \hat{\Q}_1= P_1, \quad \forall i\geq1\; \hat{\Q}_{i+1}&= \underset{Q\in\mathcal{M}(\mathcal{H})}{\mathrm{argmin}} \mathbb{E}_{h_i\sim \Q} \; [\ell(h_i,z_i)] + \frac{\operatorname{KL}(Q, \P_{i})}{\lambda} \\
+  \hat{\Q}_1= P_1, \quad \forall i\geq1\; \hat{\Q}_{i+1}&= \underset{Q\in\mathcal{M}(\mathcal{H})}{\mathrm{argmin}} \mathbb{E}_{h_i\sim \Q} \; [\ell(h_i,\z_i)] + \frac{\operatorname{KL}(\Q, \P_{i})}{\lambda} \\
   \intertext{which leads to the explicit formulation}
   \label{eq: catoni_formulation}
   \frac{d\hat{\Q}_{i+1}}{d\P_{i}}(h)& = \frac{\exp\left(-\lambda  \ell(h,\z_i)\right)}{\mathbb{E}_{h\sim \P_{i}}\left[\exp\left(-\lambda  \ell(h,\z_i)\right)\right]}.
@@ -168,7 +168,7 @@ However, \Cref{cor: online_procedure} does not say if $\hat{\Q}_{i+1}$ will prod
   \label{cor: test_bound_online}.
   For any distribution $\mu$ over $\mathcal{Z}^m$, any $\lambda>0$, and any online predictive sequence $(\hat{\Q}_i)$, the following holds with probability $1-\delta$ over the sample $\Sm\sim\Dm$:
   \begin{align*}
-    \sum_{i=1}^m \mathbb{E}_{h_i\sim \hat{\Q}_{i}}\left[ \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]    \right] \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \hat{\Q}_{i}}\left[ \ell(h_i,\z_i) \right] + \frac{\lambda m K^2}{2} + \frac{\log(1/\delta)}{\lambda}.
+    \sum_{i=1}^m \mathbb{E}_{h_i\sim \hat{\Q}_{i}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right] \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \hat{\Q}_{i}}\left[ \ell(h_i,\z_i) \right] + \frac{\lambda m K^2}{2} + \frac{\log(1/\delta)}{\lambda}.
   \end{align*}
   Optimising in $\lambda$ gives $\lambda= \sqrt{\frac{2\log(1/\delta)}{mK^2} }$ and ensure that:
   \begin{align*}
@@ -190,7 +190,7 @@ We now present a specific case of \Cref{cor: online_procedure} where we choose a
 We then adapt our \OPBTrain bound (\Cref{cor: online_procedure}). The online procedure becomes:
 \begin{align}
   \label{eq: pacb_online_alg_specific_case}
-  \hat{\Q}_1= P, \quad \forall i\geq1\; \hat{\Q}_{i+1}&= \operatorname{argmin}_{\Q} \mathbb{E}_{h_i\sim \Q} \; [\ell(h_i,z_i)] + \frac{\operatorname{KL}(\Q,\hat{\Q}_{i})}{\lambda},
+  \hat{\Q}_1= P, \quad \forall i\geq1\; \hat{\Q}_{i+1}&= \operatorname{argmin}_{\Q} \mathbb{E}_{h_i\sim \Q} \; [\ell(h_i,\z_i)] + \frac{\operatorname{KL}(\Q,\hat{\Q}_{i})}{\lambda},
 \end{align}
 which leads to the explicit formulation
 \begin{align*}
@@ -203,8 +203,8 @@ $\operatorname{argmin}_{\Q} \mathbb{E}_{h\sim \Q} \; [\frac{1}{m}\sum_{i=1}^m \e
 
 
 \textbf{Analogy with Online Gradient Descent (OGD).} We propose an analogy between the procedure \Cref{eq: pacb_online_alg_specific_case} and the celebrated OGD algorithm (see \Cref{sec: OGD_reminder} for a recap). First we remark that our minimisation problem is equivalent to
-$\operatorname{argmin}_{\Q} \lambda\mathbb{E}_{h_i\sim \Q} \; [\ell(h_i,z_i)] + \operatorname{KL}(Q\| \hat{\Q}_{i})$.
-Then we assume that for any $i, \hat{\Q}_i=\mathcal{N}(\hat{m}_i,I_d)$ with $\hat{m_i}\in\mathbb{R}^d$  and we set $\mathcal{L}_i(\hat{m}_i)= \mathbb{E}_{h_i\sim \hat{\Q}_i} \; [\ell(h_i,z_i)] $ .
+$\operatorname{argmin}_{\Q} \lambda\mathbb{E}_{h_i\sim \Q} \; [\ell(h_i,\z_i)] + \operatorname{KL}(Q\| \hat{\Q}_{i})$.
+Then we assume that for any $i, \hat{\Q}_i=\mathcal{N}(\hat{m}_i,I_d)$ with $\hat{m_i}\in\mathbb{R}^d$  and we set $\mathcal{L}_i(\hat{m}_i)= \mathbb{E}_{h_i\sim \hat{\Q}_i} \; [\ell(h_i,\z_i)] $ .
 The minimisation problem becomes: $\operatorname{argmin}_{\hat{m}} \lambda\mathcal{L}_i(\hat{m}) + \frac{1}{2} \| \hat{m} - \hat{m}_i \|^2$.
 And so using the first order Taylor expansion, we use the approximation $ \mathcal{L}_i(\hat{m}) \approx \mathcal{L}_i(\hat{m}_i ) + \langle \hat{m}- \hat{m_i}, \nabla \mathcal{L}_i(\hat{m}_i) \rangle $ which finally transform our argmin into the following optimisation process: $\hat{m}_{i+1} = \hat{m_i} - \lambda \nabla \mathcal{L}_i(\hat{m}_i)$ which is exactly OGD on the loss sequence $\mathcal{L}_i$.
 We draw an analogy between the scale parameter $\lambda$ and the step size $\eta$ in OGD. the KL term translates the influence of the previous point and the expected loss gives the gradient.
@@ -238,7 +238,7 @@ OPBD training bounds have the following form.
 For any online predictive sequences $\hat{\Q},P$, any $\lambda>0$ w.p. $1-\delta$ over $\Sm\sim\Dm$ and $(h_1,...,h_{m})\sim \hat{\Q}_2\otimes...\otimes \hat{\Q}_{m+1}$:
 \begin{align}
   \label{eq: OPBD_train_bound}
-  \sum_{i=1}^m  \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)  + \Psi(h_{i},\hat{\Q}_{i+1},\P_{i}) \; + \Phi(m),
+  \sum_{i=1}^m  \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)  + \Psi(h_{i},\hat{\Q}_{i+1},\P_{i}) \; + \Phi(m),
 \end{align}
 
 with $\Psi,\Phi$ being real-valued functions. $\Psi$ controls the global behaviour of $Q_{i+1}$ w.r.t. the $\mathcal{F}_{i-1}$-measurable prior $P_{i}$. If one has no dependency on $h_i$ this behaviour is global, otherwise it is local.
@@ -308,7 +308,7 @@ Similarly to what we did in \Cref{sec: online_pacb_procedure}, we also provide \
 For any online predictive sequence $\hat{\Q}$, any $\lambda>0$ w.p. $1-\delta$ over $S$ and $(h_1,...,h_{m})\sim \hat{\Q}_1\otimes...\otimes \hat{\Q}_{m}$:
 \begin{align}
   \label{eq: OPBD_test_bound}
-  \sum_{i=1}^m  \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)   + \Phi(m),
+  \sum_{i=1}^m  \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)   + \Phi(m),
 \end{align}
 
 with $\Phi$ being a real-valued function(possibly dependent on $\lambda,\delta$ though it is not explicited here).
@@ -340,11 +340,11 @@ We consider four online methods of interest: the OPB algorithm of \Cref{eq: pacb
 To assess efficiency, we implement the classical OGD (as described in \citealp[Alg. 1 of][]{zinkevich2003online}) and the SVB method of \citet{cherief2019generalization}.
 
 \paragraph{Binary Classification.} At each round $i$ the learner receives a data point $x_{i} \in \mathbb{R}^{d}$ and predicts its label $y_{i} \in\{-1,+1\}$ using $\left\langle x_{i}, h_{i}\right\rangle$, with $h_i= \mathbb{E}_{h\sim \hat{\Q}_i}[h]$ for OPB methods or $h_i$ being drawn under $\hat{\Q}_i$ for OPBD methods.
-The adversary reveals the true value $y_{i}$, then the learner suffers the loss $\ell(h_i,z_i)=\left(1-y_{i} h_{i}^{T} x_{i}\right)_{+}$ with $z_i=(x_i,y_i)$ and $a_{+}=a$ if $a>0$ and $a_{+}=0$ otherwise. This loss is unbounded but can be thresholded.
+The adversary reveals the true value $y_{i}$, then the learner suffers the loss $\ell(h_i,\z_i)=\left(1-y_{i} h_{i}^{T} x_{i}\right)_{+}$ with $z_i=(x_i,y_i)$ and $a_{+}=a$ if $a>0$ and $a_{+}=0$ otherwise. This loss is unbounded but can be thresholded.
 
 
 \paragraph{Linear Regression.} At each round $i$, the learner receives a set of features $x_{i} \in \mathbb{R}^{d}$ and predicts $y_{i} \in \mathbb{R}$ using $\left\langle x_{i}, h_{i}\right\rangle$ with $h_i= \mathbb{E}_{h\sim \hat{\Q}_i}[h]$ for SVB and OPB methods or $h_i$ being drawn under $\hat{\Q}_i$ for OPBD methods.
-Then the adversary reveals the true value $y_{t}$ and the learner suffers the loss $\ell(h_i,z_i)=\left(y_{i}-h_{i}^{T} x_{i}\right)^{2}$ with $z_i=(x_i,y_i)$. This loss is unbounded but can be thresholded.
+Then the adversary reveals the true value $y_{t}$ and the learner suffers the loss $\ell(h_i,\z_i)=\left(y_{i}-h_{i}^{T} x_{i}\right)^{2}$ with $z_i=(x_i,y_i)$. This loss is unbounded but can be thresholded.
 
 \paragraph{Datasets.} We consider four real world dataset: two for classification (Breast Cancer and Pima Indians), and two for regression (Boston Housing and California Housing). All datasets except the Pima Indians have been directly extracted from \texttt{sklearn} \citep{pedregosa2011scikit}.
 Breast Cancer dataset \citep{street1993nuclear} is available \href{https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)}{here} and comes from the UCI ML repository  as well as the Boston Housing dataset \citep{belsley2005regression} which can be obtained \href{https://archive.ics.uci.edu/ml/machine-learning-databases/housing/}{here}. California Housing dataset \citep{pace1997sparse} comes from the StatLib repository and is available \href{https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html}{here}.
@@ -402,11 +402,11 @@ We now state the main theorem of this section.
 
 \begin{theorem}[An OPB bound for heavy-tailed losses]
   \label{th: opb-ht}
-  For any distribution over the dataset $\S$, any $\lambda>0$ and any online predictive sequence (used as priors) $(\P_{i})_{i\geq 1}$, we have with probability at least $1-\delta$ over the sample $\S\sim\D_{\S}$, the following, holding for the data-dependent measures $\P_{i,\Sm}:= \P_{i}(\S,.)$ any posterior sequence $(\Q_{i})_{i\geq 1}$ and any $m\geq 1$:
+  For any distribution over the dataset $\S$, any $\lambda>0$ and any online predictive sequence (used as priors) $(\P_{i})_{i\geq 1}$, we have with probability at least $1-\delta$ over the sample $\S\sim\D_{\S}$, the following, holding for the data-dependent measures $\P_{i,\S}:= \P_{i}(\S,.)$ any posterior sequence $(\Q_{i})_{i\geq 1}$ and any $m\geq 1$:
 
   \begin{multline*}
      \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right]  \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] \\+\frac{\lambda}{2}\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \hat{V}_i(h_i,\z_i) + V_i(h_i) \right]
-     + \sum_{i=1}^m\frac{\operatorname{KL}(\Q_{i}, \P_{i,\Sm})}{\lambda}  + \frac{\log(1/\delta)}{\lambda}.
+     + \sum_{i=1}^m\frac{\operatorname{KL}(\Q_{i}, \P_{i,\S})}{\lambda}  + \frac{\log(1/\delta)}{\lambda}.
   \end{multline*}
   With for all $i$, $\hat{V}_i(h_i,\z_i)= (\ell(h_i,\z_i)-\mathbb{E}_{i-1}[\ell(h_i,\z_i)])^2$ is the empirical variance at time $i$ and $V_i(h_i)= \mathbb{E}_{i-1}[\hat{V}(h_i,\z_i)]$ is the true conditional variance.
 \end{theorem}
@@ -415,10 +415,10 @@ Proof lies in \Cref{sec: proof_main_thm_online-ht}.
 
 \textbf{Analysis of the bound.} This bound is, to our knowledge, the first Online PAC-Bayes bound in literature holding for heavy-tailed losses. It is semi-empirical as the variance and empirical variance terms have theoretical components. However, these terms can be controlled with assumptions on conditional second-order moments and not on exponential ones (as made in \Cref{sec: main_bound} where the bounded loss assumption was used to obtain conditional subgaussianity). To emphasise our point, we consider as in \Cref{sec: iid_case} the case of the quadratic loss $\ell(h,z)= (h-z)^2$. Here, we only need to assume that our data have a finite variance if we restrict our posteriors to have both bounded means and variance. Also the meaning of the online predictive sequence $\P_{i}$ is that we must be able to design properly a sequence of priors before drawing our data, this can be for instance an online algorithm whihc generate a prior distribution from past data at each time step.
 
-Finally, we note that if we assume being able to bound simultaneaously all condtional means and variance (which is strictly less restrictive than bounding the loss),then  \Cref{th: main_thm_onl} suggests a new online learning objective which is an online counterpart to \Cref{eq: optim_obj}.
+Finally, we note that if we assume being able to bound simultaneaously all condtional means and variance (which is strictly less restrictive than bounding the loss),then  \Cref{th: opb-ht} suggests a new online learning objective which is an online counterpart to \Cref{eq: optim_obj}.
 
 \begin{align}
-    \forall i\geq1\; \hat{\Q}_{i+1}&= \underset{Q\in\mathcal{M}^+_1(\mathcal{H})}{\mathrm{argmin}} \mathbb{E}_{h_i\sim \Q} \; \left[\ell(h_i,z_i)+ \frac{\lambda}{2}\ell(h_i,z_i)^2\right] + \frac{\operatorname{KL}(Q, \P_{i,\Sm})}{\lambda}
+    \forall i\geq1\; \hat{\Q}_{i+1}&= \underset{\Q\in\mathcal{M}(\mathcal{H})}{\mathrm{argmin}} \mathbb{E}_{h_i\sim \Q} \; \left[\ell(h_i,\z_i)+ \frac{\lambda}{2}\ell(h_i,\z_i)^2\right] + \frac{\operatorname{KL}(\Q, \P_{i,\S})}{\lambda}
 \end{align}
 
 While the algorithm differs from the one derived \Cref{th: main_thm_online}, we can still draws many links with this theorem.

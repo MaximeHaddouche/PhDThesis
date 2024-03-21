@@ -18,7 +18,7 @@ the direction of the gradient of the previous cost. This step may result in
 a point outside of the underlying convex set. In such cases, the algorithm
 projects the point back to the convex set, i.e. finds its closest point in the
 convex set. We precise this algorithm works with the assumptions of a convex set $\mathcal{K}$ bounded in diameter by $D$ and of bounded gradients (by a certain $G$).
-We also assume here to have a dataset $S=(z_t)_{t=1..T}$ and to be coherent with the online learning philosophy, we assume that for each $t>0$, we possess a loss function $\ell_t$ depending on the points $(z_1,...z_t)$. We present OGD in \cref{alg: gradient_descent}
+We also assume here to have a dataset $\S_T=(\z_t)_{t=1..T}$ and to be coherent with the online learning philosophy, we assume that for each $t>0$, we possess a loss function $\ell_t$ depending on the points $(\z_1,...,\z_t)$. We present OGD in \cref{alg: gradient_descent}
 
 
 \begin{algorithm}[ht]
@@ -79,10 +79,10 @@ We first state our PAC-Bayes bound of interest.
 
 \begin{theorem}[Adapted from  \cite{alquier2016properties}, Thm 4.1]
   \label{th: naive_pac_bayes}
-  Let $S=(z_1,...,z_m)$ be an iid sample from the same law $\mu_0$.
-  For any data-free prior $P$, for any loss function $\ell$ bounded by $K$, any $\lambda>0,\delta\in ]0;1[$, one has with probability $1-\delta$ for any posterior $Q\in\mathcal{M}_1(\mathcal{H})$:
+  Let $\Sm=(\z_1,...,\z_m)$ be an \iid sample from the same law $\D$.
+  For any data-free prior $\P$, for any loss function $\ell$ bounded by $K$, any $\lambda>0,\delta\in (0,1)$, one has with probability $1-\delta$ for any posterior $\Q\in\mathcal{M}(\mathcal{H})$:
 
-  \[ \mathbb{E}_{h\sim Q}\mathbb{E}_{z\sim \mu_0}[\ell(h,z)] \leq \frac{1}{m} \sum_{i=1}^m \mathbb{E}_{h\sim Q}[\ell(h,z_i)] + \frac{\operatorname{KL}(Q\| P) + \log(1/\delta)}{\lambda} + \frac{\lambda K^2}{2m} \]
+  \[ \mathbb{E}_{h\sim \Q}\mathbb{E}_{\z\sim \D}[\ell(h,\z)] \leq \frac{1}{m} \sum_{i=1}^m \mathbb{E}_{h\sim \Q}[\ell(h,\z_i)] + \frac{\operatorname{KL}(\Q,\P) + \log(1/\delta)}{\lambda} + \frac{\lambda K^2}{2m} \]
 \end{theorem}
 
 \begin{remark} Two remarks about this result:
@@ -99,27 +99,27 @@ We first state our PAC-Bayes bound of interest.
 
 \begin{theorem}
   \label{th: naive_approach}
-  For any distributions $\mu_1,...,\mu_m$ over $\mathcal{Z}$ (such that $z_i\sim \mu_i$), any $\lambda>0$ and any online predictive sequence (used as priors) $(P_i)$, the following holds with probability $1-\delta$ over the sample $S\sim\mu$ for any posterior sequence $(Q_i)$ :
+  For any distributions $\D_1,...,\D_m$ over $\mathcal{Z}$ (such that $\z_i\sim \D_i$), any $\lambda>0$ and any online predictive sequence (used as priors) $(\P_{i})_{i=1\cdots m}$, the following holds with probability $1-\delta$ over the sample $\Sm\sim\D^m$ for any posterior sequence $(\Q_{i})$ :
 
 
   \begin{align*}
-    \sum_{i=1}^m \mathbb{E}_{h_i\sim Q_{i}}\left[ \mathbb{E}_{z_i\sim \mu_i}[\ell(h_i,z_i)]    \right] \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim Q_{i}}\left[ \ell(h_i,z_i) \right] +
-    \frac{\operatorname{KL}(Q_{i}\| P_i)}{\lambda} + \frac{\lambda m K^2}{2} + \frac{m\log(m/\delta)}{\lambda}.
+    \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}_{\z_i\sim \D_i}[\ell(h_i,\z_i)]    \right] \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] +
+    \frac{\operatorname{KL}(\Q_{i}\| \P_{i})}{\lambda} + \frac{\lambda m K^2}{2} + \frac{m\log(m/\delta)}{\lambda}.
   \end{align*}
 \end{theorem}
 
-Recall that here again we assimilate the stochastic kernels $Q_i, P_i$ to the data-dependent distributions $Q_i(S,.), P_i(S,.)$
+Recall that here again we assimilate the stochastic kernels $\Q_{i}, \P_{i}$ to the data-dependent distributions $\Q_{i}(\Sm,.), \P_{i}(\Sm,.)$
 
 \begin{proof}
-  First of all, for any $i$, we apply \cref{th: naive_pac_bayes} $m$ to the batch $\{ z_i\}$. This allows us to consider $P_i$ as a prior as it does not depend on the current data. We then have, taking $\delta'=\delta/m$, for any $i\in\{1..m\}$ with probability $ 1- \delta/m$:
+  First of all, for any $i$, we apply \cref{th: naive_pac_bayes} $m$ to the batch $\{ z_i\}$. This allows us to consider $\P_{i}$ as a prior as it does not depend on the current data. We then have, taking $\delta'=\delta/m$, for any $i\in\{1..m\}$ with probability $ 1- \delta/m$:
 
-  \[ \mathbb{E}_{h_i\sim Q_{i}}\left[ \mathbb{E}_{z_i\sim \mu_i}[\ell(h_i,z_i)]    \right] \leq  \mathbb{E}_{h_i\sim Q_{i}}\left[ \ell(h_i,z_i) \right] +
-  \frac{\operatorname{KL}(Q_{i}\| P_i)}{\lambda} + \frac{\lambda K^2}{2} + \frac{\log(m/\delta)}{\lambda}. \]
+  \[ \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}_{\z_i\sim \D_i}[\ell(h_i,\z_i)]    \right] \leq  \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] +
+  \frac{\operatorname{KL}(\Q_{i}\| \P_{i})}{\lambda} + \frac{\lambda K^2}{2} + \frac{\log(m/\delta)}{\lambda}. \]
 
   Then, taking an union bound on those $m$ events ensure us that with probability $1-\delta$, for any $i\in\{1..m\}$:
 
-  \[ \mathbb{E}_{h_i\sim Q_{i}}\left[ \mathbb{E}_{z_i\sim \mu_i}[\ell(h_i,z_i)]    \right] \leq  \mathbb{E}_{h_i\sim Q_{i}}\left[ \ell(h_i,z_i) \right] +
-  \frac{\operatorname{KL}(Q_{i}\| P_i)}{\lambda} + \frac{\lambda  K^2}{2} + \frac{\log(m/\delta)}{\lambda}. \]
+  \[ \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}_{\z_i\sim \D_i}[\ell(h_i,\z_i)]    \right] \leq  \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] +
+  \frac{\operatorname{KL}(\Q_{i}\| \P_{i})}{\lambda} + \frac{\lambda  K^2}{2} + \frac{\log(m/\delta)}{\lambda}. \]
 
 
   Finally, summing those $m$ inequalities ensure us the final result with probability $1-\delta$.
@@ -132,8 +132,8 @@ Recall that here again we assimilate the stochastic kernels $Q_i, P_i$ to the da
   \item First of all, the main issue with \cref{th: naive_approach} is that has a strongly deteriorated rate of $O\left(\frac{m\log(m/\delta)}{\lambda} \right)$ instead of the rate in  $O\left(\frac{\log(1/\delta)}{\lambda} \right)$ proposed in \cref{th: main_thm_online}.
   More precisely, the problem is that we do not have a sublinear bound: one cannot ensure any learning through time.
   This point justifies the need of the heavy machinery exploited in \cref{th: main_thm_online} proof as it allows a tighter convergence rate.
-  \item The second point point lies in the controlled quantity on the left hand-side of the bound. \cref{th: naive_approach} controls $A:=\sum_{i=1}^m \mathbb{E}_{h_i\sim Q_{i}}\left[ \mathbb{E}_{z_i\sim \mu_i}[\ell(h_i,z_i)]    \right]$
-  instead of $B:=\sum_{i=1}^m \mathbb{E}_{h_i\sim Q_{i}}\left[ \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]    \right]$.
+  \item The second point point lies in the controlled quantity on the left hand-side of the bound. \cref{th: naive_approach} controls $A:=\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}_{\z_i\sim \D_i}[\ell(h_i,\z_i)]    \right]$
+  instead of $B:=\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right]$.
 
   $A$ is a less dynamic quantity than $B$ in the sense that it does not imply any evolution through time, it just considers global expectations. Doing so, $A$ does not take into account that at each time step we have acces to all te past data to predict the future, this may explain the deteriorated convergence rate. Thus $B$, which appears to be a suitable quantity to control to perform online PAC-Bayes (see \cref{sec: deeper_analysis_main_thm} for additional explanations)
 
@@ -151,16 +151,16 @@ This section includes discussion about our proof technique and why all the assum
 
 \paragraph{Why do we need an online predictive sequence as priors? }
 
-This condition is fully exploited when dealing with the exponential moment $\xi_m$ in the proof (see \cref{l: exp_moment_online} proof). Indeed, the fact of having $P_i$ being $\mathcal{F}_{i-1}$-measurable is essential to apply conditional Fubini (\cref{l: cond_fubini-chap3}). Note that the condition $\forall i , P_{i-1}\ll P_{i}$ is not necessary as the weaker condition $\forall i, P_1 \ll P_i$ would suffice here.
-However, note that when we particularise our theorem, for instance if we choose in \cref{cor: online_procedure} $P_i= \hat{Q_i}$, one recovers the condition $\hat{Q}_{i}\ll\hat{Q}_{i+1}$ to have finite KL divergences. Hence the interest of taking directly an online predictive sequence.
+This condition is fully exploited when dealing with the exponential moment $\xi_m$ in the proof (see \cref{l: exp_moment_online} proof). Indeed, the fact of having $\P_{i}$ being $\mathcal{F}_{i-1}$-measurable is essential to apply conditional Fubini (\cref{l: cond_fubini-chap3}). Note that the condition $\forall i , P_{i-1}\gg \P_{i}$ is not necessary as the weaker condition $\forall i, P_1 \gg \P_{i}$ would suffice here.
+However, note that when we particularise our theorem, for instance if we choose in \cref{cor: online_procedure} $\P_{i}= \hat{\Q_{i}}$, one recovers the condition $\hat{\Q}_{i}\gg\hat{\Q}_{i+1}$ to have finite KL divergences. Hence the interest of taking directly an online predictive sequence.
 
 \paragraph{About the boundedness assumption}
 
 The only moment where we invoke the boundedness assumption is in \cref{l: exp_moment_online}'s proof where we apply the conditionnal Hoeffding lemma. This lemma actually translates that the sequence of r.v. $(\ell(.,z_i)_{i=1..m}$ is \emph{conditionally subgaussian} wrt the past i.e for any $i$, $h_i\in\mathcal{H}; \lambda\in\mathbb{R}$:
 
-\[ \mathbb{E}[\exp(\lambda \Tilde{\ell}_i(h_i,z_i)) \mid \mathcal{F}_{i-1}] \leq \exp\left( \frac{\lambda^2K^2}{2}\right)\]
+\[ \mathbb{E}[\exp(\lambda \Tilde{\ell}_i(h_i,\z_i)) \mid \mathcal{F}_{i-1}] \leq \exp\left( \frac{\lambda^2K^2}{2}\right)\]
 
- where $\Tilde{\ell}_i(h_i,z_i)= \mathbb{E}[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}]-  \ell(h_i,z_i)$.
+ where $\Tilde{\ell}_i(h_i,\z_i)= \mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]-  \ell(h_i,\z_i)$.
 
  This condition is the one truly involved in our heavy machinery. However, we chose to restrict ourselves to the stronger assumption of bounded loss function for the sake of clarity. However, an interesting open direction is to find whether there exists concrete classes of unbounded losses which may satisfy either conditional subgaussianity or others conditions (such as conditional Bernstein condition for instance).
 
@@ -168,7 +168,7 @@ The only moment where we invoke the boundedness assumption is in \cref{l: exp_mo
  \paragraph{Reflections about the left hand side of \cref{th: main_thm_online}.}
 
  We study in this paragraph the following term
-  $$B:=\sum_{i=1}^m \mathbb{E}_{h_i\sim Q_{i}}\left[ \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]    \right]$$ has naturally arisen in our work as the right term to compare our empirical loss with to perform the conditional Hoeffding lemma.
+  $$B:=\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right]$$ has naturally arisen in our work as the right term to compare our empirical loss with to perform the conditional Hoeffding lemma.
  Taking a broader look, we now interpret this term as the right quantity to control if one wants to perform online PAC-Bayes learning. Indeed this term is a 'best of both world' quantity bridging PAC-Bayes and online learning:
 
  \begin{itemize}
@@ -201,7 +201,7 @@ In this section we discuss about the way Thm 2.2 can be thought in the framework
 
 \paragraph{A significant change compared to classical PAC-Bayes}
 
-\cref{th: main_thm_online} holds 'for any posterior sequence $(Q_i)$ the following holds with probability $1-\delta$ over the sample $S\sim\mu$ ' while most classical PAC-Bayesian results such that \cref{th: naive_pac_bayes} holds 'with probability $1-\delta$ over the sample $S\sim\mu$ for any posterior $Q$'. This change is significant as our theorem does not control simultaneaously all possible sequences of posteriors but only holds for one.
+\cref{th: main_thm_online} holds 'for any posterior sequence $(\Q_{i})$ the following holds with probability $1-\delta$ over the sample $\Sm\sim\D^m$ ' while most classical PAC-Bayesian results such that \cref{th: naive_pac_bayes} holds 'with probability $1-\delta$ over the sample $\Sm\sim\D^m$ for any posterior $Q$'. This change is significant as our theorem does not control simultaneaously all possible sequences of posteriors but only holds for one.
 Thus, \cref{th: main_thm_online} has to be seen as a local or pointwise theorem and not as a global one. In classical PAC-Bayes, this local behavior is a brake on the optimisation process. But as we develop below, it is not the case in our online framework.
 
 \paragraph{\cref{th: main_thm_online} is compatible with online optimisation}
@@ -238,27 +238,30 @@ We present two PAC-Bayesian disintegrated bounds valid with data-dependent prior
 
 \begin{proposition}[Th 1) i) \cite{rivasplata2020pac}]
 \label{prop: rivasplata_disintegrated}
- Let $P \in \mathcal{M}_{1}(\mathcal{S})$, $Q^{0} \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$. Let $f: \mathcal{S} \times \mathcal{H} \rightarrow \mathbb{R}$ be any measurable function.
-Then for any $Q \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$ and any $\delta \in(0,1)$, with probability at least $1-\delta$ over the random draw of $S \sim P$ and $h\sim Q_S$, we have:
+ Let $P \in \mathcal{M}(\mathcal{H})$, $\Q^{0} \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$. Let $f: \Sm \times \mathcal{H} \rightarrow \mathbb{R}$ be any measurable function.
+Then for any $Q \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$ and any $\delta \in(0,1)$, with probability at least $1-\delta$ over the random draw of $S \sim P$ and $h\sim \Q_{\Sm}$, we have:
 $$
-f(S,h) \leq \log\left(\frac{dQ_{S}}{dQ_{S}^{0}}(h) \right)+\log (\xi_m / \delta) .
+f(\Sm,h) \leq \log\left(\frac{d\Q_{\Sm}}{d\Q_{\Sm}^{0}}(h) \right)+\log (\xi_m / \delta) .
 $$
 
-where $\xi_m:=\int_{\mathcal{S}} \int_{\mathcal{H}} e^{f(s, h)} Q_{s}^{0}(d h) P(d s)$ and $\frac{dQ_{S}}{dQ_{S}^{0}}$ is the Radon Nykodym derivative of $Q_S$ w.r.t. $Q_S^0$.
+where $\xi_m:=\int_{\Sm} \int_{\mathcal{H}} e^{f(s, h)} \Q_{\Sm}^{0}(d h) P(d s)$ and $\frac{d\Q_{\Sm}}{d\Q_{\Sm}^{0}}$ is the Radon Nykodym derivative of $\Q_{\Sm}$ w.r.t. $\Q_{\Sm}^0$.
 \end{proposition}
 
 
 \begin{proposition}[Adapted from Th. 2 of \cite{viallard2023general}]
   \label{prop: viallard_disintegrated}
-   Let $\mu \in \mathcal{M}_{1}(\mathcal{S})$, $Q^{0} \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$. Let  $\alpha>1$ and  $f: \mathcal{S} \times \mathcal{H} \rightarrow \mathbb{R}^+$ be any measurable function.
+   Let $\mu \in \Mcal(\Zcal^m)$, $\Q^{0} \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$. Let  $\alpha>1$ and  $f: \Sm \times \mathcal{H} \rightarrow \mathbb{R}^+$ be any measurable function.
 
-   Then for any $Q \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$ such that for any $S\in\mathcal{Z}^m, Q_S>>Q_S^0,\; Q_S^0>>Q_S $ and any $\delta \in(0,1)$, with probability at least $1-\delta$ over the random draw of $S \sim \mu$ and $h\sim Q_S$, we have:
+   Then for any $\Q \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$ such that for any $\Sm\in\mathcal{Z}^m, \Q_{\Sm}\ll\Q_{\Sm}^0,\; \Q_{\Sm}^0\gg\Q_{\Sm} $ and any $\delta \in(0,1)$, with probability at least $1-\delta$ over the random draw of $\Sm \sim \Dm$ and $h\sim \Q_{\Sm}$, we have:
 
-   \[\frac{\alpha}{\alpha-1} \log (f(S,h)) \leq \frac{2 \alpha-1}{\alpha-1} \log \frac{2}{\delta}+D_{\alpha}\left(Q_{S} \| Q_S^0\right)+
-   \log \left(\underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_{S'}^0}{\mathbb{E}}
-   f\left(S^{\prime},h^{\prime}\right)^{\frac{\alpha}{\alpha-1}}\right) \]
+  \begin{multline*}
+    \frac{\alpha}{\alpha-1} \log (f(\Sm,h)) \leq \frac{2 \alpha-1}{\alpha-1} \log \frac{2}{\delta}+D_{\alpha}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right)\\
+    +
+   \log \left(\underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm'}^0}{\mathbb{E}}
+   f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right) 
+  \end{multline*}
 
-   where $D_\alpha(Q\|P)= \frac{1}{\alpha-1}\log\left( \mathbb{E}\left[ \mathbb{E}_{h\sim P} \left(\frac{dQ}{dP}(h)\right)^\alpha   \right] \right)$ is the Rényi diverence of order $\alpha$.
+   where $D_\alpha(\Q,\P)= \frac{1}{\alpha-1}\log\left( \mathbb{E}\left[ \mathbb{E}_{h\sim \P} \left(\frac{d\Q}{d\P}(h)\right)^\alpha   \right] \right)$ is the Rényi diverence of order $\alpha$.
 
 \end{proposition}
 
@@ -268,72 +271,76 @@ Note that Viallard et al. original bound only stand for data-free priors and i.i
 \subsection{Proof of \cref{prop: viallard_disintegrated} }
 
 
-\begin{proof}[Proof]
- For any sample $S$ and any stochastic kernel $Q$, note that $f(S,h)$ is a non-negative random variable. Hence, from Markov's inequality we have
-$$
-\underset{h \sim Q_{S}}{\mathbb{P}}\left[f(S,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim Q_{S}}{\mathbb{E}} f\left( S,h^{\prime}\right)\right] \geq 1-\frac{\delta}{2} \Longleftrightarrow
-\underset{h \sim Q_{S}}{\mathbb{E}} \mathds{1}\left[f(S,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim Q_{S}}{\mathbb{E}} f\left(S,h'\right)\right] \geq 1-\frac{\delta}{2}
-$$
-Taking the expectation over $S \sim \mu$ to both sides of the inequality gives
+\begin{proof}
+ For any sample $\Sm$ and any stochastic kernel $Q$, note that $f(\Sm,h)$ is a non-negative random variable. Hence, from Markov's inequality we have
+\begin{multline*}
+    \underset{h \sim \Q_{\Sm}}{\mathbb{P}}\left[f(\Sm,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f\left( \Sm,h^{\prime}\right)\right] \geq 1-\frac{\delta}{2} \\
+    \Longleftrightarrow
+    \underset{h \sim \Q_{\Sm}}{\mathbb{E}} \mathds{1}\left[f(\Sm,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f\left(S,h'\right)\right] \geq 1-\frac{\delta}{2}
+\end{multline*}
+
+
+Taking the expectation over $\Sm \sim \Dm$ to both sides of the inequality gives
 
 \begin{multline*}
-\underset{S \sim \mu}{\mathbb{E}}\; \underset{h \sim Q_{S}}{\mathbb{E}} \mathds{1}\left[f(S,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim Q_{S}}{\mathbb{E}} f(S,h')\right] \geq 1-\frac{\delta}{2} \\
+\underset{\Sm \sim \Dm}{\mathbb{E}}\; \underset{h \sim \Q_{\Sm}}{\mathbb{E}} \mathds{1}\left[f(\Sm,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f(\Sm,h')\right] \geq 1-\frac{\delta}{2} \\
 \Longleftrightarrow
-\underset{S \sim \mu, h \sim Q_{S}}{\mathbb{P}}\left[f(S,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim Q_{S}}{\mathbb{E}} f(S,h')\right] \geq 1-\frac{\delta}{2}.
+\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[f(\Sm,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f(\Sm,h')\right] \geq 1-\frac{\delta}{2}.
 \end{multline*}
 
 Taking the logarithm to both sides of the equality and multiplying by $\frac{\alpha}{\alpha-1}>0$, we obtain
 $$
-\underset{S \sim \mu, h \sim Q_{S}}{\mathbb{P}}\left[\frac{\alpha}{\alpha-1} \log (f(S,h)) \leq \frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim Q_{S}}{\mathbb{E}} f(S,h')\right)\right] \geq 1-\frac{\delta}{2} .
+\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\frac{\alpha}{\alpha-1} \log (f(\Sm,h)) \leq \frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f(\Sm,h')\right)\right] \geq 1-\frac{\delta}{2} .
 $$
-We develop the right side of the inequality in the indicator function and make the expectation of the hypothesis over $Q_S^0$ our "prior" stochadtic kernel appears. Indeed, because for any $S\in\mathcal{S}, Q_S>> Q_S^0$ and $Q_S^0>> Q_S$ one can write properly $\frac{dQ_S}{dQ_S^0}$ and $ \frac{dQ_S^0}{dQ_S} = \left( \frac{dQ_S}{dQ_S^0}\right)^{-1}$ the Radon-Nykodym derivatives. Thus we have
+We develop the right side of the inequality in the indicator function and make the expectation of the hypothesis over $\Q_{\Sm}^0$ our "prior" stochadtic kernel appears. Indeed, because for any $S\in\Sm, \Q_{\Sm}\gg\Q_{\Sm}^0$ and $\Q_{\Sm}^0\ll \Q_{\Sm}$ one can write properly $\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}$ and $ \frac{d\Q_{\Sm}^0}{d\Q_{\Sm}} = \left( \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}\right)^{-1}$ the Radon-Nykodym derivatives. Thus we have
 
 \begin{multline*}
- \frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim Q_{S}}{\mathbb{E}} f(S,h')\right) \\ =\frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim Q_{S}}{\mathbb{E}} \frac{dQ_S}{dQ_S^0}(h')\frac{dQ_S^0}{dQ_S}(h') f(S,h') \right) \\
- =\frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} \frac{dQ_S}{dQ_S^0}(h') f(S,h')\right) .
+ \frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f(\Sm,h')\right) \\ =\frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h')\frac{d\Q_{\Sm}^0}{d\Q_{\Sm}}(h') f(\Sm,h') \right) \\
+ =\frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h') f(\Sm,h')\right) .
 \end{multline*}
 
 Remark that $\frac{1}{r}+\frac{1}{s}=1$ with $r=\alpha$ and $s=\frac{\alpha}{\alpha-1}$. Hence, we can apply Hölder's inequality:
 $$
-\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} \frac{dQ_S}{dQ_S^0}(h') f(S,h') \leq\left[\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}}\left(\frac{dQ_S}{dQ_S^0}(h')\right)^{\alpha}\right]^{\frac{1}{\alpha}}\left[\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}}\right]^{\frac{\alpha-1}{\alpha}} .
+\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h') f(\Sm,h') \leq\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}}\left(\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h')\right)^{\alpha}\right]^{\frac{1}{\alpha}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right]^{\frac{\alpha-1}{\alpha}} .
 $$
 Then, by taking the logarithm; adding $\log \left(\frac{2}{\delta}\right)$ and multiplying by $\frac{\alpha}{\alpha-1}>0$ to both sides of the inequality, we obtain
 
 \begin{multline*}
-\frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} \frac{dQ_S}{dQ_S^0}(h') f(S,h')\right) \\
-\leq \frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta}\left[\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}}\left(\frac{dQ_S}{dQ_S^0}(h')\right)^{\alpha}\right]^{\frac{1}{\alpha}}\left[\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}}\right]^{\frac{\alpha-1}{\alpha}}\right) \\
- =\frac{1}{\alpha-1} \log \left(\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}}\left[\frac{dQ_S}{dQ_S^0}(h')\right]^{\alpha}\right)+\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}}\right) \\
-=D_{\alpha}\left(Q_{S} \| Q_S^0\right)+\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}}\right)
+\frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h') f(\Sm,h')\right) \\
+\leq \frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}}\left(\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h')\right)^{\alpha}\right]^{\frac{1}{\alpha}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right]^{\frac{\alpha-1}{\alpha}}\right) \\
+ =\frac{1}{\alpha-1} \log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}}\left[\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h')\right]^{\alpha}\right)+\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right) \\
+=D_{\alpha}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right)+\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right)
 \end{multline*}
 
 From this inequality, we can deduce that
 \begin{multline}
   \label{eq: viallard_dis_eq11}
-  \underset{S \sim \mu, h \sim Q_{S}}{\mathbb{P}}\left[\frac{\alpha}{\alpha-1} \log (f(S,h)) \leq D_{\alpha}\left(Q_{S} \| Q_S^0\right)+\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}}\right)\right] \\
+  \underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\frac{\alpha}{\alpha-1} \log (f(\Sm,h)) \leq D_{\alpha}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right) \right.\\
+  \left.+\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right)\right] \\
   \geq 1-\frac{\delta}{2} .
 \end{multline}
 
 
-Note that $\mathbb{E}_{h^{\prime} \sim Q_S^0} f(S,h')^{\frac{\alpha}{\alpha-1}}$ is a non-negative random variable, hence, we apply Markov's inequality to have
+Note that $\mathbb{E}_{h^{\prime} \sim \Q_{\Sm}^0} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}$ is a non-negative random variable, hence, we apply Markov's inequality to have
 $$
-\underset{S \sim \mu}{\mathbb{P}}\left[\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S',h')^{\frac{\alpha}{\alpha-1}}\right] \geq 1-\frac{\delta}{2} .
+\underset{\Sm \sim \Dm}{\mathbb{P}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \geq 1-\frac{\delta}{2} .
 $$
-Since the inequality does not depend on the random variable $h \sim Q_{S}$, we have
+Since the inequality does not depend on the random variable $h \sim \Q_{\Sm}$, we have
 
 \begin{multline*}
-\underset{S \sim \mu}{\mathbb{P}}\left[\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S',h')^{\frac{\alpha}{\alpha-1}}\right] \\
-=\underset{S \sim \mu}{\mathbb{E}}\mathds{1}\left[\underset{h'\sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S',h')^{\frac{\alpha}{\alpha-1}}\right] \\
-=\underset{S \sim \mu}{\mathbb{E}}\; \underset{h \sim Q_{S}}{\mathbb{E}} \mathds{1}\left[\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S',h')^{\frac{\alpha}{\alpha-1}}\right] \\
-=\underset{S \sim \mu, h \sim Q_{S}}{\mathbb{P}}\left[\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S',h')^{\frac{\alpha}{\alpha-1}}\right] .
+\underset{\Sm \sim \Dm}{\mathbb{P}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \\
+=\underset{\Sm \sim \Dm}{\mathbb{E}}\mathds{1}\left[\underset{h'\sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \\
+=\underset{\Sm \sim \Dm}{\mathbb{E}}\; \underset{h \sim \Q_{\Sm}}{\mathbb{E}} \mathds{1}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \\
+=\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] .
 \end{multline*}
 
 Taking the logarithm to both sides of the inequality and adding $\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}$ give us
 
 \begin{multline}
-\underset{S \sim \mu, h \sim Q_{S}}{\mathbb{P}}\left[\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S',h')^{\frac{\alpha}{\alpha-1}}\right] \geq 1-\frac{\delta}{2} \quad \Longleftrightarrow \\
+\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \geq 1-\frac{\delta}{2} \quad \Longleftrightarrow \\
 \label{eq: viallard_dis_eq12}
-\underset{S \sim \mu, h \sim Q_{S}}{\mathbb{P}}\left[\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S,h')^{\frac{\alpha}{\alpha-1}}\right) \leq \right. \\
- \left. \frac{2 \alpha-1}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_S^0}{\mathbb{E}} f(S',h')^{\frac{\alpha}{\alpha-1}}\right)\right] \geq 1-\frac{\delta}{2} .
+\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right) \leq \right. \\
+ \left. \frac{2 \alpha-1}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right)\right] \geq 1-\frac{\delta}{2} .
 \end{multline}
 
 Combining Equation \cref{eq: viallard_dis_eq11} and \cref{eq: viallard_dis_eq12} with a union bound gives us the desired result.
@@ -363,76 +370,76 @@ Combining Equation \cref{eq: viallard_dis_eq11} and \cref{eq: viallard_dis_eq12}
 
 \begin{theorem}
 \label{th: rivasplata2020}
-Let $\mu \in \mathcal{M}_{1}(\mathcal{S})$, $Q^{0} \in \texttt{Stoch}(\mathcal{S},\mathcal{F})$. Let $k$ be a positive integer,  any  $A: \mathcal{S} \times \mathcal{H} \rightarrow \mathbb{R}^{k}$ a measurable function and $F: \mathbb{R}^{k} \rightarrow \mathbb{R}$ be a convex function .
-Then for any $Q \in \texttt{Stoch}(\mathcal{S},\mathcal{F})$ and any $\delta \in(0,1)$, with probability at least $1-\delta$ over the random draw of $S \sim \mu$ we have
+Let $\Dm \in \Mcal(\Zcal^m)$, $\Q^{0} \in \texttt{Stoch}(\Zcal^m,\mathcal{F})$. Let $k$ be a positive integer,  any  $A: \Sm \times \mathcal{H} \rightarrow \mathbb{R}^{k}$ a measurable function and $F: \mathbb{R}^{k} \rightarrow \mathbb{R}$ be a convex function .
+Then for any $Q \in \texttt{Stoch}(\Zcal^m,\mathcal{F})$ and any $\delta \in(0,1)$, with probability at least $1-\delta$ over the random draw of $\Sm \sim \Dm$ we have
 $$
-F\left(Q_{S}\left[A_{S}\right]\right) \leq \mathrm{KL}\left(Q_{S} \| Q_{S}^{0}\right)+\log (\xi_m / \delta) .
+F\left(\Q_{\Sm}\left[A_{S}\right]\right) \leq \mathrm{KL}\left(\Q_{\Sm} \| \Q_{\Sm}^{0}\right)+\log (\xi_m / \delta) .
 $$
 
-where $\xi_m:=\int_{\mathcal{S}} \int_{\mathcal{H}} e^{f(s, h)} Q_{s}^{0}(d h) P(d s)$ and $Q_S[A_S]:= Q_S[A(S,.)]= \int_{\mathcal{H}} A(S,h) Q_S(dh)$.
+where $\xi_m:=\int_{\Sm} \int_{\mathcal{H}} e^{f(s, h)} \Q_{\Sm}^{0}(d h) P(d s)$ and $\Q_{\Sm}[A_{\Sm}]:= \Q_{\Sm}[A(\Sm,.)]= \int_{\mathcal{H}} A(\Sm,h) \Q_{\Sm}(dh)$.
 \end{theorem}
 
 
-\begin{proof}[Proof of \cref{th: main_thm_online}]
+\begin{proof}[of \cref{th: main_thm_online}]
 
 
 To fully exploit the generality of \cref{th: rivasplata2020}, we aim to design a $m$-tuple of probabilities. Thus, our predictor set of interest is $\mathcal{H}_m:= \mathcal{H}^{\otimes m}$ and then, our predictor $h$ is a tuple $(h_1,..,h_m)\in\mathcal{H}$. Throughout our study, our stochastic kernels $Q,Q^0$ will belong to the specific class $\mathcal{C}$ defined below:
 
 \begin{align}
   \label{eq: class_kernels}
-  \mathcal{C}:= \left\{ Q \mid   \exists (Q_i)_{i=1..m}\text{s.t.}\; \forall S,\;  Q(S,.) = Q_1(S,.)\otimes...\otimes Q_m(S,.)      \right\}.
+  \mathcal{C}:= \left\{ Q \mid   \exists (\Q_{i})_{i=1..m}\text{s.t.}\; \forall S,\;  \Q(\Sm,.) = \Q_1(\Sm,.)\otimes...\otimes \Q_m(\Sm,.)      \right\}.
 \end{align}
 
 
 \noindent Thus our kernels are such that conditionally to a given sample, our predictors $(h_1,...,h_m)$ are drawn independently.
 
-\noindent We now apply \cref{th: rivasplata2020}. To do so, we consider the following function $A: \mathcal{S}\times \mathcal{H}_m \rightarrow \mathbb{R}^2$ such that $\forall S= (z_i)_{i=1..m},h= (h_i)_{i=1..m}\in \mathcal{S}\times \mathcal{H}_m$:
+\noindent We now apply \cref{th: rivasplata2020}. To do so, we consider the following function $A: \Sm\times \mathcal{H}_m \rightarrow \mathbb{R}^2$ such that $\forall \Sm= (\z_i)_{i=1..m},h= (h_i)_{i=1..m}\in \Sm\times \mathcal{H}_m$:
 
-\[  A(S,h)= \left(\sum_{i=1}^m \mathbb{E}[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}], \sum_{i=1}^m \ell(h_i,z_i)  \right)   \]
+\[  A(\Sm,h)= \left(\sum_{i=1}^m \mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}], \sum_{i=1}^m \ell(h_i,\z_i)  \right)   \]
 
 \noindent $A$ is indeed measurable in both of its variables. For a fixed $\lambda>0$, we set the function $F$ to be $F(x,y)= \lambda(x-y)$ .
 
 
- \noindent The only thing left to set up is our stochastic kernels. To do so, let $P=(P_1,...P_m)$ be an online predictive sequence, we then define $Q^0\in\mathcal{C}$ (defined in \cref{eq: class_kernels}) s.t. for any sample $S$, $Q^0_S = P_1(S,.)\otimes...\otimes P_m(S,.)$. We also fix $Q_1,...,Q_m$ to be any (posterior)
- stochastic kernels and similarly we define the stochastic kernel $Q\in\mathcal{C}$ such that for any sample $S$, $Q(S,.) = Q_1(S,.)\otimes...\otimes Q_m(S,.)$.
+ \noindent The only thing left to set up is our stochastic kernels. To do so, let $P=(P_1,...P_m)$ be an online predictive sequence, we then define $Q^0\in\mathcal{C}$ (defined in \cref{eq: class_kernels}) s.t. for any sample $\Sm$, $\\Q_{\Sm}^0 = \P_1(\Sm,.)\otimes...\otimes \P_m(\Sm,.)$. We also fix $\Q_1,...,\Q_m$ to be any (posterior)
+ stochastic kernels and similarly we define the stochastic kernel $\Q\in\mathcal{C}$ such that for any sample $\Sm$, $\Q(\Sm,.) = \Q_1(\Sm,.)\otimes...\otimes \Q_m(\Sm,.)$.
 
- From now, we fix a dataset $S$ and, for the sake of clarity, we assimilate in what follows the stochastic kernels $Q_i,P_i$ to the data-dependent distributions $Q_i(S,.), P_i(S,.)$ (i.e. we drop the dependency in $S$).
+ From now, we fix a dataset $\Sm$ and, for the sake of clarity, we assimilate in what follows the stochastic kernels $\Q_{i},\P_{i}$ to the data-dependent distributions $\Q_{i}(\Sm,.), \P_{i}(\Sm,.)$ (i.e. we drop the dependency in $\Sm$).
 
 \noindent Under those choices, one has:
 
 \begin{multline*}
-  Q_S[A_S]  = \int_{h\in\mathcal{H}_m} A(S,h) Q_S(dh_1,...,dh_m) \\
-     = \left( \int_{h\in\mathcal{H}_m} \sum_{i=1}^m \mathbb{E}[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}]Q_S(dh_1,...,dh_m), \int_{h\in\mathcal{H}_m}\sum_{i=1}^m \ell(h_i,z_i)  Q_S(dh_1,...,dh_m)    \right).
+  \Q_{\Sm}[A_{\Sm}]  = \int_{h\in\mathcal{H}_m} A(\Sm,h) \Q_{\Sm}(dh_1,...,dh_m) \\
+     = \left( \int_{h\in\mathcal{H}_m} \sum_{i=1}^m \mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\Q_{\Sm}(dh_1,...,dh_m), \int_{h\in\mathcal{H}_m}\sum_{i=1}^m \ell(h_i,\z_i)  \Q_{\Sm}(dh_1,...,dh_m)    \right).
 \end{multline*}
-Furthermore, $Q\in\mathcal{C}$, thus $Q_S(dh_1,...,dh_m)= \Pi_{i=1}^m Q_i(dh_i)$ so:`
+Furthermore, $Q\in\mathcal{C}$, thus $\Q_{\Sm}(dh_1,...,dh_m)= \Pi_{i=1}^m \Q_{i}(dh_i)$ so:`
 \begin{align*}
-  Q_S[A_S] &= \left(  \sum_{i=1}^m \mathbb{E}_{h_i\sim Q_i}[\mathbb{E}\left[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}]\right], \sum_{i=1}^m \mathbb{E}_{h_i\sim Q_i}[\ell(h_i,z_i)]       \right).
+  \Q_{\Sm}[A_{\Sm}] &= \left(  \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\right], \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\ell(h_i,\z_i)]       \right).
 \end{align*}
 
 Finally:
 \begin{align*}
-      F(Q_S[A_S])&= \lambda \left(\sum_{i=1}^m \mathbb{E}_{h_i\sim Q_i}[\mathbb{E}\left[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}]\right]- \sum_{i=1}^m \mathbb{E}_{h_i\sim Q_i}[\ell(h_i,z_i)] \right).
+      F(\Q_{\Sm}[A_{\Sm}])&= \lambda \left(\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\right]- \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\ell(h_i,\z_i)] \right).
 \end{align*}
 
 
 Applying \cref{th: rivasplata2020} and re-organising the terms gives us with probability $1-\delta$:
 
 \begin{align*}
-\sum_{i=1}^m \mathbb{E}_{h_i\sim Q_i}\left[\mathbb{E}[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}]\right] & \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim Q_i}[\ell(h_i,z_i)] + \frac{KL(Q_S\|Q^0_S)}{\lambda} + \frac{\log(\xi_m/\delta)}{\lambda}.
+\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[\mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\right] & \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\ell(h_i,\z_i)] + \frac{KL(\Q_{\Sm}\|\Q_{\Sm}^0)}{\lambda} + \frac{\log(\xi_m/\delta)}{\lambda}.
 \end{align*}
 \noindent Thus:
 \begin{align}
   \label{eq: temp_result_online_thm}
- \sum_{i=1}^m \mathbb{E}_{h_i\sim Q_i}\left[\mathbb{E}[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}]\right] \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim Q_i}[\ell(h_i,z_i)] + \sum_{i=1}^m \frac{KL(Q_i\|P_i)}{\lambda} + \frac{\log(\xi_m/\delta)}{\lambda}.
+ \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[\mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\right] \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\ell(h_i,\z_i)] + \sum_{i=1}^m \frac{KL(\Q_{i}\|\P_{i})}{\lambda} + \frac{\log(\xi_m/\delta)}{\lambda}.
 \end{align}
 
-\noindent The last line holding because for a fixed $S$, $Q_S= Q_1\otimes...\otimes Q_m$ and $Q_S^0= P_1\otimes...\otimes P_m$.
+\noindent The last line holding because for a fixed $\Sm$, $\Q_{\Sm}= Q_1\otimes...\otimes Q_m$ and $\Q_{\Sm}^0= P_1\otimes...\otimes P_m$.
 
 \noindent The last term to control is
 \begin{align*}
-\xi_m = \mathbb{E}_S\left[\mathbb{E}_{h_1,...,h_m \sim Q^0_S} \left[\exp\left(\lambda \sum_{i=1}^m \Tilde{\ell}_i(h_i,z_i)\right)\right]\right],
+\xi_m = \mathbb{E}_S\left[\mathbb{E}_{h_1,...,h_m \sim \Q_{\Sm}^0} \left[\exp\left(\lambda \sum_{i=1}^m \Tilde{\ell}_i(h_i,\z_i)\right)\right]\right],
 \end{align*}
-with $\Tilde{\ell}_i(h_i,z_i)= \mathbb{E}[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}]-  \ell(h_i,z_i)$. Hence the following lemma.
+with $\Tilde{\ell}_i(h_i,\z_i)= \mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]-  \ell(h_i,\z_i)$. Hence the following lemma.
 
 \begin{lemma}
 \label{l: exp_moment_online}
@@ -449,26 +456,26 @@ To conclude the proof, we just bound $\xi_m$ by the result of \cref{l: exp_momen
 \label{sec: proof_exp_moment_online}
 
 
-\begin{proof}[Proof of \cref{l: exp_moment_online}]
-  We prove our result by recursion: for $m=1$, $S={z_1}$ and one knows that $P_1$ is $\mathcal{F}_0$ measurable yet it does not depend on $S$. Thus for any $h_1\in\mathcal{H}$, $\mathbb{E}[\ell(h_1,z_1)\mid \mathcal{F}_{0}]= \mathbb{E}[\ell(h_1,z_1)]$. We then has:
+\begin{proof}[of \cref{l: exp_moment_online}]
+  We prove our result by recursion: for $m=1$, $\S_1={\z_1}$ and one knows that $\P_1$ is $\mathcal{F}_0$ measurable yet it does not depend on $\Sm$. Thus for any $h_1\in\mathcal{H}$, $\mathbb{E}[\ell(h_1,\z_1)\mid \mathcal{F}_{0}]= \mathbb{E}[\ell(h_1,\z_1)]$. We then has:
   \begin{align*}
-    \xi_1 &= \mathbb{E}_{S}\mathbb{E}_{h_1\sim P_1} [\Tilde{\ell}_1(h_1,z_1)]\\
-    &= \mathbb{E}_{h_1\sim P_1} \mathbb{E}_{S} [\Tilde{\ell}_1(h_1,z_1)] & \text{by Fubini} \\
+    \xi_1 &= \mathbb{E}_{\S_1}\mathbb{E}_{h_1\sim \P_1} [\Tilde{\ell}_1(h_1,\z_1)]\\
+    &= \mathbb{E}_{h_1\sim P_1} \mathbb{E}_{\S_1} [\Tilde{\ell}_1(h_1,\z_1)] & \text{by Fubini} \\
     & \leq \exp{\frac{\lambda^2K^2}{2}}
   \end{align*}
 
-The last line  holding because for any $h_1\in\mathcal{H}$, $\Tilde{\ell}_1(h_1,z_1)$ is a centered variable belonging in $[-K,K]$ a.s. and so one can apply Hoeffding's lemma to conclude.
+The last line  holding because for any $h_1\in\mathcal{H}$, $\Tilde{\ell}_1(h_1,\z_1)$ is a centered variable belonging in $[-K,K]$ a.s. and so one can apply Hoeffding's lemma to conclude.
 
 
-\noindent Assume the result is true at rank $m-1\geq 0$. We then has to prove the result at rank $m$. Our strategy consists in conditioning by $\mathcal{F}_{m-1}$ within the expectation over $S$:
+\noindent Assume the result is true at rank $m-1\geq 0$. We then has to prove the result at rank $m$. Our strategy consists in conditioning by $\mathcal{F}_{m-1}$ within the expectation over $\Sm$:
 
 \begin{align*}
-  \xi_m & = \mathbb{E}_S\left[\mathbb{E}_{h_1,...,h_m \sim Q^0_S} \left[\exp\left(\lambda \sum_{i=1}^m \Tilde{\ell}_i(h_i,z_i)\right)\right]\right].\\
-  \intertext{First, we use that $Q^0\in\mathcal{C}$, thus $Q_S^0 = P_1\otimes...\otimes P_m$ (i.e. our data are drawn independently for a given $S$):}
-  &= \mathbb{E}_S\left[\Pi_{i=1}^m \mathbb{E}_{h_i \sim P_i} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,z_i)\right)\right]\right].\\
-  \intertext{We now condition by $\mathcal{F}_{m-1}$ and use that $\Pi_{i=1}^{m-1}\mathbb{E}_{h_i \sim P_i} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,z_i)\right)\right]$ is a $\mathcal{F}_{m-1}$-measurable r.v.}
-  \xi_m & = \mathbb{E}_S\left[ \Pi_{i=1}^{m-1}\mathbb{E}_{h_i \sim P_i} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,z_i)\right)\right] \mathbb{E}
-\left[ \mathbb{E}_{h_m\sim P_m} [\exp(\lambda \Tilde{\ell}_m(h_m,z_m))] \mid \mathcal{F}_{m-1} \right] \right].
+  \xi_m & = \mathbb{E}_{\Sm}\left[\mathbb{E}_{h_1,...,h_m \sim \Q_{\Sm}^0} \left[\exp\left(\lambda \sum_{i=1}^m \Tilde{\ell}_i(h_i,\z_i)\right)\right]\right].\\
+  \intertext{First, we use that $Q^0\in\mathcal{C}$, thus $\Q_{\Sm}^0 = P_1\otimes...\otimes P_m$ (i.e. our data are drawn independently for a given $\Sm$):}
+  &= \mathbb{E}_S\left[\Pi_{i=1}^m \mathbb{E}_{h_i \sim \P_{i}} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,\z_i)\right)\right]\right].\\
+  \intertext{We now condition by $\mathcal{F}_{m-1}$ and use that $\Pi_{i=1}^{m-1}\mathbb{E}_{h_i \sim \P_{i}} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,\z_i)\right)\right]$ is a $\mathcal{F}_{m-1}$-measurable r.v.}
+  \xi_m & = \mathbb{E}_S\left[ \Pi_{i=1}^{m-1}\mathbb{E}_{h_i \sim \P_{i}} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,\z_i)\right)\right] \mathbb{E}
+\left[ \mathbb{E}_{h_m\sim P_m} [\exp(\lambda \Tilde{\ell}_m(h_m,\z_m))] \mid \mathcal{F}_{m-1} \right] \right].
 \end{align*}
 
 Now our next step is to use a variant of Fubini valid for $\mathcal{F}_{m-1}$- measurable measures.
@@ -478,33 +485,33 @@ Now our next step is to use a variant of Fubini valid for $\mathcal{F}_{m-1}$- m
   Let $f: \mathcal{H}\times \mathcal{Z} \rightarrow \mathbb{R}^+$.
   For a $sigma$-algebra $\mathcal{F}$ over $\mathcal{Z}$ and a measure $P$ over $\mathcal{H}$ such that
   \begin{itemize}
-    \item $P$ is a $\mathcal{F}$-measurable r.v.
-    \item There exists a constant measure (a.s.) $P_0$ such that $P>>P_0$.
+    \item $\P$ is a $\mathcal{F}$-measurable r.v.
+    \item There exists a constant measure (a.s.) $P_0$ such that $\P\ll \P_0$.
   \end{itemize}
   Then one has almost surely, for any r.v. $z$ over $\mathcal{Z}$:
 
-  \[ \mathbb{E}\left[\mathbb{E}_{h\sim P} [f(h,z)] \mid \mathcal{F} \right] =  \mathbb{E}_{h\sim P} \left[ \mathbb{E}[f(h,z)\mid \mathcal{F}] \right].    \]
+  \[ \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(h,\z)] \mid \mathcal{F} \right] =  \mathbb{E}_{h\sim \P} \left[ \mathbb{E}[f(h,\z)\mid \mathcal{F}] \right].    \]
 \end{lemma}
 
 \noindent The proof of this lemma lies at the end of this section.
 
-\noindent We then fix $\mathcal{F}= \mathcal{F}_{m-1}$ and $f(h,z)= \exp(\lambda\Tilde{\ell}_i(h,z))$. Furthermore, because we assumed the sequence $(P_i)$ to be an online predictive sequence, $P_m$ is $\mathcal{F}_{m-1}$-measurable and $P_m>>P_1$ with $P_1$ a data-free prior. One then applies \cref{l: cond_fubini-chap3}:
+\noindent We then fix $\mathcal{F}= \mathcal{F}_{m-1}$ and $f(h,\z)= \exp(\lambda\Tilde{\ell}_i(h,z))$. Furthermore, because we assumed the sequence $(\P_{i})_{i=1\cdots m}$ to be an online predictive sequence, $P_m$ is $\mathcal{F}_{m-1}$-measurable and $P_m>>P_1$ with $P_1$ a data-free prior. One then applies \cref{l: cond_fubini-chap3}:
 
 \[ \mathbb{E}
-\left[ \mathbb{E}_{h_m\sim P_m} [\exp(\lambda \Tilde{\ell}_m(h_m,z_m))] \mid \mathcal{F}_{m-1} \right] =  \mathbb{E}_{h_m\sim P_m} \left[ \mathbb{E}
-[\exp(\lambda \Tilde{\ell}_m(h_m,z_m)) \mid \mathcal{F}_{m-1}] \right] . \]
+\left[ \mathbb{E}_{h_m\sim P_m} [\exp(\lambda \Tilde{\ell}_m(h_m,\z_m))] \mid \mathcal{F}_{m-1} \right] =  \mathbb{E}_{h_m\sim P_m} \left[ \mathbb{E}
+[\exp(\lambda \Tilde{\ell}_m(h_m,\z_m)) \mid \mathcal{F}_{m-1}] \right] . \]
 
 \noindent Yet, injecting this result onto $\xi_m$ provides:
 
 \begin{align*}
-  \xi_m = \mathbb{E}_S\left[ \Pi_{i=1}^{m-1}\mathbb{E}_{h_i \sim P_i} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,z_i)\right)\right] \mathbb{E}_{h_m\sim P_m} \left[ \mathbb{E}
-  [\exp(\lambda \Tilde{\ell}_i(h_m,z_m)) \mid \mathcal{F}_{m-1}] \right] \right]
+  \xi_m = \mathbb{E}_S\left[ \Pi_{i=1}^{m-1}\mathbb{E}_{h_i \sim \P_{i}} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,\z_i)\right)\right] \mathbb{E}_{h_m\sim P_m} \left[ \mathbb{E}
+  [\exp(\lambda \Tilde{\ell}_m(h_m,\z_m)) \mid \mathcal{F}_{m-1}] \right] \right]
 \end{align*}
 
-The final remark is to notice that for any $h_m\in\mathcal{H}$, $\mathbb{E}[\Tilde{\ell}_m(h_m,z_m)\mid \mathcal{F}_{m-1}] = 0$ and $\Tilde{\ell}_m(h_m,z_m)\in [-K,K]$ a.s. then one can apply the conditional Hoeffding's lemma which ensure us that for any $\lambda>0$:
+The final remark is to notice that for any $h_m\in\mathcal{H}$, $\mathbb{E}[\Tilde{\ell}_m(h_m,\z_m)\mid \mathcal{F}_{m-1}] = 0$ and $\Tilde{\ell}_m(h_m,\z_m)\in [-K,K]$ a.s. then one can apply the conditional Hoeffding's lemma which ensure us that for any $\lambda>0$:
 
 \[ \mathbb{E}
-[\exp(\lambda \Tilde{\ell}_m(h_m,z_m)) \mid \mathcal{F}_{m-1}] \leq \exp\left( \frac{\lambda^2K^2}{2}   \right). \]
+[\exp(\lambda \Tilde{\ell}_m(h_m,\z_m)) \mid \mathcal{F}_{m-1}] \leq \exp\left( \frac{\lambda^2K^2}{2}   \right). \]
 
 One then has $\xi_m \leq \exp\left( \frac{\lambda^2K^2}{2}   \right) \xi_{m-1}$. The recursion assumption concludes the proof.
 
@@ -515,21 +522,21 @@ One then has $\xi_m \leq \exp\left( \frac{\lambda^2K^2}{2}   \right) \xi_{m-1}$.
 
 \begin{proof}[Proof of \cref{l: cond_fubini-chap3}]
  Let $A$ be a $\mathcal{F}$-measurable event. One wants to show that
-  \[ \mathbb{E}\left[\mathbb{E}_{h\sim P} [f(h,z)]\mathds{1}_A \right] = \mathbb{E}\left[\mathbb{E}_{h\sim P} \left[ \mathbb{E}[f(h,z)\mid \mathcal{F}] \right] \mathds{1}_A \right]. \]
+  \[ \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(h,\z)]\mathds{1}_A \right] = \mathbb{E}\left[\mathbb{E}_{h\sim \P} \left[ \mathbb{E}[f(h,\z)\mid \mathcal{F}] \right] \mathds{1}_A \right]. \]
   \noindent Where the first expectation in each term is taken over $z$. This will be enough to conclude that
-  \[ \mathbb{E}\left[\mathbb{E}_{h\sim P} [f(h,z)]\mid \mathcal{F} \right] = \mathbb{E}_{h\sim P} \left[ \mathbb{E}[f(h,z)\mid \mathcal{F}] \right]   \]
-  \noindent thanks to the definition of conditional expectation. We first start by using the fact that $P$ is $\mathcal{F}$-measurable and that $P_0 \ll P$ with $P_0$ a constant measure. This is enough to obtain that the Radon-Nykodym derivative $\frac{dP}{dP_0}$ is a $\mathcal{F}$-measurable function, thus:
+  \[ \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(h,\z)]\mid \mathcal{F} \right] = \mathbb{E}_{h\sim \P} \left[ \mathbb{E}[f(h,\z)\mid \mathcal{F}] \right]   \]
+  \noindent thanks to the definition of conditional expectation. We first start by using the fact that $P$ is $\mathcal{F}$-measurable and that $P_0 \gg P$ with $P_0$ a constant measure. This is enough to obtain that the Radon-Nykodym derivative $\frac{d\P}{d\P_0}$ is a $\mathcal{F}$-measurable function, thus:
 
   \begin{align*}
-     \mathbb{E}\left[\mathbb{E}_{h\sim P} [f(h,z)]\mathds{1}_A \right]&=  \mathbb{E}\left[\mathbb{E}_{h\sim P_0} \left[f(h,z)\frac{dP}{dP_0}(h)\right]\mathds{1}_A(z) \right], \\
-     &= \mathbb{E}\left[\mathbb{E}_{h\sim P_0} \left[f(h,z)\frac{dP}{dP_0}(h)\mathds{1}_A(z)\right] \right].
-     \intertext{Because $f(h,z)\frac{dP}{dP_0}(h)\mathds{1}_A(z) $ is a positive function, and that $P_0$ is fixed, one can apply the classical Fubini-Tonelli theorem:}
-     &= \mathbb{E}_{h\sim P_0} \left[ \mathbb{E}\left[f(h,z)\frac{dP}{dP_0}(h)\mathds{1}_A(z)\right] \right]. \\
-     \intertext{One now conditions by $\mathcal{F}$ and use the fact that $\frac{dP}{dP_0}, \mathds{1}_A$ are $\mathcal{F}$-measurable:  }
-     &= \mathbb{E}_{h\sim P_0} \left[ \mathbb{E}\left[\mathbb{E}\left[f(h,z)\mid \mathcal{F}\right]\frac{dP}{dP_0}(h)\mathds{1}_A(z)\right] \right]. \\
+     \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(h,\z)]\mathds{1}_A \right]&=  \mathbb{E}\left[\mathbb{E}_{h\sim\P_0} \left[f(h,\z)\frac{d\P}{d\P_0}(h)\right]\mathds{1}_A(z) \right], \\
+     &= \mathbb{E}\left[\mathbb{E}_{h\sim\P_0} \left[f(h,\z)\frac{d\P}{d\P_0}(h)\mathds{1}_A(z)\right] \right].
+     \intertext{Because $f(h,\z)\frac{d\P}{d\P_0}(h)\mathds{1}_A(z) $ is a positive function, and that $P_0$ is fixed, one can apply the classical Fubini-Tonelli theorem:}
+     &= \mathbb{E}_{h\sim\P_0} \left[ \mathbb{E}\left[f(h,\z)\frac{d\P}{d\P_0}(h)\mathds{1}_A(z)\right] \right]. \\
+     \intertext{One now conditions by $\mathcal{F}$ and use the fact that $\frac{d\P}{d\P_0}, \mathds{1}_A$ are $\mathcal{F}$-measurable:  }
+     &= \mathbb{E}_{h\sim\P_0} \left[ \mathbb{E}\left[\mathbb{E}\left[f(h,\z)\mid \mathcal{F}\right]\frac{d\P}{d\P_0}(h)\mathds{1}_A(z)\right] \right]. \\
      \intertext{We finally re-apply Fubini-Tonelli to re-intervert the expectations: }
-     &=  \mathbb{E}\left[ \mathbb{E}_{h\sim P_0}\left[\mathbb{E}\left[f(h,z)\mid \mathcal{F}\right]\frac{dP}{dP_0}(h)\mathds{1}_A(z)\right] \right], \\
-     &= \mathbb{E}\left[ \mathbb{E}_{h\sim P}\left[\mathbb{E}\left[f(h,z)\mid \mathcal{F}\right]\mathds{1}_A(z)\right] \right].
+     &=  \mathbb{E}\left[ \mathbb{E}_{h\sim\P_0}\left[\mathbb{E}\left[f(h,\z)\mid \mathcal{F}\right]\frac{d\P}{d\P_0}(h)\mathds{1}_A(z)\right] \right], \\
+     &= \mathbb{E}\left[ \mathbb{E}_{h\sim \P}\left[\mathbb{E}\left[f(h,\z)\mid \mathcal{F}\right]\mathds{1}_A(z)\right] \right].
   \end{align*}
 
   \noindent This finally proves the announced results, yet concludes the proof.
@@ -542,57 +549,57 @@ One then has $\xi_m \leq \exp\left( \frac{\lambda^2K^2}{2}   \right) \xi_{m-1}$.
 We prove here \cref{cor: OPBD_optim_funcs} and \cref{cor: OPBD_test_bound}.
 
 \subsubsection{Proof of \cref{cor: OPBD_optim_funcs}}
-We fix $\hat{Q},P$ to be online predictive sequences (with $\hat{Q}_1,P_1$ being data-free priors). Recall that we assimilated the stochastic kernels $\hat{Q}_i,P_i$ to the their associated data-dependent sitribution given a sample $S$ $\hat{Q}_i(S,.), P_i(S,.)$.
+We fix $\hat{\Q},\P$ to be online predictive sequences (with $\hat{\Q}_1,\P_1$ being data-free priors). Recall that we assimilated the stochastic kernels $\hat{\Q}_i,\P_{i}$ to the their associated data-dependent sitribution given a sample $\Sm$ $\hat{\Q}_i(\Sm,.), \P_{i}(\Sm,.)$.
 
-As in \cref{th: main_thm_online}, our predictor set of interest is $\mathcal{H}_m:= \mathcal{H}^{\otimes m}$ and then, our predictor $h$ is a tuple $(h_1,..,h_m)\in\mathcal{H}$. We consider the stochastic kernel $Q$ belonging to the class $\mathcal{C}$ defined in \cref{eq: class_kernels} such that for any $S\in\mathcal{S}, Q(S,.) = \hat{Q}_2\otimes ... \otimes \hat{Q}_{m+1}$.
-Similarly one defines $Q^0\in\mathcal{C}$ such that for any $S\in\mathcal{S}, Q^0(S,.) = P_1\otimes ... \otimes P_{m}$
+As in \cref{th: main_thm_online}, our predictor set of interest is $\mathcal{H}_m:= \mathcal{H}^{\otimes m}$ and then, our predictor $h$ is a tuple $(h_1,..,h_m)\in\mathcal{H}$. We consider the stochastic kernel $Q$ belonging to the class $\mathcal{C}$ defined in \cref{eq: class_kernels} such that for any $S\in\Sm, \Q(\Sm,.) = \hat{\Q}_2\otimes ... \otimes \hat{\Q}_{m+1}$.
+Similarly one defines $Q^0\in\mathcal{C}$ such that for any $S\in\Sm, Q^0(\Sm,.) = P_1\otimes ... \otimes P_{m}$
 
 
 
 
 \paragraph{Proof for $(\Psi_{\normalfont1},\Phi_{\normalfont1})$:}
 
-For $\lambda>0$, we set our function $f$ to be for any dataset $S$ and predictor tuple $h=(h_1,...,h_m)$,
-\[f(S,h) = \lambda \left(\sum_{i=1}^m \mathbb{E}\left[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}\right]- \sum_{i=1}^m \ell(h_i,z_i) \right).\]
+For $\lambda>0$, we set our function $f$ to be for any dataset $\Sm$ and predictor tuple $h=(h_1,...,h_m)$,
+\[f(\Sm,h) = \lambda \left(\sum_{i=1}^m \mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}\right]- \sum_{i=1}^m \ell(h_i,\z_i) \right).\]
 
-We then apply \cref{prop: rivasplata_disintegrated} with the function $f$, $Q,Q^0$ defined above. One then has by dividing by $\lambda$ with probability $1-\delta$ over $S\sim \mu$ and $h=(h_1,...,h_m)\sim \hat{Q}_2\otimes ... \otimes \hat{Q}_{m+1}$:
+We then apply \cref{prop: rivasplata_disintegrated} with the function $f$, $Q,Q^0$ defined above. One then has by dividing by $\lambda$ with probability $1-\delta$ over $S\sim \mu$ and $h=(h_1,...,h_m)\sim \hat{\Q}_2\otimes ... \otimes \hat{\Q}_{m+1}$:
 
-\[ \sum_{i=1}^m  \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,z_i)  + \frac{1}{\lambda}\log\left(\frac{dQ_S}{dQ_S^0}(h_i)\right) + \frac{1}{\lambda} \log(\xi_m) + \frac{\log(1/\delta)}{\lambda}. \]
+\[ \sum_{i=1}^m  \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)  + \frac{1}{\lambda}\log\left(\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h_i)\right) + \frac{1}{\lambda} \log(\xi_m) + \frac{\log(1/\delta)}{\lambda}. \]
 
-And then using the fact that $S\in\mathcal{S}, Q_S = \hat{Q}_2\otimes ... \otimes \hat{Q}_{m+1}, Q^0_S = P_1\otimes ... \otimes P_{m}$ gives us:
+And then using the fact that $S\in\Sm, \Q_{\Sm} = \hat{\Q}_2\otimes ... \otimes \hat{\Q}_{m+1}, \Q_{\Sm}^0 = P_1\otimes ... \otimes P_{m}$ gives us:
 
-\[ \sum_{i=1}^m  \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,z_i)  + \frac{1}{\lambda}\sum_{i=1}^m \log\left(\frac{d\hat{Q}_{i+1}}{dP_i}(h_i)\right) + \frac{1}{\lambda} \log(\xi_m) + \frac{\log(1/\delta)}{\lambda}, \]
+\[ \sum_{i=1}^m  \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)  + \frac{1}{\lambda}\sum_{i=1}^m \log\left(\frac{d\hat{\Q}_{i+1}}{d\P_{i}}(h_i)\right) + \frac{1}{\lambda} \log(\xi_m) + \frac{\log(1/\delta)}{\lambda}, \]
 
-with $  \xi_m = \mathbb{E}_S\left[\mathbb{E}_{h_1,...,h_m \sim Q_S} \left[\exp\left(\lambda \sum_{i=1}^m \Tilde{\ell}_i(h_i,z_i)\right)\right]\right]$ and for any $i$,
-$ \Tilde{\ell}_i(h_i,z_i) = \mathbb{E}\left[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}\right]-  \ell(h_i,z_i) $
+with $  \xi_m = \mathbb{E}_S\left[\mathbb{E}_{h_1,...,h_m \sim \Q_{\Sm}} \left[\exp\left(\lambda \sum_{i=1}^m \Tilde{\ell}_i(h_i,\z_i)\right)\right]\right]$ and for any $i$,
+$ \Tilde{\ell}_i(h_i,\z_i) = \mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}\right]-  \ell(h_i,\z_i) $
 
 Notice that, because $P$ is an online predictive sequence, then one can apply directly \cref{l: exp_moment_online} to conclude that $\xi_m \leq \exp \left( \frac{\lambda^2K^2m}{2} \right)$.
 
 We also use \cite[Lemma 11]{viallard2023general} which derives the calculation of the disintegrated KL divergence between two Gaussians. One then has for any $i$, with $h_i= \hat{w}_{i+1} + \varepsilon_i$:
 
-\[ \log\left(\frac{d\hat{Q}_{i+1}}{dP_i}(h_i)\right) = \frac{||\hat{w}_{i+1} + \varepsilon_i- w_i^0||^2 - ||\varepsilon||^2}{2\sigma^2}. \]
+\[ \log\left(\frac{d\hat{\Q}_{i+1}}{d\P_{i}}(h_i)\right) = \frac{||\hat{w}_{i+1} + \varepsilon_i- w_i^0||^2 - ||\varepsilon||^2}{2\sigma^2}. \]
 
 Combining those facts altogether allows us to conclude.
 
 
 \paragraph{Proof for  $(\Psi_{\normalfont2},\Phi_{\normalfont2})$:}
 
-For $\lambda>0$, we set our function $f$ to be for any dataset $S$ and predictor tuple $(h=h_1,...,h_m)$,
-\[f(S,h) = \exp\left(\lambda \left(\sum_{i=1}^m \mathbb{E}\left[\ell(h_i,z_i)\mid \mathcal{F}_{i-1}\right]- \sum_{i=1}^m \ell(h_i,z_i) \right) \right).\]
+For $\lambda>0$, we set our function $f$ to be for any dataset $\Sm$ and predictor tuple $(h=h_1,...,h_m)$,
+\[f(\Sm,h) = \exp\left(\lambda \left(\sum_{i=1}^m \mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}\right]- \sum_{i=1}^m \ell(h_i,\z_i) \right) \right).\]
 We take $\alpha=2$ and apply this time \cref{prop: viallard_disintegrated}.
-One then has by dividing by $2\lambda$ with probability $1-\delta$ over $S\sim \mu$ and $h=(h_1,...,h_m)\sim \hat{Q}_2\otimes ... \otimes \hat{Q}_{m+1}$:
+One then has by dividing by $2\lambda$ with probability $1-\delta$ over $S\sim \mu$ and $h=(h_1,...,h_m)\sim \hat{\Q}_2\otimes ... \otimes \hat{\Q}_{m+1}$:
 
-\[\sum_{i=1}^m  \mathbb{E}[\ell(h_i,z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,z_i)+   \frac{3}{2\lambda}\log \frac{2}{\delta}+\frac{D_{2}\left(Q_{S} \| Q_S^0\right)}{2\lambda}+ \frac{1}{2\lambda}
-\log \left(\underbrace{\underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_{S'}^0}{\mathbb{E}}
-f\left(S^{\prime},h^{\prime}\right)^{2}}_{:= \xi_m'}\right). \]
+\[\sum_{i=1}^m  \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)+   \frac{3}{2\lambda}\log \frac{2}{\delta}+\frac{D_{2}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right)}{2\lambda}+ \frac{1}{2\lambda}
+\log \left(\underbrace{\underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm'}^0}{\mathbb{E}}
+f(\Sm',h')^{2}}_{:= \xi_m'}\right). \]
 
-We first notice that $D_{2}\left(Q_{S} \| Q_S^0\right) = \sum_{i=1}^m D_2(\hat{Q}_{i+1}\| P_i)$ as our predictors are drawn independently once $S$ is given.
+We first notice that $D_{2}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right) = \sum_{i=1}^m D_2(\hat{\Q}_{i+1}\| \P_{i})$ as our predictors are drawn independently once $\Sm$ is given.
 
-We also use that for any $i$, the Rényi divergence with $\alpha=2$ between $\hat{Q}_{i+1}$ and $P_i$ (two multivariate Gaussians with same covariance matrix) is $\frac{\|\hat{w}_{i+1}- w_i^0\|^2}{\sigma^2}$ (as recalled in \cite{gil2013renyi}).
+We also use that for any $i$, the Rényi divergence with $\alpha=2$ between $\hat{\Q}_{i+1}$ and $\P_{i}$ (two multivariate Gaussians with same covariance matrix) is $\frac{\|\hat{w}_{i+1}- w_i^0\|^2}{\sigma^2}$ (as recalled in \cite{gil2013renyi}).
 
 We then remark that:
 
-\[ \xi'_m = \underset{S^{\prime} \sim \mu}{\mathbb{E}} \underset{h^{\prime} \sim Q_{S'}^0}{\mathbb{E}}
+\[ \xi'_m = \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm'}^0}{\mathbb{E}}
 \exp\left(2\lambda \left(\sum_{i=1}^m \mathbb{E}\left[\ell(h_i',z_i')\mid \mathcal{F}_{i-1}\right]- \sum_{i=1}^m \ell(h_i',z_i') \right)\right).  \]
 
 Thus we recover the exponential moment $\xi_m$ from the Rivasplata's case up to a factor 2 within the exponential. We then apply \cref{l: exp_moment_online} with $\lambda'= 2\lambda$ to obtain that $\xi_m'\leq \exp\left(  2\lambda^2K^2m \right)$.
@@ -605,9 +612,9 @@ Combining all those facts allows us to conclude.
 
 \subsubsection{Proof of \cref{cor: OPBD_test_bound}}
 
-We apply the exact same proof than \cref{cor: OPBD_optim_funcs}. The only difference is the way to define our stochastic kernels. We now take, for a single online predictive sequence $\hat{Q}$ the following stochastic kernels:
+We apply the exact same proof than \cref{cor: OPBD_optim_funcs}. The only difference is the way to define our stochastic kernels. We now take, for a single online predictive sequence $\hat{\Q}$ the following stochastic kernels:
 
-We consider the stochastic kernel $Q$ belonging to the class $\mathcal{C}$ defined in \cref{eq: class_kernels} such that for any $S\in\mathcal{S}, Q(S,.) = \hat{Q}_1\otimes ... \otimes \hat{Q}_{m}$ and we take $Q_0=Q$.
+We consider the stochastic kernel $Q$ belonging to the class $\mathcal{C}$ defined in \cref{eq: class_kernels} such that for any $S\in\Sm, \Q(\Sm,.) = \hat{\Q}_1\otimes ... \otimes \hat{\Q}_{m}$ and we take $Q_0=Q$.
 
 This fact allows the divergence terms (Rényi or KL depending on which bound we consider) to vanish. The rest of the proof remains unchanged.
 
@@ -694,7 +701,7 @@ This fact is particurlaly noticeable on the California Housing dataset where bot
    \begin{align*}
    f_m(S,h^m) & := \sum_{i=1}^m \lambda X_i(h_i,z_i)  - \frac{\lambda^2}{2}\sum_{i=1}^m(\hat{V}_i(h_i,z_i) + V_i(h_i)),
    \end{align*}
-   where $X_i(h_i,z_i)= \mathbb{E}_{i-1}[\ell(h_i,z_i)]- \ell(h_i,\z_i)$. Notice that for fixed $h$, the sequence $(f_m(\S,h))_{m\geq 1}$ is a supermartingale according to Lemma \ref{l: bercu_touati}.
+   where $X_i(h_i,z_i)= \mathbb{E}_{i-1}[\ell(h_i,\z_i)]- \ell(h_i,\z_i)$. Notice that for fixed $h$, the sequence $(f_m(\S,h))_{m\geq 1}$ is a supermartingale according to Lemma \ref{l: bercu_touati}.
 
    Now for a given posterior tuple $Q_1,...Q_m$ we define $Q= Q_1 \otimes ...\otimes Q_m$ and also $P^m_S = P_{1,S}\otimes...\otimes P_{m,S}$. We can now properly apply the change of measure inequality for any $m$:
    \begin{align*}

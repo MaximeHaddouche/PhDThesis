@@ -117,22 +117,22 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {proposition}{\ifthmt@listswap \MakeUppercase {p}roposition\nobreakspace {}B.3.2\else \numberline {B.3.2}\MakeUppercase {p}roposition\fi \thmtformatoptarg {Adapted from Th. 2 of \cite {viallard2023general}}}{96}{proposition.B.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof}}{97}{thmt@dummyctr.dummy.49}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{97}{thmt@dummyctr.dummy.49}%
 \defcounter {refsection}{0}\relax 
 \contentsline {theorem}{\ifthmt@listswap \MakeUppercase {t}heorem\nobreakspace {}B.4.1\else \numberline {B.4.1}\MakeUppercase {t}heorem\fi }{99}{theorem.B.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof of \cref {th: main_thm_online}}}{100}{thmt@dummyctr.dummy.51}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {of \cref {th: main_thm_online}}}{100}{thmt@dummyctr.dummy.51}%
 \defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.4.1\else \numberline {B.4.1}\MakeUppercase {l}emma\fi }{101}{lemma.B.4.1}%
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.4.1\else \numberline {B.4.1}\MakeUppercase {l}emma\fi }{102}{lemma.B.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof of \cref {l: exp_moment_online}}}{101}{thmt@dummyctr.dummy.53}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {of \cref {l: exp_moment_online}}}{102}{thmt@dummyctr.dummy.53}%
 \defcounter {refsection}{0}\relax 
-\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.4.2\else \numberline {B.4.2}\MakeUppercase {l}emma\fi \thmtformatoptarg {Conditional Fubini}}{102}{lemma.B.4.2}%
+\contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.4.2\else \numberline {B.4.2}\MakeUppercase {l}emma\fi \thmtformatoptarg {Conditional Fubini}}{103}{lemma.B.4.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof\thmtformatoptarg {Proof of \cref {l: cond_fubini-chap3}}}{103}{thmt@dummyctr.dummy.55}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{108}{thmt@dummyctr.dummy.56}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{107}{thmt@dummyctr.dummy.56}%
 \defcounter {refsection}{0}\relax 
 \contentsline {lemma}{\ifthmt@listswap \MakeUppercase {l}emma\nobreakspace {}B.5.1\else \numberline {B.5.1}\MakeUppercase {l}emma\fi }{109}{lemma.B.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{109}{thmt@dummyctr.dummy.58}%
+\contentsline {newproof}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Proof}{110}{thmt@dummyctr.dummy.58}%
