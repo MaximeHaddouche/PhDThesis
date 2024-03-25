@@ -1,5 +1,6 @@
 main.pdf
 .DS_Store
+latex/.DS_Store
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
