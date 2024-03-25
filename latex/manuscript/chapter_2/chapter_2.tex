@@ -1,20 +1,373 @@
-\chapter[A Brief Reminder on Optimisation for Batch and Online Learning]{A Brief Reminder on Optimisation for Batch \\and Online Learning}
-\label{chap:optim}
+%!TEX root = main.tex
+\chapter{PAC-Bayes with Weak Statistical Assumptions: Generalisation Bounds for Martingales and Heavy-Tailed losses}
+\label{chap: pb-ht}
+
 \addchapterlof
-\addchapterloe
 \addchapterloa
+\addchapterloe
+
+\vspace{-1.5cm}
+\begin{center}
+\textbf{This chapter is based on the following paper}\\[0.1cm]
+\end{center}
+\printpublication{haddouche2023pac}
 
 \minitoc
 
+
 \begin{abstract}
-    \looseness=-1
-    Detail optimisation for GD, SGD and variants, list a lot of convergence guarantees under various assumptions (covnexity smoothness etc). On the measure spaces part, detail the required OT background to introduce Wasserstein distances. Detail what is online learning.
+\Cref{chap: pb-ht} provide PAC-Bayes bounds holding with weak statistical assumptions (finite variance), this is promising to encompass various learning situations involving optimisation algorithms such as heavy-tailed SGD \citep{gurbuzbalaban2020heavy} where assumptions such as bounded or subgaussian losses do not hold. Furthermore those results go beyond \iid assumption on $\S$ and holds for all datasets $(\Sm)_{m\geq 1}$ simultaneously. Such a flexible setting is in line with various optimisation frameworks, where new data can be available after the beginning of the learning process and be incorporated on-the-fly to the ongoing training, regardless of their potential correlation with previous data. Then, the theoretical results proposed in this chapter are a promising step toward practical settings where data may exhibit heavy-tailed behaviours and the loss function to be unbounded.
 \end{abstract}
 
-\newpage
+\section{Introduction}
 
-\section{Convergence guarantees for optimisation on predictor spaces}
+In \Cref{chap:intro-pac-bayes}, McAllester's and Catoni's bound \citep{mcallester2003pac,catoni2007pac} have been presented as key theoretical results with practical repercussions through their associated learning algorithm. However, the bounded or subgaussian assumption on the loss makes those results limited to tackle many real-life situations, which are limiting in practice.
+Indeed, from an optimisation perspective, as stated in Section 1.4 of \Cref{chap:intro-pac-bayes}, generalisation bounds should hold with weak statistical assumptions to make PAC-Bayes general enough to be used for learning settings where data are potentially heavy-tailed. Several works already proposed routes to overcome the boundedness constraint:  \citet[][Chapter 5]{catoni2004statistical} already proposed PAC-Bayes bounds for classification tasks and regressions ones with quadratic loss under a subexponential assumption. This technique has later been exploited in \citet{alquier2013sparse} for the single-index model, and by \citet{guedj2013pac} for nonparametric sparse additive regression, both under the assumption that the noise is subexponential. However all these works are dealing with light-tailed losses.
+\citet{alquier2018simpler,holland2019pac, kuzborskij2019efron, haddouche2021pac} proposed extensions beyond light-tailed losses.
+This chapter stands in the continuation of this spirit while developing and exploiting a novel technical toolbox.
+To better highlight the novelty of our approach, we first present the two classical building blocks of PAC-Bayes.
 
-\section{Wasserstein distances and optimisation on measure spaces}
+\subsection{Understanding PAC-Bayes: a celebrated route of proof}
+In the following subsection, we exploit again, for the sake of pedagagogy, the general pattern of proof for PAC-Bayes bounds described in \Cref{eq: catoni} to prove Catoni's bound. 
+\subsubsection{Two essential building blocks for a preliminary bound}
 
-\section{Optimisation in Online Learning}
+For the rest of this section, similarly to \Cref{chap:intro-pac-bayes}, we assume access to a non-negative loss function $\ell(h,z)$ taking as argument a predictor $h\in\mathcal{H}$  and data $z\in\mathcal{Z}$ (think of $z$ as a pair input-output $(x,y)$ for supervised learning problems, or as a single datum $x$ in unsupervised learning). We also assume access to a $m$-sized sample $\Sm= (z_1,...,z_m)\in\mathcal{Z}^m$. $\Sm$ is then used to learn a posterior distribution $\Q$ on $\mathcal{H}$, from a prior $\P$.
+
+PAC-Bayesian proofs are built upon two cornerstones. The first one is the change of measure inequality, recalled in \Cref{l: change_meas}.
+This property is applied to a certain function $f_m: \mathcal{Z}^m \times \mathcal{H}\rightarrow \mathbb{R}$ of the data and a candidate predictor: for all posteriors $\Q$,
+\begin{align}
+\label{eq: change_meas_pacb-chap-2}
+\mathbb{E}_{h\sim \Q}[f_m(\Sm,h)] \leq \KL(\Q,\P) + \log\left( \mathbb{E}_{h\sim \P}[\exp(f_m(\Sm,h))]  \right).
+\end{align}
+To deal with the random variable  $X(\Sm):=\mathbb{E}_{h\sim \P}[\exp(f_m(\Sm,h))] $, our second building block is Markov's inequality $\left(\mathbb{P}(X>a) \leq \frac{\mathbb{E}[X]}{a}\right)$ which we apply for a fixed $\delta\in (0,1)$ on $X(\Sm)$ with $a= \mathbb{E}_{\Sm}[X(\Sm)]/\delta$.
+Taking the complementary event gives that for any $m$, with probability at least $1-\delta$ over the sample $\Sm$, $X(\Sm)\leq \mathbb{E}_{\Sm}[X(\Sm)]/\delta$, thus:
+%\begin{lemma}
+%\label{l: markov}
+%For any non-negative integrable random variable $X$, the following holds for any $a>0$:
+
+%\[ \mathbb{P}(X>a) \leq \frac{\mathbb{E}[X]}{a}.  \]
+%\end{lemma}
+
+
+\begin{equation}
+  \label{eq: prelim_pb_bound-chap-2}
+  \mathbb{E}_{h\sim \Q}[f_m(\Sm,h)] \leq \operatorname{KL}(\Q,\P) + \log(1/\delta) + \log\left( \mathbb{E}_{h\sim \P}\mathbb{E}_{\Sm}[\exp(f_m(\Sm,h))]  \right).
+\end{equation}
+
+\subsubsection{From preliminary to complete bounds}
+
+
+From the preliminary result of \Cref{eq: prelim_pb_bound-chap-2}, there exists several ways to obtain PAC-Bayesian generalisation bounds, all being tied to specific choices of $f$ and the assumptions on the dataset $\Sm$. However, they all rely on the control of an exponential moment implied by Markov's inequality: this is a strong constraint which has been at the heart of the classical assumption appearing in PAC-Bayes learning.
+For instance, McAllester's bound \eqref{eq: mcallester} and Catoni's bound \eqref{eq: catoni}, exploits in particular, a data-free prior, an \iid assumption on $\Sm$ and a light-tailed loss. Most of the existing results stand with those assumptions (see \emph{e.g.}, \citealp{catoni2007pac,germain2009pac,guedj2013pac,tolstikhin2013pac,guedj2018pac,mhammedi2019pac,wu2022split}).
+Indeed, in many of these works, either a boundedness or a subgaussian assumption on the loss is used.  \citet{catoni2004statistical} extended PAC-Bayes learning to the subexponential case. Many works tried to mitigate at least one of the following three assumptions.
+
+  \begin{itemize}
+    \item \textbf{Data-free priors.} With an alternative set of techniques, \citet{catoni2007pac} obtained bounds with localised (\emph{i.e.}, data-dependent) priors. More recently, \citet{lever2010distribution,parradohernandez2012pac,lever2013tighter,oneto2016pac,dziugaite2017computing,mhammedi2019pac} also obtained PAC-Bayes bound with data-dependent priors.
+    \item \textbf{The \iid assumption on $\Sm$.} The work of \citet{fard2010pac} established links between reinforcement learning and PAC-Bayes theory. This naturally led to the study of PAC-Bayesian bound for martingales instead of iid data \citep{seldin2011pac,seldin2012bandit,seldin2012pac}.
+    \item \textbf{Light-tailed loss.} PAC-Bayes bounds for heavy-tailed losses (\emph{i.e.}, without subgaussian or subexponential assumptions) have been studied. \citet{audibert2011robust} provide PAC-Bayes bounds for least square estimators with heavy-tailed random variables. Their results was suboptimal with respect to the intrinsic dimension and was followed by further works from  \citet{catoni2016pac,catoni2016pac}.
+    More recently, this question has been adressed in the works of \citet{alquier2018simpler, holland2019pac,kuzborskij2019efron,haddouche2021pac}, extending PAC-Bayes to heavy-tailed losses under additional technical assumptions.
+  \end{itemize}
+
+
+
+
+
+Several questions then legitimately arise.
+\paragraph{Can we avoid these three assumptions simultaneously?}
+The answer is yes: for instance the work of \citet{rivasplata2020pac} proposed a preliminary PAC-Bayes bound holding with none of the three assumptions listed above. Building on their theorem, \citet{haddouche2022online} only exploited a bounded loss assumption to derive a PAC-Bayesian framework for online learning, requiring no assumption on data and allowing data (history in their context)-dependent priors.
+
+\paragraph{Can we obtain PAC-Bayes bounds without the change of measure inequality?} Yes, for instance \citet{alquier2018simpler} proposed PAC-Bayes bounds involving $f$-divergences and exploiting Holder's inequality instead of Lemma \ref{l: change_meas}. More recently, \citet{ohnishi2021novel,picard2022change} developed a broader discussion about generalising the change of measure inequality for a wide range of $f$-divergences. We note also that \citet{germain2009pac} proposed a version of the classical route of proof stated above avoiding the use of the change of measure inequality.
+This comes at the cost of additional technical assumptions (see \citealp[][Theorem 1]{haddouche2021pac} for a statement of the theorem in a proper measure-theoretic framework).
+
+\paragraph{Can we avoid Markov's inequality?}
+We mentioned above that several works avoided the change of measure inequality to obtain PAC-Bayesian bounds, but can we do the same with Markov's inequality? This is of interest as avoiding Markov could avoid assumptions such as subgaussiannity to provide PAC-Bayes bound.
+The answer is yes but this is a rare breed. To the best of our knowledge, only two papers are explicitly not using Markov's inequality: \citet{kakade2008complexity} obtained a PAC-Bayes bound using results on Rademacher complexity based on the McDiarmid concentration inequality, and \citet{kuzborskij2019efron} exploited a concentration inequality from \citet{delapena2009self}, up to a technical assumption to obtain results for unbounded losses. Both of those works do not require a bound on an exponential moment to hold.
+
+
+
+\subsection{Originality of our approach}
+
+Avoiding Markov's inequality appears challenging in PAC-Bayes but leads to fruitful results as those in \citet{kuzborskij2019efron}.
+
+In this work, we exploit a generalisation of Markov's inequality for supermartingales: Ville's inequality (as noticed by \citealt{doob1939jean}). This result has, to our knowledge, never been used in PAC-Bayes before.
+
+\begin{lemma}[Ville's maximal inequality for supermartingales]
+\label{l: ville_ineq}
+Let $\left(\mathcal{F}_{t}\right)$ be a filtration adapted to $\left(Z_{t}\right)$, a non-negative super-martingale with $Z_{0}=1$ almost surely, \ie $(Z_t)_{t\geq 1}$ is a discrete process such that for any $t\in\Nbb$, $\mathbb{E}\left[Z_{t} \mid \mathcal{F}_{t-1}\right] \leq Z_{t-1}$ a.s., $t \geq 1$, then, for any $0<\delta<1$, it holds
+$$
+\mathbb{P}\left(\exists T \geq 1: Z_{T}>\delta^{-1}\right) \leq \delta.
+$$
+\end{lemma}
+
+\begin{proof}
+  We apply the optional stopping theorem \citep[][Thm 4.8.4]{durrett2019probability} with Markov's inequality defining the stopping time $i=\inf \{t>1$ : $\left.Z_{t}>\delta^{-1}\right\}$ so that
+  $$
+  \mathbb{P}\left(\exists t \geq 1: Z_{t}>\delta^{-1}\right)=\mathbb{P}\left(Z_{i}>\delta^{-1}\right) \leq \mathbb{E}\left[Z_{i}\right] \delta \leq \mathbb{E}\left[Z_{0}\right] \delta \leq \delta.
+  $$
+\end{proof}
+
+A major interest of Ville's result is that it holds for a countable sequence of random variables simultaneously. This point is new in PAC-Bayes and will allow us to obtain bounds holding for a countable (not necessarily finite) dataset $\S$.
+
+\paragraph{On which supermartingale do we apply Ville's bound ?}
+
+To fully exploit Lemma \ref{l: ville_ineq}, we now take a countable dataset $\S= (\z_i)_{i\geq 1}\in\mathcal{Z}^{\Nbb}$.
+Recall that, because we use the change of measure inequality, we have to deal with the following exponential random variable appearing in \cref{eq: change_meas_pacb-chap-2} for any $m\geq 1$:
+\[ Z_m:= \mathbb{E}_{h\sim \P}[\exp(f_m(\S,h))].   \]
+Our goal is to choose a sequence of functions $f_m:\Zcal^\Nbb \times \Hcal \rightarrow \Rbb$ such that $(Z_m)_{m\geq 1}$ is a supermartingale. A way to do so comes from \citet{bercu2008exponential}.
+\begin{lemma}[Towards the design of a supermartingale]
+\label{l: bercu_touati}
+Let $\left(M_{m}\right)$ be a locally square-integrable martingale with respect to the filtration $(\mathcal{F}_m)$. For all $\eta \in \mathbb{R}$ and $m \geq 0$, one has:
+$$\mathbb{E}\left[\exp \left(\eta \Delta M_{m}-\frac{\eta^{2}}{2}\left(\Delta[M]_{m}+\Delta\langle M\rangle_{m}\right)\right) \mid \mathcal{F}_{m-1}\right] \leq 1,
+$$
+where $\Delta M_{m}=M_{m}-M_{m-1}, \Delta[M]_{m}=\Delta M_{m}^{2}$ and $\Delta\langle M\rangle_{m}=\mathbb{E}\left[\Delta M_{m}^{2} \mid \mathcal{F}_{m-1}\right]$.
+
+We define $
+V_{m}(\eta)=\exp \left(\eta M_{m}-\frac{\eta^{2}}{2}\left([M]_{m}+\langle M\rangle_{m}\right)\right) .
+$
+Then, for all $\eta \in \mathbb{R},\left(V_{m}(\eta)\right)$ is a positive supermartingale with $\mathbb{E}\left[V_{m}(\eta)\right] \leq 1$ where $[M]_{m}(h):=\sum_{i=1}^m \Delta[M]_{m},
+\langle M\rangle_{m}(h):=\sum_{i=1}^m\Delta\langle M\rangle_{m}.$
+\end{lemma}
+In the sequel, this lemma will be helpful to design a supermartingale (\emph{i.e.}, to choose a relevant $f_m$ for any $m$) without further assumption.
+
+\subsection{Contributions and outline}
+
+By avoiding Markov, a key message of \citep{kuzborskij2019efron} is that, for learning problems with independent data, PAC-Bayes learning only requires the control of order 2 moment on losses to be used with convergence guarantees. This is strictly less restrictive than the classical subgaussian/subgamma assumptions appearing in the major part of the literature.
+
+We successfully prove this fact remains even for non-independent data: we only need to control order 2 (conditional) moments to perform PAC-Bayes learning. We focus in this chapter on the PAC-Bayesian framework for martingales \citep{seldin2011pac,seldin2012bandit,seldin2012pac}.
+We then provide a novel PAC-Bayesian bound holding for data-free priors and unbounded martingales. From this, we recover in PAC-Bayes bounds for unbounded losses and iid data as a significant particular case. We also propose an extension of \citet{seldin2012bandit}'s result for multi-armed bandits.
+
+More precisely, \Cref{sec: main_result_mart} contains our novel PAC-Bayes bound for unbounded martingales and \Cref{sec: iid_case} contains an immediate corollary for learning theory with iid data. 
+We eventually apply our main result for martingales in \Cref{sec: bandit} to the setting of multi-armed bandit. Doing so, we provably extend a result of \citet{seldin2012bandit} to the case of unbounded rewards.
+
+\Cref{sec: pac_b_background} gathers more details on PAC-Bayes,
+we draw in \Cref{sec: extensions} a detailed comparison between our new results and a few classical ones.  We show that adapting our bounds to the assumptions made in those papers allows to recover similar or improved bounds.
+We defer to \Cref{sec: proofs} the proofs of \Cref{sec: iid_case,sec: bandit}.
+
+
+
+
+
+\section{A PAC-Bayesian bound for unbounded martingales}
+
+\subsection{Main result}
+\label{sec: main_result_mart}
+A line of work led by \citet{seldin2011pac,seldin2012bandit,seldin2012pac} provided PAC-Bayes bounds for almost surely bounded martingales. We provably extend the remits of their result to the case of unbounded martingales.
+
+\paragraph{Framework}
+
+Our framework is close to the one of \cite{seldin2012bandit}: we assume having access to a countable dataset $\S= (\z_i)_{i\geq 1} \in$ with no restriction on the distribution of $\S$ (in particular the $\z_i$ can depend on each others). We denote for any $m$, $\Sm:= (\z_i)_{i=1..m}$ the restriction of $\S$ to its $m$ first points.
+$(\mathcal{F}_i)_{i\geq 0}$ is a filtration adapted to $\S$.  We denote for any $i\in\mathbb{N}$ $\mathbb{E}_{i-1} [.] := \mathbb{E} [. \mid \mathcal{F}_{i-1}]$.
+We also precise the space $\mathcal{H}$ to be an index (or a hypothesis) space, possibly uncountably infinite.
+Let $\left\{X_1(\S_1,h), X_2(\S_2,h), \cdots\right.$ : $h \in \mathcal{H}\}$ be martingale difference sequences, meaning that for any $m\geq 1,h\in\mathcal{H}$, $\mathbb{E}_{m-1}\left[X_m(\Sm,h) \right]=0$.
+
+For any $h\in\mathcal{H}$, let $M_m(h)=\sum_{i=1}^m X_i(S_i,h)$ be martingales corresponding to the martingale difference sequences and we define, as in \citet{bercu2008exponential}, the following
+$$[M]_{m}(h):=\sum_{i=1}^m X_i(\S_i,h)^2,$$
+$$\langle M\rangle_{m}(h)=\sum_{i=1}^m\mathbb{E}_{i-1}\left[X_{i}(\S_i,h)^{2}\right].$$
+For a distribution $\Q$ over $\mathcal{H}$ define weighted averages of the martingales with respect to $\Q$ as $M_m(\Q)= \mathbb{E}_{h\sim \Q}\left[M_m(h)\right]$ (similar definitions hold for $[M]_m(\Q),\langle M\rangle_m (\Q)$).
+
+\textbf{Main result.} We now present the main result of this section where we succesfully avoid the boundedness assumption on martingales. This relaxation comes at the cost of additional variance terms $[M]_m,\langle M \rangle_m$.
+
+\begin{theorem}[A PAC-Bayesian bound for unbounded martingales]
+\label{th: main_thm}
+For any data-free prior $\P\in \mathcal{M}(\mathcal{H})$, any $\lambda>0$, any collection of martingales $(M_m(h))_{m\geq 1}$ indexed by $h\in\mathcal{H}$, the following holds with probability $1-\delta$ over the sample $\S=(\z_i)_{i\in\mathbb{N}}$, for all $m\in\mathbb{N}/\{0\}$, $\Q\in\mathcal{M}(\mathcal{H})$:
+\[|M_m(\Q)| \leq   \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda } + \frac{\lambda}{2}\left([M]_m(\Q) + \langle M\rangle_m(\Q) \right).  \]
+\end{theorem}
+Proof lies in \Cref{sec: proof_main_thm}.
+
+\textbf{Analysis of the bound.} This theorem involves several terms. The change of measure inequality introduces the KL divergence term, the approximation term $\log(2/\delta)$ comes from Ville's inequality (instead of Markov in classical PAC-Bayes). Finally, the terms $[M]_m(\Q), \langle M\rangle_m(\Q)$ come from our choice of supermartingale as suggested by \citet{bercu2008exponential}. The term $[M]_m(\Q)$ can be interpreted as an empirical variance term while $\langle M\rangle_m(\Q)$ is its theoretical counterpart. Note that $\langle M\rangle_m(\Q)$ also appears in \citet[][Theorem 1]{seldin2012bandit}.
+
+We recall that this general result stands with no assumption on the martingale difference sequence $(X_i)_{i\geq 1}$ and holds uniformly on all $m\geq 1$. Those two points are, to the best of our knowledge, new within the PAC-Bayes literature. We discuss
+in \Cref{sec: iid_case,sec: extensions} more concrete instantiations.
+
+\textbf{Comparison with literature.} The closest result from \cref{th: main_thm} is the PAC-Bayes Bernstein inequality of \cite{seldin2012bandit}. Our bound is a natural extension of theirs as their result only involves the variance term (not the empirical one), but requires two additional assumptions:
+\begin{enumerate}
+  \item Bounded variations of the martingale difference sequence: $\forall m, \exists C_m\in\mathbb{R}^2$ such that a.s. for all $h$ $| X_m(\Sm,h)| \leq C_m$.
+  \item Restriction on the range of the $\lambda$: $\forall m, \lambda_m \leq 1/C_m $.
+\end{enumerate}
+ \citet{seldin2012bandit} need those assumptions to ensure the \emph{Bernstein assumption} which states that for any $h$,
+ $\mathbb{E}[\exp(\lambda M_m(h) - \frac{\lambda^2}{2} \langle M \rangle_m(h))] \leq 1$.
+ Our proof technique do not require the Bernstein assumption (and so none of the two conditions described above, which allow us to deal with unbounded martingales) as we exploit the supermartingale structure to obtain our results. More precisely, the price to pay to avoid the Bernstein assumption is to consider the empirical variance term $[M]_m(h)$ and to prove that $\left( \exp \left(\lambda  M_{m}-\frac{\lambda^{2}}{2}\left([M]_{m}+\langle M\rangle_{m}\right)\right)  \right)_{m\geq 1} $
+ is a supermartingale using \Cref{l: ville_ineq} and \Cref{l: bercu_touati} (see \Cref{sec: proof_main_thm} for the complete proof).
+ A broader discussion is detailed in \cref{sec: extensions}.
+
+\subsection{Proof of \Cref{th: main_thm}}
+\label{sec: proof_main_thm}
+
+\begin{proof}[of \Cref{th: main_thm}]
+We fix $\eta\in\mathbb{R}$ and we consider the function $f_m$ to be for all $(\S,h)$:
+\begin{align*}
+f_m(\S,h) & := \eta M_m(h) - \frac{\eta^2}{2} \left( [M]_m(h) + \langle M \rangle_m(h)   \right)\\
+& = \sum_{i=1}^m \eta\Delta M_i(h)  - \frac{\eta^2}{2}(\Delta[M]_i(h) + \Delta \langle M\rangle_i(h)),
+\end{align*}
+where  $\Delta M_{i}(h)=X_i(\S_i,h), \quad\Delta[M]_{i}(h)=X_i(\S_i,h)^{2}, \quad\Delta\langle M\rangle_{i}(h)=\mathbb{E}_{i-1}\left[X_{i}(\S_i,h)^{2}\right]$.
+For the sake of clarity, we dropped the dependency in $\S$ of $M_m$. Note that, given the definition of $M_m$, $M_m(h)$ is $\mathcal{F}_{m}$ measurable for any fixed $h$.
+
+Let $\P$ a fixed data-free prior, we first apply the change of measure inequality to obtain $\forall m\in\mathbb{N},\forall \Q\in \mathcal{M}(\mathcal{H})$:
+\[  \mathbb{E}_{h\sim \Q}[f_m(\S,h)] \leq \operatorname{KL}(\Q,\P) + \log\left(\underbrace{\mathbb{E}_{h\sim \P} \left[ \exp (f_m(\S,h))   \right] }_{:= Z_m} \right),   \]
+with the convention $f_0= 0$.
+We now have to show that $(Z_m)_m$ is a supermartingale with $Z_0=1$. To do so remark that for any $m$, because $\P$ is data free one has the following result.
+\begin{lemma}
+\label{l: cond_fubini}
+For any data-free prior $\P$, any $\sigma$-algebra $\mathcal{F}$ belonging to the filtration $(\mathcal{F}_i)_{i\geq 0}$, any nonnegative function  $f$ taking as argument the sample $\S$ and a predictor $h$, one has almost surely: $$\mathbb{E}\left[\mathbb{E}_{h\sim \P}[f(\S,h)] \mid \mathcal{F}\right]  =  \mathbb{E}_{h\sim \P}\left[\mathbb{E}[f(\S,h) \mid \mathcal{F}] \right].$$
+\end{lemma}
+\begin{proof}[of \Cref{l: cond_fubini}]
+Let $A$ be a $\mathcal{F}$-measurable event. We want to show that
+\[ \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(\S,h)]\mathds{1}_A \right] = \mathbb{E}\left[\mathbb{E}_{h\sim \P} \left[ \mathbb{E}[f(\S,h)\mid \mathcal{F}] \right] \mathds{1}_A \right], \]
+where the first expectation in each term is taken over $\S$. Note that it is possible to take this expectation thanks to the Kolomogorov's extension theorem \citep[see \emph{e.g.}][Thm 2.4.4]{tao2011introduction} which ensure the existence of a probability space for the discrete-time stochastic process $\S=(\z_i)_{i\geq 1}$.
+
+Thus, this is enough to conclude that
+\[ \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(\S,h)]\mid \mathcal{F} \right] = \mathbb{E}_{h\sim \P} \left[ \mathbb{E}[f(\S,h)\mid \mathcal{F}] \right],   \]
+by definition of the conditional expectation.
+To do so, notice that because $f(\S,h)\mathds{1}_A $ is a nonnegative function, and that $\P$ is data-free, we can apply the classical Fubini-Tonelli theorem.
+\begin{align*}
+\mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(\S,h)]\mathds{1}_A \right]
+&=  \mathbb{E}_{h\sim \P} \left[ \mathbb{E}\left[f(\S,h)\mathds{1}_A\right] \right]. \\
+\intertext{One now conditions by $\mathcal{F}$ and use the fact that $\mathds{1}_A$ is $\mathcal{F}$-measurable:  }
+&= \mathbb{E}_{h\sim \P} \left[ \mathbb{E}\left[\mathbb{E}\left[f(\S,h)\mid \mathcal{F}\right]\mathds{1}_A\right] \right]. \\
+\intertext{We finally re-apply Fubini-Tonelli to re-intervert the expectations: }
+&= \mathbb{E}\left[ \mathbb{E}_{h\sim \P}\left[\mathbb{E}\left[f(\S,h)\mid \mathcal{F}\right]\mathds{1}_A\right] \right].
+\end{align*}
+This concludes the proof of Lemma \ref{l: cond_fubini}.
+\end{proof}
+We then use Lemma \ref{l: cond_fubini} with $f=\exp(f_m)$ and $\mathcal{F}=\mathcal{F}_{m-1}$ to obtain:
+\begin{align*}
+\mathbb{E}_{m-1}[Z_m] & =  \mathbb{E}_{h\sim \P}\left[\mathbb{E}_{m-1}[(\exp (f_m(\S,h))] \right]\\
+&= \mathbb{E}_{h\sim \P}\left[ \exp (f_{m-1}(\S,h)) \mathbb{E}_{m-1}\left[ \exp( \eta\Delta M_m(h)  - \frac{\eta^2}{2}(\Delta[M]_m
+(h) + \Delta \langle M\rangle_m(h)) \right]   \right],
+\end{align*}
+with $f_{m-1}(\S,h) = \sum_{i=1}^{m-1} \eta(\Delta M_i(h) ) - \frac{\eta^2}{2}(\Delta[M]_i(h) + \Delta \langle M\rangle_i(h))$.
+Using Lemma \ref{l: bercu_touati} ensures that for any $h$, $$\mathbb{E}_{m-1}[ \exp( \eta\Delta M_m(h)  - \frac{\eta^2}{2}(\Delta[M]_m(h) + \Delta \langle M\rangle_m(h)) ] \leq 1,$$
+thus we have
+\begin{align*}
+\mathbb{E}_{m-1}[Z_m] & \leq  \mathbb{E}_{h\sim \P}\left[ \exp (f_{m-1}(\S,h))   \right]  = Z_{m-1}.
+\end{align*}
+Thus $(Z_m)_m$ is a nonnegative supermartingale with $Z_0=1$. We can use Ville's inequality (Lemma \ref{l: ville_ineq}) which states that
+$$
+\mathbb{P}_S\left(\exists m \geq 1: Z_{m}>\delta^{-1}\right) \leq \delta.
+$$
+Thus, with probability $1-\delta$ over $\S$, for all $m\in\mathbb{N}, Z_m \leq 1/\delta $.
+We then have the following intermediary result. For all $\P$ a data-free prior, $\eta\in\mathbb{R}$, with probability $1-\delta$ over $\S$, for all $m>0, \Q\in\mathcal{M}(\mathcal{H})$
+\begin{align}
+\label{eq: intermediary_result_main}
+\eta M_m(\Q)  \leq  \operatorname{KL}(\Q,\P) +\log(1/\delta) + \frac{\eta^2}{2}\left( [M]_m(\Q) + \langle M \rangle_m(\Q)  \right) ],
+\end{align}
+recalling that $M_m(\Q)= \mathbb{E}_{h\sim \Q}[M_m(h)]$, and that similar definitons hold for $[M]_m(\Q), \langle M \rangle_m(\Q)$.
+Thus, applying the bound with $\eta= \pm\lambda$ ($\lambda>0$) and taking an union bound gives, with probability $1-\delta$ over $\S$, for any $m\in\mathbb{N}$, $\Q\in\mathcal{M}(\mathcal{H})$
+\[ \lambda\left|M_m(\Q)\right| \leq  \operatorname{KL}(\Q,\P) + \log(2/\delta) + \frac{\lambda^2}{2}\left( [M]_m(\Q) + \langle M \rangle_m(\Q)  \right) ].  \]
+Dividing by $\lambda$ concludes the proof.
+\end{proof}
+
+
+\subsection{A corollary: Batch learning with iid data and unbounded losses}
+\label{sec: iid_case}
+
+In this section, we instantiate \Cref{th: main_thm} onto a learning theory framework with iid data. We show that our bound encompasses several results of literature as particular cases.
+\paragraph{Framework} We consider a \emph{learning problem} specified by a tuple $(\mathcal{H}, \mathcal{Z}, \ell)$ consisting of a set $\mathcal{H}$ of predictors, the data space $\mathcal{Z}$, and a loss function $\ell : \mathcal{H}\times \mathcal{Z} \rightarrow \mathbb{R}^{+} $.
+We consider a countable dataset $\S=(\z_i)_{i\geq 1}\in\mathcal{Z}^{\mathbb{N}}$ and assume that sequence is \iid following the distribution $\D$. We also denote by $\mathcal{M}(\mathcal{H})$ is the set of probabilities on $\mathcal{H}$.
+\paragraph{Definitions} Similarly to \Cref{chap:intro-pac-bayes}, the \emph{population risk} $\Risk$ of a predictor $h\in\mathcal{H}$ is $\forall h, \Risk(h)= \mathbb{E}_{\z\sim\D}[\ell(h,\z)]$, the \emph{empirical error} of $h$ is  $\forall h, \Riskhat_{\Sm}(h)= \frac{1}{m}\sum_{i=1}^m\ell(h,z_i)$
+and finally the \emph{quadratic generalisation error} $V$ of $h$ is $\forall h, Quad(h)= \mathbb{E}_{\z\sim\D}[\ell(h,z)^2]$.
+We also denote by \emph{generalisation gap} for any $h$ the quantity $\Risk(h)-\Riskhat_{\Sm}(h)$.
+\medskip
+
+\textbf{Main result.} We now state the main result of this section. This bound is a corollary of \Cref{th: main_thm} and fills the gap with learning theory.
+\begin{theorem}[A PAC-Bayes bound for batch learning with heavy-tailed losses]
+\label{th: main_thm_iid}
+For any data-free prior $P\in \mathcal{M}(\mathcal{H})$, any $\lambda>0$ the following holds with probability $1-\delta$ over the sample $\S=(\z_i)_{i\in\mathbb{N}}$, for all $m\in\mathbb{N}/\{0\}$, $Q\in\mathcal{M}(\mathcal{H})$
+\begin{multline*}\mathbb{E}_{h\sim \Q} [\Risk(h)] \leq   \mathbb{E}_{h\sim \Q} \left[\Riskhat_{\Sm}(h) + \frac{\lambda}{2m}\sum_{i=1}^m \ell(h,z_i)^2\right] \\
+  + \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda m} + \frac{\lambda}{2}\mathbb{E}_{h\sim \Q} [\mathrm{Quad}(h)]. 
+\end{multline*}
+\end{theorem}
+
+Proof is furnished in \Cref{sec: proofs}.
+\paragraph{About the choice of $\lambda$.}A novelty in this theorem is that the bound holds \emph{simultaneously on all $m>0$} -- this is due to the use of Ville's inequality.
+This sheds a new light on the choice of $\lambda$. Indeed, taking a localised $ \lambda$ depending on a given sample size (e.g. $\lambda_m= 1/\sqrt{m}$) ensures convergence guarantees for the expected generalisation gap. Doing so, our bound matches the usual PAC-Bayes literature (i.e. a bound holding with high probability for a single $m$). However the novelty brought by \Cref{th: main_thm_iid} is that our bound holds for unbounded losses for all times simultaneously. This suggests that taking a sample size-dependent $\lambda$ may not be the best answer. We detail an instance of this fact below when one thinks of $\lambda$ as a parameter of an optimisation objective.
+Indeed, our bound suggests a new optimisation objective for unbounded losses which is for any $m>0$:
+\begin{equation}
+  \label{eq: optim_obj}
+  \operatorname{argmin_{Q}}  \mathbb{E}_{h\sim \Q} \left[\frac{1}{m}\sum_{i=1}^m\left(\ell(h,z_i) + \frac{\lambda}{2} \ell(h,z_i)^2\right)\right] + \frac{\operatorname{KL}(\Q,\P)}{\lambda m}.
+\end{equation}
+\Cref{eq: optim_obj} differs from the classical objective of \citet[][Thm 1.2.6]{catoni2007pac} (described in \eqref{eq: alg-catoni}) on the additional quadratic term $\frac{\lambda}{2} \ell(h,z_i)^2$. Note that this objective implies a bound on the theoretical order 2 moment to be meaningful as we do not include it in our objective. Note that this constraint is less restrictive than Catoni's objective which requires a bounded loss.  This objective stresses the role of the parameter $\lambda$ as being involved in a new explicit tradeoff between the KL term and the efficiency on training data.
+
+Also, this optimisation objective is valid for any sample size $m$, this means that our $\lambda$ should not depend on certain dataset size but should be fixed in order to ensure a learning algorithm with generalisation guarantees at all time. This draws a parallel with Stochastic Gradient Descent with fixed learning step.
+
+
+\textbf{About the underlying assumptions in this bound.} Our result  is empirical (all terms can be computer or approximated) at the exception of the term $\mathbb{E}_{h\sim \Q} [\mathrm{Quad}(h)]$. This invites to choose carefully the class of posteriors, in order to bound this second-order moment with minimal assumptions.
+For instance, if we consider the particular case of the quadratic loss $\ell(h,z)= (h-z)^2$, then we only need to assume that our data have a finite variance if we restrict our posteriors to have both bounded means and variance. This assumption is striclty less restrictive than the classical subgaussian/subgamma assumption classically appearing in the literature.
+
+\textbf{Comparison with literature.} Back to the bounded case, we note that instantiating the boundedness assumption in \cref{th: main_thm_iid} make us recover the result of \citet[][Theorem 4.1]{alquier2016properties} for the subgaussian case. We also remark that instantiating the HYPE condition conditioning \citet[][Theorem 3]{haddouche2021pac} allow us to improve their result as we transformed the control of an exponential moment into one on a second-order moment. More details are gathered in \Cref{sec: extensions}.
+We also compare \Cref{th: main_thm_iid} to \citet[][Theorem 3]{kuzborskij2019efron} which is a PAC-Bayes bound for unbounded losses obtained through a concentration inequality from \citet{delapena2009self}. They arrived to what they denote as semi-empirical inequalities which also involve empirical and theoretical variance terms (and not an exponential moment).Their bound holds for independent data and a single posterior.
+First of all, note that \Cref{th: main_thm_iid} holds for any posterior, which is strictly more general. Note also that our bound is a straightforward corollary of \Cref{th: main_thm} which holds for any martingale (thus for any data distribution in a learning theory framework) and so, exploits a different toolbox than \citet{kuzborskij2019efron} (control of a supermartingale vs. concentration bounds for independent data). We insist that a fundamental novelty in our work is to extend the conclusion of \cite{kuzborskij2019efron} to the case of non-independent data: it is possible to perform PAC-Bayes learning for unbounded losses at the expense of the control of second-order moments.
+Note also that their bound is slightly tighter than ours as their result is \Cref{th: main_thm_iid} being optimised in $\lambda$ (which is something we cannot do as the resulting $\lambda$ would be data-dependent).
+
+
+
+
+
+
+
+\section{Application to the multi-armed bandit problem}
+\label{sec: bandit}
+
+We exploit our main result in the context of the multi-armed bandit problem -- we adopt the framework of \citet{seldin2012bandit}.
+
+\paragraph{Framework.} Let $\mathcal{A}$ be a set of actions of size $|\mathcal{A}|=K<+\infty$ and $a\in\mathcal{A}$ be an action. At each round $i$, the environment furnishes a reward function $R_i:\mathcal{A}\rightarrow \mathbb{R}$ which associate a reward $R_i(a)$ to the arm $a$. Assuming the $R_i$s are iid, we denote for any $a$, the \emph{expected reward for action $a$} to be $R(a)= \mathbb{E}_{R_1}[R_1(a)]$.
+At each round $i$, the player executes an action $A_i$ according to a policy $\pi_i$. We then set the filtration $(\mathcal{F}_i)_{i\geq 1}$ to be $\mathcal{F}_i = \sigma\left( \{\pi_j,A_j,R_j \mid 1\leq j\leq m\}    \right)$.
+
+
+\paragraph{Assumptions.}We suppose here that $(R_i)_{i\geq 1}$ is an iid sequence and that at each time $i$, $A_i$ and $R_i$ are independent and that $\pi_i$ is $\mathcal{F}_{i-1}$ measurable. This means that the player is not aware of the rewards each round and performs its current move with regards to the past.
+
+We also add two technical assumptions. First, the order two moment of the expected reward is uniformly bounded: $\sup_{a\in\mathcal{A}} \mathbb{E}_{R_1}[R_1(a)^2] \leq C$. This assumption is strictly less restrictive than the boundedness assumption made in \cite{seldin2012bandit}. Similarly to this work, we also assume that there exists a sequence $(\varepsilon_i)_{i\geq 1}$ such that $\inf_{a\in\mathcal{A}} \pi_i(a) \geq \varepsilon_i$.
+We say that $(\pi_i)_{i\geq 1}$ is \emph{bounded from below by} $(\varepsilon_i)_{i\geq 1}$.
+
+
+\paragraph{Definitions.}
+For $i \geq 1$ and $a \in\{1, \ldots, K\}$, define a set of random variables $(R_i^a)_{i\geq 1}$ (\emph{the importance weighted samples}, \citealp{sutton2018reinforcement})
+$$
+R_i^a:=\left\{\begin{array}{cl}
+\frac{1}{\pi_i(a)} R_i, & \text { if } A_i=a, \\
+0, & \text { otherwise. }
+\end{array}\right.
+$$
+We define for any time $m$:
+$
+\hat{R}_m(a)=\frac{1}{m} \sum_{i=1}^t R_i^a .
+$
+Observe that for all $i$, $\mathbb{E}\left[R_i^a \mid \mathcal{F}_{i-1}\right]=R(a)$ and $\mathbb{E}[\hat{R}_m(a)]=R(a)$.
+Let $a^*$ be the "best" action (the action with the highest expected reward, if there are multiple "best" actions pick any of them). Define the \emph{expected and empirical per-round regrets} as
+$$
+\begin{aligned}
+\Delta(a) =R\left(a^*\right)-R(a), \quad \hat{\Delta}_m(a) =\hat{R}_m\left(a^*\right)-\hat{R}_m(a) .
+\end{aligned}
+$$
+Observe that $m\left(\hat{\Delta}_m(a)-\Delta(a)\right)$ forms a martingale. Let
+$$
+V_m(a)=\sum_{i=1}^m \mathbb{E}\left[\left(R_i^{a^*}-R_i^a-\left[R\left(a^*\right)-R(a)\right]\right)^2 \mid \mathcal{F}_{i-1}\right]
+$$
+be the cumulative variance of this martingale and
+$$
+\hat{V}_m(a)=\sum_{i=1}^m \left(R_i^{a^*}-R_i^a-\left[R\left(a^*\right)-R(a)\right]\right)^2
+$$
+its empirical counterpart. We denote for any distribution $\Q$ over $\mathcal{A}$, $\Delta(\Q) = \mathbb{E}_{a\sim \Q}[\Delta(a)]$, $V_m(\Q)= \mathbb{E}_{a\sim \Q}[V_m(a)]$, similar definitions hold for $\hat{\Delta}_m(\Q),\hat{V}_m(\Q)$.
+We can now state the main result of this section -- its proof is deferred to \Cref{sec: proofs}.
+
+\begin{theorem}[PAC-Bayes bounds for heavy-tailed rewards]
+\label{th: bandits_bound}
+For any $m\geq 1$, any history-dependent policy sequence $(\pi_i)_{i\geq 1}$ bounded from below by $(\varepsilon_i)_{i\geq 1}$, we have with probability $1-\delta$, for all posterior $\Q$
+\begin{align*}
+\left| \Delta(\Q) - \hat{\Delta}_m(\Q)  \right| & \leq 2\sqrt{\frac{\left(1+ \frac{2K}{\delta} \right)\left( \log(K) + \log(4/\delta) \right)}{ m \varepsilon_m}}.
+\end{align*}
+\end{theorem}
+To the best of our knowledge, this result is the first PAC-Bayesian guarantees for multi-armed bandits with unbounded rewards. The proposed bound is as tight as Theorem 2.3 of \citet{seldin2012bandit}, up to a factor $(e-2)$ transformed into $\left(1+ \frac{2K}{\delta}\right)$ (which is a huge dependency in $K$) within the square root.
+Note that our result comes at the price of the localisation: Theorem 2.3 of \citet{seldin2012bandit} proposes a bound holding uniformly for all time $m$ while our approach only holds for a single time $m$.
+
+
+We believe there is room for improvement in \cref{th: bandits_bound}. Indeed, the current approach is naive as it consists in bounding crudely with high probability the empirical variance. Such a naive trick impeach us to consider all times simultaneously. Indeed, in its current form, taking an union bound on \Cref{th: bandits_bound} is costful as we have a dependency in $1/\delta$ in our result (instead of $\log(1/\delta)$ in \citealp{seldin2012bandit}): this would destroy the convergence rate. The question of dealing more subtly with the empirical variance term is left as an open question.
+
+\section{Conclusion}
+
+\textbf{A first step towards an optimisation perspective of PAC-Bayes} We showed that it is possible to generalise the PAC-Bayes toolbox to unbounded martingales and heavy-tailed losses (resp. learning problem with unbounded losses for batch/online learning), the solely implicit assumption being the existence of second order moments on the martingale difference sequence (resp. on the loss function) which is reasonable as many PAC-Bayes bound lies on assumptions on exponential moments (\emph{e.g.} the subgaussian assumption) to work.
+
+\textbf{Current Limitations.} Doing so, we made a first step towards concrete optimisation perspective of PAC-Bayes by showing generalisation bounds are attainable with weak statistical assumptions and thus, compatible with many practical settings where optimisation is performed. However, \Cref{chap: pb-ht} still presents some strong links with the information-theoretic approach such as: \textit{(i)} the presence of a prior $\P$ in \Cref{th: main_thm_iid} which does no fit the optimisation views of the prior (see \Cref{fig: recap-optim}), and \textit{(ii)} the presence of a KL divergence, suggesting an information-theoretic perspective of learning. Point \textit{(i)} will be later developed in \Cref{chap:online-pb,chap:gen-flat-minima,chap: wpb-practical} when $\P$ is seen as an initialisation point and in \Cref{chap: wass-pb} when $\P$ is the learning objective. \textit{(ii)} will be later developed in \Cref{chap: wass-pb,chap: wpb-practical}. 
+
+\textbf{Extensions of this work.} The supermartingale framework presented here are extracted from \citet{haddouche2023pac} and has inspired many follow-up works. \citet{chugg2023unified} extended the approach of this chapter to other supermartingales as well as reversed submartingales, allowing to recover a vast majority of existing PAC-Bayes literature, also, \citet{rodriguez2023more} tightened the theorems presented here by allowing the optimisation in $\lambda$. The tools presented in this work (\eg Ville's inequality) are also useful to obtain fast rate PAC-Bayes bounds based on the coin-betting approach \citet{jang2023tight,kuzborskij2024better}. The coin-betting approach originally in online learning \citep{orabona2016coin}. In \Cref{chap:online-pb}, we take a deeper focus on online learning, showing that an online approach of PAC-Bayes is possible, and allows to consider prior distribution as an initialisation point of a learning algorithm.
+  

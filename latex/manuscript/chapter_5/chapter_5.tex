@@ -1,26 +1,28 @@
-\chapter[Online PAC-Bayes Learning for Bounded Losses and Beyond]{Online PAC-Bayes Learning for Bounded Losses and Beyond}
-\label{chap:online-pb}
-
+\chapter[Wasserstein PAC-Bayes Learning: Exploiting Optimisation Guarantees to Explain Generalisation]{Wasserstein PAC-Bayes Learning: Exploiting Optimisation Guarantees to Explain Generalisation}
+\label{chap: wass-pb}
 \addchapterlof
 \addchapterloa
 \addchapterloe
 
-\vspace{-1.0cm}
+\vspace{-1.6cm}
 \begin{center}
-\textbf{This chapter is based on the following papers}\\[0.1cm]
+\textbf{This chapter is based on the following papers}\\
 \end{center}
-\printpublication{haddouche2022online}
-\\
-\printpublication{haddouche2023pac}
+\vspace{-0.3cm}
+\printpublication{haddouche2023wasserstein}
 \\
 \printpublication{viallard2023learning}
 
-\vspace{0.2cm}
+\vspace{-0.3cm}
 \minitoc
 
+\vspace{-0.2cm}
+
 \begin{abstract}
-Put OPB here. Precise in the intro that the martingale bounds allow to go beyond batch learning but that this has never been made for OL. Put the supermartingale OPB bound in a supplementary section and the Online WPB bound after the main results of OPB to reach heavy-tailed losses. 
+    Put WPB here, precise that, when the prior is seen as the learning goal, it is possible for a certain optimisation algorithm to directly incorporate sound geometric optimisation guarantee into a generalisation bound, trading the hope to reach a flat minima with a sound convergence guarantees. However, this comes at the cost of the explicit impact of the dimension. Also put the paper with Paul(batch bounds) as a supplementary content.
 \end{abstract}
 
 \newpage
+
+\section{Introduction}
 

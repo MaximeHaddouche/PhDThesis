@@ -1,278 +1,757 @@
-\chapter{Appendix of Chapter~\ref{chap:mv-robustness}}
-\label{ap:mv-robustness}
+%!TEX root = main.tex
+\chapter{Appendix of Chapter~\ref{chap:online-pb}}
+\label{ap: online-pb}
 
-\minitoc
 
-\begin{noaddcontents}
-\section{Proof of \Cref{chap:mv-robustness:proposition:risks}}
-\label{ap:mv-robustness:sec:proof-risks}
 
-\proprisks*
-\begin{proof} First, we prove $\RiskM_{\Dpert^{1}}(\MVQ){=}\Risk_{\Dpert}(\MVQ)$. We have
-\begin{align*}
-    \RiskM_{\Dpert^{1}}(\MVQ) &= 1- \PP_{((\x,\y), \Epert)\sim\Dpert^{1}} \LP \forall \epsilon\in\Epert, \MVQ(\x+\epsilon) = \y \RP\\
-    &= 1- \PP_{((\x,\y), \Epert)\sim\Dpert^{1}} \LP \forall \epsilon\in\{\epsilon_1\}, \MVQ(\x+\epsilon) = \y \RP\\
-    &= 1- \PP_{((\x,\y), \Epert)\sim\Dpert^{1}} \LP \MVQ(\x+\epsilon_1) = \y \RP = \Risk_{\Dpert}(\MVQ).
-\end{align*}
-\looseness=-1
-Then, we prove the inequality $\RiskM_{\Dpert^{n'}}(\MVQ) \le \RiskM_{\Dpert^{n}}(\MVQ)$ from the fact that the indicator function $\indic\LB\cdot\RB$ is upper-bounded by $1$. Indeed, from \Cref{chap:mv-robustness:def:average_max_risk} we have 
-\allowdisplaybreaks
-\begin{align*}
-    1-\RiskM_{\Dpert^{n}}(\MVQ) &= \EE_{(\x,\y)\sim\D} \ \EE_{\Epert\sim\DX^{n}} \indic\LB\forall\epsilon\in\Epert, \MVQ(\x+\epsilon) = \y\RB\\
-    &= \EE_{(\x,\y)\sim\D}\LB \prod_{i=1}^{{n}}\ \EE_{\epsilon_i\sim\DX}\indic\LB\MVQ(\x+\epsilon_i) = \y\RB\RB\\
-    &\le \EE_{(\x,\y)\sim\D}\LB \prod_{i=1}^{{n'}}\ \EE_{\epsilon_i\sim\DX}\indic\LB\MVQ(\x+\epsilon_i) = \y\RB\RB\\
-    &= \EE_{(\x,\y)\sim\D}\ \EE_{\Epert'\sim\DX^{n'}} \indic\LB\forall\epsilon\in\Epert', \MVQ(\x+\epsilon) = \y\RB\\
-    &= 1-\RiskM_{\Dpert^{n'}}(\MVQ).
-\end{align*}
-Lastly, to prove the right-most inequality, we have to use the fact that the expectation over the set $\Xpert$ is bounded by the maximum over the set $\Xpert$.  
-We have
-\begin{align*}
-    \RiskM_{\Dpert^{{n}}}(\MVQ)
-    &= \EE_{(\x,\y)\sim\D} \EE_{\epsilon_1\sim\DX} {\ldots}\EE_{\ \epsilon_{n}\sim\DX}\indic\LB\exists\epsilon{\in}\{\epsilon_1,\ldots, \epsilon_{n}\}, \MVQ(\x+\epsilon)\ne \y\RB\\
-    &\le \EE_{(\x,\y)\sim\D} \max_{\epsilon_1\in\Xpert}\ldots\max_{\epsilon_{n}\in\Xpert}\indic \LB\exists\epsilon\in\{\epsilon_1,{\ldots,}\epsilon_{n}\}, \MVQ(\x+\epsilon)\ne \y\RB\\
-    &= \EE_{(\x,\y)\sim\D} \max_{\epsilon_1\in\Xpert}{\ldots} \max_{\epsilon_{{n}-1}\in\Xpert} \indic \LB\exists\epsilon\in\{\epsilon_1,\ldots, \epsilon^*\}, \MVQ(\x+\epsilon)\ne \y\RB\\
-    &= \EE_{(\x,\y)\sim\D} \indic \LB \MVQ(\x+\epsilon^*)\ne \y\RB\\
-    &= \EE_{(\x,\y)\sim\D} \max_{\epsilon\in\Xpert}\indic \LB \MVQ(\x+\epsilon)\ne \y\RB\ =\  \ \RiskA_{\D}(\MVQ).
-\end{align*}
-Merging the three equations proves the claim.
+\section{Background}
+
+\subsection{Reminder on Online Gradient Descent }
+\label{sec: OGD_reminder}
+
+For the sake of completeness we re-introduce the projected Online Gradient Descent (OGD) on a convex set $\mathcal{K}$. This is a first example of online learning philosophy. It may be the algorithm that applies to the most general setting
+of online convex optimization. This algorithm,
+which is based on standard gradient descent from offline optimization, was
+introduced in its online form by \cite{zinkevich2003online}.
+In each iteration, the algorithm takes a step from the previous point in
+the direction of the gradient of the previous cost. This step may result in
+a point outside of the underlying convex set. In such cases, the algorithm
+projects the point back to the convex set, i.e. finds its closest point in the
+convex set. We precise this algorithm works with the assumptions of a convex set $\mathcal{K}$ bounded in diameter by $D$ and of bounded gradients (by a certain $G$).
+We also assume here to have a dataset $\S_T=(\z_t)_{t=1..T}$ and to be coherent with the online learning philosophy, we assume that for each $t>0$, we possess a loss function $\ell_t$ depending on the points $(\z_1,...,\z_t)$. We present OGD in \cref{alg: gradient_descent}
+
+
+\begin{algorithm}[ht]
+ \SetAlgoLined
+ \SetKwInOut{Initialisation}{Initialisation}
+ \SetKwInOut{Parameter}{Parameters}
+ \Parameter{Epoch T, step-size $(\eta)$ }
+ \Initialisation{Convex set $\mathcal{K}$, Initial point $\theta_0 \in\mathcal{K}$, T, step sizes $(\eta_t)_t$ }
+\For{ each iteration $t$ in $1..T$}{ Compute $f'(\theta_{n}) $\\
+Play (observe) $\theta_t$ and compute the cost $f_t(\theta_t)$
+Update and project \[ \zeta_{t} = \theta_{t-1} - \eta \nabla \ell_t(\theta_{t-1})  \]
+\[ \theta_t = \Pi_\mathcal{K}(\zeta_t)  \]}
+\textbf{Return} $\theta_{T}$
+ \caption{Projected OGD onto a convex $\mathcal{K}$ with fixed step $\eta$.}
+ \label{alg: gradient_descent}
+ \end{algorithm}
+
+One now defines the notion of regret which is the classical quantity to evaluate the performance of an online algorithm.
+ \begin{definition}
+One defines the \emph{regret} of a decision sequence $(\theta_t)$ at time $T$  w.r.t. a point $\theta$ as:
+
+\[ Regret_T(\theta):= \sum_{t=1}^T \ell_t(\theta_t) -  \sum_{t=1}^T \ell_t(\theta)  \]
+
+
+\end{definition}
+
+
+Now we state a regret bound which can be found in \cite[Eq 2.5]{shalev2012online} although we slightly modified the result, which uses additional hypotheses from \cite{hazan2016introduction}.
+
+\begin{proposition}
+  \label{prop: OGD_bound}
+  Assume that $\mathcal{K}$ has a fixed diameter $D$ and that the gradients of any point is bounded by $G$. Then for any $\theta\in\mathcal{K}$, the regret of projected OGD with fixed step $\eta$ satisfies:
+
+  \[ Regret_T(\theta) \leq \frac{D^2}{2\eta} + \eta T G^2     \]
+\end{proposition}
+
+
+
+
+
+
+
+\section{Discussion about \cref{th: main_thm_online}}
+\label{sec: discussion_main_thm}
+
+\subsection{Comparison with classical PAC-Bayes}
+
+\label{sec: comparison_main_thm}
+
+The goal of this section is to show how good \cref{th: main_thm_online} compared to a naive approach which consists in applying classical PAC-Bayes results sequentially. The interest of this section is twofold:
+
+\begin{itemize}
+  \item First, presenting a classical PAC-Bayes result extracted and adapted from \cite{alquier2016properties} which is formally close to what we propose.
+  \item Second, showing that a naive (yet natural) approach to obtain online PAC-Bayes bound leads to a deteriorated bound.
+\end{itemize}
+
+We first state our PAC-Bayes bound of interest.
+
+\begin{theorem}[Adapted from  \cite{alquier2016properties}, Thm 4.1]
+  \label{th: naive_pac_bayes}
+  Let $\Sm=(\z_1,...,\z_m)$ be an \iid sample from the same law $\D$.
+  For any data-free prior $\P$, for any loss function $\ell$ bounded by $K$, any $\lambda>0,\delta\in (0,1)$, one has with probability $1-\delta$ for any posterior $\Q\in\mathcal{M}(\mathcal{H})$:
+
+  \[ \mathbb{E}_{h\sim \Q}\mathbb{E}_{\z\sim \D}[\ell(h,\z)] \leq \frac{1}{m} \sum_{i=1}^m \mathbb{E}_{h\sim \Q}[\ell(h,\z_i)] + \frac{\operatorname{KL}(\Q,\P) + \log(1/\delta)}{\lambda} + \frac{\lambda K^2}{2m} \]
+\end{theorem}
+
+\begin{remark} Two remarks about this result:
+
+
+  \begin{itemize}
+    \item \cref{th: naive_pac_bayes} is a particular case of the original theorem from \cite{alquier2016properties} as we take the case of a bounded loss which implies the subgaussianity of the random variables $\ell(.,z_i)$ and then allows us to recover the factor $\frac{\lambda K^2}{m}$
+    \item This theorem is derived from \cite{catoni2007pac} and constitutes a good basis to compare ourselves with as it similar formally similar.
+  \end{itemize}
+\end{remark}
+
+
+\paragraph{Naive approach} A naive way to obtain OPB bounds is to apply $m$ times \cref{th: naive_pac_bayes} (one per data) on batches of size $1$ and then summing up the associated bounds. Thus one has the benefits of classical PAC-Bayes bound without having no more the need of data-free priors nor the iid assumption. The associated result is stated below:
+
+\begin{theorem}
+  \label{th: naive_approach}
+  For any distributions $\D_1,...,\D_m$ over $\mathcal{Z}$ (such that $\z_i\sim \D_i$), any $\lambda>0$ and any online predictive sequence (used as priors) $(\P_{i})_{i=1\cdots m}$, the following holds with probability $1-\delta$ over the sample $\Sm\sim\D^m$ for any posterior sequence $(\Q_{i})$ :
+
+
+  \begin{align*}
+    \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}_{\z_i\sim \D_i}[\ell(h_i,\z_i)]    \right] \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] +
+    \frac{\operatorname{KL}(\Q_{i}\| \P_{i})}{\lambda} + \frac{\lambda m K^2}{2} + \frac{m\log(m/\delta)}{\lambda}.
+  \end{align*}
+\end{theorem}
+
+Recall that here again we assimilate the stochastic kernels $\Q_{i}, \P_{i}$ to the data-dependent distributions $\Q_{i}(\Sm,.), \P_{i}(\Sm,.)$
+
+\begin{proof}
+  First of all, for any $i$, we apply \cref{th: naive_pac_bayes} $m$ to the batch $\{ z_i\}$. This allows us to consider $\P_{i}$ as a prior as it does not depend on the current data. We then have, taking $\delta'=\delta/m$, for any $i\in\{1..m\}$ with probability $ 1- \delta/m$:
+
+  \[ \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}_{\z_i\sim \D_i}[\ell(h_i,\z_i)]    \right] \leq  \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] +
+  \frac{\operatorname{KL}(\Q_{i}\| \P_{i})}{\lambda} + \frac{\lambda K^2}{2} + \frac{\log(m/\delta)}{\lambda}. \]
+
+  Then, taking an union bound on those $m$ events ensure us that with probability $1-\delta$, for any $i\in\{1..m\}$:
+
+  \[ \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}_{\z_i\sim \D_i}[\ell(h_i,\z_i)]    \right] \leq  \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] +
+  \frac{\operatorname{KL}(\Q_{i}\| \P_{i})}{\lambda} + \frac{\lambda  K^2}{2} + \frac{\log(m/\delta)}{\lambda}. \]
+
+
+  Finally, summing those $m$ inequalities ensure us the final result with probability $1-\delta$.
+
 \end{proof}
 
-\section{Proof of \Cref{chap:mv-robustness:proposition:avg-worst-risk}}
-\label{ap:mv-robustness:sec:proof-avg-worst-risk}
+\paragraph{Comparison between \cref{th: main_thm_online} and \cref{th: naive_approach}}   Three points are noticeable between those two theorems:
 
-In this section, we provide the proof of \Cref{chap:mv-robustness:proposition:avg-worst-risk} that relies on \Cref{chap:mv-robustness:lemma:Delta,chap:mv-robustness:lemma:Pi} which are also described and proved.
-\Cref{chap:mv-robustness:lemma:Delta} shows that $\Risk_{\Dpert}(\MVQ)$ equals $\Risk_{\Gamma}(\MVQ)$.
+\begin{itemize}
+  \item First of all, the main issue with \cref{th: naive_approach} is that has a strongly deteriorated rate of $O\left(\frac{m\log(m/\delta)}{\lambda} \right)$ instead of the rate in  $O\left(\frac{\log(1/\delta)}{\lambda} \right)$ proposed in \cref{th: main_thm_online}.
+  More precisely, the problem is that we do not have a sublinear bound: one cannot ensure any learning through time.
+  This point justifies the need of the heavy machinery exploited in \cref{th: main_thm_online} proof as it allows a tighter convergence rate.
+  \item The second point point lies in the controlled quantity on the left hand-side of the bound. \cref{th: naive_approach} controls $A:=\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}_{\z_i\sim \D_i}[\ell(h_i,\z_i)]    \right]$
+  instead of $B:=\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right]$.
+
+  $A$ is a less dynamic quantity than $B$ in the sense that it does not imply any evolution through time, it just considers global expectations. Doing so, $A$ does not take into account that at each time step we have acces to all te past data to predict the future, this may explain the deteriorated convergence rate. Thus $B$, which appears to be a suitable quantity to control to perform online PAC-Bayes (see \cref{sec: deeper_analysis_main_thm} for additional explanations)
+
+  \item Finally, an interesting point is that in \cref{th: naive_approach} the bound, while looser, holds unformly for any posterior sequence contrary to \cref{th: main_thm_online} which holds only for a specific posterior sequence. This point will have a consequence for optimisation. We will come back later on this in \cref{sec: main_thm_and_optim}.
+\end{itemize}
+
+
+
+
+\subsection{A deeper analysis of \cref{th: main_thm_online}}
+\label{sec: deeper_analysis_main_thm}
+
+This section includes discussion about our proof technique and why all the assumptions made are necessary. We also propose a short discussion about the benefits and limitations of an online PAC-Bayesian framework as well as a deeper reflexion about the new term our bound introduce.
+
+
+\paragraph{Why do we need an online predictive sequence as priors? }
+
+This condition is fully exploited when dealing with the exponential moment $\xi_m$ in the proof (see \cref{l: exp_moment_online} proof). Indeed, the fact of having $\P_{i}$ being $\mathcal{F}_{i-1}$-measurable is essential to apply conditional Fubini (\cref{l: cond_fubini-chap3}). Note that the condition $\forall i , P_{i-1}\gg \P_{i}$ is not necessary as the weaker condition $\forall i, P_1 \gg \P_{i}$ would suffice here.
+However, note that when we particularise our theorem, for instance if we choose in \cref{cor: online_procedure} $\P_{i}= \hat{\Q_{i}}$, one recovers the condition $\hat{\Q}_{i}\gg\hat{\Q}_{i+1}$ to have finite KL divergences. Hence the interest of taking directly an online predictive sequence.
+
+\paragraph{About the boundedness assumption}
+
+The only moment where we invoke the boundedness assumption is in \cref{l: exp_moment_online}'s proof where we apply the conditionnal Hoeffding lemma. This lemma actually translates that the sequence of r.v. $(\ell(.,z_i)_{i=1..m}$ is \emph{conditionally subgaussian} wrt the past i.e for any $i$, $h_i\in\mathcal{H}; \lambda\in\mathbb{R}$:
+
+\[ \mathbb{E}[\exp(\lambda \Tilde{\ell}_i(h_i,\z_i)) \mid \mathcal{F}_{i-1}] \leq \exp\left( \frac{\lambda^2K^2}{2}\right)\]
+
+ where $\Tilde{\ell}_i(h_i,\z_i)= \mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]-  \ell(h_i,\z_i)$.
+
+ This condition is the one truly involved in our heavy machinery. However, we chose to restrict ourselves to the stronger assumption of bounded loss function for the sake of clarity. However, an interesting open direction is to find whether there exists concrete classes of unbounded losses which may satisfy either conditional subgaussianity or others conditions (such as conditional Bernstein condition for instance).
+
+
+ \paragraph{Reflections about the left hand side of \cref{th: main_thm_online}.}
+
+ We study in this paragraph the following term
+  $$B:=\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right]$$ has naturally arisen in our work as the right term to compare our empirical loss with to perform the conditional Hoeffding lemma.
+ Taking a broader look, we now interpret this term as the right quantity to control if one wants to perform online PAC-Bayes learning. Indeed this term is a 'best of both world' quantity bridging PAC-Bayes and online learning:
+
+ \begin{itemize}
+   \item From the PAC-Bayes point of view one keeps the control on average (cf the conditional expectation in $B$) on a novel data drawn at each time step. This point is crucial in the PAC-Bayes literature as our posteriors are designed to generalise well to unseen data.
+   \item From the Online Learning point of view, one keeps the control of a sequence of points generated from an online algorithm. Because an online learning algorithm generate a prediction for future points while having access to past data, the conditional expectation in $B$ translates this.
+ \end{itemize}
+
+Finally this conditional expectation appears to be a good tradeoff between the classical expectation on data appearing in the PAC-Bayes literature (see e.g. \cref{th: naive_pac_bayes}) and the local control that we have in online learning by only dealing with the performance of a sequence of points generated from a learning algorithm (see e.g. \cref{prop: OGD_bound})
+
+
+\paragraph{About the interest of an Online PAC-Bayesian framework}
+The main shift our work does with classical online learning literature is that it does not consider the celebrated regret but instead focuses on $B$ which is a cumulative expected loss conditionned to the past. This shift does not invalidate our work but put some relief to hte guarantees Online PAC-Bayes learning can provide that Online Learning cannot and reversely.
+
+\begin{itemize}
+  \item Online PAC-Bayes ensure a good potential for generalisation as it deals with the control of conditional expectation. This can be useful if one wants to deal with a periodic process for instance.
+  \item Online Learning through the regret compares the studied sequence of predictors (typically generated from an online learning algorithm) and tries to compare it to the best fixed strategy (static regret) or the best dynamic one (dynamic regret). In this way, OL algorithms want to ensure that their predictions are closed from the optimal solution. This point is not guaranteed by our online PAC-Bayesian study.
+  \item However the limitations of online learning can arise if the studied problem has a huge variance (for instance micro-transactions in finance). In this case those algorithms can follow an unpredictable optimisation route while PAC-Bayes still ensure a good performance on average (knowing the past) in this case.
+  \item Finally, we want to emphasize that PAC-Bayesian learning circumvent a problem of \emph{memoryless learning} which appears in classical OL algorithms. For instance, the OGD algorthm (see \cref{sec: OGD_reminder}) uses once a data and do not memorise it for further use. This problem does not happen in Online PAC-Bayes learning. Indeed, we take the example of the procedure \cref{eq: pacb_online_alg_specific_case} which generates Gibbs posterior which keep in mind the influence of past data.
+\end{itemize}
+
+
+
+
+
+
+\subsection{\cref{th: main_thm_online} and optimisation}
+\label{sec: main_thm_and_optim}
+
+In this section we discuss about the way Thm 2.2 can be thought in the framework of an optimisation process as we did in \cref{sec: online_pacb_procedure,sec: OPBD_procedure}.
+
+\paragraph{A significant change compared to classical PAC-Bayes}
+
+\cref{th: main_thm_online} holds 'for any posterior sequence $(\Q_{i})$ the following holds with probability $1-\delta$ over the sample $\Sm\sim\D^m$ ' while most classical PAC-Bayesian results such that \cref{th: naive_pac_bayes} holds 'with probability $1-\delta$ over the sample $\Sm\sim\D^m$ for any posterior $Q$'. This change is significant as our theorem does not control simultaneaously all possible sequences of posteriors but only holds for one.
+Thus, \cref{th: main_thm_online} has to be seen as a local or pointwise theorem and not as a global one. In classical PAC-Bayes, this local behavior is a brake on the optimisation process. But as we develop below, it is not the case in our online framework.
+
+\paragraph{\cref{th: main_thm_online} is compatible with online optimisation}
+
+We first recall that classically, an online algorithm like OGD (see \cref{sec: OGD_reminder}) performs one optimisation step per arriving data. Thus, at time $m$, such algorithm will perform $m$ optimisation steps and generate $m$ predictors. Similarly the OPB algorithm of \cref{eq: pacb_online_alg} generates $m$ distribution in $m$ time steps.
+
+We insist on the fact that, \cref{th: main_thm_online} \textbf{and all its corollaries throughout our paper are valid for a sequence of $m$ posteriors and not only a single one.} A key point is that whatever the number $m$ of data, our theoretical guarantee wil still be valid for $m$ posterior distributions with the approximation term $\log(1/\delta)$ (and not $\log(m/\delta)$ as an union bound would provide for a classical PAC-Bayes theorem).
+
+For this reason, given an online PAC-Bayes algorithm, \cref{th: main_thm_online} is suited for optimisation. Indeed, having a bound valid for a sequence of posteriors ensures guarantees for a single run of our OPB algorithm. This point is crucial to bridge a link with online learning as regret bounds (e.g. \cref{prop: OGD_bound}) also provide guarantees for a single sequence of predictors. In online learning however, those guarantees are mainly deterministic (because based on convex optimisation properties) but not totally: the recent work of \cite{wintenberger2021stochastic} proposed PAC regret bounds for its general Stochastic Online Convex Optimisation framework.
+
+An interesting open challenge is to overcome the pointwise behavior of our theorem, for that, we need to rethought \cite[Thm 2.1]{rivasplata2020pac} as this basis is pointwise itself. Given we consider a sequence of data-dependent priors one cannot apply the classical change of measure inequality to ensure guarantees holding uniformly on posterior sequences.
+
+\paragraph{A crucial point: having an explicit OPB/OPBD algorithm}
+
+In our previous paragraph we said that our bound were suitable for optimisation given an OPB/OPBD algorithm. We now provide some precision about this point. All the procedures provided in the paper (i.e. \cref{eq: pacb_online_alg}, \cref{alg: OPBD_alg}) take into account an update phase implying an argmin. Luckily for our procedures, this argmin is explicit:
+\begin{itemize}
+  \item For the OPB algorithm of \cref{eq: pacb_online_alg}, the argmin is solved thanks to the variational formulation of the Gibbs posterior
+  \item For OPBD algorithms, given the explicit choices of $\Psi$ given in \cref{cor: OPBD_optim_funcs}, argmin becomes explicit when one has a derivable loss function.
+\end{itemize}
+
+In both cases, this explicit argmin ensure our procedure of interest generates explictly a single posterior per time step: we have a well-defined sequence of $m$ posteriors at time $m$.
+Doing so the guarantees of \cref{th: main_thm_online} holds for this sequence.
+
+
+\section{A reminder on PAC-Bayesian disintegrated bounds}
+\label{sec: disintegrated_bounds}
+
+We present two PAC-Bayesian disintegrated bounds valid with data-dependent priors (i.e. any stochastic kernels).
+\begin{itemize}
+  \item The first one is Th. 1) i) from \cite{rivasplata2020pac} which provides a disintegrated version of \cref{th: main_thm_online}.  
+  \item The second one is Thm 2. from \cite{viallard2023general} which involves Rényi divergence instead of the classical $KL$. Note that this bound has originally been stated for data-indepedent prior, which is why we revisit the proof to adapt it to the stochastic kernel framework.
+\end{itemize}
+
+
+\begin{proposition}[Th 1) i) \cite{rivasplata2020pac}]
+\label{prop: rivasplata_disintegrated}
+ Let $P \in \mathcal{M}(\mathcal{H})$, $\Q^{0} \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$. Let $f: \Sm \times \mathcal{H} \rightarrow \mathbb{R}$ be any measurable function.
+Then for any $Q \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$ and any $\delta \in(0,1)$, with probability at least $1-\delta$ over the random draw of $S \sim P$ and $h\sim \Q_{\Sm}$, we have:
+$$
+f(\Sm,h) \leq \log\left(\frac{d\Q_{\Sm}}{d\Q_{\Sm}^{0}}(h) \right)+\log (\xi_m / \delta) .
+$$
+
+where $\xi_m:=\int_{\Sm} \int_{\mathcal{H}} e^{f(s, h)} \Q_{\Sm}^{0}(d h) P(d s)$ and $\frac{d\Q_{\Sm}}{d\Q_{\Sm}^{0}}$ is the Radon Nykodym derivative of $\Q_{\Sm}$ w.r.t. $\Q_{\Sm}^0$.
+\end{proposition}
+
+
+\begin{proposition}[Adapted from Th. 2 of \cite{viallard2023general}]
+  \label{prop: viallard_disintegrated}
+   Let $\mu \in \Mcal(\Zcal^m)$, $\Q^{0} \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$. Let  $\alpha>1$ and  $f: \Sm \times \mathcal{H} \rightarrow \mathbb{R}^+$ be any measurable function.
+
+   Then for any $\Q \in \texttt{Stoch}(\mathcal{Z}^m,\mathcal{F})$ such that for any $\Sm\in\mathcal{Z}^m, \Q_{\Sm}\ll\Q_{\Sm}^0,\; \Q_{\Sm}^0\gg\Q_{\Sm} $ and any $\delta \in(0,1)$, with probability at least $1-\delta$ over the random draw of $\Sm \sim \Dm$ and $h\sim \Q_{\Sm}$, we have:
+
+  \begin{multline*}
+    \frac{\alpha}{\alpha-1} \log (f(\Sm,h)) \leq \frac{2 \alpha-1}{\alpha-1} \log \frac{2}{\delta}+D_{\alpha}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right)\\
+    +
+   \log \left(\underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm'}^0}{\mathbb{E}}
+   f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right) 
+  \end{multline*}
+
+   where $D_\alpha(\Q,\P)= \frac{1}{\alpha-1}\log\left( \mathbb{E}\left[ \mathbb{E}_{h\sim \P} \left(\frac{d\Q}{d\P}(h)\right)^\alpha   \right] \right)$ is the Rényi diverence of order $\alpha$.
+
+\end{proposition}
+
+Note that Viallard et al. original bound only stand for data-free priors and i.i.d data. However it appears their proof works with any stochastic kernel as prior and any distribution over the dataset. We propose below an adaptation of their proof below to fit with those more general assumptions.
+
+
+\subsection{Proof of \cref{prop: viallard_disintegrated} }
+
+
+\begin{proof}
+ For any sample $\Sm$ and any stochastic kernel $Q$, note that $f(\Sm,h)$ is a non-negative random variable. Hence, from Markov's inequality we have
+\begin{multline*}
+    \underset{h \sim \Q_{\Sm}}{\mathbb{P}}\left[f(\Sm,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f\left( \Sm,h^{\prime}\right)\right] \geq 1-\frac{\delta}{2} \\
+    \Longleftrightarrow
+    \underset{h \sim \Q_{\Sm}}{\mathbb{E}} \mathds{1}\left[f(\Sm,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f\left(S,h'\right)\right] \geq 1-\frac{\delta}{2}
+\end{multline*}
+
+
+Taking the expectation over $\Sm \sim \Dm$ to both sides of the inequality gives
+
+\begin{multline*}
+\underset{\Sm \sim \Dm}{\mathbb{E}}\; \underset{h \sim \Q_{\Sm}}{\mathbb{E}} \mathds{1}\left[f(\Sm,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f(\Sm,h')\right] \geq 1-\frac{\delta}{2} \\
+\Longleftrightarrow
+\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[f(\Sm,h) \leq \frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f(\Sm,h')\right] \geq 1-\frac{\delta}{2}.
+\end{multline*}
+
+Taking the logarithm to both sides of the equality and multiplying by $\frac{\alpha}{\alpha-1}>0$, we obtain
+$$
+\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\frac{\alpha}{\alpha-1} \log (f(\Sm,h)) \leq \frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f(\Sm,h')\right)\right] \geq 1-\frac{\delta}{2} .
+$$
+We develop the right side of the inequality in the indicator function and make the expectation of the hypothesis over $\Q_{\Sm}^0$ our "prior" stochadtic kernel appears. Indeed, because for any $S\in\Sm, \Q_{\Sm}\gg\Q_{\Sm}^0$ and $\Q_{\Sm}^0\ll \Q_{\Sm}$ one can write properly $\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}$ and $ \frac{d\Q_{\Sm}^0}{d\Q_{\Sm}} = \left( \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}\right)^{-1}$ the Radon-Nykodym derivatives. Thus we have
+
+\begin{multline*}
+ \frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} f(\Sm,h')\right) \\ =\frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}}{\mathbb{E}} \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h')\frac{d\Q_{\Sm}^0}{d\Q_{\Sm}}(h') f(\Sm,h') \right) \\
+ =\frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h') f(\Sm,h')\right) .
+\end{multline*}
+
+Remark that $\frac{1}{r}+\frac{1}{s}=1$ with $r=\alpha$ and $s=\frac{\alpha}{\alpha-1}$. Hence, we can apply Hölder's inequality:
+$$
+\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h') f(\Sm,h') \leq\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}}\left(\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h')\right)^{\alpha}\right]^{\frac{1}{\alpha}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right]^{\frac{\alpha-1}{\alpha}} .
+$$
+Then, by taking the logarithm; adding $\log \left(\frac{2}{\delta}\right)$ and multiplying by $\frac{\alpha}{\alpha-1}>0$ to both sides of the inequality, we obtain
+
+\begin{multline*}
+\frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} \frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h') f(\Sm,h')\right) \\
+\leq \frac{\alpha}{\alpha-1} \log \left(\frac{2}{\delta}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}}\left(\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h')\right)^{\alpha}\right]^{\frac{1}{\alpha}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right]^{\frac{\alpha-1}{\alpha}}\right) \\
+ =\frac{1}{\alpha-1} \log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}}\left[\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h')\right]^{\alpha}\right)+\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right) \\
+=D_{\alpha}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right)+\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right)
+\end{multline*}
+
+From this inequality, we can deduce that
+\begin{multline}
+  \label{eq: viallard_dis_eq11}
+  \underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\frac{\alpha}{\alpha-1} \log (f(\Sm,h)) \leq D_{\alpha}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right) \right.\\
+  \left.+\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right)\right] \\
+  \geq 1-\frac{\delta}{2} .
+\end{multline}
+
+
+Note that $\mathbb{E}_{h^{\prime} \sim \Q_{\Sm}^0} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}$ is a non-negative random variable, hence, we apply Markov's inequality to have
+$$
+\underset{\Sm \sim \Dm}{\mathbb{P}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \geq 1-\frac{\delta}{2} .
+$$
+Since the inequality does not depend on the random variable $h \sim \Q_{\Sm}$, we have
+
+\begin{multline*}
+\underset{\Sm \sim \Dm}{\mathbb{P}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \\
+=\underset{\Sm \sim \Dm}{\mathbb{E}}\mathds{1}\left[\underset{h'\sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \\
+=\underset{\Sm \sim \Dm}{\mathbb{E}}\; \underset{h \sim \Q_{\Sm}}{\mathbb{E}} \mathds{1}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \\
+=\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] .
+\end{multline*}
+
+Taking the logarithm to both sides of the inequality and adding $\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}$ give us
+
+\begin{multline}
+\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}} \leq \frac{2}{\delta} \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right] \geq 1-\frac{\delta}{2} \quad \Longleftrightarrow \\
+\label{eq: viallard_dis_eq12}
+\underset{\Sm \sim \Dm, h \sim \Q_{\Sm}}{\mathbb{P}}\left[\frac{\alpha}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm,h')^{\frac{\alpha}{\alpha-1}}\right) \leq \right. \\
+ \left. \frac{2 \alpha-1}{\alpha-1} \log \frac{2}{\delta}+\log \left(\underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm}^0}{\mathbb{E}} f(\Sm',h')^{\frac{\alpha}{\alpha-1}}\right)\right] \geq 1-\frac{\delta}{2} .
+\end{multline}
+
+Combining Equation \cref{eq: viallard_dis_eq11} and \cref{eq: viallard_dis_eq12} with a union bound gives us the desired result.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\section{Proofs}
+\label{sec: proofs-chap3}
+
+\subsection{Proof of \cref{th: main_thm_online}}
+
+\label{sec: proof_main_thm_online}
+
+
+
+
+\paragraph{Background} We first recall \cite[Thm 2]{rivasplata2020pac}.
+
+\begin{theorem}
+\label{th: rivasplata2020}
+Let $\Dm \in \Mcal(\Zcal^m)$, $\Q^{0} \in \texttt{Stoch}(\Zcal^m,\mathcal{F})$. Let $k$ be a positive integer,  any  $A: \Sm \times \mathcal{H} \rightarrow \mathbb{R}^{k}$ a measurable function and $F: \mathbb{R}^{k} \rightarrow \mathbb{R}$ be a convex function .
+Then for any $Q \in \texttt{Stoch}(\Zcal^m,\mathcal{F})$ and any $\delta \in(0,1)$, with probability at least $1-\delta$ over the random draw of $\Sm \sim \Dm$ we have
+$$
+F\left(\Q_{\Sm}\left[A_{S}\right]\right) \leq \mathrm{KL}\left(\Q_{\Sm} \| \Q_{\Sm}^{0}\right)+\log (\xi_m / \delta) .
+$$
+
+where $\xi_m:=\int_{\Sm} \int_{\mathcal{H}} e^{f(s, h)} \Q_{\Sm}^{0}(d h) P(d s)$ and $\Q_{\Sm}[A_{\Sm}]:= \Q_{\Sm}[A(\Sm,.)]= \int_{\mathcal{H}} A(\Sm,h) \Q_{\Sm}(dh)$.
+\end{theorem}
+
+
+\begin{proof}[of \cref{th: main_thm_online}]
+
+
+To fully exploit the generality of \cref{th: rivasplata2020}, we aim to design a $m$-tuple of probabilities. Thus, our predictor set of interest is $\mathcal{H}_m:= \mathcal{H}^{\otimes m}$ and then, our predictor $h$ is a tuple $(h_1,..,h_m)\in\mathcal{H}$. Throughout our study, our stochastic kernels $Q,Q^0$ will belong to the specific class $\mathcal{C}$ defined below:
+
+\begin{align}
+  \label{eq: class_kernels}
+  \mathcal{C}:= \left\{ Q \mid   \exists (\Q_{i})_{i=1..m}\text{s.t.}\; \forall S,\;  \Q(\Sm,.) = \Q_1(\Sm,.)\otimes...\otimes \Q_m(\Sm,.)      \right\}.
+\end{align}
+
+
+\noindent Thus our kernels are such that conditionally to a given sample, our predictors $(h_1,...,h_m)$ are drawn independently.
+
+\noindent We now apply \cref{th: rivasplata2020}. To do so, we consider the following function $A: \Sm\times \mathcal{H}_m \rightarrow \mathbb{R}^2$ such that $\forall \Sm= (\z_i)_{i=1..m},h= (h_i)_{i=1..m}\in \Sm\times \mathcal{H}_m$:
+
+\[  A(\Sm,h)= \left(\sum_{i=1}^m \mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}], \sum_{i=1}^m \ell(h_i,\z_i)  \right)   \]
+
+\noindent $A$ is indeed measurable in both of its variables. For a fixed $\lambda>0$, we set the function $F$ to be $F(x,y)= \lambda(x-y)$ .
+
+
+ \noindent The only thing left to set up is our stochastic kernels. To do so, let $P=(P_1,...P_m)$ be an online predictive sequence, we then define $Q^0\in\mathcal{C}$ (defined in \cref{eq: class_kernels}) s.t. for any sample $\Sm$, $\\Q_{\Sm}^0 = \P_1(\Sm,.)\otimes...\otimes \P_m(\Sm,.)$. We also fix $\Q_1,...,\Q_m$ to be any (posterior)
+ stochastic kernels and similarly we define the stochastic kernel $\Q\in\mathcal{C}$ such that for any sample $\Sm$, $\Q(\Sm,.) = \Q_1(\Sm,.)\otimes...\otimes \Q_m(\Sm,.)$.
+
+ From now, we fix a dataset $\Sm$ and, for the sake of clarity, we assimilate in what follows the stochastic kernels $\Q_{i},\P_{i}$ to the data-dependent distributions $\Q_{i}(\Sm,.), \P_{i}(\Sm,.)$ (i.e. we drop the dependency in $\Sm$).
+
+\noindent Under those choices, one has:
+
+\begin{multline*}
+  \Q_{\Sm}[A_{\Sm}]  = \int_{h\in\mathcal{H}_m} A(\Sm,h) \Q_{\Sm}(dh_1,...,dh_m) \\
+     = \left( \int_{h\in\mathcal{H}_m} \sum_{i=1}^m \mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\Q_{\Sm}(dh_1,...,dh_m), \int_{h\in\mathcal{H}_m}\sum_{i=1}^m \ell(h_i,\z_i)  \Q_{\Sm}(dh_1,...,dh_m)    \right).
+\end{multline*}
+Furthermore, $Q\in\mathcal{C}$, thus $\Q_{\Sm}(dh_1,...,dh_m)= \Pi_{i=1}^m \Q_{i}(dh_i)$ so:`
+\begin{align*}
+  \Q_{\Sm}[A_{\Sm}] &= \left(  \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\right], \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\ell(h_i,\z_i)]       \right).
+\end{align*}
+
+Finally:
+\begin{align*}
+      F(\Q_{\Sm}[A_{\Sm}])&= \lambda \left(\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\right]- \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\ell(h_i,\z_i)] \right).
+\end{align*}
+
+
+Applying \cref{th: rivasplata2020} and re-organising the terms gives us with probability $1-\delta$:
+
+\begin{align*}
+\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[\mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\right] & \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\ell(h_i,\z_i)] + \frac{KL(\Q_{\Sm}\|\Q_{\Sm}^0)}{\lambda} + \frac{\log(\xi_m/\delta)}{\lambda}.
+\end{align*}
+\noindent Thus:
+\begin{align}
+  \label{eq: temp_result_online_thm}
+ \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[\mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]\right] \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\ell(h_i,\z_i)] + \sum_{i=1}^m \frac{KL(\Q_{i}\|\P_{i})}{\lambda} + \frac{\log(\xi_m/\delta)}{\lambda}.
+\end{align}
+
+\noindent The last line holding because for a fixed $\Sm$, $\Q_{\Sm}= Q_1\otimes...\otimes Q_m$ and $\Q_{\Sm}^0= P_1\otimes...\otimes P_m$.
+
+\noindent The last term to control is
+\begin{align*}
+\xi_m = \mathbb{E}_S\left[\mathbb{E}_{h_1,...,h_m \sim \Q_{\Sm}^0} \left[\exp\left(\lambda \sum_{i=1}^m \Tilde{\ell}_i(h_i,\z_i)\right)\right]\right],
+\end{align*}
+with $\Tilde{\ell}_i(h_i,\z_i)= \mathbb{E}[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}]-  \ell(h_i,\z_i)$. Hence the following lemma.
 
 \begin{lemma}
-For any distribution $\Dpert$ on $(\X{\times}\Y){\times}\Xpert$ and its associated distribution $\Gamma$, for any posterior $\Q$ on $\H$, we have
-\label{chap:mv-robustness:lemma:Delta}
-\begin{align*}
-    \Risk_{\Dpert}(\MVQ) = \Pr_{(\x+\epsilon, \y)\sim\Gamma}\LB \MVQ(\x+\epsilon){\ne}y\RB = \Risk_{\Gamma}(\MVQ).
-\end{align*}
+\label{l: exp_moment_online}
+One has for any $m$, $\xi_m \leq \exp\left(\frac{\lambda^2m K^2}{2}\right)$ with $K$ bounding $\ell$.
 \end{lemma}
-\begin{proof}
-Starting from the averaged risk $\Risk_{\Dpert}(\MVQ)=\EE_{((\x,\y){,}\epsilon)\sim\Dpert}\indic\LB\MVQ(\x+\epsilon){\ne}y\RB$, we have
-\begin{align*}
-    \Risk_{\Dpert}(\MVQ) &= \EE_{(\x'{+}\epsilon', \y')\sim \Gamma}\!\tfrac{1}{\Gamma(\x'{+}\epsilon'{,}\y')}\!\LB\Pr_{((\x,\y),\epsilon)\sim\Dpert}\!\LB\MVQ(\x+\epsilon){\ne}y, \x'{+}\epsilon'{=}\x+\epsilon, \y'{=}y\RB\RB\\
-    &= \EE_{(\x'{+}\epsilon', \y')\sim \Gamma}\!\tfrac{1}{\Gamma(\x'{+}\epsilon'{,}\y')}\!\LB
-    \EE_{((\x,\y),\epsilon)\sim\Dpert}\!\indic\!\LB\MVQ(\x+\epsilon){\ne}y\RB \indic\!\LB \x'{+}\epsilon'{=}\x+\epsilon, \y'{=}y\RB\RB.\\
-\end{align*}
-\looseness=-1
-In other words, the double expectation only rearranges the terms of the original expectation: given an example $(\x'{+}\epsilon'{,}\y')$, we gather probabilities such that $\MVQ(\x+\epsilon){\ne}y$ with $(\x+\epsilon{,}\y) {=} (\x'{+}\epsilon'{,}\y')$ in the inner expectation, while integrating over all couple $(\x'{+}\epsilon', \y')\in\X{\times}\Y$ in the outer expectation.
-Then, from the fact that when $\x'{+}\epsilon'{=}\x+\epsilon$ and $\y'{=}y$, $\indic\!\LB\MVQ(\x+\epsilon){\ne}y\RB=\indic\!\LB\MVQ(\x'{+}\epsilon'){\ne} \y'\RB$, we have 
-\begin{align*}
-    \Risk_{\Dpert}(\MVQ) &= \EE_{(\x'{+}\epsilon', \y')\sim \Gamma}\!\tfrac{1}{\Gamma(\x'{+}\epsilon'{, }\y')}\!\LB\EE_{((\x,\y),\epsilon)\sim\Dpert}\!\indic\!\LB\MVQ(\x'{+}\epsilon'){\ne}\y'\RB\!\indic\!\LB \x'{+}\epsilon'{=}\x+\epsilon, \y'{=}y\RB\RB\\
-    &= \EE_{(\x'{+}\epsilon', \y')\sim\Gamma}\!\tfrac{1}{\Gamma(\x'{+}\epsilon'{, }\y')}\!\LB\indic\!\LB\MVQ(\x'{+}\epsilon'){\ne}\y'\RB\EE_{((\x,\y),\epsilon)\sim\Dpert}\!\!\indic\!\LB \x'{+}\epsilon'{=}\x+\epsilon, \y'{=}y\RB\RB.
-\end{align*}
-Finally, by definition of $\Gamma(\x'{+}\epsilon'{,}\y')$, we can deduce that
-\begin{align*}
-    \Risk_{\Dpert}(\MVQ) &=\EE_{(\x'{+}\epsilon', \y')\sim \Gamma}\!\tfrac{1}{\Gamma(\x'{+}\epsilon'{, }\y')}\!\LB\indic\!\LB\MVQ(\x'{+}\epsilon'){\ne}\y'\RB\Gamma(\x'{+}\epsilon'{,}\y') \RB\\
-    &= \EE_{(\x'{+}\epsilon', \y')\sim \Gamma}\indic\!\LB\MVQ(\x'{+}\epsilon'){\ne}\y'\RB = \Risk_{\Gamma}(\MVQ).
-\end{align*}\end{proof}
 
-Similarly, \Cref{chap:mv-robustness:lemma:Pi} shows that $\RiskA_{\D}(\MVQ)$ is equivalent to $\Risk_{\gamma}(\MVQ)$.
-\begin{lemma} 
-For any distribution $\D$ on $\X\times\Y$ and its associated distribution $\gamma$, for any posterior $\Q$ on $\H$, we have
-\label{chap:mv-robustness:lemma:Pi}
+The proof of this lemma is deferred to Section \ref{sec: proof_exp_moment_online}
+
+
+To conclude the proof, we just bound $\xi_m$ by the result of \cref{l: exp_moment_online} within \cref{eq: temp_result_online_thm}.
+\end{proof}
+
+\subsubsection{Proof of \cref{l: exp_moment_online}}
+\label{sec: proof_exp_moment_online}
+
+
+\begin{proof}[of \cref{l: exp_moment_online}]
+  We prove our result by recursion: for $m=1$, $\S_1={\z_1}$ and one knows that $\P_1$ is $\mathcal{F}_0$ measurable yet it does not depend on $\Sm$. Thus for any $h_1\in\mathcal{H}$, $\mathbb{E}[\ell(h_1,\z_1)\mid \mathcal{F}_{0}]= \mathbb{E}[\ell(h_1,\z_1)]$. We then has:
+  \begin{align*}
+    \xi_1 &= \mathbb{E}_{\S_1}\mathbb{E}_{h_1\sim \P_1} [\Tilde{\ell}_1(h_1,\z_1)]\\
+    &= \mathbb{E}_{h_1\sim P_1} \mathbb{E}_{\S_1} [\Tilde{\ell}_1(h_1,\z_1)] & \text{by Fubini} \\
+    & \leq \exp{\frac{\lambda^2K^2}{2}}
+  \end{align*}
+
+The last line  holding because for any $h_1\in\mathcal{H}$, $\Tilde{\ell}_1(h_1,\z_1)$ is a centered variable belonging in $[-K,K]$ a.s. and so one can apply Hoeffding's lemma to conclude.
+
+
+\noindent Assume the result is true at rank $m-1\geq 0$. We then has to prove the result at rank $m$. Our strategy consists in conditioning by $\mathcal{F}_{m-1}$ within the expectation over $\Sm$:
+
 \begin{align*}
-    \RiskA_{\D}(\MVQ) = \Pr_{(\x+\epsilon{,}\y){\sim}\gamma}\!\LB \MVQ(\x+\epsilon){\ne}y\RB = \Risk_{\gamma}(\MVQ).
+  \xi_m & = \mathbb{E}_{\Sm}\left[\mathbb{E}_{h_1,...,h_m \sim \Q_{\Sm}^0} \left[\exp\left(\lambda \sum_{i=1}^m \Tilde{\ell}_i(h_i,\z_i)\right)\right]\right].\\
+  \intertext{First, we use that $Q^0\in\mathcal{C}$, thus $\Q_{\Sm}^0 = P_1\otimes...\otimes P_m$ (i.e. our data are drawn independently for a given $\Sm$):}
+  &= \mathbb{E}_S\left[\Pi_{i=1}^m \mathbb{E}_{h_i \sim \P_{i}} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,\z_i)\right)\right]\right].\\
+  \intertext{We now condition by $\mathcal{F}_{m-1}$ and use that $\Pi_{i=1}^{m-1}\mathbb{E}_{h_i \sim \P_{i}} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,\z_i)\right)\right]$ is a $\mathcal{F}_{m-1}$-measurable r.v.}
+  \xi_m & = \mathbb{E}_S\left[ \Pi_{i=1}^{m-1}\mathbb{E}_{h_i \sim \P_{i}} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,\z_i)\right)\right] \mathbb{E}
+\left[ \mathbb{E}_{h_m\sim P_m} [\exp(\lambda \Tilde{\ell}_m(h_m,\z_m))] \mid \mathcal{F}_{m-1} \right] \right].
 \end{align*}
+
+Now our next step is to use a variant of Fubini valid for $\mathcal{F}_{m-1}$- measurable measures.
+
+\begin{lemma}[Conditional Fubini]
+  \label{l: cond_fubini-chap3}
+  Let $f: \mathcal{H}\times \mathcal{Z} \rightarrow \mathbb{R}^+$.
+  For a $sigma$-algebra $\mathcal{F}$ over $\mathcal{Z}$ and a measure $P$ over $\mathcal{H}$ such that
+  \begin{itemize}
+    \item $\P$ is a $\mathcal{F}$-measurable r.v.
+    \item There exists a constant measure (a.s.) $P_0$ such that $\P\ll \P_0$.
+  \end{itemize}
+  Then one has almost surely, for any r.v. $z$ over $\mathcal{Z}$:
+
+  \[ \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(h,\z)] \mid \mathcal{F} \right] =  \mathbb{E}_{h\sim \P} \left[ \mathbb{E}[f(h,\z)\mid \mathcal{F}] \right].    \]
 \end{lemma}
-\begin{proof} 
-The proof is similar to the one of \Cref{chap:mv-robustness:lemma:Delta}.
-Indeed, starting from the definition of $\RiskA_{\D}(\MVQ) = \EE_{(\x,\y)\sim\D}\indic\!\LB\MVQ(\x+\epsilon^*(\x{,}\y)) \neq \y\RB$, we have
+
+\noindent The proof of this lemma lies at the end of this section.
+
+\noindent We then fix $\mathcal{F}= \mathcal{F}_{m-1}$ and $f(h,\z)= \exp(\lambda\Tilde{\ell}_i(h,z))$. Furthermore, because we assumed the sequence $(\P_{i})_{i=1\cdots m}$ to be an online predictive sequence, $P_m$ is $\mathcal{F}_{m-1}$-measurable and $P_m>>P_1$ with $P_1$ a data-free prior. One then applies \cref{l: cond_fubini-chap3}:
+
+\[ \mathbb{E}
+\left[ \mathbb{E}_{h_m\sim P_m} [\exp(\lambda \Tilde{\ell}_m(h_m,\z_m))] \mid \mathcal{F}_{m-1} \right] =  \mathbb{E}_{h_m\sim P_m} \left[ \mathbb{E}
+[\exp(\lambda \Tilde{\ell}_m(h_m,\z_m)) \mid \mathcal{F}_{m-1}] \right] . \]
+
+\noindent Yet, injecting this result onto $\xi_m$ provides:
+
 \begin{align*}
-    &\RiskA_{\D}(\MVQ)\\
-    &= \EE_{(\x'{+}\epsilon', \y')\sim \gamma}\tfrac{1}{\gamma(\x'{+}\epsilon', \y')}\!\LB\EE_{(\x,\y)\sim\D}\indic\LB\MVQ(\x{+}\epsilon^*(\x{,}\y))\ne \y\RB\!\indic\!\LB \x'{+}\epsilon'{=}\x{+}\epsilon^*(\x{,}\y), \y'{=}y\RB\RB\\
-    &= \EE_{(\x'+\epsilon', \y')\sim\gamma}\tfrac{1}{\gamma(\x'{+}\epsilon', \y')}\!\LB\EE_{(\x{,}\y)\sim\D}\indic\LB\MVQ(\x'{+}\epsilon')\ne \y'\RB\!\indic\!\LB \x'{+}\epsilon'{=}\x{+}\epsilon^*(\x{,}\y), \y'{=}y\RB\RB.
+  \xi_m = \mathbb{E}_S\left[ \Pi_{i=1}^{m-1}\mathbb{E}_{h_i \sim \P_{i}} \left[\exp\left(\lambda  \Tilde{\ell}_i(h_i,\z_i)\right)\right] \mathbb{E}_{h_m\sim P_m} \left[ \mathbb{E}
+  [\exp(\lambda \Tilde{\ell}_m(h_m,\z_m)) \mid \mathcal{F}_{m-1}] \right] \right]
 \end{align*}
-Finally, by definition of $\gamma(\x'{+}\epsilon', \y')$, we can deduce that
-\begin{align*}
-    \RiskA_{\D}(\MVQ) &\!=\!\!\EE_{(\x'+\epsilon', \y')\sim \gamma}\tfrac{1}{\gamma(\x'+\epsilon', \y')}\LB\indic\LB\MVQ(\x'{+}\epsilon')\ne \y'\RB\gamma(\x'{+}\epsilon'{,}\y')\RB\\
-    &= \EE_{(\x'+\epsilon', \y')\sim\gamma}\!\!\indic\LB\MVQ(\x'{+}\epsilon'){\ne}\y'\RB\! = \Risk_{\gamma}(\MVQ).
-\end{align*}
+
+The final remark is to notice that for any $h_m\in\mathcal{H}$, $\mathbb{E}[\Tilde{\ell}_m(h_m,\z_m)\mid \mathcal{F}_{m-1}] = 0$ and $\Tilde{\ell}_m(h_m,\z_m)\in [-K,K]$ a.s. then one can apply the conditional Hoeffding's lemma which ensure us that for any $\lambda>0$:
+
+\[ \mathbb{E}
+[\exp(\lambda \Tilde{\ell}_m(h_m,\z_m)) \mid \mathcal{F}_{m-1}] \leq \exp\left( \frac{\lambda^2K^2}{2}   \right). \]
+
+One then has $\xi_m \leq \exp\left( \frac{\lambda^2K^2}{2}   \right) \xi_{m-1}$. The recursion assumption concludes the proof.
+
+
 \end{proof}
 
-We can now prove \Cref{chap:mv-robustness:proposition:avg-worst-risk}.
 
-\propavgworstrisk*
-\begin{proof}
-    From \Cref{chap:mv-robustness:lemma:Delta,chap:mv-robustness:lemma:Pi}, we have 
-    \begin{align*}
-        \Risk_{\Dpert}(\MVQ) = \Risk_{\Gamma}(\MVQ), \text{\quad and\quad} \RiskA_{\D}(\MVQ)=\Risk_{\gamma}(\MVQ).
-    \end{align*}
-    Then, we apply Lemma~4 of \citet{OhnishiHonorio2021}, we have
-    \begin{align*}
-    \Risk_{\gamma}(\MVQ) \le \TV(\gamma\|\Gamma) + \Risk_{\Gamma}(\MVQ)\quad 
-    \iff \quad \RiskA_{\D}(\MVQ) \le \TV(\gamma\|\Gamma) + \Risk_{\Dpert}(\MVQ).
-    \end{align*}
+
+\begin{proof}[Proof of \cref{l: cond_fubini-chap3}]
+ Let $A$ be a $\mathcal{F}$-measurable event. One wants to show that
+  \[ \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(h,\z)]\mathds{1}_A \right] = \mathbb{E}\left[\mathbb{E}_{h\sim \P} \left[ \mathbb{E}[f(h,\z)\mid \mathcal{F}] \right] \mathds{1}_A \right]. \]
+  \noindent Where the first expectation in each term is taken over $z$. This will be enough to conclude that
+  \[ \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(h,\z)]\mid \mathcal{F} \right] = \mathbb{E}_{h\sim \P} \left[ \mathbb{E}[f(h,\z)\mid \mathcal{F}] \right]   \]
+  \noindent thanks to the definition of conditional expectation. We first start by using the fact that $P$ is $\mathcal{F}$-measurable and that $P_0 \gg P$ with $P_0$ a constant measure. This is enough to obtain that the Radon-Nykodym derivative $\frac{d\P}{d\P_0}$ is a $\mathcal{F}$-measurable function, thus:
+
+  \begin{align*}
+     \mathbb{E}\left[\mathbb{E}_{h\sim \P} [f(h,\z)]\mathds{1}_A \right]&=  \mathbb{E}\left[\mathbb{E}_{h\sim\P_0} \left[f(h,\z)\frac{d\P}{d\P_0}(h)\right]\mathds{1}_A(z) \right], \\
+     &= \mathbb{E}\left[\mathbb{E}_{h\sim\P_0} \left[f(h,\z)\frac{d\P}{d\P_0}(h)\mathds{1}_A(z)\right] \right].
+     \intertext{Because $f(h,\z)\frac{d\P}{d\P_0}(h)\mathds{1}_A(z) $ is a positive function, and that $P_0$ is fixed, one can apply the classical Fubini-Tonelli theorem:}
+     &= \mathbb{E}_{h\sim\P_0} \left[ \mathbb{E}\left[f(h,\z)\frac{d\P}{d\P_0}(h)\mathds{1}_A(z)\right] \right]. \\
+     \intertext{One now conditions by $\mathcal{F}$ and use the fact that $\frac{d\P}{d\P_0}, \mathds{1}_A$ are $\mathcal{F}$-measurable:  }
+     &= \mathbb{E}_{h\sim\P_0} \left[ \mathbb{E}\left[\mathbb{E}\left[f(h,\z)\mid \mathcal{F}\right]\frac{d\P}{d\P_0}(h)\mathds{1}_A(z)\right] \right]. \\
+     \intertext{We finally re-apply Fubini-Tonelli to re-intervert the expectations: }
+     &=  \mathbb{E}\left[ \mathbb{E}_{h\sim\P_0}\left[\mathbb{E}\left[f(h,\z)\mid \mathcal{F}\right]\frac{d\P}{d\P_0}(h)\mathds{1}_A(z)\right] \right], \\
+     &= \mathbb{E}\left[ \mathbb{E}_{h\sim \P}\left[\mathbb{E}\left[f(h,\z)\mid \mathcal{F}\right]\mathds{1}_A(z)\right] \right].
+  \end{align*}
+
+  \noindent This finally proves the announced results, yet concludes the proof.
+
 \end{proof}
 
-\section{Proof of \Cref{chap:mv-robustness:theorem:2-adver-gibbs}}
-\label{ap:mv-robustness:sec:proof-2-adver-gibbs}
 
-\theoremadvergibbs*
-\begin{proof}
-By the definition of the majority vote and from \textsc{Markov}'s inequality (\Cref{ap:tools:theorem:first-markov}), we have 
-\begin{align*}
-    \frac12 \Risk_{\Dpert}(\MVQ)
-    &= \frac12\, \PP_{( (\x,\y),\epsilon)\sim\Dpert} \LP \y \EE_{\h\sim\Q} \h(\x+\epsilon) \le 0\RP\\
-    &= \frac12 \, \PP_{( (\x,\y),\epsilon)\sim\Dpert}\LP 1 - \y \EE_{\h\sim\Q} \h(\x+\epsilon) \ge 1\RP\\
-    &\leq  \EE_{( (\x,\y),\epsilon)\sim\Dpert} \frac12 \Big[ 1 - \y \EE_{\h\sim\Q} \h(\x+\epsilon) \Big]\\
-    &= \RiskS_{\Dpert}(\Q).
-\end{align*}
-    Similarly we have
-\begin{align*}
-    \frac12\RiskM_{\Dpert^{n\!}}(\MVQ) &=\frac12\,\PP_{( (\x,\y),\Epert)\sim\Dpert^{n\!}} \LP \exists \epsilon \in\Epert, \y \EE_{\h\sim\Q} \h(\x+\epsilon)\le 0 \RP\\
-    &=\frac12\,\PP_{( (\x,\y),\Epert)\sim\Dpert^{n\!}} \LP \min_{\epsilon\in\Epert} \Big( \y \EE_{\h\sim\Q} \h(\x+\epsilon)\Big) \le 0 \RP\\
-    &= \frac12 \, \PP_{( (\x,\y),\epsilon)\sim\Dpert}\LP 1 - \min_{\epsilon\in\Epert} \Big( \y \EE_{\h\sim\Q} \h(\x+\epsilon)\Big) \ge 1\RP\\
-    &\leq \EE_{( (\x,\y),\epsilon)\sim\Dpert} \frac12 \Big[ 1 - \min_{\epsilon\in\Epert}\Big( \y \EE_{\h\sim\Q} \h(\x+\epsilon)\Big) \Big]\\
-    &= \RiskMS_{\Dpert^{n}}(\Q).
-\end{align*}
-\end{proof}
+\subsection{Proofs of \cref{sec: OPBD_procedure}}
+\label{sec: proofs_sec4}
+We prove here \cref{cor: OPBD_optim_funcs} and \cref{cor: OPBD_test_bound}.
 
-\section{Proof of \Cref{chap:mv-robustness:theorem:chromatic}}
-\label{ap:mv-robustness:sec:proof-chromatic}
+\subsubsection{Proof of \cref{cor: OPBD_optim_funcs}}
+We fix $\hat{\Q},\P$ to be online predictive sequences (with $\hat{\Q}_1,\P_1$ being data-free priors). Recall that we assimilated the stochastic kernels $\hat{\Q}_i,\P_{i}$ to the their associated data-dependent sitribution given a sample $\Sm$ $\hat{\Q}_i(\Sm,.), \P_{i}(\Sm,.)$.
 
-\theoremchromatic*
-\begin{proof}
-Let $G{=}(V, E)$ be the graph representing the dependencies between the random variables where 
-{\it (i)} the set of vertices is $V {=} \Spert$, {\it (ii)} the set of edges $E$ is defined such that \mbox{$(((\x, \y), \epsilon), ((\x', \y'), \epsilon')) \notin E \Leftrightarrow x \ne \x'$}.
-Then, applying Theorem~8~of~\citet{RalaivolaSzafranskiStempfel2010} with our notations gives
-\begin{align*}
-    \kl(\RiskS_{\Spert}(\Q)\|\RiskS_{\Dpert}(\Q)) \le \frac{\chi({G})}{mn} \Bigg[\KL(\Q\|\P) + \ln \frac{mn+\chi({G})}{\delta\chi({G})}
-     \Bigg],
-\end{align*}
-where $\chi(G)$ is the fractional chromatic number of $G$.
-From a property of \citet{ScheinermanUllman2011}, we have
-\begin{align*}
-    c(G) \le \chi(G) \le \Delta(G)+1,
-\end{align*}
-where $c(G)$ is the order of the largest clique in $G$ and $\Delta(G)$ is the maximum degree of a vertex in $G$.
-By construction of $G$, $c(G){=}n$ and $\Delta(G){=}n{-}1$. 
-Thus, $\chi(G){=}n$ and rearranging the terms proves  \Cref{chap:mv-robustness:eq:seeger-chromatic}.
-Finally, by applying \textsc{Pinsker}'s inequality (\ie, $|a{-}b|{\le} \sqrt{\tfrac{1}{2}\kl(a\|b)}$), we obtain \Cref{chap:mv-robustness:eq:mcallester-chromatic}.
-\end{proof}
+As in \cref{th: main_thm_online}, our predictor set of interest is $\mathcal{H}_m:= \mathcal{H}^{\otimes m}$ and then, our predictor $h$ is a tuple $(h_1,..,h_m)\in\mathcal{H}$. We consider the stochastic kernel $Q$ belonging to the class $\mathcal{C}$ defined in \cref{eq: class_kernels} such that for any $S\in\Sm, \Q(\Sm,.) = \hat{\Q}_2\otimes ... \otimes \hat{\Q}_{m+1}$.
+Similarly one defines $Q^0\in\mathcal{C}$ such that for any $S\in\Sm, Q^0(\Sm,.) = P_1\otimes ... \otimes P_{m}$
 
-\section{Proof of \Cref{chap:mv-robustness:theorem:bound-average-max}}
-\label{ap:mv-robustness:sec:proof-bound-average-max}
 
-\theoremboundaveragemax*
-\begin{proof}
-\newcommand{\Loss}[1]{L_{#1}}
-Let $\Loss{\h{,}(\x{,}\y){,}\epsilon}{=}\frac{1}{2}\big[1{-}\y\h(\x+\epsilon)\big]$ for the sake of readability.
-Given $\h\in\H$, the losses $\max_{\epsilon\in\Epert_1}\!\Loss{\h{,} (\x_1{,}\y_1){,} \epsilon}$, $\ldots$ $\max_{\epsilon\in\Epert_1}\!\Loss{\h{,} (\x_m{,}\y_m){,} \epsilon}$ are \iid.
-Hence, we can apply Theorem 20 of \citet{GermainLacasseLavioletteMarchandRoy2015} and \textsc{Pinsker}'s inequality, \ie,\ the inequality $|q{-}p|\! \le\! \sqrt{\!\frac{1}{2}\kl(q\|p)}$ (\Cref{ap:pac-bayes:theorem:pinsker}) to obtain
-\begin{align*}
-    \EE_{\h\sim\Q}\EE_{(\x,\y),\Epert) \sim\Dpert^{n\!}} \max_{\epsilon\in\Epert}\ \Loss{\h{,}(\x{,}\y){,}\epsilon}
-  \le \EE_{\h\sim\Q}\frac{1}{\m}\sum_{i=1}^{\m}\max_{\epsilon\in\Epert_i}\Loss{\h{,}(\x_i{,}\y_i){,}\epsilon} +
-  \sqrt{\frac{\KL(\Q\|\P)+\ln\tfrac{2\sqrt{\m}}{\delta}}{2\m}}.
-\end{align*}
-Then, we lower-bound the left-hand side of the inequality with $\RiskMS_{\Dpert^{n}}(\Q)$, we have
-\begin{align*}
-   \RiskMS_{\Dpert^{n}}(\Q) \le \EE_{\h\sim\Q} \EE_{( (\x,\y),\Epert)\sim\Dpert^{n\!}}\ \max_{\epsilon\in\Epert}\Loss{\h, (\x,\y),\epsilon}.
-\end{align*}
-Finally, from the definition of $\theta_i^h$, and from Lemma~4 of \citet{OhnishiHonorio2021}, we have
-\begin{align*}
-    \EE_{\h\sim\Q}\frac{1}{\m}\sum_{i=1}^{\m}\max_{\epsilon\in\Epert_i}\Loss{\h{,}(\x_i{,}\y_i){,}\epsilon}
-    &=  \EE_{\h\sim\Q}\frac{1}{\m}\sum_{i=1}^{\m}\EE_{\epsilon\sim\theta_i^{\h}}\Loss{\h{,}(\x_i{,}\y_i){,}\epsilon}\\
-    &\le \EE_{\h\sim\Q}\frac{1}{\m}\sum_{i=1}^{\m}\TV(\theta_i^\h\|\Theta_i) + \EE_{\h\sim\Q}\frac{1}{\m}\sum_{i=1}^{\m}\EE_{\epsilon\sim\Theta_i}\Loss{\h{,}(\x_i{,}\y_i){,}\epsilon}\\
-    &= \EE_{\h\sim\Q}\frac{1}{\m}\sum_{i=1}^{\m}\TV(\theta_i^\h\|\Theta_i) + \frac{1}{\m}\sum_{i=1}^{\m}\EE_{\epsilon\sim\Theta_i}\EE_{\h\sim\Q}\Loss{\h{,}(\x_i{,}\y_i){,}\epsilon}\\
-    &\le \EE_{\h\sim\Q}\frac{1}{\m}\sum_{i=1}^{\m}\TV(\theta_i^\h\|\Theta_i) + \RiskMS_{\Spert}(\Q).
-\end{align*}
-\end{proof}
 
-\section{Proof of \Cref{chap:mv-robustness:corollary:seeger-chromatic-T,chap:mv-robustness:corollary:max-mcallester-T}}
-\label{ap:mv-robustness:sec:proof-bound}
 
-We start to prove \Cref{chap:mv-robustness:corollary:seeger-chromatic-T}.
+\paragraph{Proof for $(\Psi_{\normalfont1},\Phi_{\normalfont1})$:}
 
-\corollaryseegerchromaticT*
-\begin{proof}
+For $\lambda>0$, we set our function $f$ to be for any dataset $\Sm$ and predictor tuple $h=(h_1,...,h_m)$,
+\[f(\Sm,h) = \lambda \left(\sum_{i=1}^m \mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}\right]- \sum_{i=1}^m \ell(h_i,\z_i) \right).\]
 
-Let $\Dpert_1,\dots, \Dpert_\iter$ be $\iter$ distributions defined as $\Dpert_1= \D(\x,\y)\DX^1(\epsilon),$ $\dots,$ $\Dpert_\iter=\D(\x,\y)\DX^\iter(\epsilon)$ on $(\X{\times}\Y){\times}\Xpert$ where each distribution $\DX^\t$ depends on the example $(\x,\y)$ and possibly on the fixed prior $\Pt$.
-Then, for all distributions $\Dpert_\t$, we can derive a bound on the risk $\RiskS_{\Dpert_\t}(\Q)$ which holds with probability at least $1-\frac{\delta}{\iter}$, we have
-\begin{align*}
-    \Pr_{\Spert_t\sim(\Dpert_t^n)^\m}\!\!&\LB\forall\Q,\  \kl(\RiskS_{\Spert_\t}(\Q)\|\RiskS_{\Dpert_\t}(\Q)) \!\le\! \frac{1}{\m}\!\LB\KL(\Q\|\Pt){+}\ln\frac{\iter(\m{+}1)}{\delta} \RB \RB {\ge} 1{-}\tfrac{\delta}{\iter}.
-\end{align*}
-Then, from a union bound argument, we have 
-\begin{align*}
-    \Pr_{\Spert_1\sim(\Dpert_1^n)^\m,\dots, \Spert_T\sim(\Dpert_T^n)^\m}&\Bigg[\forall\Q,\  \kl(\RiskS_{\Spert_1}(\Q)\|\RiskS_{\Dpert_1}(\Q)) \!\le\! \frac{1}{\m}\!\LB\KL(\Q\|\P_t){+}\ln\frac{\iter(\m{+}1)}{\delta} \RB,\\
-    &\hspace{-2cm}\dots, \text{ and } \kl(\RiskS_{\Spert_T}(\Q)\|\RiskS_{\Dpert_T}(\Q)) \!\le\! \frac{1}{\m}\!\LB\KL(\Q\|\P_T){+}\ln\frac{\iter(\m{+}1)}{\delta} \RB
-    \Bigg]{\ge}1{-}\delta.  
-\end{align*}
-Hence, we have 
-\begin{align*}
-    \kl\LP\RiskS_{\Spert}(\Q) \| \RiskS_{\Dpert}(\Q)\RP \le \frac{1}{\m}\!\LB\KL(\Q\|\P){+}\ln\frac{\iter(\m{+}1)}{\delta}\RB,
-\end{align*}
-where $\DX$ can be dependent on the selected prior $\P$.
-From \Cref{chap:pac-bayes:def:invert-kl}, we can obtain the claimed result.
-\end{proof}
+We then apply \cref{prop: rivasplata_disintegrated} with the function $f$, $Q,Q^0$ defined above. One then has by dividing by $\lambda$ with probability $1-\delta$ over $S\sim \mu$ and $h=(h_1,...,h_m)\sim \hat{\Q}_2\otimes ... \otimes \hat{\Q}_{m+1}$:
 
-We can prove \Cref{chap:mv-robustness:corollary:max-mcallester-T} similarly to \Cref{chap:mv-robustness:corollary:seeger-chromatic-T}.
+\[ \sum_{i=1}^m  \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)  + \frac{1}{\lambda}\log\left(\frac{d\Q_{\Sm}}{d\Q_{\Sm}^0}(h_i)\right) + \frac{1}{\lambda} \log(\xi_m) + \frac{\log(1/\delta)}{\lambda}. \]
 
-\corollarymaxmcallesterT*
-\begin{proof}
-From a union bound argument, we obtain the claimed result.
-\end{proof}
+And then using the fact that $S\in\Sm, \Q_{\Sm} = \hat{\Q}_2\otimes ... \otimes \hat{\Q}_{m+1}, \Q_{\Sm}^0 = P_1\otimes ... \otimes P_{m}$ gives us:
 
-\section{About the (Differentiable) Decision Trees}
-\label{ap:mv-robustness:section:tree}
-In this section, we introduce the differentiable decision trees, \ie, the voters of our majority vote.
-Note that we adapt the model of \citet{KontschiederFiterauCriminisiBulo2016} in order to fit with our framework: a voter must output a real between $-1$ and $+1$.
-An example of such a tree is represented in \Cref{ap:mv-robustness:fig:tree}.
+\[ \sum_{i=1}^m  \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)  + \frac{1}{\lambda}\sum_{i=1}^m \log\left(\frac{d\hat{\Q}_{i+1}}{d\P_{i}}(h_i)\right) + \frac{1}{\lambda} \log(\xi_m) + \frac{\log(1/\delta)}{\lambda}, \]
 
-\begin{figure}[h!]
+with $  \xi_m = \mathbb{E}_S\left[\mathbb{E}_{h_1,...,h_m \sim \Q_{\Sm}} \left[\exp\left(\lambda \sum_{i=1}^m \Tilde{\ell}_i(h_i,\z_i)\right)\right]\right]$ and for any $i$,
+$ \Tilde{\ell}_i(h_i,\z_i) = \mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}\right]-  \ell(h_i,\z_i) $
+
+Notice that, because $P$ is an online predictive sequence, then one can apply directly \cref{l: exp_moment_online} to conclude that $\xi_m \leq \exp \left( \frac{\lambda^2K^2m}{2} \right)$.
+
+We also use \cite[Lemma 11]{viallard2023general} which derives the calculation of the disintegrated KL divergence between two Gaussians. One then has for any $i$, with $h_i= \hat{w}_{i+1} + \varepsilon_i$:
+
+\[ \log\left(\frac{d\hat{\Q}_{i+1}}{d\P_{i}}(h_i)\right) = \frac{||\hat{w}_{i+1} + \varepsilon_i- w_i^0||^2 - ||\varepsilon||^2}{2\sigma^2}. \]
+
+Combining those facts altogether allows us to conclude.
+
+
+\paragraph{Proof for  $(\Psi_{\normalfont2},\Phi_{\normalfont2})$:}
+
+For $\lambda>0$, we set our function $f$ to be for any dataset $\Sm$ and predictor tuple $(h=h_1,...,h_m)$,
+\[f(\Sm,h) = \exp\left(\lambda \left(\sum_{i=1}^m \mathbb{E}\left[\ell(h_i,\z_i)\mid \mathcal{F}_{i-1}\right]- \sum_{i=1}^m \ell(h_i,\z_i) \right) \right).\]
+We take $\alpha=2$ and apply this time \cref{prop: viallard_disintegrated}.
+One then has by dividing by $2\lambda$ with probability $1-\delta$ over $S\sim \mu$ and $h=(h_1,...,h_m)\sim \hat{\Q}_2\otimes ... \otimes \hat{\Q}_{m+1}$:
+
+\[\sum_{i=1}^m  \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]   \leq \sum_{i=1}^m  \ell(h_i,\z_i)+   \frac{3}{2\lambda}\log \frac{2}{\delta}+\frac{D_{2}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right)}{2\lambda}+ \frac{1}{2\lambda}
+\log \left(\underbrace{\underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm'}^0}{\mathbb{E}}
+f(\Sm',h')^{2}}_{:= \xi_m'}\right). \]
+
+We first notice that $D_{2}\left(\Q_{\Sm} \| \Q_{\Sm}^0\right) = \sum_{i=1}^m D_2(\hat{\Q}_{i+1}\| \P_{i})$ as our predictors are drawn independently once $\Sm$ is given.
+
+We also use that for any $i$, the Rényi divergence with $\alpha=2$ between $\hat{\Q}_{i+1}$ and $\P_{i}$ (two multivariate Gaussians with same covariance matrix) is $\frac{\|\hat{w}_{i+1}- w_i^0\|^2}{\sigma^2}$ (as recalled in \cite{gil2013renyi}).
+
+We then remark that:
+
+\[ \xi'_m = \underset{\Sm^{\prime} \sim \Dm}{\mathbb{E}} \underset{h^{\prime} \sim \Q_{\Sm'}^0}{\mathbb{E}}
+\exp\left(2\lambda \left(\sum_{i=1}^m \mathbb{E}\left[\ell(h_i',z_i')\mid \mathcal{F}_{i-1}\right]- \sum_{i=1}^m \ell(h_i',z_i') \right)\right).  \]
+
+Thus we recover the exponential moment $\xi_m$ from the Rivasplata's case up to a factor 2 within the exponential. We then apply \cref{l: exp_moment_online} with $\lambda'= 2\lambda$ to obtain that $\xi_m'\leq \exp\left(  2\lambda^2K^2m \right)$.
+
+
+Combining all those facts allows us to conclude.
+
+
+
+
+\subsubsection{Proof of \cref{cor: OPBD_test_bound}}
+
+We apply the exact same proof than \cref{cor: OPBD_optim_funcs}. The only difference is the way to define our stochastic kernels. We now take, for a single online predictive sequence $\hat{\Q}$ the following stochastic kernels:
+
+We consider the stochastic kernel $Q$ belonging to the class $\mathcal{C}$ defined in \cref{eq: class_kernels} such that for any $S\in\Sm, \Q(\Sm,.) = \hat{\Q}_1\otimes ... \otimes \hat{\Q}_{m}$ and we take $Q_0=Q$.
+
+This fact allows the divergence terms (Rényi or KL depending on which bound we consider) to vanish. The rest of the proof remains unchanged.
+
+
+\section{Additional experiment}
+\label{sec: error_bars}
+
+In this section we perform error bars for our OPBD methods in order to evaluate their volatility.
+We ran $n=50$ times our algorithms and then show in the table below for each data set the means and the standard deviation of our averaged cumulative losses at regular time steps. We denote for $i\in\{1,2\}$ 'OPBD $\Psi_i$' to indicate that this algorithm is our OPBD method used with thev optimisation objective $\Psi_i$.
+
+
+\begin{table}
+\label{tab: error_bars}
 \begin{center}
-\includestandalone[width=0.5\textwidth]{chapter_3/figures/tree}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+       & means OPBD $\Psi_1$ & std OPBD $\Psi_1$ & means OPBD $\Psi_2$ & std OPBD $\Psi_2$ \\ \hline
+t=200  &      0.2014           &      0.0034         &    0.1993                 &     0.0007              \\ \hline
+t=400 &      0.1888           &       0.0030        &    0.1861                 &       0.0004            \\ \hline
+t=600  &     0.1867            &       0.0023        &       0.1839              &         0.0003          \\ \hline
+t=800 &     0.1714            &         0.0020      &    0.1686                 &    0.0003               \\ \hline
+t=1000 &    0.1760             &        0.0016       &            0.1731         &         0.0003          \\ \hline
+\end{tabular}
 \end{center}
-\caption{Representation of a (differentiable) decision tree of depth $l=2$; The root is the node $0$ and the leafs are $4$; $5$; $6$ and $7$. The probability $p_i(\x)$ (respectively $1{-}p_i(\x)$) to go left (respectively right) at the node $i$ is represented by $p_i$ (we omitted the dependence on $\x$ for simplicity). Similarly, the predicted label (a ``score'' between $-1$ and $+1$) at the leaf $i$ is represented by $s_i$.}
-\label{ap:mv-robustness:fig:tree}
-\end{figure}
+\caption{Error bars for the Boston Housing dataset}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+       & means OPBD $\Psi_1$ & std OPBD $\Psi_1$ & means OPBD $\Psi_2$ & std OPBD $\Psi_2$ \\ \hline
+t=100  &      0.1619           &      0.0063         &    0.1601                 &     0.0030              \\ \hline
+t=200 &      0.1350           &       0.0057        &    0.1361                 &       0.0008            \\ \hline
+t=300  &     0.1214            &       0.0044        &       0.1241              &         0.0009          \\ \hline
+t=400 &     0.1210            &         0.0043      &    0.1238                 &    0.0021               \\ \hline
+t=500 &    0.1131             &        0.0037       &            0.1159         &         0.0015          \\ \hline
+\end{tabular}
 
-This differentiable decision tree is stochastic by nature: at each node $i$ of the tree, we continue recursively to the left sub-tree with a probability of $p_i(\x)$ and to the right sub-tree with a probability of $1{-}p_i(\x)$; When we attain a leaf $j$, the tree predicts the label $s_j$.
-Precisely, the probability $p_i(\x)$ is constructed by {\it (i)} selecting randomly 50\% of the input features $\x$ and applying a random mask $M_i\in\R^d$ on $\x$ (where the $k$-th entry of the mask is $1$ if the $k$-th feature is selected and $0$ otherwise), by {\it (ii)} multiplying this quantity by a learned weight vector $v_i\in\R^d$, and by {\it (iii)} applying a sigmoid function to output a probability. 
-Indeed, we have
-\begin{align*}
-p_i(\x) = \sigma\Big(\langle v_i, M_i{\odot}x\rangle\Big),
-\end{align*}
-where $\sigma(a)=\LB1+e^{-a}\RB^{-1}$ is the sigmoid function; $\langle a, b \rangle$ is the dot product between the vector $a$ and $b$ and $a \odot b$ is the elementwise product between the vector $a$ and $b$.
-Moreover, $s_i$ is obtained by learning a parameter $u_i\in\R$ and applying a $\tanh$ function, \ie, we have 
-\begin{align*}
-     s_i = \tanh\!\Big( u_i\Big).
-\end{align*}
-Finally, instead of having a stochastic voter, $h$ will output the expected label predicted by the tree (see \citet{KontschiederFiterauCriminisiBulo2016} for more details). 
-It can be computed by $\h(\x) = f(\x, 0, 0)$ with
-\begin{align*}
-f(\x, i, l') =\left\{\begin{array}{cc}
-    s_i  &  \text{if } l'=l\\
-    p_i(\x)f(\x, 2i{+}1, l'{+}1)+ (1-p_i(\x))f(\x, 2i{+}2, l'{+}1) &  \text{otherwise}
-\end{array}\right..
-\end{align*}
+\end{center}
+\caption{Error bars for the Breast Cancer dataset}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+       & means OPBD $\Psi_1$ & std OPBD $\Psi_1$ & means OPBD $\Psi_2$ & std OPBD $\Psi_2$ \\ \hline
+t=150  &      0.7102           &      0.0061         &    0.7069                 &     0.0007              \\ \hline
+t=300 &      0.6455           &       0.0056        &    0.6422                 &       0.0007            \\ \hline
+t=450  &     0.6134            &       0.0042        &       0.6103              &         0.0007          \\ \hline
+t=600 &     0.5860           &         0.0035      &    0.5837                 &    0.0008               \\ \hline
+t=750 &    0.5685             &        0.0031       &            0.5664         &         0.0008          \\ \hline
+\end{tabular}
+\end{center}
+\caption{Error bars for the PIMA Indians dataset}
 
-\section{Additional Experimental Results}
-\label{ap:mv-robustness:sec:additional-results}
-In this section, we present the detailed results for the 6 tasks (3 on MNIST and 3 on Fashion MNIST) on which we perform experiments that show the test risks and the bounds for the different scenarios of (Defense, Attack).
-We train all the models using the same parameters as described in \Cref{chap:mv-robustness:sec:expe-desc}.
-\Cref{ap:mv-robustness:tab:mnist-l2-details} and \Cref{ap:mv-robustness:tab:fashion-l2-details} complement \Cref{chap:mv-robustness:tab:mnist-1-7-details} to present the results for all the tasks when using the $\ell_2$-norm with $b=1$ (the maximum noise allowed by the norm).
-Then, we run again the same experiment but we use the $\ell_\infty$-norm with $b=0.1$ and exhibit the results in \Cref{ap:mv-robustness:tab:mnist-infty-details} and \Cref{ap:mv-robustness:tab:fashion-infty-details}.
-For the experiments on the 5 other tasks using the $\ell_2$-norm, we have a similar behavior than MNIST:1vs7.
-Indeed, using the attacks \PGDU~and \IFGSMU~as defense mechanism allows to obtain better risks and also tighter bounds compared to the bounds obtained with a defense based on \U (which is a naive defense).
-For the experiments on the 6 tasks using the $\ell_\infty$-norm, the trend is the same as with the $\ell_2$-norm, \ie, the appropriate defense leads to better risks and bounds.
 
-We also run experiments that do not rely on the PAC-Bayesian framework.
-In other words, we train the models following only Step 1 of our adversarial training procedure (\ie, \Cref{chap:mv-robustness:algo-step}) using classical attacks (\PGD~or \IFGSM): we refer to this experiment as a baseline.
-In our cases, it means learning a majority vote $\MVPp$ that follows a distribution $\Pp$.
-As a reminder, the studied scenarios for the baseline are all the pairs $(\text{Defense}, \text{Attack})$ belonging to the set $\{\text{---},\text{\U}, \text{\PGD}, \text{\IFGSM} \}{\times}\{\text{---}, \text{\PGD}, \text{\IFGSM}\}$.
-We report the results in \Cref{ap:mv-robustness:tab:l2-baseline} and \Cref{ap:mv-robustness:tab:infty-baseline}.
-With this experiment, we are now able to compare our defense based on \PGDU or \IFGSMU and a classical defense based on \PGD and \IFGSM.
-Hence, considering the test risks $\RiskA_{\dT}(\MVQ)$ (columns ``Attack without {\sc u}'' of Tables~\ref{chap:mv-robustness:tab:mnist-1-7-details} to~\ref{ap:mv-robustness:tab:fashion-infty-details}) and $\RiskA_{\dT}(\MVPp)$ (in Tables~\ref{ap:mv-robustness:tab:l2-baseline} and~\ref{ap:mv-robustness:tab:infty-baseline}) , we observe similar results between the baseline and our framework.
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+       & means OPBD $\Psi_1$ & std OPBD $\Psi_1$ & means OPBD $\Psi_2$ & std OPBD $\Psi_2$ \\ \hline
+t=4000  &      0.9320           &      0.0572         &    0.8905                 &     0.0003              \\ \hline
+t=8000 &      0.6325           &       0.0335        &    0.5947                 &       0.0003            \\ \hline
+t=12000  &     0.5314            &       0.0254        &       0.4954              &         0.0002          \\ \hline
+t=16000 &     0.4967           &         0.0299      &    0.4477                 &    0.0004               \\ \hline
+t=20000 &    0.5273            &        0.1056       &            0.4355         &         0.0030          \\ \hline
+\end{tabular}
 
-\input{chapter_3/tables/mnist_l2}
-\input{chapter_3/tables/fashion_l2}
-\input{chapter_3/tables/mnist_linf}
-\input{chapter_3/tables/fashion_linf}
-\input{chapter_3/tables/baseline_l2}
-\input{chapter_3/tables/baseline_linf}
+\end{center}
+\caption{Error bars for the California Housing dataset}
 
-\end{noaddcontents}
+\end{table}
+
+
+
+\paragraph{Analysis} Those tables shows the robustness of our OPBD methods to their intrinsic randomness: we always have a decreasing mean through time as well as an overall variance reduction. Note that for the most complicated problem (California Housing dataset), the variance is the highest.
+More precisely, we notice that the standard deviation of OPBD with $\Psi_1$ is always greater than the one of OPBD with $\Psi_2$ which is not a surprise as $\Psi_1$ involves a disintegrated KL divergence while $\Psi_2$ is a proper Rényi divergence. Hence the additional volatility for OPBD with $\Psi_1$.
+
+This fact is particurlaly noticeable on the California Housing dataset where both the means and variance of OPBD with $\Psi_1$ increase drastically between t=16000 and t=20000 while the increase is more attenuated for OPBD with $\Psi_2$. This fact is also visible on \cref{fig: exp_results}.
+
+
+\subsection{Proof of \Cref{th: opb-ht}}
+\label{sec: proof_main_thm_online-ht}
+ \begin{proof}
+   We fix $m\geq 1$, $\S$ a countable dataset and $(\P_{i})_{i\geq 1}$ an online predictive sequence. We aim to design a $m$-tuple of probabilities. Thus, our predictor set of interest is $\mathcal{H}_m:= \mathcal{H}^{\otimes m}$ and then, our predictor $h$ is a tuple $(h_1,..,h_m)\in\mathcal{H}$.
+
+   Our goal is to apply the change of measure inequality on $\mathcal{H}_m$ to a specific function $f_m$ inspired from Lemma \ref{l: bercu_touati}. We define this function below, for any sample $\S$ and any predictor $h^m=(h_1,...,h_m)$
+
+   \begin{align*}
+   f_m(S,h^m) & := \sum_{i=1}^m \lambda X_i(h_i,z_i)  - \frac{\lambda^2}{2}\sum_{i=1}^m(\hat{V}_i(h_i,z_i) + V_i(h_i)),
+   \end{align*}
+   where $X_i(h_i,z_i)= \mathbb{E}_{i-1}[\ell(h_i,\z_i)]- \ell(h_i,\z_i)$. Notice that for fixed $h$, the sequence $(f_m(\S,h))_{m\geq 1}$ is a supermartingale according to Lemma \ref{l: bercu_touati}.
+
+   Now for a given posterior tuple $Q_1,...Q_m$ we define $Q= Q_1 \otimes ...\otimes Q_m$ and also $P^m_S = P_{1,S}\otimes...\otimes P_{m,S}$. We can now properly apply the change of measure inequality for any $m$:
+   \begin{align*}
+    \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}[\lambda X_i(h_i,z_i)  - \frac{\lambda^2}{2}(\hat{V}_i(h_i,z_i) + V_i(h_i))] & = \mathbb{E}_{h^m\sim Q}\left[ f_m(S,h^m) \right] \\
+    & \leq \operatorname{KL}(Q,P^m_S) + \log \left( \mathbb{E}_{h^m\sim P^m_S}\exp(f_m(S,h^m))  \right).
+   \end{align*}
+
+   Noticing that $\operatorname{KL}(Q,P^m_S)= \sum_{i=1}^m \operatorname{KL}(\Q_{i},\P_{i,\Sm})$, the only remaining term to deal with is the exponential rv.
+
+   To do so we prove the following lemma:
+
+   \begin{lemma}
+     The sequence $(M_m:=\mathbb{E}_{h^m\sim P^m_S}\exp(f_m(S,h^m))_{m\geq 1}$ is a non-negative supermartingale.
+   \end{lemma}
+   \begin{proof}
+   We fix $m\geq 1$ and we recall that for any $i$, $\P_{i,\Sm}$ is $\mathcal{F}_{i-1}$-measurable. We show that $\mathbb{E}_{m-1}[M_m] \leq M_{m-1}$. We first recover $M_{m-1}$ from $\mathbb{E}_{m-1}[M_m]$.
+
+     \begin{align*}
+       \mathbb{E}_{m-1}[M_m]& =\mathbb{E}_{m-1}\left[\mathbb{E}_{h^m\sim P^m_S}\exp(f_m(S,h^m)\right] \\
+       & = \mathbb{E}_{m-1}\left[\mathbb{E}_{h_1,..,h_m\sim P_{1,S}\otimes...\otimes P_{m,S}}\exp(f_m(S,h^m)\right] \\
+       & = \mathbb{E}_{m-1}\left[\mathbb{E}_{h_1,..,h_m\sim P_{1,S}\otimes...\otimes P_{m,S}}\left[\Pi_{i=1}^m\exp\left(\lambda X_i(h_i,z_i)  - \frac{\lambda^2}{2}(\hat{V}_i(h_i,z_i) + V_i(h_i))\right)\right] \right] \\
+        & = M_{m-1} \mathbb{E}_{m-1}\left[ \mathbb{E}_{h_m\sim P_{m,S}}\left[\exp\left(\lambda X_m(h_m,z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,z_m) + V_m(h_m))\right) \right]\right].
+     \end{align*}
+ The last line holding because $P^{m-1}_S = P_{1,S}\otimes...\otimes P_{m-1,S}$ is $\mathcal{F}_{m-1}$ measurable.
+
+
+   Now we exploit the fact that $P_{m,S}$ is $\mathcal{F}_{m-1}$ measurable to apply a conditional Fubini lemma stated in \citet[][Lemma D.3]{haddouche2022online}. We have:
+
+   \begin{multline*}
+     \mathbb{E}_{m-1}\left[ \mathbb{E}_{h_m\sim P_{m,S}}\left[\exp\left(\lambda X_m(h_m,z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,z_m) + V_m(h_m))\right) \right]\right] \\ =  \mathbb{E}_{h_m\sim P_{m,S}}\left[\mathbb{E}_{m-1}\left[\exp\left(\lambda X_m(h_m,z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,z_m) + V_m(h_m))\right) \right]\right].
+   \end{multline*}
+
+ Now we can apply Lemma \ref{l: bercu_touati} for any $h_m\in\mathcal{H}$ with $\Delta M_{m}=X_m(h_m,z_m), \Delta[M]_{m}=\hat{V}(h_m,z_m)$ and $\Delta\langle M\rangle_{m}= V_m(h_m)$. We then have for all $h_m\in\mathcal{H}$:
+
+ \[ \mathbb{E}_{m-1}\left[\exp\left(\lambda X_m(h_m,z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,z_m) + V_m(h_m))\right) \right] \leq 1.  \]
+
+ Thus $\mathbb{E}_{m-1}[M_m] \leq M_{m-1}$, this concludes the lemma's proof.
+   \end{proof}
+
+ Now we can apply Ville's inequality which implies that with probability at least $1-\delta$, for any $m\geq 1$:
+
+ \[ \mathbb{E}_{h^m\sim P^m_S}\exp(f_m(S,h^m)) \leq \frac{1}{\delta}. \]
+
+ Thus we have with probability at least $1-\delta$, for any posterior sequence $(\Q_{i})_{i\geq 1}$, the data-dependent measures $P_{1,S},...,P_{m,S}$ and any $m\geq 1$:
+
+ \begin{align*}
+  \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[\lambda X_i(h_i,z_i)  - \frac{\lambda^2}{2}(\hat{V}_i(h_i,z_i) + V_i(h_i))\right] \leq \sum_{i=1}^m \operatorname{KL}(\Q_{i},\P_{i,\Sm}) + \log \left( \frac{1}{\delta}  \right).
+ \end{align*}
+
+ Re-organising the terms in this bound and dividing by $\lambda$ concludes the proof.
+
+ \end{proof}
+

@@ -7,41 +7,31 @@
 \vspace{0.2cm}
 \begin{tabular}{cp{13cm}}
 $\displaystyle a$ & A scalar (integer or real)\\
-$\displaystyle \abf$ & A vector\\
-$\displaystyle \Abf$ & A matrix\\
-$\displaystyle \Abb, \abb$ & A set\\
 $\displaystyle \R$ & The set of real numbers\\
-$\displaystyle \R_*$ & The set of real numbers excluding $0$\\
-$\displaystyle \R_*^+$ & The set of positive real numbers excluding $0$\\
+$\displaystyle \R^d$ & The euclidean set of dimension $d$\\
+$\|\cdot\|$ & a norm of an euclidean set \\
+$\dist\LP\cdot,\cdot\RP$ & A distance on a Polish space. \\ 
 $\displaystyle \N$ & The set of natural numbers\\
-$\displaystyle \N_*$ & The set of natural numbers excluding $0$\\
-$\displaystyle \card(\cdot)$ & The cardinal of a set\\
-$\displaystyle a_i$ & $i$-th element of the vector $\abf$\\
+$\displaystyle \nabla f$ & the gradient of a function $f:\Rbb^d \rightarrow \Rbb$\\
 \end{tabular}
 
-\vspace{0.7cm}
 
+\vspace{0.7cm}
 \centerline{\bf Statistical Learning Theory}
 \vspace{0.2cm}
 \begin{tabular}{cp{13cm}}
-$\displaystyle \X$ & Set of $\d$-dimensional inputs ($\subseteq \R^\d$)\\
-$\displaystyle \Y$ & Set of labels\\
-$\displaystyle \x$ & A real-valued input $\x\in\X$\\ 
-$\displaystyle \y$ & A label $\y\in\Y$ associated to the input $\x$\\
-$\displaystyle \D$ & Unknown data distribution on $\X\times\Y$\\
-$\displaystyle \D^\m$ & Unknown data distribution on the $\m$-samples, \ie, on $(\X{\times}\Y)^\m$\\
-$\displaystyle \S$ & Learning sample $\S=\{(\x_i, \y_i)\}_{i=1}^{\m}$ drawn from $\D^\m$\\
-$\displaystyle \dS$ & Uniform distribution on $\S$\\
-$\displaystyle \T$ & Test set drawn from $\D^\m$\\
-\end{tabular}
-
-\begin{tabular}{cp{13cm}}
-$\displaystyle \dT$ & Uniform distribution on $\T$\\
-$\displaystyle \H$ & The set of hypotheses\\
-$\displaystyle \h$ & A hypothesis $\h \in \H$\\
-$\loss(\cdot, \cdot)$ & Loss function\\
-$\RiskLoss_{\Dp}(\h)$ & Risk of the hypothesis $\h\in\H$ \wrt the loss function $\loss()$ on $\Dp$\\
-$\Risk_{\Dp}(\h)$ & Risk of the hypothesis $\h\in\H$ \wrt the 0-1 loss on $\Dp$\\
+$\displaystyle \Z$ & Data space. In supervised learning, $\Z=(\X,\Y)$ with $\X,\Y$ input and label spaces \\
+$\displaystyle \z$ & A datum of $\Z$, in supervised learning $\z=(\x,\y)$ with $\x$ input and $\y$ label  \\
+$\displaystyle \S$ & Learning sample $\S=\{\z_i\}_{i\geq 1}$\\
+$\displaystyle \DS$ & Distribution of $\S$\\
+$\displaystyle \Sm$ & Restriction of $\S$ to its $m$ first data $\S_m=\{\z_i\}_{i= 1\cdots m}$\\
+$\displaystyle \Dm$ & Distribution of $\Sm$\\
+$\displaystyle \D$ & For \iid $\S$, distribution of a single datum on $\Z$\\
+$\displaystyle \D^m$ & For \iid $\S$, distribution of $\Sm$, \ie $\Dm=\D^m$.\\
+$\displaystyle \Tcal$ & For \iid $\S$, Test set drawn from $\D$\\
+$\displaystyle \Hcal$ & The set of hypotheses\\
+$\displaystyle \h$ & A hypothesis $\h \in \Hcal$\\
+$\displaystyle \loss $ & Loss function $\loss : \Hcal\times \Z \rightarrow \Rbb $\\
 \end{tabular}
 
 \vspace{0.7cm}
@@ -49,28 +39,38 @@ $\Risk_{\Dp}(\h)$ & Risk of the hypothesis $\h\in\H$ \wrt the 0-1 loss on $\Dp$\
 \centerline{\bf Probability Theory}
 \vspace{0.2cm}
 \begin{tabular}{cp{13cm}}
-$\EE_{X\sim\Xcal}\LB\cdot\RB$ & The expectation \wrt the random variable $X\sim\Xcal$\\
-$\PP_{X\sim\Xcal}\LB\cdot\RB$ & The probability \wrt the random variable $X\sim\Xcal$\\
+$\Ebb_{X\sim\nu}\LB\cdot\RB$ & The expectation \wrt the random variable $X\sim\nu$\\
+$\Pbb_{X\sim\nu}\LB\cdot\RB$ & The probability \wrt the random variable $X\sim\nu$\\
 $\displaystyle \indic\LB a\RB$ & Indicator function; returns $1$ if $a$ is true and $0$ otherwise\\
-$\M(\H)$ & Set of Probability densities \wrt the reference measure on $\H$\\
-$\Q$ & Posterior distribution $\Q\in\M(\H)$ on $\H$\\
-$\P$ & Prior distribution $\P\in\M^{*}(\H)$ on $\H$\\
+$(\Fcal_i)_{i\geq 1}$ &Filtration adapted to $\S$ \\
+$\Ebb_i[\cdot]$ & Conditional expectation \wrt $\Fcal_i$, \ie $ \Ebb_i[\cdot] := \Ebb\LB\cdot\mid \Fcal_i\RB$\\
+$\mathcal{N}(\mu,\Sigma)$ & Gaussian distribution on $\Rbb^d$ with mean $\mu$ and covariance matrix $\Sigma$
+\end{tabular}
+
+\vspace{0.7cm}
+\centerline{\bf PAC-Bayes framework}
+\vspace{0.2cm}
+\begin{tabular}{cp{13cm}}
+$\Mcal(\H)$ & Set of Probability densities \wrt the reference measure on $\H$\\
+$\Q$ & Posterior distribution $\Q\in\Mcal(\H)$ on $\H$\\
+$\P$ & Prior distribution $\P\in\Mcal(\H)$ on $\H$\\
 $\displaystyle \KL(\Q\|\P)$ & Kullback-Leibler (KL) divergence between $\Q$ and $\P$\\
-$\displaystyle \Renyi_{\alpha}(\Q\|\P)$ & Rényi Divergence between $\Q$ and $\P$\\
-$\Unif(\Abb)$ & Uniform distribution on $\Abb$\\
-$\Dir(\paramDir)$ & Dirichlet distribution of parameters $\paramDir\in\R_{*}^+$\\
+$\displaystyle D_{\alpha}(\Q\|\P)$ & Rényi Divergence between $\Q$ and $\P$\\
+$\displaystyle \Risk_{\D}(\h)$ & Population Risk of $\h\in\H$ \wrt $\D$, \ie $\Risk_{\D}(\h):= \Ebb_{\z\sim\D}\LB\ell(h,\z)\RB$\\
+$\displaystyle \Riskhat_{\Sm}(h)$ & Empirical Risk on $\S_m$, \ie $\displaystyle \Riskhat_{\Sm}(h) \frac{1}{m} \sum_{i=1}^m \ell(h,\z_i)$ \\
+$\displaystyle \Delta_{\Sm}(h)$ & Generalisation gap $\Delta_{\Sm}(h):= \Risk_\D(h) - \Riskhat_{\Sm}(h)$ \\
+$\Risk_\D(\Q)$ & Expected population risk \wrt $\Q$, \ie $\Risk_\D(\Q) := \Ebb_{h\sim \Q}\LB \Risk_\D(\Q)\RB$\\
+$\Riskhat_{\Sm}(\Q)$ & Expected empirical risk \wrt $\Q$, $\Riskhat_{\Sm}(\Q):= \Ebb_{h\sim \Q}\LB \Riskhat_{\Sm}(\Q)\RB$ \\
+$\displaystyle \Delta_{\Sm}(\Q)$ & Expected generalisation gap \wrt $\Q$, $\Delta_{\Sm}(\Q):= \Ebb_{h\sim \Q}\LB \Delta_{\Sm}(h) \RB$ \\
+$\displaystyle \P_{-f(h)}$ & Gibbs posterior associated to prior $\P$ and function $f: \Hcal \rightarrow \Rbb$
 \end{tabular}
 
 \vspace{0.7cm}
 
-\centerline{\bf Majority Vote}
+\centerline{\bf Optimal transport}
 \vspace{0.2cm}
 \begin{tabular}{cp{13cm}}
-$\MV_{\Q}(\cdot)$ & The majority vote classifier\\
-$\MaQ(\x,\y)$ & Majority vote's margin for the example $(\x,\y)\in\X{\times}\Y$\\
-$\OmMaQ(\x,\y)$ & $\frac{1}{2}$-Margin for the example $(\x,\y)\in\X{\times}\Y$\\
-$\sign(a)$ & Sign function; returns ${+}1$ if $a\ge0$ and ${-}1$ otherwise\\
-$r_{\Dp}(\Q)$ & Gibbs risk on the distribution $\Dp$ associated to the majority vote $\MVQ()$\\
-$e_{\Dp}(\Q)$ & Joint Error on the distribution $\Dp$ associated to the majority vote $\MVQ()$\\
-$d_{\Dp}(\Q)$ & Disagreement on the distribution $\Dp$ associated to the majority vote $\MVQ()$\\
+$\W_1$ & The $1$-Wasserstein distance\\
+$\W_2$ & The $2$-Wasserstein distance\\
+$\Gamma(\Q,\P)$ & Set of all coupling distribution on $\Hcal^2$ whose marginals are $\Q$ and $\P$.
 \end{tabular}
