@@ -409,7 +409,7 @@ For the online case, the performance of the linear models obtained from our algo
 However, notice that the risk difference is less than $0.05$ on $6$ datasets.
 The advantage of \Cref{alg:online} is more pronounced for neural networks: we improve the performance in all datasets except \textsc{ adult} and \textsc{ sensorless}.
 Hence, this confirms that optimising the regularised loss $\loss(h_{\wbf}, \z_i) + \|\wbf{-}\wbf_{i-1}\|$ brings a good advantage compared to the loss $\loss(h_{\wbf}, \z_i)$ only. A possible explanation would be that OGD suffers from underfitting (with a high empirical risk $\mathfrak{C}_{\D}$) while we are able to control overfitting through a regularisation term.
-Indeed, only one gradient descent step is done for each new datum $(\x_i, y_i)$, which might not be sufficient to decrease the loss. 
+Indeed, only one gradient descent step is done for each new datum $(\x_i, y_i)$, which might not be sufficient to decrease the loss.  
 Instead, our method solves the problem associated with \Cref{eq:online-alg-exp-2} and constrains the descent with the norm $\|\wbf-\wbf_{i-1}\|$.
 
 \section{Conclusion and Perspectives}
