@@ -660,6 +660,55 @@
       \verb https://proceedings.neurips.cc/paper/2000/hash/49ad23d1ec9fa4bd8d77d02681df5cfa-Abstract.html
       \endverb
     \endentry
+    \entry{camuto2021fractal}{article}{}
+      \name{author}{6}{}{%
+        {{hash=79192b489fcbb1e2dbbddab226a60b6e}{%
+           family={Camuto},
+           familyi={C\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b8dd237872b59cd9eb631773937e23b7}{%
+           family={Deligiannidis},
+           familyi={D\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=7e21733cf7b1910ce99c703332486868}{%
+           family={Erdogdu},
+           familyi={E\bibinitperiod},
+           given={Murat},
+           giveni={M\bibinitperiod}}}%
+        {{hash=22651eef66aa0452a1d89c07d956e3f6}{%
+           family={Gurbuzbalaban},
+           familyi={G\bibinitperiod},
+           given={Mert},
+           giveni={M\bibinitperiod}}}%
+        {{hash=09761c1924ec610e6c70386b093ef79c}{%
+           family={Simsekli},
+           familyi={S\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
+        {{hash=d7b87bb6f16be0326dd31bf137952045}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Lingjiong},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{7cb8f711c6066db21aa789fd08008240}
+      \strng{fullhash}{87f976bad5c51bc8e47d5337972567bf}
+      \strng{bibnamehash}{87f976bad5c51bc8e47d5337972567bf}
+      \strng{authorbibnamehash}{87f976bad5c51bc8e47d5337972567bf}
+      \strng{authornamehash}{7cb8f711c6066db21aa789fd08008240}
+      \strng{authorfullhash}{87f976bad5c51bc8e47d5337972567bf}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Conference on Neural Information Processing Systems (NeurIPS)}
+      \field{title}{{Fractal structure and generalization properties of stochastic optimization algorithms}}
+      \field{year}{2021}
+    \endentry
     \entry{catoni2003pac}{article}{}
       \name{author}{1}{}{%
         {{hash=1630a630ef59f1ba99922a75284b7321}{%
@@ -1177,6 +1226,34 @@
       \field{year}{1939}
       \field{pages}{824\bibrangedash 824}
       \range{pages}{1}
+    \endentry
+    \entry{dua2017uci}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=eea1505410ff15d1a2b081186aad5dbb}{%
+           family={Dua},
+           familyi={D\bibinitperiod},
+           given={Dheeru},
+           giveni={D\bibinitperiod}}}%
+        {{hash=00949829ae497e5a94a73f886a7d0b51}{%
+           family={Graff},
+           familyi={G\bibinitperiod},
+           given={Casey},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{fullhash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{bibnamehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{authorbibnamehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{authornamehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{authorfullhash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{{UCI} Machine Learning Repository}}
+      \field{year}{2017}
     \endentry
     \entry{dupuis2024generalization}{article}{}
       \name{author}{2}{}{%
@@ -2662,6 +2739,29 @@
       \field{volume}{abs/1909.01931}
       \field{year}{2019}
     \endentry
+    \entry{lecun1998mnist}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6a1aa6b7eab12b931ca7c7e3f927231d}{%
+           family={LeCun},
+           familyi={L\bibinitperiod},
+           given={Yann},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{fullhash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{bibnamehash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{authorbibnamehash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{authornamehash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{authorfullhash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{The MNIST database of handwritten digits}}
+      \field{year}{1998}
+    \endentry
     \entry{letarte2019dichotomize}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=c7413607d91d2e9907808cc9a539cf1c}{%
@@ -3366,6 +3466,35 @@
       \verb{url}
       \verb https://proceedings.neurips.cc/paper/2016/hash/320722549d1751cf3f247855f937b982-Abstract.html
       \endverb
+    \endentry
+    \entry{orabona2017training}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=35db660c992251cc50db3cedca6172f1}{%
+           family={Orabona},
+           familyi={O\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=f5266726144f5c9aa4bf2ee472653b56}{%
+           family={Tommasi},
+           familyi={T\bibinitperiod},
+           given={Tatiana},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{c9ead5938271d5be74463938fabebd53}
+      \strng{fullhash}{c9ead5938271d5be74463938fabebd53}
+      \strng{bibnamehash}{c9ead5938271d5be74463938fabebd53}
+      \strng{authorbibnamehash}{c9ead5938271d5be74463938fabebd53}
+      \strng{authornamehash}{c9ead5938271d5be74463938fabebd53}
+      \strng{authorfullhash}{c9ead5938271d5be74463938fabebd53}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems (NIPS)}
+      \field{title}{{Training Deep Networks without Learning Rates Through Coin Betting}}
+      \field{year}{2017}
     \endentry
     \entry{pace1997sparse}{article}{}
       \name{author}{2}{}{%
@@ -4769,6 +4898,37 @@
       \verb https://doi.org/10.1109/72.788640
       \endverb
     \endentry
+    \entry{vapnik1974theory}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=c2b3e05872463585b4be6aab10d10d63}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+        {{hash=fcd871522113139959f4f82652787213}{%
+           family={Chervonenkis},
+           familyi={C\bibinitperiod},
+           given={Alexey},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nauka, Moscow}%
+      }
+      \strng{namehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{fullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{bibnamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authorbibnamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authornamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authorfullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Theory of pattern recognition}}
+      \field{year}{1974}
+    \endentry
     \entry{vapnik2000learning}{book}{}
       \name{author}{1}{}{%
         {{hash=6755575824e883d922886349815645ff}{%
@@ -4985,6 +5145,39 @@
       \verb{url}
       \verb https://proceedings.neurips.cc/paper_files/paper/2022/file/49ffa271264808cf500ea528ed8ec9b3-Paper-Conference.pdf
       \endverb
+    \endentry
+    \entry{xiao2017fashion}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=1af11a48cd2fa4be0cc93269e719b54c}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Han},
+           giveni={H\bibinitperiod}}}%
+        {{hash=3c17107e356e9e329a5b82ae2f7cd441}{%
+           family={Rasul},
+           familyi={R\bibinitperiod},
+           given={Kashif},
+           giveni={K\bibinitperiod}}}%
+        {{hash=626b3b250f5889797be5d59aab9e0ac5}{%
+           family={Vollgraf},
+           familyi={V\bibinitperiod},
+           given={Roland},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{baf27447d7d65975cdce75ac5efbf71b}
+      \strng{fullhash}{5290b4700ff446de9ce062ea732ebd9a}
+      \strng{bibnamehash}{5290b4700ff446de9ce062ea732ebd9a}
+      \strng{authorbibnamehash}{5290b4700ff446de9ce062ea732ebd9a}
+      \strng{authornamehash}{baf27447d7d65975cdce75ac5efbf71b}
+      \strng{authorfullhash}{5290b4700ff446de9ce062ea732ebd9a}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms}}
+      \field{year}{2017}
     \endentry
     \entry{xu2017info}{inproceedings}{}
       \name{author}{2}{}{%
@@ -5349,6 +5542,37 @@
       \field{title}{{Leçons d'Analyse Fonctionelle}}
       \field{year}{1955}
     \endentry
+    \entry{vapnik1974theory}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=c2b3e05872463585b4be6aab10d10d63}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+        {{hash=fcd871522113139959f4f82652787213}{%
+           family={Chervonenkis},
+           familyi={C\bibinitperiod},
+           given={Alexey},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nauka, Moscow}%
+      }
+      \strng{namehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{fullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{bibnamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authorbibnamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authornamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authorfullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Theory of pattern recognition}}
+      \field{year}{1974}
+    \endentry
     \entry{csizar1975divergence}{article}{}
       \name{author}{1}{}{%
         {{hash=60fe2f84ffa0237d0f8d35383a9c5b7a}{%
@@ -5592,6 +5816,29 @@
       \field{journaltitle}{Chemometrics and intelligent laboratory systems}
       \field{title}{Introduction to multi-layer feed-forward neural networks}
       \field{year}{1997}
+    \endentry
+    \entry{lecun1998mnist}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6a1aa6b7eab12b931ca7c7e3f927231d}{%
+           family={LeCun},
+           familyi={L\bibinitperiod},
+           given={Yann},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{fullhash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{bibnamehash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{authorbibnamehash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{authornamehash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \strng{authorfullhash}{6a1aa6b7eab12b931ca7c7e3f927231d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{The MNIST database of handwritten digits}}
+      \field{year}{1998}
     \endentry
     \entry{mcallester1998some}{inproceedings}{}
       \name{author}{1}{}{%
@@ -7585,6 +7832,34 @@
       \field{volume}{abs/1712.02747}
       \field{year}{2017}
     \endentry
+    \entry{dua2017uci}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=eea1505410ff15d1a2b081186aad5dbb}{%
+           family={Dua},
+           familyi={D\bibinitperiod},
+           given={Dheeru},
+           giveni={D\bibinitperiod}}}%
+        {{hash=00949829ae497e5a94a73f886a7d0b51}{%
+           family={Graff},
+           familyi={G\bibinitperiod},
+           given={Casey},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{fullhash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{bibnamehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{authorbibnamehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{authornamehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{authorfullhash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{{UCI} Machine Learning Repository}}
+      \field{year}{2017}
+    \endentry
     \entry{dziugaite2017computing}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=9226e3e9f40624082119487c644bc224}{%
@@ -7739,6 +8014,35 @@
       \verb https://proceedings.neurips.cc/paper/2017/hash/10ce03a1ed01077e3e289f3e53c72813-Abstract.html
       \endverb
     \endentry
+    \entry{orabona2017training}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=35db660c992251cc50db3cedca6172f1}{%
+           family={Orabona},
+           familyi={O\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=f5266726144f5c9aa4bf2ee472653b56}{%
+           family={Tommasi},
+           familyi={T\bibinitperiod},
+           given={Tatiana},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{c9ead5938271d5be74463938fabebd53}
+      \strng{fullhash}{c9ead5938271d5be74463938fabebd53}
+      \strng{bibnamehash}{c9ead5938271d5be74463938fabebd53}
+      \strng{authorbibnamehash}{c9ead5938271d5be74463938fabebd53}
+      \strng{authornamehash}{c9ead5938271d5be74463938fabebd53}
+      \strng{authorfullhash}{c9ead5938271d5be74463938fabebd53}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems (NIPS)}
+      \field{title}{{Training Deep Networks without Learning Rates Through Coin Betting}}
+      \field{year}{2017}
+    \endentry
     \entry{thiemann2017strongly}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=2a52f7c0e82f94acb63c28ef93af1878}{%
@@ -7779,6 +8083,39 @@
       \field{labeltitlesource}{title}
       \field{booktitle}{International Conference on Algorithmic Learning Theory}
       \field{title}{{A strongly quasiconvex PAC-Bayesian bound}}
+      \field{year}{2017}
+    \endentry
+    \entry{xiao2017fashion}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=1af11a48cd2fa4be0cc93269e719b54c}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Han},
+           giveni={H\bibinitperiod}}}%
+        {{hash=3c17107e356e9e329a5b82ae2f7cd441}{%
+           family={Rasul},
+           familyi={R\bibinitperiod},
+           given={Kashif},
+           giveni={K\bibinitperiod}}}%
+        {{hash=626b3b250f5889797be5d59aab9e0ac5}{%
+           family={Vollgraf},
+           familyi={V\bibinitperiod},
+           given={Roland},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{baf27447d7d65975cdce75ac5efbf71b}
+      \strng{fullhash}{5290b4700ff446de9ce062ea732ebd9a}
+      \strng{bibnamehash}{5290b4700ff446de9ce062ea732ebd9a}
+      \strng{authorbibnamehash}{5290b4700ff446de9ce062ea732ebd9a}
+      \strng{authornamehash}{baf27447d7d65975cdce75ac5efbf71b}
+      \strng{authorfullhash}{5290b4700ff446de9ce062ea732ebd9a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms}}
       \field{year}{2017}
     \endentry
     \entry{xu2017info}{inproceedings}{}
@@ -8911,6 +9248,55 @@
       \verb{url}
       \verb https://doi.org/10.3390/e23101280
       \endverb
+    \endentry
+    \entry{camuto2021fractal}{article}{}
+      \name{author}{6}{}{%
+        {{hash=79192b489fcbb1e2dbbddab226a60b6e}{%
+           family={Camuto},
+           familyi={C\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b8dd237872b59cd9eb631773937e23b7}{%
+           family={Deligiannidis},
+           familyi={D\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=7e21733cf7b1910ce99c703332486868}{%
+           family={Erdogdu},
+           familyi={E\bibinitperiod},
+           given={Murat},
+           giveni={M\bibinitperiod}}}%
+        {{hash=22651eef66aa0452a1d89c07d956e3f6}{%
+           family={Gurbuzbalaban},
+           familyi={G\bibinitperiod},
+           given={Mert},
+           giveni={M\bibinitperiod}}}%
+        {{hash=09761c1924ec610e6c70386b093ef79c}{%
+           family={Simsekli},
+           familyi={S\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
+        {{hash=d7b87bb6f16be0326dd31bf137952045}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Lingjiong},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{7cb8f711c6066db21aa789fd08008240}
+      \strng{fullhash}{87f976bad5c51bc8e47d5337972567bf}
+      \strng{bibnamehash}{87f976bad5c51bc8e47d5337972567bf}
+      \strng{authorbibnamehash}{87f976bad5c51bc8e47d5337972567bf}
+      \strng{authornamehash}{7cb8f711c6066db21aa789fd08008240}
+      \strng{authorfullhash}{87f976bad5c51bc8e47d5337972567bf}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Conference on Neural Information Processing Systems (NeurIPS)}
+      \field{title}{{Fractal structure and generalization properties of stochastic optimization algorithms}}
+      \field{year}{2021}
     \endentry
     \entry{ding2021bridging}{inproceedings}{}
       \name{author}{5}{}{%
@@ -10570,6 +10956,28 @@
       \endverb
     \endentry
   \enddatalist
+  \missing{arjovsky2017wasserstein}
+  \missing{boyd2004convex}
+  \missing{chee2021learning}
+  \missing{donsker1976asymptotic}
+  \missing{goyal2017pac}
+  \missing{jang2023tighter}
+  \missing{kantorovich1960mathematical}
+  \missing{kervadec2022constrained}
+  \missing{koltchinskii2000rademacher}
+  \missing{liu2011multi}
+  \missing{lu2019optimal}
+  \missing{lugosi2022generalization}
+  \missing{monge1781memoire}
+  \missing{muller1997integral}
+  \missing{peyre2019computational}
+  \missing{russo2020how}
+  \missing{slivkins19intro}
+  \missing{vapnik1968uniform}
+  \missing{villani2009optimal}
+  \missing{xu2017information}
+  \missing{zhang2018optimal}
+  \missing{zhuang2021regret}
 \endrefsection
 
 \refsection{1}

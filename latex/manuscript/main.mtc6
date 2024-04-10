@@ -1,4 +1,16 @@
-{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Appréhender l'apprentissage humain.}{\reset@font\mtcPfont 15}{section*.14}}
-{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode De l'apprentissage humain à l'apprentissage machine.}{\reset@font\mtcPfont 16}{section*.15}}
-{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Comprendre la généralisation depuis l'apprentissage.}{\reset@font\mtcPfont 16}{section*.16}}
-{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Quid de la généralisation en apprentissage machine de nos jours?}{\reset@font\mtcPfont 17}{section*.17}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.1}A brief introduction to statistical learning}{\reset@font\mtcSfont 19}{section.1.1}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Generalisation bounds.}{\reset@font\mtcPfont 20}{section*.21}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode How to choose the complexity term ? An introductory example.}{\reset@font\mtcPfont 20}{section*.22}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.2}An information-theoretic exposition of PAC-Bayes learning}{\reset@font\mtcSfont 21}{section.1.2}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode A theory suited for \Cref {ex: neural_net}?}{\reset@font\mtcPfont 25}{section*.24}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.3}From theory to learning algorithms}{\reset@font\mtcSfont 25}{section.1.3}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode A general pattern for PAC-Bayesian algorithms}{\reset@font\mtcPfont 26}{section*.27}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Instantiating a PAC-Bayes algorithm}{\reset@font\mtcPfont 27}{section*.28}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Efficiency of PAC-Bayes algorithms on supervised learning problems.}{\reset@font\mtcPfont 27}{section*.29}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode PAC-Bayes algorithms beyond supervised learning.}{\reset@font\mtcPfont 27}{section*.30}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Is \Cref {ex: neural_net} tackled now?}{\reset@font\mtcPfont 28}{section*.31}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.4}An optimisation perspective of PAC-Bayes}{\reset@font\mtcSfont 28}{section.1.4}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Beyond {\it i.i.d.}\xspace data}{\reset@font\mtcPfont 30}{section*.34}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Avoiding light-tailed losses.}{\reset@font\mtcPfont 30}{section*.35}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Towards data-dependent priors.}{\reset@font\mtcPfont 30}{section*.36}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Beyond KL divergence.}{\reset@font\mtcPfont 31}{section*.37}}
