@@ -694,6 +694,37 @@
       \verb https://proceedings.neurips.cc/paper/2000/hash/49ad23d1ec9fa4bd8d77d02681df5cfa-Abstract.html
       \endverb
     \endentry
+    \entry{boyd2004convex}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ec94d94cc487dd71939a90cbeaaf47d0}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2608d599a0bc2a784c301329a8da5f7b}{%
+           family={Vandenberghe},
+           familyi={V\bibinitperiod},
+           given={Lieven},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{fullhash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{bibnamehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authorbibnamehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authornamehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authorfullhash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Convex optimization}}
+      \field{year}{2004}
+    \endentry
     \entry{camuto2021fractal}{article}{}
       \name{author}{6}{}{%
         {{hash=79192b489fcbb1e2dbbddab226a60b6e}{%
@@ -3092,6 +3123,35 @@
       \verb https://doi.org/10.1214/18-EJS1479
       \endverb
     \endentry
+    \entry{liu2011multi}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b08653b3c675f8cd6e471ed2da3030d8}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Keqin},
+           giveni={K\bibinitperiod}}}%
+        {{hash=1c5e3345194ab52331180003270ede9c}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{fullhash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{bibnamehash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{authorbibnamehash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{authornamehash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{authorfullhash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Allerton Conference on Communication, Control, and Computing}
+      \field{title}{{Multi-Armed Bandit Problems with Heavy Tail Reward Distributions}}
+      \field{year}{2011}
+    \endentry
     \entry{london2017pac}{inproceedings}{}
       \name{author}{1}{}{%
         {{hash=0d384a493e9316b51e8acc450bcf7587}{%
@@ -3121,6 +3181,46 @@
       \verb{url}
       \verb https://proceedings.neurips.cc/paper/2017/hash/7fea637fd6d02b8f0adf6f7dc36aed93-Abstract.html
       \endverb
+    \endentry
+    \entry{lu2019optimal}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=181143099816e204f1334210b2c360d4}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Shiyin},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6b7cb2538a013babf9876fc36469e2e6}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Guanghui},
+           giveni={G\bibinitperiod}}}%
+        {{hash=ff7d1e4dfbba21607e36a4a60f476055}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Yao},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=3dd8089f3f84e2a69c24625f7a549bc6}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Lijun},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{e534832f41ed65413bc9d5d214af5db7}
+      \strng{fullhash}{685f7cf6a16f386319071e76cf2ecc2b}
+      \strng{bibnamehash}{685f7cf6a16f386319071e76cf2ecc2b}
+      \strng{authorbibnamehash}{685f7cf6a16f386319071e76cf2ecc2b}
+      \strng{authornamehash}{e534832f41ed65413bc9d5d214af5db7}
+      \strng{authorfullhash}{685f7cf6a16f386319071e76cf2ecc2b}
+      \field{extraname}{1}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Conference on Machine Learning (ICML)}
+      \field{title}{{Optimal Algorithms for Lipschitz Bandits with Heavy-tailed Rewards}}
+      \field{year}{2019}
     \endentry
     \entry{lu2017expressive}{inproceedings}{}
       \name{author}{5}{}{%
@@ -3156,6 +3256,7 @@
       \strng{authorbibnamehash}{9ca97a7d3d7e4141acfa4a446d5dadab}
       \strng{authornamehash}{9828a8b2d135a1e4538129b0c47eb63a}
       \strng{authorfullhash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \field{extraname}{2}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{extradatescope}{labelyear}
@@ -4111,6 +4212,37 @@
       \field{title}{{Tighter Risk Certificates for Neural Networks}}
       \field{year}{2021}
     \endentry
+    \entry{peyre2019computational}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8381a1d2d66d734a8454d63ac3344f53}{%
+           family={Peyré},
+           familyi={P\bibinitperiod},
+           given={Gabriel},
+           giveni={G\bibinitperiod}}}%
+        {{hash=a771427291cb72a39e026a68b102335d}{%
+           family={Cuturi},
+           familyi={C\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{fullhash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{bibnamehash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{authorbibnamehash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{authornamehash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{authorfullhash}{031f81e8cc543b25b04a1a69bce7d466}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations and Trends in Machine Learning}
+      \field{number}{5-6}
+      \field{title}{{Computational Optimal Transport}}
+      \field{volume}{11}
+      \field{year}{2019}
+    \endentry
     \entry{picard2022change}{article}{}
       \name{author}{2}{}{%
         {{hash=2378452d5436bc82fd65993fd51fd9aa}{%
@@ -4816,6 +4948,30 @@
       \field{title}{{A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks}}
       \field{year}{2019}
     \endentry
+    \entry{slivkins2019intro}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d9488c9456b1a887dfd741f2baf97414}{%
+           family={Slivkins},
+           familyi={S\bibinitperiod},
+           given={Aleksandrs},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{fullhash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{bibnamehash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{authorbibnamehash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{authornamehash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{authorfullhash}{d9488c9456b1a887dfd741f2baf97414}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations and Trends in Machine Learning}
+      \field{title}{{Introduction to Multi-Armed Bandits}}
+      \field{year}{2019}
+    \endentry
     \entry{smith1988using}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=515068020b0c91b60dafded8cd79afbd}{%
@@ -5277,6 +5433,34 @@
       \field{year}{2023}
       \keyw{conference}
     \endentry
+    \entry{villani2009optimal}{book}{}
+      \name{author}{1}{}{%
+        {{hash=9a5829eabef68d560b86bf71527fd874}{%
+           family={Villani},
+           familyi={V\bibinitperiod},
+           given={Cédric},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{fullhash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{bibnamehash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{authorbibnamehash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{authornamehash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{authorfullhash}{9a5829eabef68d560b86bf71527fd874}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{338}
+      \field{series}{Grundlehren der mathematischen {Wissenschaften}}
+      \field{title}{{Optimal transport: old and new}}
+      \field{year}{2009}
+    \endentry
     \entry{wang2019information}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=c8cf19241225247d6d07dbf8a516b8ed}{%
@@ -5732,6 +5916,35 @@
       \verb{url}
       \verb http://papers.nips.cc/paper%5C_files/paper/2023/hash/5e8309c9ca683e11672e3dbcd4b87776-Abstract-Conference.html
       \endverb
+    \endentry
+    \entry{zhuang2021regret}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=ccc578c11f2d94bd4d09ea44e2b85c7e}{%
+           family={Zhuang},
+           familyi={Z\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod}}}%
+        {{hash=4a7c809b02f28bb6733cb4818aa4671e}{%
+           family={Sui},
+           familyi={S\bibinitperiod},
+           given={Yanan},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{fullhash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{bibnamehash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{authorbibnamehash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{authornamehash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{authorfullhash}{8b4526093082b444a362d0c4cc748f9a}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Conference on Artificial Intelligence and Statistics (AISTATS)}
+      \field{title}{{No-Regret Reinforcement Learning with Heavy-Tailed Rewards}}
+      \field{year}{2021}
     \endentry
     \entry{zinkevich2003online}{inproceedings}{}
       \name{author}{1}{}{%
@@ -6576,6 +6789,37 @@
       \field{pages}{928\bibrangedash 936}
       \range{pages}{9}
     \endentry
+    \entry{boyd2004convex}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ec94d94cc487dd71939a90cbeaaf47d0}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2608d599a0bc2a784c301329a8da5f7b}{%
+           family={Vandenberghe},
+           familyi={V\bibinitperiod},
+           given={Lieven},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{fullhash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{bibnamehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authorbibnamehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authornamehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{authorfullhash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Convex optimization}}
+      \field{year}{2004}
+    \endentry
     \entry{catoni2004statistical}{book}{}
       \name{author}{1}{}{%
         {{hash=1630a630ef59f1ba99922a75284b7321}{%
@@ -6965,6 +7209,34 @@
       \field{title}{{PAC-Bayesian learning of linear classifiers}}
       \field{year}{2009}
     \endentry
+    \entry{villani2009optimal}{book}{}
+      \name{author}{1}{}{%
+        {{hash=9a5829eabef68d560b86bf71527fd874}{%
+           family={Villani},
+           familyi={V\bibinitperiod},
+           given={Cédric},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{fullhash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{bibnamehash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{authorbibnamehash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{authornamehash}{9a5829eabef68d560b86bf71527fd874}
+      \strng{authorfullhash}{9a5829eabef68d560b86bf71527fd874}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{338}
+      \field{series}{Grundlehren der mathematischen {Wissenschaften}}
+      \field{title}{{Optimal transport: old and new}}
+      \field{year}{2009}
+    \endentry
     \entry{fard2010pac}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=0f5dcb5be04b46b15919e4505aedd399}{%
@@ -7068,6 +7340,35 @@
       \verb{url}
       \verb https://doi.org/10.1214/11-AOS918
       \endverb
+    \endentry
+    \entry{liu2011multi}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b08653b3c675f8cd6e471ed2da3030d8}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Keqin},
+           giveni={K\bibinitperiod}}}%
+        {{hash=1c5e3345194ab52331180003270ede9c}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{fullhash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{bibnamehash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{authorbibnamehash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{authornamehash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \strng{authorfullhash}{4cac0bc51df8c09fff88170ea7380bbe}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Allerton Conference on Communication, Control, and Computing}
+      \field{title}{{Multi-Armed Bandit Problems with Heavy Tail Reward Distributions}}
+      \field{year}{2011}
     \endentry
     \entry{pedregosa2011scikit}{article}{}
       \name{author}{16}{}{%
@@ -8375,6 +8676,7 @@
       \strng{authorbibnamehash}{9ca97a7d3d7e4141acfa4a446d5dadab}
       \strng{authornamehash}{9828a8b2d135a1e4538129b0c47eb63a}
       \strng{authorfullhash}{9ca97a7d3d7e4141acfa4a446d5dadab}
+      \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
@@ -9144,6 +9446,46 @@
       \verb https://proceedings.neurips.cc/paper/2019/hash/7ec3b3cf674f4f1d23e9d30c89426cce-Abstract.html
       \endverb
     \endentry
+    \entry{lu2019optimal}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=181143099816e204f1334210b2c360d4}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Shiyin},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6b7cb2538a013babf9876fc36469e2e6}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Guanghui},
+           giveni={G\bibinitperiod}}}%
+        {{hash=ff7d1e4dfbba21607e36a4a60f476055}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Yao},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=3dd8089f3f84e2a69c24625f7a549bc6}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Lijun},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{e534832f41ed65413bc9d5d214af5db7}
+      \strng{fullhash}{685f7cf6a16f386319071e76cf2ecc2b}
+      \strng{bibnamehash}{685f7cf6a16f386319071e76cf2ecc2b}
+      \strng{authorbibnamehash}{685f7cf6a16f386319071e76cf2ecc2b}
+      \strng{authornamehash}{e534832f41ed65413bc9d5d214af5db7}
+      \strng{authorfullhash}{685f7cf6a16f386319071e76cf2ecc2b}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Conference on Machine Learning (ICML)}
+      \field{title}{{Optimal Algorithms for Lipschitz Bandits with Heavy-tailed Rewards}}
+      \field{year}{2019}
+    \endentry
     \entry{mhammedi2019pac}{incollection}{}
       \name{author}{3}{}{%
         {{hash=8378559f699bb031dde2614cf2e5b27a}{%
@@ -9183,6 +9525,37 @@
       \verb{url}
       \verb http://papers.nips.cc/paper/9387-pac-bayes-un-expected-bernstein-inequality.pdf
       \endverb
+    \endentry
+    \entry{peyre2019computational}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8381a1d2d66d734a8454d63ac3344f53}{%
+           family={Peyré},
+           familyi={P\bibinitperiod},
+           given={Gabriel},
+           giveni={G\bibinitperiod}}}%
+        {{hash=a771427291cb72a39e026a68b102335d}{%
+           family={Cuturi},
+           familyi={C\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{fullhash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{bibnamehash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{authorbibnamehash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{authornamehash}{031f81e8cc543b25b04a1a69bce7d466}
+      \strng{authorfullhash}{031f81e8cc543b25b04a1a69bce7d466}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations and Trends in Machine Learning}
+      \field{number}{5-6}
+      \field{title}{{Computational Optimal Transport}}
+      \field{volume}{11}
+      \field{year}{2019}
     \endentry
     \entry{rivasplata2019pac}{article}{}
       \name{author}{3}{}{%
@@ -9251,6 +9624,30 @@
       \field{labeltitlesource}{title}
       \field{booktitle}{International Conference on Machine Learning (ICML)}
       \field{title}{{A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks}}
+      \field{year}{2019}
+    \endentry
+    \entry{slivkins2019intro}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d9488c9456b1a887dfd741f2baf97414}{%
+           family={Slivkins},
+           familyi={S\bibinitperiod},
+           given={Aleksandrs},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{fullhash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{bibnamehash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{authorbibnamehash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{authornamehash}{d9488c9456b1a887dfd741f2baf97414}
+      \strng{authorfullhash}{d9488c9456b1a887dfd741f2baf97414}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations and Trends in Machine Learning}
+      \field{title}{{Introduction to Multi-Armed Bandits}}
       \field{year}{2019}
     \endentry
     \entry{wang2019information}{inproceedings}{}
@@ -10417,6 +10814,35 @@
       \field{title}{{Stochastic Online Convex Optimization; Application to probabilistic time series forecasting}}
       \field{year}{2021}
     \endentry
+    \entry{zhuang2021regret}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=ccc578c11f2d94bd4d09ea44e2b85c7e}{%
+           family={Zhuang},
+           familyi={Z\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod}}}%
+        {{hash=4a7c809b02f28bb6733cb4818aa4671e}{%
+           family={Sui},
+           familyi={S\bibinitperiod},
+           given={Yanan},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{fullhash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{bibnamehash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{authorbibnamehash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{authornamehash}{8b4526093082b444a362d0c4cc748f9a}
+      \strng{authorfullhash}{8b4526093082b444a362d0c4cc748f9a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Conference on Artificial Intelligence and Statistics (AISTATS)}
+      \field{title}{{No-Regret Reinforcement Learning with Heavy-Tailed Rewards}}
+      \field{year}{2021}
+    \endentry
     \entry{amit2022integral}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=8ec9604f4393bea9e4deec7c3862783f}{%
@@ -11502,18 +11928,9 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{boyd2004convex}
-  \missing{donsker1976asymptotic}
-  \missing{jang2023tighter}
   \missing{kervadec2022constrained}
   \missing{koltchinskii2000rademacher}
-  \missing{liu2011multi}
-  \missing{lu2019optimal}
-  \missing{peyre2019computational}
-  \missing{slivkins19intro}
   \missing{vapnik1968uniform}
-  \missing{villani2009optimal}
-  \missing{zhuang2021regret}
 \endrefsection
 
 \refsection{1}

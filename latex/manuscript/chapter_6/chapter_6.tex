@@ -113,7 +113,7 @@ We refer the reader to \cite{villani2009optimal,peyre2019computational} for an i
 
 We present novel high-probability PAC-Bayesian bounds involving Wasserstein distances instead of the classical Kullback-Leibler divergence. 
 Our bounds hold for heavy-tailed losses (instead of classical subgaussian and subexponential assumptions), extending the remits of \cite[Theorem 11]{amit2022integral}.
-We exploit the supermartingale toolbox, recently introduced in PAC-Bayes framework by \cite{haddouche2023pac,chugg2023unified,jang2023tighter}, to derive bounds for both batch learning (\Cref{theorem:supervised-ht,theorem:supervised-nnl}) and online learning (\Cref{theorem:online-ht,theorem:online}).
+We exploit the supermartingale toolbox, recently introduced in PAC-Bayes framework by \cite{haddouche2023pac,chugg2023unified,jang2023tight}, to derive bounds for both batch learning (\Cref{theorem:supervised-ht,theorem:supervised-nnl}) and online learning (\Cref{theorem:online-ht,theorem:online}).
 
 
 \subsection{PAC-Bayes for batch learning with \iid data}
@@ -135,7 +135,7 @@ Also, for any $i,|S_i|$, we have $\Vhat_{|\S_i|}(h)= \sum_{\z\in \S_i} \left(\lo
 
 The proof is deferred to \Cref{sec:proof-supervised-ht}.
 While \Cref{theorem:supervised-ht} holds for losses taking values in $\R$, many learning problems rely in practice on more constrained losses.
-This loss can be bounded as in the case of, \eg, supervised learning or the multi-armed bandit problem \citep{slivkins19intro}, or simply non-negative as in regression problems involving the quadratic loss (studied, for instance, in \citealp{catoni2016pac,catoni2017dimension}).
+This loss can be bounded as in the case of, \eg, supervised learning or the multi-armed bandit problem \citep{slivkins2019intro}, or simply non-negative as in regression problems involving the quadratic loss (studied, for instance, in \citealp{catoni2016pac,catoni2017dimension}).
 Using again the supermartingale toolbox, we prove in \Cref{theorem:supervised-nnl} a tighter bound holding for heavy-tailed non-negative losses. 
 
 \begin{restatable}{theorem}{theoremsupervisednnl}
@@ -153,7 +153,7 @@ This result is rigorously stated in \Cref{theorem:supervised_tight} of \Cref{sec
 
 \textbf{High-level ideas of the proofs.}
 \Cref{theorem:supervised-ht,theorem:supervised-nnl} are structured around two tools.
-First, we exploit the Kantorovich-Rubinstein duality \cite[Remark 6.5]{villani2009optimal} to replace the change of measure inequality \cite{csizar1975divergence,donsker1976asymptotic}; this allows us to consider a Wasserstein distance instead of a KL term.
+First, we exploit the Kantorovich-Rubinstein duality \cite[Remark 6.5]{villani2009optimal} to replace the change of measure inequality \cite{csizar1975divergence,donsker1976asymp}; this allows us to consider a Wasserstein distance instead of a KL term.
 Then, we exploit the supermartingales used in \cite{haddouche2023pac,chugg2023unified} alongside Ville's inequality (instead of Markov's one) to obtain a high probability bound holding for heavy-tailed losses.
 Combining those techniques provides our PAC-Bayesian bounds.
 
@@ -310,7 +310,7 @@ According to \Cref{theorem:online}, such an algorithm aims to bound the {\it pop
 Note that we added the constraint $d\LP h_{\wbf},h_{\wbf_{i-1}}\RP \le 1$ compared to \Cref{eq:online-alg}. 
 This constraint ensures that the new hypothesis $h_{\wbf_i}$ is not too far from $h_{\wbf_{i-1}}$ (in the sense of the distance $\|\cdot\|_2$).
 Note that the constrained optimisation problem in \Cref{eq:online-alg-exp} can be rewritten in an unconstrained form (see \cite{boyd2004convex}) thanks to a barrier $B(\cdot)$ defined by $B(a)=0$ if $a\le 0$ and $B(a)=+\infty$ otherwise; we have 
-\begin{align}
+\begin{align} 
     \label{eq:online-alg-exp-2}
     \forall i \geq 1,\ \ h_i\in \argmin_{h_{\wbf}\in \Hcal} \loss(h_{\wbf}, \z_i) + d\LP h_{\wbf},h_{\wbf_{i-1}}\RP+ B(d\LP h_{\wbf},h_{\wbf_{i-1}}\RP-1).
 \end{align}
