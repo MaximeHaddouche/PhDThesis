@@ -880,6 +880,34 @@
       \field{volume}{abs/1712.02747}
       \field{year}{2017}
     \endentry
+    \entry{chee2021learning}{article}{}
+      \name{author}{2}{}{%
+        {{hash=d7b274e89e614df71fee975a73060da9}{%
+           family={Chee},
+           familyi={C\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=39acaca1d44c107b11700a487ea8b9e7}{%
+           family={Loustau},
+           familyi={L\bibinitperiod},
+           given={Sebastien},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{fullhash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{bibnamehash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{authorbibnamehash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{authornamehash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{authorfullhash}{689498d92b22a54096bbc59d9c12d200}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Learning with BOT - Bregman and Optimal Transport divergences}}
+      \field{year}{2021}
+    \endentry
     \entry{cherief2019generalization}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=0beba1feee618926ff867105a96ee056}{%
@@ -2701,6 +2729,30 @@
       \field{title}{{On the Complexity of Linear Prediction: Risk Bounds, Margin Bounds, and Regularization}}
       \field{year}{2008}
     \endentry
+    \entry{kantorovich1960mathematical}{article}{}
+      \name{author}{1}{}{%
+        {{hash=65d0b924970b348f9382e92779936511}{%
+           family={Kantorovitch},
+           familyi={K\bibinitperiod},
+           given={Leonid\bibnamedelima Vitalievitch},
+           giveni={L\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \strng{namehash}{65d0b924970b348f9382e92779936511}
+      \strng{fullhash}{65d0b924970b348f9382e92779936511}
+      \strng{bibnamehash}{65d0b924970b348f9382e92779936511}
+      \strng{authorbibnamehash}{65d0b924970b348f9382e92779936511}
+      \strng{authornamehash}{65d0b924970b348f9382e92779936511}
+      \strng{authorfullhash}{65d0b924970b348f9382e92779936511}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Management Science}
+      \field{title}{{Mathematical Methods of Organizing and Planning Production}}
+      \field{year}{1960}
+    \endentry
     \entry{kontorovich2014conc}{inproceedings}{}
       \name{author}{1}{}{%
         {{hash=f099dc3c8738f515483a2653b06f341d}{%
@@ -3297,6 +3349,56 @@
       \verb{url}
       \verb http://papers.nips.cc/paper/9387-pac-bayes-un-expected-bernstein-inequality.pdf
       \endverb
+    \endentry
+    \entry{monge1781memoire}{article}{}
+      \name{author}{1}{}{%
+        {{hash=06f4f3a66ade015a1425e64f9c2d1cbb}{%
+           family={Monge},
+           familyi={M\bibinitperiod},
+           given={Gaspard},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{fullhash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{bibnamehash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{authorbibnamehash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{authornamehash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{authorfullhash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Histoire de l’Académie Royale des Sciences de Paris}
+      \field{title}{{Mémoire sur la théorie des déblais et des remblais}}
+      \field{year}{1781}
+    \endentry
+    \entry{muller1997integral}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6d43d8076b2a08aac78aa8b75dcaed4b}{%
+           family={Müller},
+           familyi={M\bibinitperiod},
+           given={Alfred},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{fullhash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{bibnamehash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{authorbibnamehash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{authornamehash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{authorfullhash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Applied Probability}
+      \field{number}{2}
+      \field{title}{{Integral Probability Metrics and Their Generating Classes of Functions}}
+      \field{volume}{29}
+      \field{year}{1997}
     \endentry
     \entry{neal2012bayesian}{book}{}
       \name{author}{1}{}{%
@@ -5659,6 +5761,30 @@
     \endentry
   \enddatalist
   \datalist[entry]{ynt/global//global/global}
+    \entry{monge1781memoire}{article}{}
+      \name{author}{1}{}{%
+        {{hash=06f4f3a66ade015a1425e64f9c2d1cbb}{%
+           family={Monge},
+           familyi={M\bibinitperiod},
+           given={Gaspard},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{fullhash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{bibnamehash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{authorbibnamehash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{authornamehash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \strng{authorfullhash}{06f4f3a66ade015a1425e64f9c2d1cbb}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Histoire de l’Académie Royale des Sciences de Paris}
+      \field{title}{{Mémoire sur la théorie des déblais et des remblais}}
+      \field{year}{1781}
+    \endentry
     \entry{doob1939jean}{article}{}
       \name{author}{1}{}{%
         {{hash=b1f7ca538b74cc0f274fecc6b1699907}{%
@@ -5712,6 +5838,30 @@
       \field{labeltitlesource}{title}
       \field{title}{{Leçons d'Analyse Fonctionelle}}
       \field{year}{1955}
+    \endentry
+    \entry{kantorovich1960mathematical}{article}{}
+      \name{author}{1}{}{%
+        {{hash=65d0b924970b348f9382e92779936511}{%
+           family={Kantorovitch},
+           familyi={K\bibinitperiod},
+           given={Leonid\bibnamedelima Vitalievitch},
+           giveni={L\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \strng{namehash}{65d0b924970b348f9382e92779936511}
+      \strng{fullhash}{65d0b924970b348f9382e92779936511}
+      \strng{bibnamehash}{65d0b924970b348f9382e92779936511}
+      \strng{authorbibnamehash}{65d0b924970b348f9382e92779936511}
+      \strng{authornamehash}{65d0b924970b348f9382e92779936511}
+      \strng{authorfullhash}{65d0b924970b348f9382e92779936511}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Management Science}
+      \field{title}{{Mathematical Methods of Organizing and Planning Production}}
+      \field{year}{1960}
     \endentry
     \entry{vapnik1974theory}{misc}{}
       \name{author}{2}{}{%
@@ -5880,6 +6030,32 @@
       \field{booktitle}{Biomedical image processing and biomedical visualization}
       \field{title}{Nuclear feature extraction for breast tumor diagnosis}
       \field{year}{1993}
+    \endentry
+    \entry{muller1997integral}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6d43d8076b2a08aac78aa8b75dcaed4b}{%
+           family={Müller},
+           familyi={M\bibinitperiod},
+           given={Alfred},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{fullhash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{bibnamehash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{authorbibnamehash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{authornamehash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \strng{authorfullhash}{6d43d8076b2a08aac78aa8b75dcaed4b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Applied Probability}
+      \field{number}{2}
+      \field{title}{{Integral Probability Metrics and Their Generating Classes of Functions}}
+      \field{volume}{29}
+      \field{year}{1997}
     \endentry
     \entry{pace1997sparse}{article}{}
       \name{author}{2}{}{%
@@ -9611,6 +9787,34 @@
       \field{title}{{Fractal structure and generalization properties of stochastic optimization algorithms}}
       \field{year}{2021}
     \endentry
+    \entry{chee2021learning}{article}{}
+      \name{author}{2}{}{%
+        {{hash=d7b274e89e614df71fee975a73060da9}{%
+           family={Chee},
+           familyi={C\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=39acaca1d44c107b11700a487ea8b9e7}{%
+           family={Loustau},
+           familyi={L\bibinitperiod},
+           given={Sebastien},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{fullhash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{bibnamehash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{authorbibnamehash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{authornamehash}{689498d92b22a54096bbc59d9c12d200}
+      \strng{authorfullhash}{689498d92b22a54096bbc59d9c12d200}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Learning with BOT - Bregman and Optimal Transport divergences}}
+      \field{year}{2021}
+    \endentry
     \entry{ding2021bridging}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=cdcad02b1e1e277b45499790b7ccacde}{%
@@ -11299,16 +11503,12 @@
     \endentry
   \enddatalist
   \missing{boyd2004convex}
-  \missing{chee2021learning}
   \missing{donsker1976asymptotic}
   \missing{jang2023tighter}
-  \missing{kantorovich1960mathematical}
   \missing{kervadec2022constrained}
   \missing{koltchinskii2000rademacher}
   \missing{liu2011multi}
   \missing{lu2019optimal}
-  \missing{monge1781memoire}
-  \missing{muller1997integral}
   \missing{peyre2019computational}
   \missing{slivkins19intro}
   \missing{vapnik1968uniform}
