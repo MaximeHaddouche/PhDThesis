@@ -2784,6 +2784,84 @@
       \field{title}{{Mathematical Methods of Organizing and Planning Production}}
       \field{year}{1960}
     \endentry
+    \entry{kervadec2022constrained}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=716d4d1647d3b56700c33b2c0d0df206}{%
+           family={Kervadec},
+           familyi={K\bibinitperiod},
+           given={Hoel},
+           giveni={H\bibinitperiod}}}%
+        {{hash=ed0dc30fd3208158840e79f735cce505}{%
+           family={Dolz},
+           familyi={D\bibinitperiod},
+           given={Jose},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0b662dbfd96e443e0657559c33de2e45}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+        {{hash=123ea28f5bf47452f84a35dc5f0022c4}{%
+           family={Desrosiers},
+           familyi={D\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=3d21eb827ab0a92ec2fbbd4c1f6744b4}{%
+           family={Granger},
+           familyi={G\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=c71c368d66b650ce621357c7b27678d3}{%
+           family={Ayed},
+           familyi={A\bibinitperiod},
+           given={Ismail\bibnamedelima Ben},
+           giveni={I\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{44aaa23e78465b0466e12119a0a31824}
+      \strng{fullhash}{011b6b5f42cf7451dfe4f51384622a76}
+      \strng{bibnamehash}{011b6b5f42cf7451dfe4f51384622a76}
+      \strng{authorbibnamehash}{011b6b5f42cf7451dfe4f51384622a76}
+      \strng{authornamehash}{44aaa23e78465b0466e12119a0a31824}
+      \strng{authorfullhash}{011b6b5f42cf7451dfe4f51384622a76}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{European Signal Processing Conference (EUSIPCO)}
+      \field{title}{{Constrained deep networks: Lagrangian optimization via log-barrier extensions}}
+      \field{year}{2022}
+    \endentry
+    \entry{koltchinskii2000rademacher}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=011b8f274f21a2425582943fc46309d3}{%
+           family={Koltchinskii},
+           familyi={K\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+        {{hash=3185dbc24928e4dbdf5cbef9a26899d8}{%
+           family={Panchenko},
+           familyi={P\bibinitperiod},
+           given={Dmitriy},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{fullhash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{bibnamehash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{authorbibnamehash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{authornamehash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{authorfullhash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{High dimensional probability II}
+      \field{title}{{Rademacher processes and bounding the risk of function learning}}
+      \field{year}{2000}
+    \endentry
     \entry{kontorovich2014conc}{inproceedings}{}
       \name{author}{1}{}{%
         {{hash=f099dc3c8738f515483a2653b06f341d}{%
@@ -5291,6 +5369,36 @@
       \verb https://doi.org/10.1109/72.788640
       \endverb
     \endentry
+    \entry{vapnik1968uniform}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=c2b3e05872463585b4be6aab10d10d63}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+        {{hash=fcd871522113139959f4f82652787213}{%
+           family={Chervonenkis},
+           familyi={C\bibinitperiod},
+           given={Alexey},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{fullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{bibnamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authorbibnamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authornamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authorfullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \field{extraname}{1}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Doklady Akademii Nauk USSR}
+      \field{title}{{On the uniform convergence of relative frequencies of events to their probabilities}}
+      \field{year}{1968}
+    \endentry
     \entry{vapnik1974theory}{misc}{}
       \name{author}{2}{}{%
         {{hash=c2b3e05872463585b4be6aab10d10d63}{%
@@ -5313,6 +5421,7 @@
       \strng{authorbibnamehash}{dee0eb7439b39f0dae838e89894da43f}
       \strng{authornamehash}{dee0eb7439b39f0dae838e89894da43f}
       \strng{authorfullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \field{extraname}{2}
       \field{sortinit}{V}
       \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
       \field{extradatescope}{labelyear}
@@ -6076,6 +6185,36 @@
       \field{title}{{Mathematical Methods of Organizing and Planning Production}}
       \field{year}{1960}
     \endentry
+    \entry{vapnik1968uniform}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=c2b3e05872463585b4be6aab10d10d63}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+        {{hash=fcd871522113139959f4f82652787213}{%
+           family={Chervonenkis},
+           familyi={C\bibinitperiod},
+           given={Alexey},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{fullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{bibnamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authorbibnamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authornamehash}{dee0eb7439b39f0dae838e89894da43f}
+      \strng{authorfullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Doklady Akademii Nauk USSR}
+      \field{title}{{On the uniform convergence of relative frequencies of events to their probabilities}}
+      \field{year}{1968}
+    \endentry
     \entry{vapnik1974theory}{misc}{}
       \name{author}{2}{}{%
         {{hash=c2b3e05872463585b4be6aab10d10d63}{%
@@ -6098,6 +6237,7 @@
       \strng{authorbibnamehash}{dee0eb7439b39f0dae838e89894da43f}
       \strng{authornamehash}{dee0eb7439b39f0dae838e89894da43f}
       \strng{authorfullhash}{dee0eb7439b39f0dae838e89894da43f}
+      \field{extraname}{2}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
@@ -6557,6 +6697,35 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{An introduction to support vector machines and other kernel-based learning methods}
+      \field{year}{2000}
+    \endentry
+    \entry{koltchinskii2000rademacher}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=011b8f274f21a2425582943fc46309d3}{%
+           family={Koltchinskii},
+           familyi={K\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+        {{hash=3185dbc24928e4dbdf5cbef9a26899d8}{%
+           family={Panchenko},
+           familyi={P\bibinitperiod},
+           given={Dmitriy},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{fullhash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{bibnamehash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{authorbibnamehash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{authornamehash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \strng{authorfullhash}{fdfc76d993b8c0cf177141e073ccc7d2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{High dimensional probability II}
+      \field{title}{{Rademacher processes and bounding the risk of function learning}}
       \field{year}{2000}
     \endentry
     \entry{vapnik2000learning}{book}{}
@@ -11115,6 +11284,55 @@
       \verb http://papers.nips.cc/paper%5C_files/paper/2022/hash/41b6674c28a9b93ec8d22a53ca25bc3b-Abstract-Conference.html
       \endverb
     \endentry
+    \entry{kervadec2022constrained}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=716d4d1647d3b56700c33b2c0d0df206}{%
+           family={Kervadec},
+           familyi={K\bibinitperiod},
+           given={Hoel},
+           giveni={H\bibinitperiod}}}%
+        {{hash=ed0dc30fd3208158840e79f735cce505}{%
+           family={Dolz},
+           familyi={D\bibinitperiod},
+           given={Jose},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0b662dbfd96e443e0657559c33de2e45}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+        {{hash=123ea28f5bf47452f84a35dc5f0022c4}{%
+           family={Desrosiers},
+           familyi={D\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=3d21eb827ab0a92ec2fbbd4c1f6744b4}{%
+           family={Granger},
+           familyi={G\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=c71c368d66b650ce621357c7b27678d3}{%
+           family={Ayed},
+           familyi={A\bibinitperiod},
+           given={Ismail\bibnamedelima Ben},
+           giveni={I\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{44aaa23e78465b0466e12119a0a31824}
+      \strng{fullhash}{011b6b5f42cf7451dfe4f51384622a76}
+      \strng{bibnamehash}{011b6b5f42cf7451dfe4f51384622a76}
+      \strng{authorbibnamehash}{011b6b5f42cf7451dfe4f51384622a76}
+      \strng{authornamehash}{44aaa23e78465b0466e12119a0a31824}
+      \strng{authorfullhash}{011b6b5f42cf7451dfe4f51384622a76}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{European Signal Processing Conference (EUSIPCO)}
+      \field{title}{{Constrained deep networks: Lagrangian optimization via log-barrier extensions}}
+      \field{year}{2022}
+    \endentry
     \entry{lugosi2022generalization}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=71f26e09787f9c806cccd1220c502611}{%
@@ -11928,9 +12146,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{kervadec2022constrained}
-  \missing{koltchinskii2000rademacher}
-  \missing{vapnik1968uniform}
 \endrefsection
 
 \refsection{1}
