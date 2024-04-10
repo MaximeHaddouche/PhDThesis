@@ -351,45 +351,55 @@ We also split all the data (from the original training/test set) in two halves; 
 \subsection{Results}
 \label{sec:results}
 
-We present in \Cref{tab:expe} the performance of \Cref{alg:batch,alg:online} compared to the Empirical Risk Minimisation (ERM) and the Online Gradient Descent (OGD) with the COCOB-Backprop optimiser.
+We present in \Cref{tab:expe_1,tab:expe_2} the performance of \Cref{alg:batch,alg:online} compared to the Empirical Risk Minimisation (ERM) and the Online Gradient Descent (OGD) with the COCOB-Backprop optimiser.
 \Cref{tab:linear_batch,tab:nn_batch} present the results of \Cref{alg:batch} for the \iid setting on linear and neural networks respectively, while \Cref{tab:linear_online,tab:nn_online} present the results of \Cref{alg:online} for the online case.
 
 \begin{table}[ht]
     \caption{%
-Performance of \Cref{alg:batch,alg:online} compared respectively to ERM and OGD on different datasets on linear and neural network models.
+Performance of \Cref{alg:batch,alg:online} compared respectively to ERM and OGD on different datasets on linear models.
 For the \iid setting, we consider $\varepsilon=\frac{1}{m}$ and $\varepsilon=\frac{1}{\sqrt{m}}$ and with $K=0.2\sqrt{m}$. 
 For each method, we plot the empirical risk $\Rfrak_{\S}(h)$ or $\mathfrak{C}_{\S}$ with its associated test risk $\Rfrak_{\D}(h)$ or $\mathfrak{C}_{\D}$.
 The risk in {\bf bold} corresponds to the lowest one among the ones considered.
 For the online case, the two population risks are \underline{underlined} when the absolute difference is lower than 0.05.
     }
-   \hspace{0.5cm}\begin{subtable}{0.54\textwidth}
+   \begin{subtable}{0.25\textwidth}
        \centering
        \caption{Linear model -- batch learning}
        \input{chapter_6/tables/paper_linear_batch}
       \label{tab:linear_batch}
    \end{subtable}
    \hfill
-   \begin{subtable}{0.45\textwidth}
+   \begin{subtable}{0.28\textwidth}
        \centering
        \caption{Linear model -- online learning}
        \input{chapter_6/tables/paper_linear_online}
        \label{tab:linear_online}
    \end{subtable}
-   \begin{subtable}{0.54\textwidth}
+   \label{tab:expe_1}
+\end{table}
+
+\begin{table}[ht]
+    \caption{%
+Performance of \Cref{alg:batch,alg:online} compared respectively to ERM and OGD on different datasets on neural network models.
+For the \iid setting, we consider $\varepsilon=\frac{1}{m}$ and $\varepsilon=\frac{1}{\sqrt{m}}$ and with $K=0.2\sqrt{m}$. 
+For each method, we plot the empirical risk $\Rfrak_{\S}(h)$ or $\mathfrak{C}_{\S}$ with its associated test risk $\Rfrak_{\D}(h)$ or $\mathfrak{C}_{\D}$.
+The risk in {\bf bold} corresponds to the lowest one among the ones considered.
+For the online case, the two population risks are \underline{underlined} when the absolute difference is lower than 0.05.
+    }
+   \begin{subtable}{0.25\textwidth}
        \centering
        \caption{NN model -- batch learning}
        \input{chapter_6/tables/paper_nn_batch}
       \label{tab:nn_batch}
    \end{subtable}
    \hfill
-   \hspace{0.5cm}\begin{subtable}{0.45\textwidth}
+   \hspace{0.5cm}\begin{subtable}{0.28\textwidth}
        \centering
        \caption{NN model -- online learning}
        \input{chapter_6/tables/paper_nn_online}
        \label{tab:nn_online}
     \end{subtable}
-    \label{tab:expe}
-    \vspace{-10pt}
+    \label{tab:expe_2}
 \end{table}
 
 \textbf{Analysis of the results.} In batch learning, we note that the regularisation term brings generalisation improvements compared to the empirical risk minimisation.
@@ -397,7 +407,7 @@ Indeed, our batch algorithm (\Cref{alg:batch}) has a lower population risk $\Rfr
 This suggests that the regularisation term helps to generalise well.
 For the online case, the performance of the linear models obtained from our algorithm (\Cref{alg:online}) and by OGD are comparable: we have a tighter population classification risk $\Rfrak_{\D}(h)$ on $5$ datasets over $13$. 
 However, notice that the risk difference is less than $0.05$ on $6$ datasets.
-The advantage of \Cref{alg:online} is more pronounced for neural networks: we improve the performance in all datasets except {\sc adult} and {\sc sensorless}.
+The advantage of \Cref{alg:online} is more pronounced for neural networks: we improve the performance in all datasets except \textsc{ adult} and \textsc{ sensorless}.
 Hence, this confirms that optimising the regularised loss $\loss(h_{\wbf}, \z_i) + \|\wbf{-}\wbf_{i-1}\|$ brings a good advantage compared to the loss $\loss(h_{\wbf}, \z_i)$ only. A possible explanation would be that OGD suffers from underfitting (with a high empirical risk $\mathfrak{C}_{\D}$) while we are able to control overfitting through a regularisation term.
 Indeed, only one gradient descent step is done for each new datum $(\x_i, y_i)$, which might not be sufficient to decrease the loss. 
 Instead, our method solves the problem associated with \Cref{eq:online-alg-exp-2} and constrains the descent with the norm $\|\wbf-\wbf_{i-1}\|$.
