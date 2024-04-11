@@ -28,12 +28,12 @@
     \label{sec:discussion-supervised-nnl}
     
     In this section, we discuss more deeply the values of $K$ in \Cref{theorem:supervised-nnl}. 
-    This implies a tradeoff between the number of sets $K$ and the cardinal of each $\S_i$.
-    The tightness of the bound depends highly on the sets $\S_1, \dots, \S_K$.
+    This implies a tradeoff between the number of sets $K$ and the cardinal of each $\Sm^{i}$.
+    The tightness of the bound depends highly on the sets $\Sm^1, \dots, \Sm^K$.
     
-    \textbf{Full batch setting K=1.} When $\S_1=\S$ with $K=1$, the bound of \Cref{theorem:supervised-nnl} becomes, with probability $1-\delta$, for any $\Q\in\Mcal(\H)$
+    \textbf{Full batch setting K=1.} When $\Sm^1=\Sm$ with $K=1$, the bound of \Cref{theorem:supervised-nnl} becomes, with probability $1-\delta$, for any $\Q\in\Mcal(\H)$
     \begin{align*}
-     \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] \le 2L\W(\Q, \P) + 2\sqrt{\frac{\ln\frac{1}{\delta}}{m}}\ ,
+     \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \le 2L\W_{1}(\Q, \P) + 2\sqrt{\frac{\ln\frac{1}{\delta}}{m}}\ ,
     \end{align*}
     where $\P=\P_1$ is data-free.
     This bound can be seen as the high-probability (PAC-Bayesian) version of the expected bound of \cite{wang2019information}.
@@ -42,7 +42,7 @@
     \begin{corollary}
     For any distribution $\D$ on $\Z$, for any finite hypothesis space $\H$ equipped with a distance $d$, for any $L$-Lipschitz loss function $\loss: \H\times\Z\to[0,1]$, for any $\delta\in(0,1]$, we have, with probability $1-\delta$ over the sample $\S$, for any $\Q\in\Mcal(\H)$:
     \begin{align*}
-    \ \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] \le L\sqrt{\frac{2\ln\left(\frac{4|\H|^2}{\delta}\right)}{m}} \W(\Q, \P) +  2\sqrt{\frac{\ln\left(\frac{2}{\delta}\right)}{m}} 
+    \ \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \le L\sqrt{\frac{2\ln\left(\frac{4|\H|^2}{\delta}\right)}{m}} \W_{1}(\Q, \P) +  2\sqrt{\frac{\ln\left(\frac{2}{\delta}\right)}{m}} 
      \end{align*}
     where $\P$ is a data-free prior.
     \end{corollary}
@@ -50,9 +50,10 @@
         We exploit \cite[][Equation 35]{amit2022integral} to state that with probability at least $1-\frac{\delta}{2}$, for any $(h,h')\in \H^2$: 
         \[\left|\frac{1}{m} \sum_{i=1}^m\left[\loss\left(h^{\prime}, \z_i\right)-\loss\left(h, \z_i\right)\right]-\EE_{\z \sim \D}\left[\loss\left(h^{\prime}, \z\right)-\loss(h, \z)\right]\right| \leq  L \sqrt{\frac{2 \ln \left(\frac{4|\H|^2}{\delta}\right)}{m}}d\left(h, h^{\prime}\right) .\]
     So, with high probability, we can exploit the Kantorovich-Rubinstein duality with this new Lipschitz constant: with probability at least $1-\delta/2$:
-    \begin{align*}
-        \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] & \le L \sqrt{\frac{2 \ln \left(\frac{4|\H|^2}{\delta}\right)}{m}}\W(\Q, \P) +\EE_{h\sim\P} \frac{1}{m}\LB  \sum_{i=1}^m \Risk_{\D}(h) -\loss(h, \z_i) \RB,
-    \end{align*}
+    \begin{multline*}
+        \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \\
+        \le L \sqrt{\frac{2 \ln \left(\frac{4|\H|^2}{\delta}\right)}{m}}\W_{1}(\Q, \P) +\EE_{h\sim\P} \frac{1}{m}\LB  \sum_{i=1}^m \Risk_{\D}(h) -\loss(h, \z_i) \RB,
+    \end{multline*}
     To conclude, we control the quantity on the right-hand side the same way as in \Cref{theorem:supervised-ht} and \Cref{theorem:supervised-nnl}. We then have, with probability at least $1-\delta/2$, for a loss function in $[0,1]$:
     \[\frac{1}{m} \sum_{i=1}^m \Risk_{\D}(h) -\loss(h, \z_i) \leq 2\sqrt{\frac{\ln\frac{K}{\delta}}{m}}.\]
     Taking the union bound concludes the proof.
@@ -61,14 +62,14 @@
     \textbf{Mini-batch setting $K=\sqrt{m}$.} When a tradeoff is desired between the quantity of data we want to infuse in our priors and an explicit convergence rate, a meaningful candidate is when $K=\sqrt{m}$.  \Cref{theorem:supervised-nnl}'s bound becomes, in this particular case:
     \begin{align}
     \label{eq:supervised-with-tuned-K}
-     \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] \le \frac{2L}{\sqrt{m}}\sum_{i=1}^{\sqrt{m}}\W(\Q, \P_i) + 2\sqrt{\frac{\ln\frac{\sqrt{m}}{\delta}}{\sqrt{m}}}.
+     \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \le \frac{2L}{\sqrt{m}}\sum_{i=1}^{\sqrt{m}}\W_{1}(\Q, \P_i) + 2\sqrt{\frac{\ln\frac{\sqrt{m}}{\delta}}{\sqrt{m}}}.
     \end{align}
     
-    \textbf{Towards online learning: $K=m$.} When $K=m$, the sets $\S_i$ contain only one example. 
-    More precisely, we have for all $i\in\{1,\dots,m\}$ the set $\S_i=\{\z_i\}$.
+    \textbf{Towards online learning: $K=m$.} When $K=m$, the sets $\Sm^{i}$ contain only one example. 
+    More precisely, we have for all $i\in\{1,\dots,m\}$ the set $\Sm^{i}=\{\z_i\}$.
     In this case, the bound becomes:
     \begin{align*}
-    \ \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] \le \frac{2L}{m}\sum_{i=1}^{m}\W(\Q, \P_i) + 2\sqrt{\ln\frac{m}{\delta}}.
+    \ \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \le \frac{2L}{m}\sum_{i=1}^{m}\W_{1}(\Q, \P_i) + 2\sqrt{\ln\frac{m}{\delta}}.
     \end{align*}
     This bound is vacuous since the last term is incompressible, hence the need for a new technique detailed in \Cref{sec:wasserstein-online} to deal with it.
     
@@ -88,37 +89,37 @@
     For the sake of readability, we identify, for any $i$, $\P_i $ and $\P_{i,\S}$.
     \paragraph{Step 1: Exploit the Kantorovich duality \cite[Remark 6.5]{villani2009optimal}.}
     First of all, note that for a $L$-Lipschitz loss function $\loss: \H\times\Z\to[0,1]$, we have
-    \begin{align}
-    \LN\LP |\S_i|\Risk_{\D}(h_1){-}\sum_{\z\in\S_i}\loss(h_1, \z)\RP - \LP |\S_i|\Risk_{\D}(h_2){-}\sum_{\z\in\S_i}\loss(h_2, \z)\RP\right\vert \le 2|\S_i|Ld(h_1, h_2).\label{eq:proof-supervised-ht-1}
-    \end{align}
+    \begin{multline}
+    \LN\LP |\Sm^{i}|\Risk_{\D}(h_1){-}\sum_{\z\in\Sm^{i}}\loss(h_1, \z)\RP - \LP |\Sm^{i}|\Risk_{\D}(h_2){-}\sum_{\z\in\Sm^{i}}\loss(h_2, \z)\RP\right\vert \\\le 2|\Sm^{i}|Ld(h_1, h_2).\label{eq:proof-supervised-ht-1}
+    \end{multline}
     Indeed, we can deduce \Cref{eq:proof-supervised-ht-1} from Jensen inequality, the triangle inequality, and by definition that we have
     \begin{align*}
-    &\LN\LP |\S_i|\Risk_{\D}(h_1){-}\sum_{\z\in\S_i}\loss(h_1, \z)\RP - \LP |\S_i|\Risk_{\D}(h_2){-}\sum_{\z\in\S_i}\loss(h_2, \z)\RP\right\vert\\
-    &= \LN\LP\sum_{\z\in\S_i}\Risk_{\D}(h_1){-}\sum_{\z\in\S_i}\loss(h_1, \z)\RP - \LP\sum_{\z\in\S_i}\Risk_{\D}(h_2){-}\sum_{\z\in\S_i}\loss(h_2, \z)\RP\right\vert\\
-    &\le \sum_{\z\in\S_i}\EE_{\z'\sim\D}\Big[ |\loss(h_1, \z')-\loss(h_2, \z')|+|\loss(h_2, \z)-\loss(h_1, \z)|\Big]\\
-    &\le \EE_{\z'\sim\D}\sum_{\z\in\S_i} 2Ld(h_1, h_2)\\
-    &= 2|\S_i|Ld(h_1, h_2).
+    &\LN\LP |\Sm^{i}|\Risk_{\D}(h_1){-}\sum_{\z\in\Sm^{i}}\loss(h_1, \z)\RP - \LP |\Sm^{i}|\Risk_{\D}(h_2){-}\sum_{\z\in\Sm^{i}}\loss(h_2, \z)\RP\right\vert\\
+    &= \LN\LP\sum_{\z\in\Sm^{i}}\Risk_{\D}(h_1){-}\sum_{\z\in\Sm^{i}}\loss(h_1, \z)\RP - \LP\sum_{\z\in\Sm^{i}}\Risk_{\D}(h_2){-}\sum_{\z\in\Sm^{i}}\loss(h_2, \z)\RP\right\vert\\
+    &\le \sum_{\z\in\Sm^{i}}\EE_{\z'\sim\D}\Big[ |\loss(h_1, \z')-\loss(h_2, \z')|+|\loss(h_2, \z)-\loss(h_1, \z)|\Big]\\
+    &\le \EE_{\z'\sim\D}\sum_{\z\in\Sm^{i}} 2Ld(h_1, h_2)\\
+    &= 2|\Sm^{i}|Ld(h_1, h_2).
     \end{align*}
-    We are now able to upper-bound $\EE_{h\sim\Q}[ \Risk_{\D}(h) - \Riskhat_{\S}(h) ]$. 
+    We are now able to upper-bound $\EE_{h\sim\Q}[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) ]$. 
     Indeed, we have
-    \begin{align}
-    \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] &= \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i}\loss(h, \z) \RB\nonumber\\
-    &\le \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) \RB,\label{eq:proof-supervised-ht-2}
-    \end{align}
+    \begin{multline}
+    \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] = \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}}\loss(h, \z) \RB\\
+    \le \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) \RB,\label{eq:proof-supervised-ht-2}
+    \end{multline}
     where the inequality comes from the Kantorovich-Rubinstein duality theorem.
     
     \paragraph{Step 2: Define an adapted supermartingale.}
-        For any $1\leq i \leq K$, we fix $\lambda_i>0$ and we provide an arbitrary order to the elements of $\S_i\defeq \{\z_{i,1},\cdots,\z_{i,|S_i|}\}$. Then we define for any $h$: 
+        For any $1\leq i \leq K$, we fix $\lambda_i>0$ and we provide an arbitrary order to the elements of $\Sm^{i}\defeq \{\z_{i,1},\cdots,\z_{i,|S_i|}\}$. Then we define for any $h$: 
         \begin{align*}
-        M_{|\S_i|}(h)\defeq   |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) = \sum_{j=1}^{|\S_i|} R_\D(h) - \loss(h,\z_{i,j}).
+        M_{|\Sm^{i}|}(h)\defeq   |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) = \sum_{j=1}^{|\Sm^{i}|} R_\D(h) - \loss(h,\z_{i,j}).
         \end{align*}
-        Remark that, because our data are \iid, $(M_{|\S_i|})_{|\S_i|\geq 1}$ is a martingale.
-        We then exploit the technique \cite{haddouche2023pac} to define a supermartingale.
-        More precisely, we exploit a result from \cite{bercu2008exponential} cited in Lemma 1.3 of \cite{haddouche2023pac} coupled with Lemma 2.2 of \cite{haddouche2023pac} to ensure that the process
+        Remark that, because our data are \iid, $(M_{|\Sm^{i}|})_{|\Sm^{i}|\geq 1}$ is a martingale.
+        We then exploit the technique \Cref{chap: pb-ht} to define a supermartingale.
+        More precisely, we exploit a result from \cite{bercu2008exponential} cited in Lemma 1.3 of \Cref{chap: pb-ht} coupled with Lemma 2.2 of \Cref{chap: pb-ht} to ensure that the process
         \begin{align*}
-        SM_{|\S_i|} \defeq \EE_{h\sim \P_i} \LB\exp\left(\lambda_i M_{|\S_i|}(h) - \frac{\lambda_i^2}{2}\left( \Vhat_{|\S_i|}(h) + V_{|\S_i|}(h) \right)\right)\RB,
+        SM_{|\Sm^{i}|} \defeq \EE_{h\sim \P_i} \LB\exp\left(\lambda_i M_{|\Sm^{i}|}(h) - \frac{\lambda_i^2}{2}\left( \Vhat_{|\Sm^{i}|}(h) + V_{|\Sm^{i}|}(h) \right)\right)\RB,
         \end{align*}
-        is a supermartingale, where $\Vhat_{|\S_i|}(h)= \sum_{j=1}^{|\S_i|} \left(\loss(h,\z_{i,j}) - R_\D(h)\right)^2$ and $V_{|\S_i|}(h) = \EE_{\S_i} \LB \Vhat_{|\S_i|}(h) \RB $.
+        is a supermartingale, where $\Vhat_{|\Sm^{i}|}(h)= \sum_{j=1}^{|\Sm^{i}|} \left(\loss(h,\z_{i,j}) - R_\D(h)\right)^2$ and $V_{|\Sm^{i}|}(h) = \EE_{\Sm^{i}} \LB \Vhat_{|\Sm^{i}|}(h) \RB $.
     
     
     
@@ -126,22 +127,23 @@
         
         We restart from \Cref{eq:proof-supervised-ht-2} to exploit again the Kantorovich-Rubinstein duality.
     
-        \begin{align*}
-            \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] &=  \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i}\loss(h, \z) \RB\nonumber\\
-            &\le \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i}\lambda_i\EE_{h\sim\P_i} \LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) \RB, \\
-            & = \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i}\EE_{h\sim\P_i} \LB \lambda_i M_{|\S_i|}| \RB, \\
-            &\le   \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i} \ln\left( SM_{|\S_i|}  \right) \\
-            & + \frac{1}{m}\sum_{i=1}^K \EE_{h\sim\P_i}\LB\frac{\lambda_i}{2}\left( \Vhat_{|\S_i|}(h) + V_{|\S_i|}(h) \right) \RB.
-        \end{align*}
+        \begin{multline*}
+            \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] =  \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}}\loss(h, \z) \RB\nonumber\\
+            \le \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i}\lambda_i\EE_{h\sim\P_i} \LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) \RB, \\
+             = \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i}\EE_{h\sim\P_i} \LB \lambda_i M_{|\Sm^{i}|}| \RB, \\
+            \le   \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i} \ln\left( SM_{|\Sm^{i}|}  \right) 
+             \\+ \frac{1}{m}\sum_{i=1}^K \EE_{h\sim\P_i}\LB\frac{\lambda_i}{2}\left( \Vhat_{|\Sm^{i}|}(h) + V_{|\Sm^{i}|}(h) \right) \RB.
+        \end{multline*}
         The last line holds thanks to Jensen's inequality.
-        We now apply Ville's inequality (see \eg, Section 1.2 of \cite{haddouche2023pac}).
+        We now apply Ville's inequality (see \eg, Section 1.2 of \Cref{chap: pb-ht}).
         We have for any $i$: 
         \begin{align*}
-        \PP_{\S_i \sim \D^{|\S_i|}}\left( \forall |S_i|\geq 1, SM_{|S_i|} \leq \frac{1}{\delta}  \right) \geq 1-\delta.
+        \PP_{\Sm^{i} \sim \D^{|\Sm^{i}|}}\left( \forall |S_i|\geq 1, SM_{|S_i|} \leq \frac{1}{\delta}  \right) \geq 1-\delta.
         \end{align*}
-        Applying an union bound and authorising $\lambda_i$ to be a function of $|S_i|$ (thus the inequality does not hold for all $|\S_i|$ simultaneously) finally gives with probability at least $1-\delta$, for all $\Q\in \Mcal(\H)$ :
+        Applying an union bound and authorising $\lambda_i$ to be a function of $|S_i|$ (thus the inequality does not hold for all $|\Sm^{i}|$ simultaneously) finally gives with probability at least $1-\delta$, for all $\Q\in \Mcal(\H)$ :
         \begin{multline*}
-             \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] \leq    \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K}   \frac{\ln\left( \frac{K}{\delta}  \right)}{\lambda_i m} + \frac{\lambda_i}{2m}\EE_{h\sim\P_i}\LB \Vhat_{|\S_i|}(h) + V_{|\S_i|}(h) \RB.
+             \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \leq    \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K}   \frac{\ln\left( \frac{K}{\delta}  \right)}{\lambda_i m} \\
+             + \frac{\lambda_i}{2m}\EE_{h\sim\P_i}\LB \Vhat_{|\Sm^{i}|}(h) + V_{|\Sm^{i}|}(h) \RB.
         \end{multline*}    
     \end{proof}
     
@@ -153,61 +155,60 @@
     For the sake of readability, we identify, for any $i$, $\P_i $ and $\P_{i,\S}$.
     \paragraph{Step 1: Exploit the Kantorovich duality \cite[Remark 6.5]{villani2009optimal}.}
     First of all, note that for a $L$-Lipschitz loss function $\loss: \H\times\Z\to[0,1]$, we have
-    \begin{align}
-    \LN\LP |\S_i|\Risk_{\D}(h_1){-}\sum_{\z\in\S_i}\loss(h_1, \z)\RP - \LP |\S_i|\Risk_{\D}(h_2){-}\sum_{\z\in\S_i}\loss(h_2, \z)\RP\right\vert \le 2|\S_i|Ld(h_1, h_2).\label{eq:proof-supervised-1}
-    \end{align}
+    \begin{multline}
+    \LN\LP |\Sm^{i}|\Risk_{\D}(h_1){-}\sum_{\z\in\Sm^{i}}\loss(h_1, \z)\RP - \LP |\Sm^{i}|\Risk_{\D}(h_2){-}\sum_{\z\in\Sm^{i}}\loss(h_2, \z)\RP\right\vert \\ \le 2|\Sm^{i}|Ld(h_1, h_2).\label{eq:proof-supervised-1}
+    \end{multline}
     Indeed, we can deduce \Cref{eq:proof-supervised-1} from Jensen inequality, the triangle inequality, and by definition that we have
     \begin{align*}
-    &\LN\LP |\S_i|\Risk_{\D}(h_1){-}\sum_{\z\in\S_i}\loss(h_1, \z)\RP - \LP |\S_i|\Risk_{\D}(h_2){-}\sum_{\z\in\S_i}\loss(h_2, \z)\RP\right\vert\\
-    &= \LN\LP\sum_{\z\in\S_i}\Risk_{\D}(h_1){-}\sum_{\z\in\S_i}\loss(h_1, \z)\RP - \LP\sum_{\z\in\S_i}\Risk_{\D}(h_2){-}\sum_{\z\in\S_i}\loss(h_2, \z)\RP\right\vert\\
-    &\le \sum_{\z\in\S_i}\EE_{\z'\sim\D}\Big[ |\loss(h_1, \z')-\loss(h_2, \z')|+|\loss(h_2, \z)-\loss(h_1, \z)|\Big]\\
-    &\le \EE_{\z'\sim\D}\sum_{\z\in\S_i} 2Ld(h_1, h_2)\\
-    &= 2|\S_i|Ld(h_1, h_2).
+    &\LN\LP |\Sm^{i}|\Risk_{\D}(h_1){-}\sum_{\z\in\Sm^{i}}\loss(h_1, \z)\RP - \LP |\Sm^{i}|\Risk_{\D}(h_2){-}\sum_{\z\in\Sm^{i}}\loss(h_2, \z)\RP\right\vert\\
+    &= \LN\LP\sum_{\z\in\Sm^{i}}\Risk_{\D}(h_1){-}\sum_{\z\in\Sm^{i}}\loss(h_1, \z)\RP - \LP\sum_{\z\in\Sm^{i}}\Risk_{\D}(h_2){-}\sum_{\z\in\Sm^{i}}\loss(h_2, \z)\RP\right\vert\\
+    &\le \sum_{\z\in\Sm^{i}}\EE_{\z'\sim\D}\Big[ |\loss(h_1, \z')-\loss(h_2, \z')|+|\loss(h_2, \z)-\loss(h_1, \z)|\Big]\\
+    &\le \EE_{\z'\sim\D}\sum_{\z\in\Sm^{i}} 2Ld(h_1, h_2)\\
+    &= 2|\Sm^{i}|Ld(h_1, h_2).
     \end{align*}
-    We are now able to upper-bound $\EE_{h\sim\Q}[ \Risk_{\D}(h) - \Riskhat_{\S}(h) ]$. 
+    We are now able to upper-bound $\EE_{h\sim\Q}[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) ]$. 
     Indeed, we have
-    \begin{align}
-    \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] &= \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i}\loss(h, \z) \RB\nonumber\\
-    &\le \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) \RB,\label{eq:proof-supervised-2}
-    \end{align}
+    \begin{multline}
+    \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] = \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}}\loss(h, \z) \RB \\ \le \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) \RB,\label{eq:proof-supervised-2}
+    \end{multline}
     where the inequality comes from the Kantorovich-Rubinstein duality theorem.
     
     \paragraph{Step 2: Define an adapted supermartingale. }
-        For any $1\leq i \leq K$, we fix $\lambda_i>0$ and we provide an arbitrary order to the elements of $\S_i\defeq \{\z_{i,1},\cdots,\z_{i,|S_i|}\}$. Then we define for any $h$: 
+        For any $1\leq i \leq K$, we fix $\lambda_i>0$ and we provide an arbitrary order to the elements of $\Sm^{i}\defeq \{\z_{i,1},\cdots,\z_{i,|S_i|}\}$. Then we define for any $h$: 
         \begin{align*}
-        M_{|\S_i|}(h)\defeq   |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) = \sum_{j=1}^{|\S_i|} R_\D(h) - \loss(h,\z_{i,j}).
+        M_{|\Sm^{i}|}(h)\defeq   |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) = \sum_{j=1}^{|\Sm^{i}|} R_\D(h) - \loss(h,\z_{i,j}).
         \end{align*}
-        Remark that, because our data are \iid, $(M_{|\S_i|})_{|\S_i|\geq 1}$ is a martingale. 
+        Remark that, because our data are \iid, $(M_{|\Sm^{i}|})_{|\Sm^{i}|\geq 1}$ is a martingale. 
         We then exploit the technique \cite{chugg2023unified} to define a supermartingale. 
         More precisely, we exploit \cite[][Lemma A.2 and Lemma B.1]{chugg2023unified} to ensure that the process
         \begin{align*}
-        SM_{|\S_i|} \defeq \EE_{h\sim \P_i} \LB\exp\left(\lambda_i M_{|\S_i|}(h) - \frac{\lambda_i^2}{2} L_{|\S_i|}(h) \right)\RB,
+        SM_{|\Sm^{i}|} \defeq \EE_{h\sim \P_i} \LB\exp\left(\lambda_i M_{|\Sm^{i}|}(h) - \frac{\lambda_i^2}{2} L_{|\Sm^{i}|}(h) \right)\RB,
         \end{align*}
-        is a supermartingale, where, because our data are \iid,  $L_{|\S_i|}(h) = \EE_{\S} \LB \sum_{j=1}^{|S_i|}\loss(h,\z_{i,j})^2 \RB = |\S_i| \EE_{z\sim \D}[\loss(h,z)^2]$. 
+        is a supermartingale, where, because $\S$ is \iid,  $L_{|\Sm^{i}|}(h) = \EE_{\S} \LB \sum_{j=1}^{|S_i|}\loss(h,\z_{i,j})^2 \RB = |\Sm^{i}| \EE_{z\sim \D}[\loss(h,z)^2]$. 
     
     \paragraph{Step 3. Combine steps 1 and 2.}
         We restart from \Cref{eq:proof-supervised-2} to exploit the Kantorovich-Rubinstein duality again.
-        \begin{align*}
-            \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] &=  \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i}\loss(h, \z) \RB\nonumber\\
-            &\le \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i}\lambda_i\EE_{h\sim\P_i} \LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) \RB, \\
-            & = \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i}\EE_{h\sim\P_i} \LB \lambda_i M_{|\S_i|}| \RB, \\
-            &\le   \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i} \ln\left( SM_{|\S_i|}  \right) \\
-            & + \frac{1}{m}\sum_{i=1}^K \EE_{h\sim\P_i}\LB\frac{\lambda_i}{2} L_{|\S_i|}(h) \RB.
-        \end{align*}
+        \begin{multline*}
+            \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] =  \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}}\loss(h, \z) \RB\\
+            \le \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i}\lambda_i\EE_{h\sim\P_i} \LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) \RB, \\
+             = \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i}\EE_{h\sim\P_i} \LB \lambda_i M_{|\Sm^{i}|}| \RB, \\
+            \le   \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \frac{1}{m\lambda_i} \ln\left( SM_{|\Sm^{i}|}  \right)
+             + \frac{1}{m}\sum_{i=1}^K \EE_{h\sim\P_i}\LB\frac{\lambda_i}{2} L_{|\Sm^{i}|}(h) \RB.
+        \end{multline*}
         The last line holds thanks to Jensen's inequality.
-        We now apply Ville's inequality (see \eg, section 1.2 of \cite{haddouche2023pac}). We have for any $i$: 
+        We now apply Ville's inequality (see \eg, section 1.2 of \Cref{chap: pb-ht}). We have for any $i$: 
         \begin{align*}
-        \PP_{\S_i \sim \D^{|\S_i|}}\left( \forall |S_i|\geq 1, SM_{|S_i|} \leq \frac{1}{\delta}  \right) \geq 1-\delta.
+        \PP_{\Sm^{i} \sim \D^{|\Sm^{i}|}}\left( \forall |S_i|\geq 1, SM_{|S_i|} \leq \frac{1}{\delta}  \right) \geq 1-\delta.
         \end{align*}
-        Applying an union bound and authorising $\lambda_i$ to be a function of $|S_i|$ (thus the inequality does not hold for all $|\S_i|$ simultaneously) finally gives with probability at least $1-\delta$, for all $\Q\in \Mcal(\H)$ :
-        \begin{align*}
-             \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] \leq    \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K}   \frac{\ln\left( \frac{K}{\delta}  \right)}{\lambda_i m} + \frac{\lambda_i}{2m}\EE_{h\sim\P_i}\LB L{|\S_i|}(h) \RB.
-        \end{align*}
+        Applying an union bound and authorising $\lambda_i$ to be a function of $|S_i|$ (thus the inequality does not hold for all $|\Sm^{i}|$ simultaneously) finally gives with probability at least $1-\delta$, for all $\Q\in \Mcal(\H)$ :
+        \begin{multline*}
+             \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \leq    \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) \\+ \sum_{i=1}^{K}   \frac{\ln\left( \frac{K}{\delta}  \right)}{\lambda_i m} + \frac{\lambda_i}{2m}\EE_{h\sim\P_i}\LB L{|\Sm^{i}|}(h) \RB.
+        \end{multline*}
         Finally, using the assumption $\EE_{h\sim \P_i}\EE_{z\sim \D}[\loss(h,z)^2] \leq 1$ gives, with probability at least $1-\delta$, for all $\Q\in \Mcal(\H)$:
         \begin{align*}
-             \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] \leq    \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K}   \frac{\ln\left( \frac{K}{\delta}  \right)}{\lambda_i m} + \frac{\lambda_i[\S_i|]}{2m}.
+             \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \leq    \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K}   \frac{\ln\left( \frac{K}{\delta}  \right)}{\lambda_i m} + \frac{\lambda_i[\Sm^{i}|]}{2m}.
         \end{align*}
-        Taking for each $i$, $\lambda_i= \sqrt{\frac{2\ln(K/\delta)}{|\S_i|}}$ concludes the proof.
+        Taking for each $i$, $\lambda_i= \sqrt{\frac{2\ln(K/\delta)}{|\Sm^{i}|}}$ concludes the proof.
     \end{proof}
         
     
@@ -222,53 +223,54 @@
     We assume our loss $\loss$ to be in $[0,1]$ and $L$-Lipschitz.
     Then, for any $\delta\in(0,1]$, with probability at least $1-\delta$ over the sample $\S$, the following holds for the distributions $\P_{i,\S}\defeq \P_i(\S,.)$ and for any $\Q\in\Mcal(\H)$:
     \begin{align*}
-    \ \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] \le \sum_{i=1}^{K} \frac{2|\S_i|L}{m} \W(\Q, \P_{i,\S}) + \sum_{i=1}^{K} \sqrt{\frac{|\S_i|\ln\frac{K}{\delta}}{2m^2}} 
+    \ \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \le \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m} \W_{1}(\Q, \P_{i,\S}) + \sum_{i=1}^{K} \sqrt{\frac{|\Sm^{i}|\ln\frac{K}{\delta}}{2m^2}} 
     \end{align*}
-    where $\P_i$ {\it does not} depend on $\S_i$.
+    where $\P_i$ {\it does not} depend on $\Sm^{i}$.
     \end{theorem}
     \begin{proof}
     For the sake of readability, we identify, for any $i$, $\P_i $ and $\P_{i,\S}$.
     
     First of all, note that for a $L$-Lipschitz loss function $\loss: \H\times\Z\to[0,1]$, we have
     \begin{align}
-    \LN\LP |\S_i|\Risk_{\D}(h_1){-}\sum_{\z\in\S_i}\loss(h_1, \z)\RP - \LP |\S_i|\Risk_{\D}(h_2){-}\sum_{\z\in\S_i}\loss(h_2, \z)\RP\right\vert \le 2|\S_i|Ld(h_1, h_2).\label{eq:alt-proof-supervised-1}
+    \LN\LP |\Sm^{i}|\Risk_{\D}(h_1){-}\sum_{\z\in\Sm^{i}}\loss(h_1, \z)\RP - \LP |\Sm^{i}|\Risk_{\D}(h_2){-}\sum_{\z\in\Sm^{i}}\loss(h_2, \z)\RP\right\vert \le 2|\Sm^{i}|Ld(h_1, h_2).\label{eq:alt-proof-supervised-1}
     \end{align}
     Indeed, we can deduce \Cref{eq:alt-proof-supervised-1} from Jensen's inequality, the triangle inequality, and by definition that we have
     \begin{align*}
-    &\LN\LP |\S_i|\Risk_{\D}(h_1){-}\sum_{\z\in\S_i}\loss(h_1, \z)\RP - \LP |\S_i|\Risk_{\D}(h_2){-}\sum_{\z\in\S_i}\loss(h_2, \z)\RP\right\vert\\
-    &= \LN\LP\sum_{\z\in\S_i}\Risk_{\D}(h_1){-}\sum_{\z\in\S_i}\loss(h_1, \z)\RP - \LP\sum_{\z\in\S_i}\Risk_{\D}(h_2){-}\sum_{\z\in\S_i}\loss(h_2, \z)\RP\right\vert\\
-    &\le \sum_{\z\in\S_i}\EE_{\z'\sim\D}\Big[ |\loss(h_1, \z')-\loss(h_2, \z')|+|\loss(h_2, \z)-\loss(h_1, \z)|\Big]\\
-    &\le \EE_{\z'\sim\D}\sum_{\z\in\S_i} 2Ld(h_1, h_2)\\
-    &= 2|\S_i|Ld(h_1, h_2).
+    &\LN\LP |\Sm^{i}|\Risk_{\D}(h_1){-}\sum_{\z\in\Sm^{i}}\loss(h_1, \z)\RP - \LP |\Sm^{i}|\Risk_{\D}(h_2){-}\sum_{\z\in\Sm^{i}}\loss(h_2, \z)\RP\right\vert\\
+    &= \LN\LP\sum_{\z\in\Sm^{i}}\Risk_{\D}(h_1){-}\sum_{\z\in\Sm^{i}}\loss(h_1, \z)\RP - \LP\sum_{\z\in\Sm^{i}}\Risk_{\D}(h_2){-}\sum_{\z\in\Sm^{i}}\loss(h_2, \z)\RP\right\vert\\
+    &\le \sum_{\z\in\Sm^{i}}\EE_{\z'\sim\D}\Big[ |\loss(h_1, \z')-\loss(h_2, \z')|+|\loss(h_2, \z)-\loss(h_1, \z)|\Big]\\
+    &\le \EE_{\z'\sim\D}\sum_{\z\in\Sm^{i}} 2Ld(h_1, h_2)\\
+    &= 2|\Sm^{i}|Ld(h_1, h_2).
     \end{align*}
-    We are now able to upper-bound $\EE_{h\sim\Q}[ \Risk_{\D}(h) - \Riskhat_{\S}(h) ]$. 
+    We are now able to upper-bound $\EE_{h\sim\Q}[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) ]$. 
     Indeed, we have
-    \begin{align}
-    \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] &= \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i}\loss(h, \z) \RB\nonumber\\
-    &\le \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) \RB,\label{eq:alt-proof-supervised-2}
-    \end{align}
+    \begin{multline}
+    \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] = \frac{1}{m}\sum_{i=1}^{K} \EE_{h\sim\Q}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}}\loss(h, \z) \RB\\
+    \le \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) \RB,\label{eq:alt-proof-supervised-2}
+    \end{multline}
     where the inequality comes from the Kantorovich-Rubinstein duality theorem.
-    Let $f(\S_i)=\EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z_i)\RB$, the function has the bounded difference inequality, \ie, for two datasets $\S_i$ and $\S'_i$ that differs from one example (the $k$-th example, without loss of generality), we have
-    \begin{align*}
-    \LN f(\S_i) - f(\S'_i) \right\vert &= \LN \EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z)\RB - \EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z'\in\S'_i} \loss(h, \z')\RB \right\vert\\
-    &= \LN \EE_{h\sim\P_i} \LB \frac{1}{m}|\S_i|\Risk_{\D}(h) - \frac{1}{m}\sum_{\z\in\S_i} \loss(h, \z) - \frac{1}{m}|\S_i|\Risk_{\D}(h) + \frac{1}{m}\sum_{\z'\in\S'_i} \loss(h, \z')\RB \right\vert\\
-    &= \LN \EE_{h\sim\P_i} \LB \frac{1}{m}\sum_{\z'\in\S'_i} \loss(h, \z') - \frac{1}{m}\sum_{\z\in\S_i} \loss(h, \z)\RB \right\vert\\
-    &= \LN \EE_{h\sim\P_i} \LB \frac{1}{m}\loss(h, \z'_k) - \frac{1}{m}\loss(h, \z_k)\RB \right\vert\\
-    &\le \frac{1}{m}.
-    \end{align*}
+    Let $f(\Sm^{i})=\EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z_i)\RB$, the function has the bounded difference inequality, \ie, for two datasets $\Sm^{i}$ and $\S'_i$ that differs from one example (the $k$-th example, without loss of generality), we have
+    \begin{multline*}
+    \LN f(\Sm^{i}) - f(\S'_i) \right\vert \\
+    = \LN \EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z)\RB - \EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z'\in\S'_i} \loss(h, \z')\RB \right\vert\\
+    = \LN \EE_{h\sim\P_i} \LB \frac{1}{m}|\Sm^{i}|\Risk_{\D}(h) - \frac{1}{m}\sum_{\z\in\Sm^{i}} \loss(h, \z) - \frac{1}{m}|\Sm^{i}|\Risk_{\D}(h) + \frac{1}{m}\sum_{\z'\in\S'_i} \loss(h, \z')\RB \right\vert\\
+    = \LN \EE_{h\sim\P_i} \LB \frac{1}{m}\sum_{\z'\in\S'_i} \loss(h, \z') - \frac{1}{m}\sum_{\z\in\Sm^{i}} \loss(h, \z)\RB \right\vert\\
+    = \LN \EE_{h\sim\P_i} \LB \frac{1}{m}\loss(h, \z'_k) - \frac{1}{m}\loss(h, \z_k)\RB \right\vert
+    \le \frac{1}{m}.
+    \end{multline*}
     
     Hence, from Mcdiarmid's inequality, we have with probability at least $1-\frac{\delta}{K}$ over $\S\sim\D^{m}$
     \begin{align*}
-    &\EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) \RB \\ &\le \EE_{\S\sim\D^{m}}\EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) \RB + \sqrt{\frac{|\S_i|\ln\frac{K}{\delta}}{2m^2}}\\
-    &= \EE_{\S^c_i\sim\D^{m-|\S_i|}}\EE_{\S_i\sim\D^{|\S_i|}}\EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \sum_{\z\in\S_i} \loss(h, \z) \RB + \sqrt{\frac{|\S_i|\ln\frac{K}{\delta}}{2m^2}}\\
-    &= \EE_{\S^c_i\sim\D^{m-|\S_i|}}\EE_{h\sim\P_i} \frac{1}{m}\LB |\S_i|\Risk_{\D}(h) - \EE_{\S_i\sim\D^{|\S_i|}}\sum_{\z\in\S_i} \loss(h, \z) \RB + \sqrt{\frac{|\S_i|\ln\frac{K}{\delta}}{2m^2}}\\
-    &= \EE_{\S^c_i\sim\D^{m-|\S_i|}}\EE_{h\sim\P_i} \frac{1}{m}\Big[ |\S_i|\Risk_{\D}(h) - |\S_i|\Risk_{\D}(h)\Big] + \sqrt{\frac{|\S_i|\ln\frac{K}{\delta}}{2m^2}}\\
-    &= \sqrt{\frac{|\S_i|\ln\frac{K}{\delta}}{2m^2}}.
+    &\EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) \RB \\ &\le \EE_{\S\sim\D^{m}}\EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) \RB + \sqrt{\frac{|\Sm^{i}|\ln\frac{K}{\delta}}{2m^2}}\\
+    &= \EE_{\S^c_i\sim\D^{m-|\Sm^{i}|}}\EE_{\Sm^{i}\sim\D^{|\Sm^{i}|}}\EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \sum_{\z\in\Sm^{i}} \loss(h, \z) \RB + \sqrt{\frac{|\Sm^{i}|\ln\frac{K}{\delta}}{2m^2}}\\
+    &= \EE_{\S^c_i\sim\D^{m-|\Sm^{i}|}}\EE_{h\sim\P_i} \frac{1}{m}\LB |\Sm^{i}|\Risk_{\D}(h) - \EE_{\Sm^{i}\sim\D^{|\Sm^{i}|}}\sum_{\z\in\Sm^{i}} \loss(h, \z) \RB + \sqrt{\frac{|\Sm^{i}|\ln\frac{K}{\delta}}{2m^2}}\\
+    &= \EE_{\S^c_i\sim\D^{m-|\Sm^{i}|}}\EE_{h\sim\P_i} \frac{1}{m}\Big[ |\Sm^{i}|\Risk_{\D}(h) - |\Sm^{i}|\Risk_{\D}(h)\Big] + \sqrt{\frac{|\Sm^{i}|\ln\frac{K}{\delta}}{2m^2}}\\
+    &= \sqrt{\frac{|\Sm^{i}|\ln\frac{K}{\delta}}{2m^2}}.
     \end{align*}
     
     From the union bound, we have with probability at least $1-\delta$ over $\S\sim\D^m$, for any $\Q\in\Mcal(\H)$,
     \begin{align*}
-    \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\S}(h) \Big] \le \sum_{i=1}^{K} \frac{2|\S_i|L}{m}\W(\Q, \P_i) + \sum_{i=1}^{K} \sqrt{\frac{|\S_i|\ln\frac{K}{\delta}}{2m^2}},
+    \EE_{h\sim\Q}\Big[ \Risk_{\D}(h) - \Riskhat_{\Sm}(h) \Big] \le \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m}\W_{1}(\Q, \P_i) + \sum_{i=1}^{K} \sqrt{\frac{|\Sm^{i}|\ln\frac{K}{\delta}}{2m^2}},
     \end{align*}
     which is the claimed result.
     \end{proof}
@@ -278,7 +280,7 @@
     \begin{corollary}\label{corollary:supervised-nnl} We assume our loss $\loss$ to be in $[0,1]$ and $L$-Lipschitz. 
     Then, for any $\delta\in(0,1]$, with probability at least $1-\delta$ over the sample $\S$, the following holds for the hypotheses $h_{i,\S}\in\H$ associated with the Dirac distributions $\P_{i,\S}$ and for any $h\in\H$: 
     \begin{align*}
-    \Risk_{\D}(h) \le \Riskhat_{\S}(h) + \sum_{i=1}^{K} \frac{2|\S_i|L}{m} d(h, h_{i,\S}) + \sum_{i=1}^{K} \sqrt{\frac{|\S_i|\ln\frac{K}{\delta}}{2m^2}}.
+    \Risk_{\D}(h) \le \Riskhat_{\Sm}(h) + \sum_{i=1}^{K} \frac{2|\Sm^{i}|L}{m} d(h, h_{i,\S}) + \sum_{i=1}^{K} \sqrt{\frac{|\Sm^{i}|\ln\frac{K}{\delta}}{2m^2}}.
     \end{align*}
     \end{corollary}
     
@@ -303,27 +305,26 @@
      \le \EE_{i-1} 2Ld(h_i, h'_i) = 2Ld(h_i, h'_i).
     \end{multline*}
     From the Kantorovich-Rubinstein duality theorem \cite[Remark 6.5]{villani2009optimal}, we have
-    \begin{align*}
-    \sum_{i=1}^{m}\EE_{h_i\sim\Q_{i}}\LB\EE_{i-1}[\loss(h_i,\z_i)]-\loss(h_i, \z_i) \RB \le 2L\sum_{i=1}^{m}W_1(\Q_{i}, \P_{i,\S}) + \sum_{i=1}^{m}\EE_{h\sim\P_{i,\S}}\LB\Risk_{\D}(h_i)-\loss(h_i, \z_i) \RB.
-    \end{align*}
+    \begin{multline*}
+    \sum_{i=1}^{m}\EE_{h_i\sim\Q_{i}}\LB\EE_{i-1}[\loss(h_i,\z_i)]-\loss(h_i, \z_i) \RB \\ \le 2L\sum_{i=1}^{m}W_1(\Q_{i}, \P_{i,\S}) + \sum_{i=1}^{m}\EE_{h\sim\P_{i,\S}}\LB\Risk_{\D}(h_i)-\loss(h_i, \z_i) \RB.
+    \end{multline*}
     
     Now, we define $X_i(h_i,\z_i)\defeq \EE_{i-1}[\loss(h_i,\z_i)]- \loss(h_i, \z_i)$. We also recall that for any $i$, we have $\Vhat_i(h_i,\z_i)= (\loss(h_i,\z_i)-\EE_{i-1}[\loss(h_i,\z_i)])^2$ and $V_i(h_i)= \EE_{i-1}[\Vhat(h_i,\z_i)]$.
-    To apply the supermartingales techniques of \cite{haddouche2023pac}, we define the following function:
+    To apply the supermartingales techniques of \Cref{chap: pb-ht}, we define the following function:
     \begin{align*}
        f_m(S,h_1,...,h_m) & \defeq \sum_{i=1}^m \lambda X_i(h_i,\z_i)  - \frac{\lambda^2}{2}\sum_{i=1}^m(\Vhat_i(h_i,\z_i) + V_i(h_i)).
        \end{align*}
-        Now, Lemma 3.2 of \cite{haddouche2023pac} state that the sequence $(SM_m)_{m\geq 1}$ defined for any $m$ as:
+        Now, \Cref{l: cond_fubini} state that the sequence $(SM_m)_{m\geq 1}$ defined for any $m$ as:
         \begin{align*}
          SM_m \defeq \EE_{(h_1,\cdots,h_m) \sim \P_{1,\S} \otimes \cdots \otimes \P_{m,\S}} \LB \exp \Big( f_m(\S,h_1,...,h_m) \Big)  \RB,
          \end{align*}
         is a supermartingale. 
         We exploit this fact as follows: 
-        \begin{align*}
-            \sum_{i=1}^{m}\EE_{h\sim\Q_{i-1}}\LB\EE_{i-1}[\loss(h_i,\z_i)]-\loss(h_i, \z_i)\RB &= \EE_{(h_1,\cdots,h_m) \sim \P_{1,\S} \otimes \cdots \otimes \P_{m,\S}} \LB\sum_{i=1}^m X_i(h_i,\z_i)\RB \\
-            & = \frac{1}{\lambda}\EE_{(h_1,\cdots,h_m) \sim \P_{1,\S} \otimes \cdots \otimes \P_{m,\S}} \LB f_m (\S,h_1,\cdots,h_m)\RB \\
-            & + \frac{\lambda}{2} \sum_{i=1}^m \EE_{h_i\sim \P_{i,\S}}\left[ \Vhat_i(h_i,\z_i) + V_i(h_i) \right] \\
-            & \leq \frac{\ln\left( SM_m \right)}{\lambda} + \frac{\lambda}{2} \sum_{i=1}^m \EE_{h_i\sim \P_{i,\S}}\left[ \Vhat_i(h_i,\z_i) + V_i(h_i) \right]
-        \end{align*}
+        \begin{multline*}
+            \sum_{i=1}^{m}\EE_{h\sim\Q_{i-1}}\LB\EE_{i-1}[\loss(h_i,\z_i)]-\loss(h_i, \z_i)\RB \\= \EE_{(h_1,\cdots,h_m) \sim \P_{1,\S} \otimes \cdots \otimes \P_{m,\S}} \LB\sum_{i=1}^m X_i(h_i,\z_i)\RB \\
+             = \frac{1}{\lambda}\EE_{(h_1,\cdots,h_m) \sim \P_{1,\S} \otimes \cdots \otimes \P_{m,\S}} \LB f_m (\S,h_1,\cdots,h_m)\RB  + \frac{\lambda}{2} \sum_{i=1}^m \EE_{h_i\sim \P_{i,\S}}\left[ \Vhat_i(h_i,\z_i) + V_i(h_i) \right] \\
+             \leq \frac{\ln\left( SM_m \right)}{\lambda} + \frac{\lambda}{2} \sum_{i=1}^m \EE_{h_i\sim \P_{i,\S}}\left[ \Vhat_i(h_i,\z_i) + V_i(h_i) \right]
+        \end{multline*}
         The last line holds thanks to Jensen's inequality.
         Now using Ville's inequality ensures us that:
         \begin{align*}
@@ -396,20 +397,20 @@
     \begin{algorithmic}[1]
     \Procedure{Priors Learning}{}
     \State{$h_1,\dots, h_K \leftarrow$ initialize the hypotheses}\\
-    \For{$t\leftarrow 1,\dots, T$}{\For{\textbf{each} mini-batch $\mathcal{U}\subseteq \S$}{\For{$i \leftarrow 1,\dots, K$}{$\mathcal{U}_i \leftarrow \mathcal{U}\setminus \S_i$\newline
+    \For{$t\leftarrow 1,\dots, T$}{\For{\textbf{each} mini-batch $\mathcal{U}\subseteq \S$}{\For{$i \leftarrow 1,\dots, K$}{$\mathcal{U}_i \leftarrow \mathcal{U}\setminus \Sm^{i}$\newline
     $h_i\leftarrow$ perform a gradient descent step with $\nabla\Risk_{\mathcal{U}_i}(h_i)$}}}
     \State{\textbf{return} hypotheses $h_1,\dots, h_K$}
     \EndProcedure
     \newline
     \Procedure{Posterior Learning}{}
     \State{$h \leftarrow$ initialize the hypothesis}\\
-    \For{$t\leftarrow 1,\dots, T'$}{\For{\textbf{each} mini-batch $\mathcal{U}\subseteq \S$}{$h \leftarrow$ perform a gradient descent step with $\nabla[ \Risk_{\mathcal{U}}(h) + \varepsilon\sum_{i=1}^{K}\frac{|\S_i|}{m}d(h, h_i) ]$}}
+    \For{$t\leftarrow 1,\dots, T'$}{\For{\textbf{each} mini-batch $\mathcal{U}\subseteq \S$}{$h \leftarrow$ perform a gradient descent step with $\nabla[ \Risk_{\mathcal{U}}(h) + \varepsilon\sum_{i=1}^{K}\frac{|\Sm^{i}|}{m}d(h, h_i) ]$}}
     \State{\textbf{return} hypothesis $h$}
     \EndProcedure
     \end{algorithmic}
     \end{algorithm}
     
-    \textsc{Priors Learning} minimises the empirical risk through mini-batches $\mathcal{U}\subseteq\S$ for $T$ epochs. More precisely, for each epoch, we {\it (a)} sample a mini-batch $\mathcal{U}$ (line 4) by excluding the set $\S_i$ from $\mathcal{U}$ for each $h_i\in\H$ (line 5-6), then {\it (b)} the hypotheses $h_1,\dots,h_K\in\H$ are updated (line 7).
+    \textsc{Priors Learning} minimises the empirical risk through mini-batches $\mathcal{U}\subseteq\S$ for $T$ epochs. More precisely, for each epoch, we {\it (a)} sample a mini-batch $\mathcal{U}$ (line 4) by excluding the set $\Sm^{i}$ from $\mathcal{U}$ for each $h_i\in\H$ (line 5-6), then {\it (b)} the hypotheses $h_1,\dots,h_K\in\H$ are updated (line 7).
     In \textsc{Posterior Learning}, we perform a gradient descent step (line 14) on the objective function associated with \Cref{eq:batch-alg-exp} for $T'$ epochs in a mini-batch fashion.
     
     \subsection{Learning algorithm for the online setting}
@@ -446,20 +447,21 @@
     
     \begin{proof}
         Let $(W,b),(W',b')$ both in $ \R^{|\Y|\times d}\times \R^{|\Y|}$, we have
-        \begin{align*}
-            |\loss(W,b,\z)- \loss(W',b',\z)| & \leq \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} |\max\left(0, f(W,b,\z,y') \right) - \max\left(0, f(W',b',\z,y') \right)|.
-        \end{align*}
+        \begin{multline*}
+            |\loss(W,b,\z)- \loss(W',b',\z)| \\ \leq \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} |\max\left(0, f(W,b,\z,y') \right) - \max\left(0, f(W',b',\z,y') \right)|.
+        \end{multline*}
         Note that because $\alpha\mapsto\max(0,\alpha)$ is $1$-Lipschitz, we have: 
         \begin{align*}
             |\loss(W,b,\z)- \loss(W',b',\z)| & \leq \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} | f(W,b,\z,y') - f(W',b',\z,y')|.
         \end{align*}
         Finally, notice that: 
-        \begin{align*}
-            \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} | f(W,b,\z,y')  -f(W',b',\z,y')| &\le \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} \left|\left\langle (W-W')[y'] - (W-W')[y],\x\right\rangle   \right| \\
-            & + \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} |(b-b')[y'] - (b-b')[y]|\\
-            & \leq \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} \left\| (W-W')[y'] - (W-W')[y]  \right\|\|\x\| \\
-            & + \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} |(b-b')[y'] - (b-b')[y]|.
-        \end{align*}
+        \begin{multline*}
+            \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} | f(W,b,\z,y')  -f(W',b',\z,y')| \\
+            \le \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} \left|\left\langle (W-W')[y'] - (W-W')[y],\x\right\rangle   \right| \\
+            + \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} |(b-b')[y'] - (b-b')[y]|\\
+             \leq \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} \left\| (W-W')[y'] - (W-W')[y]  \right\|\|\x\|
+              \\+ \frac{1}{|\Y|-1}\sum_{y^\prime \neq y} |(b-b')[y'] - (b-b')[y]|.
+        \end{multline*}
     
     
        Because we consider the Euclidean norm, we have for any $y'\in\Y$:
@@ -517,18 +519,24 @@
         
         Then, we have $||(W_2- W_2') \text{FCN}_{1}(\x) || \le ||(W_2- W_2')||_F ||\text{FCN}_1(\x)|| \le  K_\x ||(W_2- W_2')||_F$. The second inequality holding as $\text{FCN}_1(\x)$ is a continuous function of the weights. Indeed, as on a compact space, a continuous function reaches its maximum, then its norm is bounded by a certain $K_\x$. 
         Also, as the weights are bounded, any weight matrix has its norm bounded by a certain $K_{W}$ thus $\|W_2'(\text{FCN}_{1}(\x)-\text{FCN}_{1}'(\x)\| \le \|W_2'\|_F\|(\text{FCN}_{1}(\x)-\text{FCN}_{1}'(\x)\| \le K_{W}\|\text{FCN}_{1}(\x)-\text{FCN}_{1}'(\x)\|$. Finally, taking $K_{\text{temp}}= \eta K_{\sigma}\max(K_{\x},K_W,1)$ gives: 
-        \begin{align*}
+        \begin{multline*}
             |\loss(\Wbf_2, \z) - \loss(\Wbf'_2, \z) |
-            &\le K_{\text{temp}} \left(\|(W_2- W_2')\|_F + \|b_2-b_2'\| + \|\text{FCN}_{1}(\x)-\text{FCN}_{1}'(\x)\|\right).
-        \end{align*}  
+            \\\le K_{\text{temp}} \left(\|(W_2- W_2')\|_F + \|b_2-b_2'\| + \|\text{FCN}_{1}(\x)-\text{FCN}_{1}'(\x)\|\right).
+        \end{multline*}  
     
         Exploiting the recursive assumption that $\text{FCN}_1$ is Lipschitz with respect to its weights $\Wbf_1$ gives  $\|\text{FCN}_{1}(\x)-\text{FCN}_{1}'(\x)\| \le K_1 ||\Wbf_1- \Wbf_1'|| $.
     
-        If we denote by $(W_2,b_2)$ the vector of all concatenated weights, notice that $\|(W_2- W_2')\|_F + \|b_2-b_2'\| = \sqrt{(\|(W_2- W_2')\|_F + \|b_2-b_2'\|)^2} \le \sqrt{2(\|(W_2- W_2')\|_F^2 + \|b_2-b_2'\|^2)} = \sqrt{2}\|(W_2,b_2)-(W_2',b_2')\|$ (we used that for any real numbers $a,b, (a+b)^2\le 2(a^2 + b^2)$). We then have: 
-        \begin{align*}
-             |\loss(\Wbf_2, \z) - \loss(\Wbf'_2, \z) | & \le K_{\text{temp}} \max(\sqrt{2},K_1) \left( \|(W_2,b_2)-(W_2',b_2')\| + ||\Wbf_1- \Wbf_1'|| \right) \\
-             & \le \sqrt{2} K_{\text{temp}} \max(\sqrt{2},K_1) ||\Wbf_2- \Wbf_2'||.
-         \end{align*} 
+        If we denote by $(W_2,b_2)$ the vector of all concatenated weights, notice that 
+        \begin{multline*}
+            \|(W_2- W_2')\|_F + \|b_2-b_2'\| \\= \sqrt{(\|(W_2- W_2')\|_F + \|b_2-b_2'\|)^2} \\
+            \le \sqrt{2(\|(W_2- W_2')\|_F^2 + \|b_2-b_2'\|^2)} \\
+            = \sqrt{2}\|(W_2,b_2)-(W_2',b_2')\|
+        \end{multline*} (we used that for any real numbers $a,b, (a+b)^2\le 2(a^2 + b^2)$). We then have: 
+        \begin{multline*}
+             |\loss(\Wbf_2, \z) - \loss(\Wbf'_2, \z) | \\
+             \le K_{\text{temp}} \max(\sqrt{2},K_1) \left( \|(W_2,b_2)-(W_2',b_2')\| + ||\Wbf_1- \Wbf_1'|| \right) \\
+              \le \sqrt{2} K_{\text{temp}} \max(\sqrt{2},K_1) ||\Wbf_2- \Wbf_2'||.
+         \end{multline*} 
         The last line holds by reusing the same calculation trick. This concludes the proof for $i=2$. Then for $i=1$ the same proof holds by replacing $W_2, b_2, \text{FCN}_2$ by $W_1, b_1, \text{FCN}_1$ and replacing $\text{FCN}_1(\x),  \text{FCN}_1'(\x)$ by $\x$ (we then do not need to assume a recursive Lipschitz behaviour). Therefore the result holds for $i=1$. 
     
         We then properly apply a recursive argument by assuming the result at rank $i-1$ reusing the same proof at any rank $i$ by replacing $W_2, b_2, \text{FCN}_2$ by $W_i, b_i, \text{FCN}_i$ and $\text{FCN}_1(\x), \text{FCN}_1'(\x)$ by $\text{FCN}_{i-1}(\x), \text{FCN}_{i-1}'(\x)$. This concludes the proof.
@@ -541,7 +549,7 @@
     We fixed a number of priors $K$ equal to $0.2\sqrt{m}$.
     This number is an empirical tradeoff between the informativeness of our priors and time-efficient computation.
     However, there is no theoretical intuition for the value of this parameter (the discussion of \Cref{sec:wasserstein-batch} considered $K=\sqrt{m}$ as a potential tradeoff; see \Cref{sec:discussion-supervised}). 
-    Thus, we gather below the performance of our learning procedures for $K=\alpha\sqrt{m}$, where $\alpha\in\{0,0.4,0.6,0.8,1\}$ (the case $\alpha =0$ being a convention to denote $K=1$).
+    Thus, we gather in\Cref{tab:expe-3,tab:expe-4,tab:expe-5} the performance of our learning procedures for $K=\alpha\sqrt{m}$, where $\alpha\in\{0,0.4,0.6,0.8,1\}$ (the case $\alpha =0$ being a convention to denote $K=1$).
     The experiments are gathered below, and all remaining hyperparameters (except $K$) are identical to those described in \Cref{sec:experiments}.
     
     
@@ -553,26 +561,25 @@
     Sometimes, the number $K$ does not have a clear influence: on \textsc{mnist} with NNs, for \Cref{alg:batch}~($\frac{1}{\sqrt{m}}$), our performances are similar, whatever the value of $K$, but still significantly better than ERM.
     In any case, note that for every dataset, there exists a value of $K$ and such that our algorithm attains either similar or significantly better performances than ERM on every dataset, which shows the relevance of our learning algorithm to ensure a good generalisation ability.
     Moreover, there is no obvious choice for the parameters $\varepsilon$.
-    For instance, in \Cref{tab:expe-2,tab:expe-3}, for the \textsc{segmentation} dataset, the parameters $K=1,\varepsilon=\frac{1}{m}$ are optimal (in terms of test risks) for both models. 
+    For instance, in \Cref{tab:expe-5}, for the \textsc{segmentation} dataset, the parameters $K=1,\varepsilon=\frac{1}{m}$ are optimal (in terms of test risks) for both models. 
     As $K=1$ means that our single prior is data-free, this shows that the intrinsic structure of \textsc{segmentation} makes it less sensitive to both the information contained in the prior ($K=1$ meaning data-free prior) and the place of the prior itself ($\varepsilon=1/m$ meaning that we give less weight to the regularisation within our optimisation procedure).
     On the contrary, in Table \Cref{tab:expe}, the \textsc{yeast} dataset performs significantly better when $\varepsilon=1/\sqrt{m} (K=0.2\sqrt{m})$, exhibiting a positive impact of our data-dependent priors.
     
     \subsection{Experiments on classical regularisation methods}
     
-    We perform additional experiments to see the performance of the weight decay, \ie, the L2 regularisation on the weights; the results are presented in \Cref{tab:expe-4}.
-    Moreover, notice that the 'distance to initialisation' $\|\wbf-\wbf_0\|$ (where $\wbf_0$ is the weights initialized randomly) is a particular case of \Cref{alg:batch} when $K=1$ (\ie, we treat the data as a single batch, and the prior is the data-free initialisation); the results are in \Cref{tab:expe-2,tab:expe-3}.
+    We perform additional experiments to see the performance of the weight decay, \ie, the L2 regularisation on the weights; the results are presented in \Cref{tab:expe-6}.
+    Moreover, notice that the 'distance to initialisation' $\|\wbf-\wbf_0\|$ (where $\wbf_0$ is the weights initialized randomly) is a particular case of \Cref{alg:batch} when $K=1$ (\ie, we treat the data as a single batch, and the prior is the data-free initialisation); the results are in \Cref{tab:expe-6}.
     
     \textbf{Analysis of our results.}
-    This experiment on the weight decay demonstrates that on a few datasets (namely \textsc{sensorless} and \textsc{yeast}), when our predictors are neural nets, the weight decay regularisation fails to learn while ours succeeds, as shown in \Cref{tab:expe}.
+    This experiment on the weight decay demonstrates that on a few datasets (namely \textsc{sensorless} and \textsc{yeast}), when our predictors are neural nets, the weight decay regularisation fails to learn while ours succeeds, as shown in tables below.
     In general, this table shows that, on most of the datasets, considering data-dependent priors leads to sharper results.
     This shows the efficiency of our method compared to the 'distance to initialisation' regularisation.
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     \begin{table}[ht]
-        \caption{Performance of \Cref{alg:batch} compared to ERM on different datasets for neural network models.
-    We consider $\varepsilon=\frac{1}{m}$ and $\varepsilon=\frac{1}{\sqrt{m}}$, with $K=\alpha\sqrt{m}$ and $\alpha\in\{0,0.4,0.6,0.8,1\}$.
-    We plot the empirical risk $\Rfrak_{\S}(h)$ with its associated test risk $\Rfrak_{\D}(h)$.}
+        \caption{Performance of \Cref{alg:batch} for neural network models.
+    We consider $\varepsilon=\frac{1}{m}$ and $\varepsilon=\frac{1}{\sqrt{m}}$, with $K=\alpha\sqrt{m}$ and $\alpha\in\{0,0.4\}$.}
         \begin{adjustbox}{width=0.45\columnwidth}
         \begin{subtable}{0.5\textwidth}
             \centering
@@ -587,57 +594,16 @@
             \input{chapter_6/tables/sup_nn_batch_4}
             \label{tab:sup_nn_batch_4}
         \end{subtable}\end{adjustbox}
-        \begin{adjustbox}{width=0.45\columnwidth}
-        \begin{subtable}{0.5\textwidth}
-            \centering
-            \caption{$K=0.6\sqrt{m}$}
-            \input{chapter_6/tables/sup_nn_batch_6}
-            \label{tab:sup_nn_batch_6}
-        \end{subtable}\end{adjustbox}%
-        \hspace{1.0cm}\begin{adjustbox}{width=0.45\columnwidth}
-        \begin{subtable}{0.5\textwidth}
-            \centering
-            \caption{$K=0.8\sqrt{m}$}
-            \input{chapter_6/tables/sup_nn_batch_8}
-            \label{tab:sup_nn_batch_8}
-        \end{subtable}\end{adjustbox}
-        \begin{adjustbox}{width=0.45\columnwidth}
-        \begin{subtable}{0.5\textwidth}
-            \centering
-            \caption{$K=\sqrt{m}$}
-            \input{chapter_6/tables/sup_nn_batch_10}
-            \label{tab:sup_nn_batch_10}
-        \end{subtable}\end{adjustbox}%
-        \hspace{1.0cm}\begin{adjustbox}{width=0.48\columnwidth}
-        \begin{subtable}{0.5\textwidth}
-            \centering
-            \caption{ERM}
-            \input{chapter_6/tables/sup_nn_batch_ERM}
-            \label{tab:sup_nn_batch_ERM}
-        \end{subtable}\end{adjustbox}%
-        \label{tab:expe-2}
+        \label{tab:expe-3}
     \end{table}
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
+    
+
     \begin{table}[ht]
         \caption{Performance of \Cref{alg:batch} compared to ERM on different datasets for linear models.
-    We consider $\varepsilon=\frac{1}{m}$ and $\varepsilon=\frac{1}{\sqrt{m}}$, with $K=\alpha\sqrt{m}$ and $\alpha\in\{0,0.4,0.6,0.8,1\}$.
-    We plot the empirical risk $\Rfrak_{\S}(h)$ with its associated test risk $\Rfrak_{\D}(h)$.}
-        \begin{adjustbox}{width=0.45\columnwidth}
-        \begin{subtable}{0.5\textwidth}
-            \centering
-            \caption{$K=1$}
-            \input{chapter_6/tables/sup_linear_batch_0}
-           \label{tab:sup_linear_batch_0}
-        \end{subtable}\end{adjustbox}%
-        \hspace{1.0cm}\begin{adjustbox}{width=0.45\columnwidth}
-        \begin{subtable}{0.5\textwidth}
-            \centering
-            \caption{$K=0.4\sqrt{m}$}
-            \input{chapter_6/tables/sup_linear_batch_4}
-            \label{tab:sup_linear_batch_4}
-        \end{subtable}\end{adjustbox}
+    We consider $\varepsilon=\frac{1}{m}$ and $\varepsilon=\frac{1}{\sqrt{m}}$, with $K=\alpha\sqrt{m}$ and $\alpha\in\{0.6,0.8\}$.}
         \begin{adjustbox}{width=0.45\columnwidth}
         \begin{subtable}{0.5\textwidth}
             \centering
@@ -652,6 +618,13 @@
             \input{chapter_6/tables/sup_linear_batch_8}
             \label{tab:sup_linear_batch_8}
         \end{subtable}\end{adjustbox}
+        \label{tab:expe-4}
+    \end{table}
+
+    \begin{table}[ht]
+        \caption{Performance of \Cref{alg:batch} compared to ERM on different datasets for linear models.
+    We consider $\varepsilon=\frac{1}{m}$ and $\varepsilon=\frac{1}{\sqrt{m}}$, with $K=\alpha\sqrt{m}$ and $\alpha\in\{1\}$.
+    We plot the empirical risk $\Rfrak_{\S}(h)$ with its associated test risk $\Rfrak_{\D}(h)$.}
         \begin{adjustbox}{width=0.45\columnwidth}
         \begin{subtable}{0.5\textwidth}
             \centering
@@ -666,8 +639,10 @@
             \input{chapter_6/tables/sup_linear_batch_ERM}
             \label{tab:sup_linear_batch_ERM}
         \end{subtable}\end{adjustbox}%
-        \label{tab:expe-3}
-    \end{table}
+        \label{tab:expe-5}
+    \end{table} 
+
+    
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
@@ -689,6 +664,6 @@
         \input{chapter_6/tables/sup_nn_batch_L2}
         \label{tab:sup_nn_batch_L2}
     \end{subtable}\end{adjustbox}
-    \label{tab:expe-4}
+    \label{tab:expe-6}
     \end{table}
 \end{noaddcontents}
