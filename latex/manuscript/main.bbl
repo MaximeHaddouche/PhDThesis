@@ -1902,6 +1902,33 @@
       \verb https://doi.org/10.1007/s10618-022-00825-4
       \endverb
     \endentry
+    \entry{gabcke1979neue}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=07a1ad47f5fd1f128f4f0120bb53fdc1}{%
+           family={Gabcke},
+           familyi={G\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Georg-August-Universität Göttingen}%
+      }
+      \strng{namehash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{fullhash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{bibnamehash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{authorbibnamehash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{authornamehash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{authorfullhash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Neue Herleitung und explizite Restabschätzung der Riemann-Siegel-Formel}
+      \field{type}{phdthesis}
+      \field{year}{1979}
+    \endentry
     \entry{germain2016pac}{article}{}
       \name{author}{4}{}{%
         {{hash=2b6d90d4e0026111eb2f0688e393bfaf}{%
@@ -6909,6 +6936,33 @@
       \field{journaltitle}{Communications on Pure and Applied Mathematics}
       \field{title}{{Asymptotic evaluation of certain Markov process expectations for large time---III}}
       \field{year}{1976}
+    \endentry
+    \entry{gabcke1979neue}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=07a1ad47f5fd1f128f4f0120bb53fdc1}{%
+           family={Gabcke},
+           familyi={G\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Georg-August-Universität Göttingen}%
+      }
+      \strng{namehash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{fullhash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{bibnamehash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{authorbibnamehash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{authornamehash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \strng{authorfullhash}{07a1ad47f5fd1f128f4f0120bb53fdc1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Neue Herleitung und explizite Restabschätzung der Riemann-Siegel-Formel}
+      \field{type}{phdthesis}
+      \field{year}{1979}
     \endentry
     \entry{smith1988using}{inproceedings}{}
       \name{author}{5}{}{%
@@ -13300,7 +13354,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{gabcke1979neue}
 \endrefsection
 
 \refsection{1}
