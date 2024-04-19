@@ -563,7 +563,7 @@
     Moreover, there is no obvious choice for the parameters $\varepsilon$.
     For instance, in \Cref{tab:expe-5}, for the \textsc{segmentation} dataset, the parameters $K=1,\varepsilon=\frac{1}{m}$ are optimal (in terms of test risks) for both models. 
     As $K=1$ means that our single prior is data-free, this shows that the intrinsic structure of \textsc{segmentation} makes it less sensitive to both the information contained in the prior ($K=1$ meaning data-free prior) and the place of the prior itself ($\varepsilon=1/m$ meaning that we give less weight to the regularisation within our optimisation procedure).
-    On the contrary, in Table \Cref{tab:expe}, the \textsc{yeast} dataset performs significantly better when $\varepsilon=1/\sqrt{m} (K=0.2\sqrt{m})$, exhibiting a positive impact of our data-dependent priors.
+    On the contrary, the \textsc{yeast} dataset performs significantly better when $\varepsilon=1/\sqrt{m} (K=0.2\sqrt{m})$, exhibiting a positive impact of our data-dependent priors.
     
     \subsection{Experiments on classical regularisation methods}
     

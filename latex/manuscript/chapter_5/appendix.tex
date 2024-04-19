@@ -16,7 +16,7 @@
 We recall a basic property on covering numbers.
 
 \begin{proposition}
-\label[prop]{prop: covering}
+\label{prop: covering}
 For any $R,\varepsilon$, $N(\bar{\mathcal{B}}(0,R)), \varepsilon) \leq \left(1+\frac{2R}{\varepsilon}\right)^d$.
 \end{proposition}
 The following theorem is initially stated in \citep[Theorem 5.10]{villani2009optimal}.
@@ -29,10 +29,10 @@ $$
 for some real-valued upper semicontinuous functions $a \in L^1(Q)$ and $b \in L^1(P)$. Then there is duality:
 $$
 \begin{aligned}
-\min _{\pi \in \Pi(Q, P)} & \int_{\mathcal{X} \times \mathcal{Y}} c(x, y) d \pi(x, y) & =\sup _{\substack{(\psi, \phi) \in L^1(Q) \times L^1(P)\\ \phi-\psi \leq c}}\left[\int_{\mathcal{Y}} \phi(y) dP(y)-\int_{\mathcal{X}} \psi(x) dQ(x)\right],
+\min _{\pi \in \Pi(\Q,\P)} & \int_{\mathcal{X} \times \mathcal{Y}} c(x, y) d \pi(x, y) & =\sup _{\substack{(\psi, \phi) \in L^1(Q) \times L^1(P)\\ \phi-\psi \leq c}}\left[\int_{\mathcal{Y}} \phi(y) dP(y)-\int_{\mathcal{X}} \psi(x) dQ(x)\right],
 \end{aligned}
 $$
-where $L_1(P)$ refers to the set of all functions integrable with respect to $P$ and the condition $\phi-\psi \leq c$ means that for all $x,y \in \mathcal{X}\times \mathcal{Y}, \phi(y)-\psi(x) \leq c(x,y)$.
+where $L_1(P)$ refers to the set of all functions integrable with respect to $\P$ and the condition $\phi-\psi \leq c$ means that for all $x,y \in \mathcal{X}\times \mathcal{Y}, \phi(y)-\psi(x) \leq c(x,y)$.
 \end{theorem}
 
 
@@ -59,9 +59,9 @@ Note that $R= \mathcal{O}\max(\sqrt{d\log(d)},\sqrt{\log(m)})$ when $R$ is the s
 We state a lemma from \cite{panaretos2020invitation} which controls the Wasserstein distance between a measure and its projection on a ball.
 \begin{lemma}[Adapted from \cite{panaretos2020invitation}, Equation 2.3]
 \label[lemma]{l: wass_proj}
-Let $P\in\mathcal{M}_1^+(\mathbb{R}^d)$ and $R>0$. The $1$-Wasserstein distance between $P$ and $\mathcal{P}_R\# P$ is controlled as follows:
+Let $P\in\mathcal{M}_1^+(\mathbb{R}^d)$ and $R>0$. The $1$-Wasserstein distance between $\P$ and $\mathcal{P}_{R}\# \P$ is controlled as follows:
 
-\[ W_1(P, \mathcal{P}_R\# P) \leq \int_{||\mathbf{x}||> R} ||\mathbf{x}-\mathcal{P}_R(\mathbf{x})|| dP(\mathbf{x}) \leq \int_{||\mathbf{x}||> R} ||\mathbf{x}|| dP(\mathbf{x}). \]
+\[ \W_{1}(P, \mathcal{P}_{R}\# \P) \leq \int_{||\mathbf{x}||> R} ||\mathbf{x}-\mathcal{P}_{R}(\mathbf{x})|| dP(\mathbf{x}) \leq \int_{||\mathbf{x}||> R} ||\mathbf{x}|| dP(\mathbf{x}). \]
 \end{lemma}
 \Cref{l: wass_proj} suggests to consider projected distributions and to control them through the residual moments of the norm of gaussian vectors -- which is done in the following result.
 
@@ -70,16 +70,16 @@ Let $P\in\mathcal{M}_1^+(\mathbb{R}^d)$ and $R>0$. The $1$-Wasserstein distance 
 For $d\geq 3$, $R$ satisfying \texttt{Rad}, any $Q= \mathcal{N}(\mu,\Sigma)\in C_{\alpha,\beta, M}$,
 $$Q(||h||> R) \leq \frac{\beta\sqrt{2\beta}}{m}.$$
 Also, for any $Q\in C_{\alpha,\beta,M}$:
-\[ W_1(Q, \mathcal{P}_R\#Q) \leq \mathbb{E}_{h\sim Q}\left[ ||h|| \mathds{1}(||h||>R) \right] \leq (M+1)\frac{\beta\sqrt{2\beta}}{m}. \]
+\[ \W_{1}(\Q, \mathcal{P}_{R}\# \Q) \leq \mathbb{E}_{h\sim \Q}\left[ ||h|| \mathds{1}(||h||>R) \right] \leq (M+1)\frac{\beta\sqrt{2\beta}}{m}. \]
 Finally:
-\[ \mathbb{E}_{h\sim Q}\left[ ||h||^2 \mathds{1}(||h||>R) \right] \leq (M+1)^2\frac{\beta\sqrt{2\beta}}{m}. \]
+\[ \mathbb{E}_{h\sim \Q}\left[ ||h||^2 \mathds{1}(||h||>R) \right] \leq (M+1)^2\frac{\beta\sqrt{2\beta}}{m}. \]
 \end{lemma}
 The proof of \Cref{l: gaussian_tail} is gathered in \Cref{sec: proof_gaussian_tail}.
 
 \subsection{Differential privacy background}
 \label{sec: back_dp}
 \begin{definition}[Probability kernels]
-A \emph{probability kernel} $\mathcal{P}$ from $\mathcal{Z}^m$ to $\mathcal{M}_1(\mathcal{H})$ is defined as a mapping $\mathcal{P}: {Z}^m \rightarrow \mathcal{M}_1(\mathcal{H})$ .
+A \emph{probability kernel} $\mathcal{P}$ from $\mathcal{Z}^m$ to $\mathcal{M}(\mathcal{H})$ is defined as a mapping $\mathcal{P}: {Z}^m \rightarrow \mathcal{M}(\mathcal{H})$ .
 \end{definition}
 
 \begin{definition}
@@ -100,21 +100,21 @@ The max-information $I_{\infty}(X ; Y)$ is defined to be $I_{\infty}^\beta(X ; Y
 For $m \in \mathbb{N}$ and stochastic kernel $\mathcal{P}: \mathcal{Z}^m \rightarrow \mathcal{M}_1(\mathcal{Z})$, the $\beta$-approximate max-information of $\mathcal{P}$, denoted $I_{\infty}^\beta(\mathcal{P}, m)$, is the least value $k$ such that, for all $\mu \in \mathcal{M}_1(\mathcal{Z}), I_{\infty}^\beta(S ; \mathcal{P}(S)) \leq k$
 when $S \sim \mathcal{\mu}^m$. The max-information of $\mathcal{P}$ is defined similarly.
 \end{definition}
-\citet{dziugaite2018data} exploited a boundedness assumption to control the exponential mechanism of \citet{mcsherry2007mechanism}. This ensures that the Gibbs posterior $\mathcal{P}(S)= P_{-\lambda m R_S}$ is $\varepsilon$-diffrentially private for $\varepsilon$ given in \citet[Corollary 5.2]{dziugaite2018data}.
+\citet{dziugaite2018data} exploited a boundedness assumption to control the exponential mechanism of \citet{mcsherry2007mechanism}. This ensures that the Gibbs posterior $\mathcal{P}(S)= P_{-\lambda m \Riskhat_{\Sm}}$ is $\varepsilon$-diffrentially private for $\varepsilon$ given in \citet[Corollary 5.2]{dziugaite2018data}.
 Here, we use a theorem from \citet{minami2016diff} to ensure that for uniformly Lipschitz losses (possibly unbounded), the Gibbs posterior remain $(\varepsilon, \gamma)$-differentially private.
 
 \begin{proposition}[\citet{minami2016diff}, Corollary 8]
 \label{prop: minami}
-Assume $\mathcal{H}=\mathbb{R}^d$. Assume the loss function to be convex and satisfying \textbf{(A1)}. Finally assume that the (data-free) distribution $P$ is such that $-\log P(.)$ is twice differentiable and $m_P$-strongly convex.
+Assume $\mathcal{H}=\mathbb{R}^d$. Assume the loss function to be convex and satisfying \textbf{(A1)}. Finally assume that the (data-free) distribution $\P$ is such that $-\log P(.)$ is twice differentiable and $m_P$-strongly convex.
 Let $\varepsilon>0, 0<\gamma<1$. Take $\lambda>0$ such that
 \[ \lambda \leq \frac{\varepsilon}{2K}\sqrt{\frac{m_P}{1+ 2 \log\left( \frac{1}{\gamma}  \right)}}.  \]
-Then the probability kernel $\mathcal{P} : S \rightarrow P_{-\lambda m R_S}$ is $(\varepsilon,\gamma)$-differentially private.
+Then the probability kernel $\mathcal{P} : S \rightarrow P_{-\lambda m \Riskhat_{\Sm}}$ is $(\varepsilon,\gamma)$-differentially private.
 \end{proposition}
-Note that, as we mainly focus on Gaussian priors lying on the compact $C_{\alpha,\beta,M}$, the condition on $P$ will always be satisfied with $m_P\geq \alpha$. The last result in this appendix is Theorem 3.1 of \citet{rogers2016max} which upper bounds the $\beta$-approximate max-information of any $(\varepsilon,\gamma)$ differentially private probability kernel.
+Note that, as we mainly focus on Gaussian priors lying on the compact $C_{\alpha,\beta,M}$, the condition on $\P$ will always be satisfied with $m_P\geq \alpha$. The last result in this appendix is Theorem 3.1 of \citet{rogers2016max} which upper bounds the $\beta$-approximate max-information of any $(\varepsilon,\gamma)$ differentially private probability kernel.
 
 \begin{proposition}
 \label{prop: rogers}
-Let $\mathcal{P}: \mathcal{Z}^n \rightarrow \mathcal{M}_1(\mathcal{H})$ be an $(\epsilon, \gamma)$-differentially private probability kernel for $\epsilon \in(0,1 / 2]$ and $\gamma \in(0, \epsilon)$.
+Let $\mathcal{P}: \mathcal{Z}^n \rightarrow \mathcal{M}(\mathcal{H})$ be an $(\epsilon, \gamma)$-differentially private probability kernel for $\epsilon \in(0,1 / 2]$ and $\gamma \in(0, \epsilon)$.
 For $\beta=e^{-\epsilon^2 m}+O\left(m \sqrt{\frac{\gamma}{\epsilon}}\right)$, we have
 $$
 I_{\infty}^\beta(\mathcal{P}, m)=O\left(\epsilon^2 m + m \sqrt{\frac{\gamma}{\epsilon}}\right) .
@@ -128,12 +128,10 @@ $$
 \label{sec: proofs_chap_5}
 \subsection{Proof of \Cref{th: compact_mcall}}
 \label{sec: proof_compact_mcall}
-
-\begin{proof}
 We fix $\lambda>0$.
 
 \textit{Step 1: define a good data-dependent function.} We define, for any sample $S$ and predictor $h\in \mathcal{H}$
-\[ f_S(h) = \lambda \Delta_S^2(h). \]
+\[ f_{\Sm}(h) = \lambda \Delta_S^2(h). \]
 This function satisfies the following lemma.
 \begin{lemma}
 \label[lemma]{l: quasi_lpz_quad}
@@ -141,7 +139,7 @@ We fix
 $$\varepsilon= \frac{1}{m}, \quad \lambda^{-1}=   K\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}}\left(\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}} + 2K\varepsilon \right),$$
 with $N= N(\mathcal{H},\varepsilon)$ the $\varepsilon$-covering number of $\mathcal{H}$.
 We then have with probability $1-2\delta$ for all $h,h'\in\mathcal{H}$:
-\[f_S(h)-f_S(h') \leq \varepsilon_m + ||h-h'||,  \]
+\[f_{\Sm}(h)-f_{\Sm}(h') \leq \varepsilon_m + ||h-h'||,  \]
 with $\varepsilon_m = \frac{4}{\log(\frac{1}{\delta})} \left( 2 + \sqrt{\frac{\log\left(\frac{1}{\delta}\right) + 2d\log(1+2Rm)}{2m}}  \right) = \mathcal{O}\left(1+ \sqrt{\frac{d}{m}}\right)$.
 \end{lemma}
 
@@ -149,35 +147,35 @@ with $\varepsilon_m = \frac{4}{\log(\frac{1}{\delta})} \left( 2 + \sqrt{\frac{\l
 We rename $N:= N(\mathcal{H},\varepsilon)$.
 For any $h,h'\in \mathcal{H}^2$, we have:
 \begin{align*}
-f_S(h)-f_S(h')  & = \lambda\left(\Delta_S(h)- \Delta_S(h')\right).\left(\Delta_S(h)+ \Delta_S(h')\right).
+f_{\Sm}(h)-f_{\Sm}(h')  & = \lambda\left(\Delta_{\Sm}(h)- \Delta_{\Sm}(h')\right).\left(\Delta_{\Sm}(h)+ \Delta_{\Sm}(h')\right).
 \end{align*}
 The proof of \Cref{l: quasi_lpz_func} gives with probability at least $1-\delta$, for any $h,h'\in \mathcal{H}^2$,
-\[\lambda(\Delta_S(h)-\Delta_S(h') \leq 4\lambda K \varepsilon + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}} \lambda K \left( 2\varepsilon+ ||h-h||\right).  \]
+\[\lambda(\Delta_{\Sm}(h)-\Delta_{\Sm}(h') \leq 4\lambda K \varepsilon + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}} \lambda K \left( 2\varepsilon+ ||h-h||\right).  \]
 Thus with probability $1-\delta$:
 \begin{align*}
-f_S(h)-f_S(h') & \leq \left(4\lambda K \varepsilon + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}} \lambda K \left( 2\varepsilon+ ||h-h||\right) \right).\left(2 \sup_{h\in K} \Delta_S(h)  \right) \\
-& = \lambda \left(2K\varepsilon\left( 2 + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}  \right) +  K\sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}||h-h'|| \right).\left(2 \sup_{h\in K} \Delta_S(h)  \right).
+f_{\Sm}(h)-f_{\Sm}(h') & \leq \left(4\lambda K \varepsilon + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}} \lambda K \left( 2\varepsilon+ ||h-h||\right) \right).\left(2 \sup_{h\in K} \Delta_{\Sm}(h)  \right) \\
+& = \lambda \left(2K\varepsilon\left( 2 + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}  \right) +  K\sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}||h-h'|| \right).\left(2 \sup_{h\in K} \Delta_{\Sm}(h)  \right).
 \end{align*}
-Because $\mathcal{H}$ is compact and $\ell$ is $K$-lipschitz, $\Delta_S$ is continuous so there exists $h_S$ such that $\sup_{h\in \mathcal{H}} \Delta_S(h)= \Delta_S(h_S)$.
+Because $\mathcal{H}$ is compact and $\ell$ is $K$-lipschitz, $\Delta_S$ is continuous so there exists $h_S$ such that $\sup_{h\in \mathcal{H}} \Delta_{\Sm}(h)= \Delta_{\Sm}(h_S)$.
 \medskip
 
 We consider an $\varepsilon$-covering $C:=\{h_1,...,h_N\}$ of $\mathcal{H}$ of size $N$.
 Thus, there exists $h_0\in C$ such that $||h_S- h_0||\leq \varepsilon$.
 Furthermore, because $\ell \in [0,1]$, by Hoeffding inequality applied for every $h\in C$ and an union bound, we have with probability at least $1-\delta$, for all $h\in C$:
-\[ \Delta_S(h) \leq  \sqrt{\frac{\log(\frac{N}{\delta})}{2m}} \leq   \sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}}. \]
+\[ \Delta_{\Sm}(h) \leq  \sqrt{\frac{\log(\frac{N}{\delta})}{2m}} \leq   \sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}}. \]
 Finally using that $\Delta_S$ is $2K$-Lipschitz gives with probability at least $1-\delta$:
 \begin{align*}
-\sup_{h\in K} \Delta_S(h) &= \Delta_S(h_S) = \Delta_S(h_0) + \left(\Delta_S(h_S)- \Delta_S(h_0)  \right) \\
+\sup_{h\in K} \Delta_{\Sm}(h) &= \Delta_{\Sm}(h_S) = \Delta_{\Sm}(h_0) + \left(\Delta_{\Sm}(h_S)- \Delta_{\Sm}(h_0)  \right) \\
 & \leq  \sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}} + 2K\varepsilon.
 \end{align*}
 So finally, with probability $1- 2\delta$, we have, for any $h,h'\in \mathcal{H}^2$:
 \begin{multline*}
-\frac{1}{\lambda} \left(f_S(h)-f_S(h') \right) \\ \leq \left(2K\varepsilon\left( 2 + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}  \right) +  K\sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}||h-h'|| \right)\times
+\frac{1}{\lambda} \left(f_{\Sm}(h)-f_{\Sm}(h') \right) \\ \leq \left(2K\varepsilon\left( 2 + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}  \right) +  K\sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}||h-h'|| \right)\times
 2\left( \sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}} + 2K\varepsilon \right).
 \end{multline*}
 Taking $\lambda^{-1}=  2K\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}}\left(\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}} + 2K\varepsilon \right)$ gives:
 \begin{align*}
-f_S(h)-f_S(h')  & \leq \frac{2\varepsilon\left( 2 + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}  \right)}{\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}}\left(\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}} + 2K\varepsilon \right)} + ||h-h'||\\
+f_{\Sm}(h)-f_{\Sm}(h')  & \leq \frac{2\varepsilon\left( 2 + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}  \right)}{\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}}\left(\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}} + 2K\varepsilon \right)} + ||h-h'||\\
 & \leq \frac{4m\varepsilon}{\log\left(\frac{N^2}{\delta}\right)} \left( 2 + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}}  \right) + ||h-h'|| \\
 & \leq \frac{4}{\log(\frac{1}{\delta})} \left( 2 + \sqrt{\frac{\log\left(\frac{1}{\delta}\right) + 2d\log(1+2Rm)}{2m}}  \right) + ||h-h'||.
 \end{align*}
@@ -185,74 +183,73 @@ The last line holds as $N\geq1$ and that $N\leq N(\bar{\mathcal{B}}(0,R)), \vare
 This proves the lemma.
 \end{proof}
 
-\textit{Step 2: A probabilistic change of measure inequality for $f_S$.}
-We do not have for the Wasserstein distance such a powerful tool than the change of measure inequality. However, we can generate a probabilistic surrogate on $\mathcal{P}_1(\mathcal{H})$ valid for the function $f_S$ described below.
+\textit{Step 2: A probabilistic change of measure inequality for $f_{\Sm}$.}
+We do not have for the Wasserstein distance such a powerful tool than the change of measure inequality. However, we can generate a probabilistic surrogate on $\mathcal{P}_1(\mathcal{H})$ valid for the function $f_{\Sm}$ described below.
 
 \begin{lemma}
-\label[lemma]{l: change_meas_quad}
+\label[lemma]{l: change_meas_chap_5_quad}
 For any $\lambda, \varepsilon_m$ defined as in \Cref{l: quasi_lpz_quad}, any $\delta>0$, we have with probability $1-2\delta$ over the sample $S$, for any $P\in\mathcal{P}_1(\mathcal{H})$:
 
-\[ \left(\sup_{Q\in \mathcal{P}_1(\mathcal{H})} \mathbb{E}_{h\sim Q}[ f_S(h)] - \varepsilon_m - W_1(Q,P) \right) \leq \mathbb{E}_{h\sim P}[ f_S(h)].     \]
+\[ \left(\sup_{Q\in \mathcal{P}_1(\mathcal{H})} \mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] - \varepsilon_m - \W_{1}(\Q,\P) \right) \leq \mathbb{E}_{h\sim \P}[ f_{\Sm}(h)].     \]
 \end{lemma}
 
-\begin{proof}[Proof of \Cref{l: change_meas_quad}]
+\begin{proof}[Proof of \Cref{l: change_meas_chap_5_quad}]
 For any $\varepsilon>0$, we introduce the cost function $c_{\varepsilon}(x,y)= \varepsilon + ||x-y||$.
-From this we notice that we can rewrite the $\varepsilon,1$- Wasserstein distance introduced in \Cref{def: wasserstein} the same way we did in \Cref{l: change_meas}. This leads to
+From this we notice that we can rewrite the $\varepsilon,1$- Wasserstein distance introduced in \Cref{def: wasserstein} the same way we did in \Cref{l: change_meas_chap_5}. This leads to
 \begin{align*}
-W_\varepsilon(Q,P)= \sup_{\substack{(\psi, \phi) \in L^1(Q) \times L^1(P)\\ \psi-\phi \leq c_{\varepsilon}}}\left[\mathbb{E}_{h\sim Q}[ \psi(h)]- \mathbb{E}_{h\sim P}[ \phi(h)]\right].
+W_\varepsilon(\Q,\P)= \sup_{\substack{(\psi, \phi) \in L^1(Q) \times L^1(P)\\ \psi-\phi \leq c_{\varepsilon}}}\left[\mathbb{E}_{h\sim \Q}[ \psi(h)]- \mathbb{E}_{h\sim \P}[ \phi(h)]\right].
 \end{align*}
-A crucial point is that for a well-chosen $\lambda$ with high probability, the pair $(f_S,f_S)$ satisfies the condition stated under the last supremum. It is formalised in the lemma below.
+A crucial point is that for a well-chosen $\lambda$ with high probability, the pair $(f_{\Sm},f_{\Sm})$ satisfies the condition stated under the last supremum. It is formalised in the lemma below.
 \begin{lemma}
 \label{lem:kanto}
 Given our choices of $\lambda,\varepsilon_m$, we have with probability at least $1-2\delta$ over the sample $S$ that, for all measures $Q,P\in\mathcal{P}_1(\mathcal{H})^2$:
 \begin{itemize}
-  \item $f_S\in L_1(Q),L_1(P)$,
-  \item for all $h,h' \in \mathcal{H}^2, f_S(h)-f_S(h') \leq c_{\varepsilon_m}(h,h')$.
+  \item $f_{\Sm}\in L_1(Q),L_1(P)$,
+  \item for all $h,h' \in \mathcal{H}^2, f_{\Sm}(h)-f_{\Sm}(h') \leq c_{\varepsilon_m}(h,h')$.
 \end{itemize}
 Thus, Kantorovich duality gives us:
-\[ \left(\sup_{Q\in \mathcal{P}_1(\mathcal{H})} \mathbb{E}_{h\sim Q}[ f_S(h)] -  W_{\varepsilon_m}(Q,P) \right)\leq \mathbb{E}_{h\sim P}[ f_S(h)],    \]
-and using $W_{\varepsilon_m} = \varepsilon_m + W_1$ concludes the proof.
+\[ \left(\sup_{Q\in \mathcal{P}_1(\mathcal{H})} \mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] -  W_{\varepsilon_m}(\Q,\P) \right)\leq \mathbb{E}_{h\sim \P}[ f_{\Sm}(h)],    \]
+and using $W_{\varepsilon_m} = \varepsilon_m + \W_{1}$ concludes the proof.
 \end{lemma}
 \begin{proof}[Proof of \Cref{lem:kanto}]
-Because our space of predictors is compact and that for any $z\in\mathcal{Z}$, the loss function $\ell(.,z)$ is $K$-lipschitz on $\mathcal{H}$, then both the generalisation and empirical risk are continuous on $\mathcal{H}$. Thus $|f_S|$ is also continuous and, by compacity, reaches its maximum $M_S$ on $\mathcal{H}$. Thus for any probability $P$ on $K, \mathbb{E}_{h\sim P}[|f_S(h)|] \leq M_S < +\infty$ almost surely. This proves the first statement.
+Because our space of predictors is compact and that for any $\z\in\mathcal{Z}$, the loss function $\ell(.,\z)$ is $K$-lipschitz on $\mathcal{H}$, then both the generalisation and empirical risk are continuous on $\mathcal{H}$. Thus $|f_{\Sm}|$ is also continuous and, by compacity, reaches its maximum $M_S$ on $\mathcal{H}$. Thus for any probability $\P$ on $K, \mathbb{E}_{h\sim \P}[|f_{\Sm}(h)|] \leq M_S < +\infty$ almost surely. This proves the first statement.
 We notice that the second bullet, given our choice of $\lambda$, is the exact conclusion  of \Cref{l: quasi_lpz_quad} with probability at least $1-2\delta$.
-So with probability at least $1-2\delta$, Kantorovich duality gives us that for any $P,Q$
+So with probability at least $1-2\delta$, Kantorovich duality gives us that for any $\P,\Q$
 \begin{align*}
-\mathbb{E}_{h\sim Q}[ f_S(h)] - \mathbb{E}_{h\sim P}[f_S(h)] \leq W_{\varepsilon_m}(Q,P).
+\mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] - \mathbb{E}_{h\sim \P}[f_{\Sm}(h)] \leq W_{\varepsilon_m}(\Q,\P).
 \end{align*}
-Re-organising the terms and taking the supremum over $Q$ concludes the proof.
+Re-organising the terms and taking the supremum over $\Q$ concludes the proof.
 \end{proof}
-This concludes the proof of \Cref{l: change_meas_quad}.
+This concludes the proof of \Cref{l: change_meas_chap_5_quad}.
 \end{proof}
 
 \textit{Step 3: The PAC-Bayes proof for the 1-Wasserstein distance.}
 
-We start by exploiting \cref{l: change_meas_quad}: for any prior $P\in\mathcal{P}_1(\mathcal{H})$, for $\lambda, \varepsilon_m$ defined as in \Cref{l: quasi_lpz_quad}, with probability at least $1-2\delta$ we have:
+We start by exploiting \cref{l: change_meas_chap_5_quad}: for any prior $P\in\mathcal{P}_1(\mathcal{H})$, for $\lambda, \varepsilon_m$ defined as in \Cref{l: quasi_lpz_quad}, with probability at least $1-2\delta$ we have:
 
-\[ \left(\sup_{Q\in \mathcal{P}_1(\mathcal{H})} \mathbb{E}_{h\sim Q}[ f_S(h)] - \varepsilon_m - W_1(Q,P) \right) \leq \mathbb{E}_{h\sim P}[ f_S(h)]. \]
+\[ \left(\sup_{Q\in \mathcal{P}_1(\mathcal{H})} \mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] - \varepsilon_m - \W_{1}(\Q,\P) \right) \leq \mathbb{E}_{h\sim \P}[ f_{\Sm}(h)]. \]
 We then notice that by Jensen's inequality
-$$\mathbb{E}_{h\sim P}[ f_S(h)] \leq \frac{\lambda}{2(m-1)}\log\left(\mathbb{E}_{h\sim P}[ \exp(2(m-1)\Delta_S^2(h))]    \right).$$
+$$\mathbb{E}_{h\sim \P}[ f_{\Sm}(h)] \leq \frac{\lambda}{2(m-1)}\log\left(\mathbb{E}_{h\sim \P}[ \exp(2(m-1)\Delta_S^2(h))]    \right).$$
 Then, by Markov's inequality we have with probability $1-\delta$:
-\[ \mathbb{E}_{h\sim P}[ f_S(h)] \leq \frac{\lambda}{2(m-1)} \log\left(\frac{\mathbb{E}_S\mathbb{E}_{h\sim P}\left[ \exp\left(2(m-1)\Delta_S^2(h)\right) \right]}{\delta}\right).  \]
+\[ \mathbb{E}_{h\sim \P}[ f_{\Sm}(h)] \leq \frac{\lambda}{2(m-1)} \log\left(\frac{\mathbb{E}_S\mathbb{E}_{h\sim \P}\left[ \exp\left(2(m-1)\Delta_S^2(h)\right) \right]}{\delta}\right).  \]
 By Fubini and Lemma 5 of \citet{mcallester2003simplified}, we have
-\[ \mathbb{E}_S\mathbb{E}_{h\sim P}\left[ \exp(f_S(h))\right] \leq m. \]
-Taking an union bound and dividing by $\lambda$ gives with probability $1-3\delta$, for any posterior $Q$
-\[ \mathbb{E}_{h\sim Q}[\Delta_S^2(h)] \leq \frac{}{}  \frac{W_1(Q,P)+\varepsilon_m}{\lambda} + \frac{\log\left( \frac{m}{\delta} \right)}{2(m-1)}.   \]
+\[ \mathbb{E}_S\mathbb{E}_{h\sim \P}\left[ \exp(f_{\Sm}(h))\right] \leq m. \]
+Taking an union bound and dividing by $\lambda$ gives with probability $1-3\delta$, for any posterior $\Q$
+\[ \mathbb{E}_{h\sim \Q}[\Delta_S^2(h)] \leq \frac{}{}  \frac{\W_{1}(\Q,\P)+\varepsilon_m}{\lambda} + \frac{\log\left( \frac{m}{\delta} \right)}{2(m-1)}.   \]
 We also remark that we can upper bound $\lambda$:
 \begin{align*}
 \lambda^{-1} & =  2K\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}}\left(\sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}} + \frac{2K}{m} \right)\\
 & \leq 2K(2K+1)\frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{2m}.
 \end{align*}
 The last line holding because $1/m \leq \sqrt{\frac{\log(\frac{N^2}{\delta})}{2m}}$. Also $N= N(\mathcal{H},1/m) \leq (1+2Rm)^d$ thanks to \cref{prop: covering}.
-Then, bounding $1/2m, 1/(2m-1)$ by $1/m$ gives, with probability at least $1-3\delta$, for any posterior $Q$
+Then, bounding $1/2m, 1/(2m-1)$ by $1/m$ gives, with probability at least $1-3\delta$, for any posterior $\Q$
 \begin{align*}
-\mathbb{E}_{h\sim Q}[\Delta_S^2(h)] & \leq  2K(2K+1) \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(W_1(Q,P)+\varepsilon_m \right) + \frac{\log\left( \frac{m}{\delta} \right)}{m}.
+\mathbb{E}_{h\sim \Q}[\Delta_S^2(h)] & \leq  2K(2K+1) \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\Q,\P)+\varepsilon_m \right) + \frac{\log\left( \frac{m}{\delta} \right)}{m}.
 \end{align*}
-We finally exploit Jensen's inequality once more to remark that for any $Q$, $\mathbb{E}_{h\sim Q}[\Delta_S^2(h)] \geq \left(\mathbb{E}_{h\sim Q}[\Delta_S(h)]  \right)^2$.
-Then, with probability at least $1-3\delta$, for any posterior $Q$
-\[ |\Delta_S(Q)| \leq \sqrt{2K(2K+1)\frac{2d\log\left(\frac{1 +2Rm }{\delta}\right)}{m} \left(W_1(Q,P)+\varepsilon_m \right) + \frac{\log\left( \frac{m}{\delta} \right)}{m}   } \]
+We finally exploit Jensen's inequality once more to remark that for any $\Q$, $\mathbb{E}_{h\sim \Q}[\Delta_S^2(h)] \geq \left(\mathbb{E}_{h\sim \Q}[\Delta_{\Sm}(h)]  \right)^2$.
+Then, with probability at least $1-3\delta$, for any posterior $\Q$
+\[ |\Delta_{\Sm}(\Q)| \leq \sqrt{2K(2K+1)\frac{2d\log\left(\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\Q,\P)+\varepsilon_m \right) + \frac{\log\left( \frac{m}{\delta} \right)}{m}   } \]
 Taking $\delta'= \delta/3$ concludes the proof.
-\end{proof}
 
 \subsection{Proof of \Cref{l: gaussian_tail}}
 \label{sec: proof_gaussian_tail}
@@ -288,26 +285,7 @@ We now control this quantity through the following lemma.
 Let $d\geq 3$, $f(r)= \frac{d}{2}\log(r) -r$ Then for any $r=\frac{(R-M)^2}{2\beta}$ with $R$ satisfying \texttt{Rad}, we have :
 \[f(r) \leq -\frac{d}{2}\log\left(\sqrt{\frac{\beta}{\pi\alpha}}\right) - \log(m)- \log\left(\frac{d+2}{2}\right).\]
 \end{lemma}
-\begin{proof}[Proof of \Cref{l: calculus}]
-First of all, $f$ is decreasing on $[\frac{d}{2},+ \infty).$ Notice that if $r_0= d \log\left( d\frac{m^{\frac{2}{d}}\sqrt{\beta}}{\sqrt{\pi\alpha}} \right)$, then $r_0\geq \frac{d}{2}$ because $d\geq 3$.
-Thus, $r=\frac{(R-M)^2}{2\beta}$, with $R$ satisfying \texttt{Rad}. We then know that $r\geq r_0$ so $f(r)\leq f(r_0)$.
-The only thing left to prove is that
-\[f(r_0)\leq -\frac{d}{2} \log\left(\sqrt{\frac{\beta}{\pi\alpha}}\right) - \log(m) -  \log\left(\frac{d+2}{2}\right). \]
-To do so, notice that:
-\begin{align*}
-\log(r_0)& = \log(d)+ \log\left(\log\left(dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}}  \right)  \right).
-\intertext{So, multiplying by $d/2$ gives:}
-\frac{d}{2}\log(r_0)&= -\frac{d}{2}\log\left(m^{\frac{2}{d}} \sqrt{\frac{\beta}{\pi \alpha}} \right)
-+ \frac{r_0}{2} + \frac{d}{2}\log\log\left( dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} \right).
-\intertext{Finally:}
-f(r_0) &= -\frac{d}{2}\log\left( m^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} \right) - \frac{r_0}{2}
-+ \frac{d}{2}\log\log\left( dm^{\frac{2}{d}}\frac{\beta}{\pi \alpha} \right)
-\end{align*}
-We conclude the proof by proving $$- \frac{r_0}{2} + \frac{d}{2}\log\log\left( dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} \right) \leq -\log\left( \frac{d+2}{2} \right).$$
-Note that this is equivalent to
-\[ dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} -  \left(1+ \frac{d}{2}\right)^{\frac{2}{d}}\log\left( dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} \right) \geq 0. \]
-This is true because for $d\geq 3$, $\left(1+ \frac{d}{2}\right)^{\frac{2}{d}} \leq 2$ and the function $\mathbb{R}^+$, $x\rightarrow x - 2\log(x)$ is positive. This concludes the proof.
-\end{proof}
+The proof of \Cref{l: calculus} lies at the end of this section.
 We then have
 \[ \exp\left({-\frac{(R-M)^2}{2\beta}} \right) \left(\frac{(R-M)^2}{2\beta}\right)^{\frac{d}{2}} = \exp\left(f \left( \frac{(R-M)^2}{2\beta} \right)\right) \leq
 \sqrt{\frac{\pi\alpha}{\beta}}^{d} \times \frac{2}{d+2} \times \frac{1}{m} . \]
@@ -319,15 +297,15 @@ Hence the final bound:
 \textit{Second bound.}
 We use \cref{l: wass_proj} to have
 \begin{align*}
-W_1(Q, \mathcal{P}_R\# Q) & \leq \int_{||\mathbf{x}||> R} ||\mathbf{x}- \mathcal{P}_R(\mathbf{x})|| dP(\mathbf{x}).
-\intertext{By definition of the projection on a closed convex, $||\mathbf{x}-\mathcal{P}_R(\mathbf{x})|| \leq ||\mathbf{x}||$. Thus:}
+\W_{1}(\Q, \mathcal{P}_{R}\# \Q) & \leq \int_{||\mathbf{x}||> R} ||\mathbf{x}- \mathcal{P}_{R}(\mathbf{x})|| dP(\mathbf{x}).
+\intertext{By definition of the projection on a closed convex, $||\mathbf{x}-\mathcal{P}_{R}(\mathbf{x})|| \leq ||\mathbf{x}||$. Thus:}
 &  \leq  \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}}\int_{||\mathbf{x}||> R} ||\mathbf{x}||f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x} \\
 & \leq \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}}\int_{||\mathbf{x}||> R} ||\mathbf{x}- \mu||f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x} + MQ(||h||>R) \\
 & \leq \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}} \int_{||\mathbf{x}||> R} ||\mathbf{x}-\mu||f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x} + \frac{M\beta\sqrt{2\beta}}{m}.
 \intertext{The last line holding thanks to the first part of the proof, then using again that $||\mu||\leq M$ gives:}
-W_1(Q, \mathcal{P}_R\# Q) & \leq\frac{1}{\sqrt{(2 \pi)^d|\Sigma|}} \int_{||\mathbf{x}||> R-M} ||\mathbf{x}||f_{0,\Sigma}(\mathbf{x})d\mathbf{x} + \frac{M\beta\sqrt{2\beta}}{m}.
+\W_{1}(\Q, \mathcal{P}_{R}\# \Q) & \leq\frac{1}{\sqrt{(2 \pi)^d|\Sigma|}} \int_{||\mathbf{x}||> R-M} ||\mathbf{x}||f_{0,\Sigma}(\mathbf{x})d\mathbf{x} + \frac{M\beta\sqrt{2\beta}}{m}.
 \intertext{Then using the same arguments than in the first part of the proof gives:}
-W_1(Q, \mathcal{P}_R\# Q) & \leq \frac{1}{\sqrt{2 \pi\alpha}^{d}} \int_{||\mathbf{x}||> R-M} ||\mathbf{x}|| \exp\left( -\frac{||\mathbf{x}||^2}{2\beta} \right)d\mathbf{x} + \frac{M\beta\sqrt{2\beta}}{m}.
+\W_{1}(\Q, \mathcal{P}_{R}\# \Q) & \leq \frac{1}{\sqrt{2 \pi\alpha}^{d}} \int_{||\mathbf{x}||> R-M} ||\mathbf{x}|| \exp\left( -\frac{||\mathbf{x}||^2}{2\beta} \right)d\mathbf{x} + \frac{M\beta\sqrt{2\beta}}{m}.
 \end{align*}
 We use the hyperspherical coordinate to obtain:
 \begin{align*}
@@ -339,26 +317,26 @@ We use the hyperspherical coordinate to obtain:
 The second line holding because $R-M\geq 1$.
 Then applying again \Cref{l: calculus} gives:
 \begin{align*}
-\mathbb{E}_{h\sim Q}\left[ ||h|| \mathds{1}(||h||>R) \right]& \leq  \beta\sqrt{2\beta} \sqrt{\frac{\beta}{\pi\alpha}}^d\times \frac{d+2}{2} \sqrt{\frac{\pi\alpha}{\beta}}^{d} \times \frac{2}{d+2} \times \frac{1}{m}
+\mathbb{E}_{h\sim \Q}\left[ ||h|| \mathds{1}(||h||>R) \right]& \leq  \beta\sqrt{2\beta} \sqrt{\frac{\beta}{\pi\alpha}}^d\times \frac{d+2}{2} \sqrt{\frac{\pi\alpha}{\beta}}^{d} \times \frac{2}{d+2} \times \frac{1}{m}
 + \frac{M\beta\sqrt{2\beta}}{m} \\
 & = (M+1)\frac{\beta\sqrt{2\beta}}{m}.
 \end{align*}
 Hence the final bound:
-\[ W_1(Q, \mathcal{P}_R\# Q)  \leq  \mathbb{E}_{h\sim Q}\left[ ||h|| \mathds{1}(||h||>R) \right] \leq (M+1)\frac{\beta\sqrt{2\beta}}{m}.  \]
+\[ \W_{1}(Q, \mathcal{P}_{R}\# \Q)  \leq  \mathbb{E}_{h\sim \Q}\left[ ||h|| \mathds{1}(||h||>R) \right] \leq (M+1)\frac{\beta\sqrt{2\beta}}{m}.  \]
 
 
 \textit{Third bound.}
 We start again as
 \begin{align*}
-\mathbb{E}_{h\sim Q}[||h||^2 \mathds{1}(||h||>R)] & =  \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}}\int_{||\mathbf{x}||> R} ||\mathbf{x}||^2f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x} \\
+\mathbb{E}_{h\sim \Q}[||h||^2 \mathds{1}(||h||>R)] & =  \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}}\int_{||\mathbf{x}||> R} ||\mathbf{x}||^2f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x} \\
 & =\frac{1}{\sqrt{(2 \pi)^d|\Sigma|}}\int_{||\mathbf{x}||> R} ||\mathbf{x}- \mu||^2 +2\langle \mu, \mathbf{x}- \mu\rangle + ||\mu||^2 f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x}.
-\intertext{Then, using that $\mu$ is the mean of $Q$ and that $||\mu||\leq M$ gives: }
-\mathbb{E}_{h\sim Q}[||h||^2 \mathds{1}(||h||>R)] & \leq \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}} \int_{||\mathbf{x}||> R} ||\mathbf{x}-\mu||^2f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x}\\
+\intertext{Then, using that $\mu$ is the mean of $\Q$ and that $||\mu||\leq M$ gives: }
+\mathbb{E}_{h\sim \Q}[||h||^2 \mathds{1}(||h||>R)] & \leq \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}} \int_{||\mathbf{x}||> R} ||\mathbf{x}-\mu||^2f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x}\\
 & + 2M \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}} \int_{||\mathbf{x}||> R} ||\mathbf{x}-\mu||f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x} + M^2Q(||h||>R).
 \intertext{Then, the first and second bounds of \cref{l: gaussian_tail} give}
-\mathbb{E}_{h\sim Q}[||h||^2 \mathds{1}(||h||>R)] & \leq \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}} \int_{||\mathbf{x}||> R} ||\mathbf{x}-\mu||^2f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x} + (M^2 + 2M) \frac{\beta\sqrt{2\beta}}{m}.
+\mathbb{E}_{h\sim \Q}[||h||^2 \mathds{1}(||h||>R)] & \leq \frac{1}{\sqrt{(2 \pi)^d|\Sigma|}} \int_{||\mathbf{x}||> R} ||\mathbf{x}-\mu||^2f_{\mu,\Sigma}(\mathbf{x})d\mathbf{x} + (M^2 + 2M) \frac{\beta\sqrt{2\beta}}{m}.
 \intertext{Finally:}
-\mathbb{E}_{h\sim Q}[||h||^2 \mathds{1}(||h||>R)] & \leq \frac{1}{\sqrt{2 \pi\alpha}^{d}} \int_{||\mathbf{x}||> R-M} ||\mathbf{x}||^2 \exp\left( -\frac{||\mathbf{x}||^2}{2\beta} \right)d\mathbf{x} + (M^2 + 2M +2)\frac{\beta\sqrt{2\beta}}{m}.
+\mathbb{E}_{h\sim \Q}[||h||^2 \mathds{1}(||h||>R)] & \leq \frac{1}{\sqrt{2 \pi\alpha}^{d}} \int_{||\mathbf{x}||> R-M} ||\mathbf{x}||^2 \exp\left( -\frac{||\mathbf{x}||^2}{2\beta} \right)d\mathbf{x} + (M^2 + 2M +2)\frac{\beta\sqrt{2\beta}}{m}.
 \end{align*}
 We use the hyperspherical coordinate to obtain:
 \begin{align*}
@@ -368,7 +346,7 @@ We use the hyperspherical coordinate to obtain:
 \end{align*}
 Then applying again \Cref{l: calculus} gives:
 \begin{align*}
-\mathbb{E}_{h\sim Q}\left[ ||h||^2 \mathds{1}(||h||>R) \right]& \leq  \frac{\beta\sqrt{2\beta}}{m}
+\mathbb{E}_{h\sim \Q}\left[ ||h||^2 \mathds{1}(||h||>R) \right]& \leq  \frac{\beta\sqrt{2\beta}}{m}
 + (M^2 + 2M)\frac{\beta\sqrt{2\beta}}{m} \\
 & = (M+1)^2\frac{\beta\sqrt{2\beta}}{m}.
 \end{align*}
@@ -377,29 +355,51 @@ This concludes the proof.
 \end{proof}
 
 
+\begin{proof}[of \Cref{l: calculus}]
+    First of all, $f$ is decreasing on $[\frac{d}{2},+ \infty).$ Notice that if $r_0= d \log\left( d\frac{m^{\frac{2}{d}}\sqrt{\beta}}{\sqrt{\pi\alpha}} \right)$, then $r_0\geq \frac{d}{2}$ because $d\geq 3$.
+    Thus, $r=\frac{(R-M)^2}{2\beta}$, with $R$ satisfying \texttt{Rad}. We then know that $r\geq r_0$ so $f(r)\leq f(r_0)$.
+    The only thing left to prove is that
+    \[f(r_0)\leq -\frac{d}{2} \log\left(\sqrt{\frac{\beta}{\pi\alpha}}\right) - \log(m) -  \log\left(\frac{d+2}{2}\right). \]
+    To do so, notice that:
+    \begin{align*}
+    \log(r_0)& = \log(d)+ \log\left(\log\left(dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}}  \right)  \right).
+    \intertext{So, multiplying by $d/2$ gives:}
+    \frac{d}{2}\log(r_0)&= -\frac{d}{2}\log\left(m^{\frac{2}{d}} \sqrt{\frac{\beta}{\pi \alpha}} \right)
+    + \frac{r_0}{2} + \frac{d}{2}\log\log\left( dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} \right).
+    \intertext{Finally:}
+    f(r_0) &= -\frac{d}{2}\log\left( m^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} \right) - \frac{r_0}{2}
+    + \frac{d}{2}\log\log\left( dm^{\frac{2}{d}}\frac{\beta}{\pi \alpha} \right)
+    \end{align*}
+    We conclude the proof by proving $$- \frac{r_0}{2} + \frac{d}{2}\log\log\left( dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} \right) \leq -\log\left( \frac{d+2}{2} \right).$$
+    Note that this is equivalent to
+    \[ dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} -  \left(1+ \frac{d}{2}\right)^{\frac{2}{d}}\log\left( dm^{\frac{2}{d}}\sqrt{\frac{\beta}{\pi \alpha}} \right) \geq 0. \]
+    This is true because for $d\geq 3$, $\left(1+ \frac{d}{2}\right)^{\frac{2}{d}} \leq 2$ and the function $\mathbb{R}^+$, $x\rightarrow x - 2\log(x)$ is positive. This concludes the proof.
+    \end{proof}
+
+
 \subsection{Proof of \Cref{th: main_gaussian_smooth}}
 \label{sec: proof_smooth}
 
 \begin{proof}[Proof of \Cref{th: main_gaussian_smooth}]
 We take a specific radius $R$ which is the smallest value satisfying \texttt{Rad}.
-We first notice that because for all $z$, $\ell(.,z)$ is $L$-smooth, then on $\mathcal{B}(0,R)$, the gradients of $\ell(.,z)$ are bounded by $D_R=D + LR$. Thus $\ell$ is uniformly $D_R$-Lipschitz on the closed ball of radius $R$.
-This allow us a straightforward application of \Cref{th: compact_mcall} on the compact $\mathcal{B}(0,R)$, with the prior $\mathcal{P}_R\# P$, and with high probability, for any posterior $\mathcal{P}_R\# Q$ with $Q\in C_{\alpha,\beta,M}$:
+We first notice that because for all $z$, $\ell(.,\z)$ is $L$-smooth, then on $\mathcal{B}(0,R)$, the gradients of $\ell(.,\z)$ are bounded by $D_R=D + LR$. Thus $\ell$ is uniformly $D_R$-Lipschitz on the closed ball of radius $R$.
+This allow us a straightforward application of \Cref{th: compact_mcall} on the compact $\mathcal{B}(0,R)$, with the prior $\mathcal{P}_{R}\# \P$, and with high probability, for any posterior $\mathcal{P}_{R}\# \Q$ with $Q\in C_{\alpha,\beta,M}$:
 \begin{align*}
-|\Delta_S(\mathcal{P}_R\# Q)|  \leq  \sqrt{2D_R(2D_R+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(W_1(\mathcal{P}_R\# Q,\mathcal{P}_R\# P) + \varepsilon_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
+|\Delta_{\Sm}(\mathcal{P}_{R}\# \Q)|  \leq  \sqrt{2D_R(2D_R+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\mathcal{P}_{R}\# \Q,\mathcal{P}_{R}\# \P) + \varepsilon_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
 \end{align*}
 From this we control the left hand-side term as follows:
 \begin{align*}
-|\Delta_S(Q)| &\leq |\Delta_S(\mathcal{P}_R\# Q)| + |\Delta_S(Q) - \Delta_S(\mathcal{P}_R\# Q) |
+|\Delta_{\Sm}(\Q)| &\leq |\Delta_{\Sm}(\mathcal{P}_{R}\# \Q)| + |\Delta_{\Sm}(\Q) - \Delta_{\Sm}(\mathcal{P}_{R}\# \Q) |
 \intertext{And we also have as in the proof of \Cref{th: main_gaussian_lpz}:}
-|\Delta_S(Q) - \Delta_S(\mathcal{P}_R\# Q) | & \leq 2Q(||h||>R) \leq 2 \frac{\beta\sqrt{2\beta}}{m}.
+|\Delta_{\Sm}(\Q) - \Delta_{\Sm}(\mathcal{P}_{R}\# \Q) | & \leq 2Q(||h||>R) \leq 2 \frac{\beta\sqrt{2\beta}}{m}.
 \end{align*}
 Also we have by the triangle inequality:
-\[W_1(\mathcal{P}_R\# Q,\mathcal{P}_R\# P) \leq W_1(Q, \mathcal{P}_R\# Q) + W_1(Q,P)+ W_1(P, \mathcal{P}_R\# P). \]
+\[\W_{1}(\mathcal{P}_{R}\# \Q,\mathcal{P}_{R}\# \P) \leq \W_{1}(Q, \mathcal{P}_{R}\# \Q) + \W_{1}(\Q,\P)+ \W_{1}(P, \mathcal{P}_{R}\# \P). \]
 Because both $Q,P\in C_{\alpha,\beta,M}$, using again \Cref{l: gaussian_tail} gives:
-\[W_1(\mathcal{P}_R\# Q,\mathcal{P}_R\# P) \leq  W_1(Q,P)+2(M+1)\frac{\beta\sqrt{2\beta}}{m}. \]
+\[\W_{1}(\mathcal{P}_{R}\# \Q,\mathcal{P}_{R}\# \P) \leq  \W_{1}(\Q,\P)+2(M+1)\frac{\beta\sqrt{2\beta}}{m}. \]
 We then have:
 \begin{align*}
-|\Delta_S(Q)| \leq 2 \frac{\beta\sqrt{2\beta}}{m} + \sqrt{2D_R(2D_R+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(W_1(Q,P)+ \alpha_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
+|\Delta_{\Sm}(\Q)| \leq 2 \frac{\beta\sqrt{2\beta}}{m} + \sqrt{2D_R(2D_R+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\Q,\P)+ \alpha_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
 \end{align*}
 with $\alpha_m= 2(M+1)\frac{\beta\sqrt{\beta}}{m} + \varepsilon_m= \mathcal{O}\left(1 + \sqrt{\frac{d\log(Rm)}{m}}\right)$. This concludes the proof.
 \end{proof}

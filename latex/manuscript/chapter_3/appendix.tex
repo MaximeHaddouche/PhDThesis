@@ -643,32 +643,10 @@ This fact allows the divergence terms (Rényi or KL depending on which bound we 
    To do so we prove the following lemma:
 
    \begin{lemma}
-     The sequence $(M_m:=\mathbb{E}_{h^m\sim P^m_S}\exp(f_m(\S,h^m))_{m\geq 1}$ is a non-negative supermartingale.
+    \label{l: nonneg_supmart}
+     The sequence $(M_m:=\mathbb{E}_{h^m\sim P^m_S}\exp(f_m(\S,h^m)))_{m\geq 1}$ is a non-negative supermartingale.
    \end{lemma}
-   \begin{proof}
-   We fix $m\geq 1$ and we recall that for any $i$, $\P_{i,\Sm}$ is $\mathcal{F}_{i-1}$-measurable. We show that $\mathbb{E}_{m-1}[M_m] \leq M_{m-1}$. We first recover $M_{m-1}$ from $\mathbb{E}_{m-1}[M_m]$.
-
-     \begin{multline*}
-       \mathbb{E}_{m-1}[M_m] =\mathbb{E}_{m-1}\left[\mathbb{E}_{h^m\sim P^m_S}\exp(f_m(\S,h^m))\right] \\
-        = \mathbb{E}_{m-1}\left[\mathbb{E}_{h_1,..,h_m\sim P_{1,S}\otimes...\otimes \P_{m,\S}}\exp(f_m(\S,h^m))\right] \\
-        = \mathbb{E}_{m-1}\left[\mathbb{E}_{h_1,..,h_m\sim P_{1,S}\otimes...\otimes \P_{m,\S}}\left[\Pi_{i=1}^m\exp\left(\lambda X_i(h_i,\z_i)  - \frac{\lambda^2}{2}(\hat{V}_i(h_i,\z_i) + V_i(h_i))\right)\right] \right] \\
-         = M_{m-1} \mathbb{E}_{m-1}\left[ \mathbb{E}_{h_m\sim \P_{m,\S}}\left[\exp\left(\lambda X_m(h_m,\z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,\z_m) + V_m(h_m))\right) \right]\right].
-     \end{multline*}
- The last line holding because $P^{m-1}_S = P_{1,S}\otimes...\otimes P_{m-1,S}$ is $\mathcal{F}_{m-1}$ measurable.
-
-
-   Now we exploit the fact that $\P_{m,\S}$ is $\mathcal{F}_{m-1}$ measurable to apply \Cref{l: cond_fubini-chap3}. We have:
-
-   \begin{multline*}
-     \mathbb{E}_{m-1}\left[ \mathbb{E}_{h_m\sim \P_{m,\S}}\left[\exp\left(\lambda X_m(h_m,\z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,\z_m) + V_m(h_m))\right) \right]\right] \\ =  \mathbb{E}_{h_m\sim \P_{m,\S}}\left[\mathbb{E}_{m-1}\left[\exp\left(\lambda X_m(h_m,\z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,\z_m) + V_m(h_m))\right) \right]\right].
-   \end{multline*}
-
- Now we can apply Lemma \ref{l: bercu_touati} for any $h_m\in\mathcal{H}$ with $\Delta M_{m}=X_m(h_m,\z_m), \Delta[M]_{m}=\hat{V}(h_m,\z_m)$ and $\Delta\langle M\rangle_{m}= V_m(h_m)$. We then have for all $h_m\in\mathcal{H}$:
-
- \[ \mathbb{E}_{m-1}\left[\exp\left(\lambda X_m(h_m,\z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,\z_m) + V_m(h_m))\right) \right] \leq 1.  \]
-
- Thus $\mathbb{E}_{m-1}[M_m] \leq M_{m-1}$, this concludes the lemma's proof.
-   \end{proof}
+   The proof of this lemma lies at the end of this section.
 
  Now we can apply Ville's inequality which implies that with probability at least $1-\delta$, for any $m\geq 1$:
 
@@ -683,6 +661,31 @@ This fact allows the divergence terms (Rényi or KL depending on which bound we 
  Re-organising the terms in this bound and dividing by $\lambda$ concludes the proof.
 
  \end{proof}
+
+ \begin{proof}[of \Cref{l: nonneg_supmart}]
+  We fix $m\geq 1$ and we recall that for any $i$, $\P_{i,\Sm}$ is $\mathcal{F}_{i-1}$-measurable. We show that $\mathbb{E}_{m-1}[M_m] \leq M_{m-1}$. We first recover $M_{m-1}$ from $\mathbb{E}_{m-1}[M_m]$.
+
+    \begin{multline*}
+      \mathbb{E}_{m-1}[M_m] =\mathbb{E}_{m-1}\left[\mathbb{E}_{h^m\sim P^m_S}\exp(f_m(\S,h^m))\right] \\
+       = \mathbb{E}_{m-1}\left[\mathbb{E}_{h_1,..,h_m\sim P_{1,S}\otimes...\otimes \P_{m,\S}}\exp(f_m(\S,h^m))\right] \\
+       = \mathbb{E}_{m-1}\left[\mathbb{E}_{h_1,..,h_m\sim P_{1,S}\otimes...\otimes \P_{m,\S}}\left[\Pi_{i=1}^m\exp\left(\lambda X_i(h_i,\z_i)  - \frac{\lambda^2}{2}(\hat{V}_i(h_i,\z_i) + V_i(h_i))\right)\right] \right] \\
+        = M_{m-1} \mathbb{E}_{m-1}\left[ \mathbb{E}_{h_m\sim \P_{m,\S}}\left[\exp\left(\lambda X_m(h_m,\z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,\z_m) + V_m(h_m))\right) \right]\right].
+    \end{multline*}
+The last line holding because $P^{m-1}_S = P_{1,S}\otimes...\otimes P_{m-1,S}$ is $\mathcal{F}_{m-1}$ measurable.
+
+
+  Now we exploit the fact that $\P_{m,\S}$ is $\mathcal{F}_{m-1}$ measurable to apply \Cref{l: cond_fubini-chap3}. We have:
+
+  \begin{multline*}
+    \mathbb{E}_{m-1}\left[ \mathbb{E}_{h_m\sim \P_{m,\S}}\left[\exp\left(\lambda X_m(h_m,\z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,\z_m) + V_m(h_m))\right) \right]\right] \\ =  \mathbb{E}_{h_m\sim \P_{m,\S}}\left[\mathbb{E}_{m-1}\left[\exp\left(\lambda X_m(h_m,\z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,\z_m) + V_m(h_m))\right) \right]\right].
+  \end{multline*}
+
+Now we can apply Lemma \ref{l: bercu_touati} for any $h_m\in\mathcal{H}$ with $\Delta M_{m}=X_m(h_m,\z_m), \Delta[M]_{m}=\hat{V}(h_m,\z_m)$ and $\Delta\langle M\rangle_{m}= V_m(h_m)$. We then have for all $h_m\in\mathcal{H}$:
+
+\[ \mathbb{E}_{m-1}\left[\exp\left(\lambda X_m(h_m,\z_m)  - \frac{\lambda^2}{2}(\hat{V}_m(h_m,\z_m) + V_m(h_m))\right) \right] \leq 1.  \]
+
+Thus $\mathbb{E}_{m-1}[M_m] \leq M_{m-1}$, this concludes the lemma's proof.
+  \end{proof}
 
 
 \section{Additional experiment}
