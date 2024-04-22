@@ -54,8 +54,8 @@ We denote by $\mathcal{P}_1(\mathcal{H})$ (resp. $\mathcal{P}_2(\mathcal{H})$) t
 
 \paragraph{Definitions.}
 The \emph{generalisation error} $\Risk_{\D}$ of any predictor $h\in\mathcal{H}$ is $\Risk_{\D}(h)= \mathbb{E}_{z\sim \D}[\ell(h,\z)]$, the \emph{empirical error} of $h$ is $\Riskhat_{\Sm}(h)= \frac{1}{m}\sum_{i=1}^m\ell(h,\z_i)$.
-The \emph{generalisation gap} of any $h$ is the quantity $\Delta_{\Sm}(h)=\Risk_{\D}(h)-\Riskhat_{\Sm}(h)$ and, for any $Q\in\mathcal{M}(H)$, $\Delta_{\Sm}(\Q)= \mathbb{E}_{h\sim \Q}[\Delta_{\Sm}(h)]$. In what follows, we let $\mathcal{B}(\x,r)$ (resp. $\bar{\mathcal{B}}(\x,r)$) denote the ball (resp. closed ball) centered in $\x\in\mathbb{R}^d$ of radius $r$.
-We define the \emph{Gibbs posterior} associated to the prior $P\in\mathcal{M}(\mathcal{H})$ as the measure $P_{-\lambda \Riskhat_{\Sm}}$ such that $\mathrm{d}\P_{-\lambda \Riskhat_{\Sm}} \propto \exp(-\lambda \Riskhat_{\Sm}(.)) \mathrm{d}\P(.)$.
+The \emph{generalisation gap} of any $h$ is the quantity $\Delta_{\Sm}(h)=\Risk_{\D}(h)-\Riskhat_{\Sm}(h)$ and, for any $\Q\in\mathcal{M}(H)$, $\Delta_{\Sm}(\Q)= \mathbb{E}_{h\sim \Q}[\Delta_{\Sm}(h)]$. In what follows, we let $\mathcal{B}(\x,r)$ (resp. $\bar{\mathcal{B}}(\x,r)$) denote the ball (resp. closed ball) centered in $\x\in\mathbb{R}^d$ of radius $r$.
+We define the \emph{Gibbs posterior} associated to the prior $\P\in\mathcal{M}(\mathcal{H})$ as the measure $\P_{-\lambda \Riskhat_{\Sm}}$ such that $\mathrm{d}\P_{-\lambda \Riskhat_{\Sm}} \propto \exp(-\lambda \Riskhat_{\Sm}(.)) \mathrm{d}\P(.)$.
 
 
 
@@ -109,9 +109,9 @@ In order to assess whether the output of a learning algorithm enjoys high genera
 \label{eq: wanted_pattern}
 \Delta_{\Sm}(\hat{\Q}_N) \leq \sqrt{\frac{f(N)\operatorname{D}(\P,\hat{\Q}) + \varepsilon+ \log(m/\delta)}{2m}},
 \end{align}
-where $f$ is a function decreasing to $0$ as $N$ goes to infinity, which comes from the optimisation procedure, $\operatorname{D}$ is the way to measure the discrepancy between $P,\hat{\Q}$ (classically it would be the KL divergence) and $\varepsilon$ is a residual term which could contain for instance the discrepancy $\operatorname{KL}(\Q^*,\hat{\Q})$ between the approximation and the true minimiser.
+where $f$ is a function decreasing to $0$ as $N$ goes to infinity, which comes from the optimisation procedure, $\operatorname{D}$ is the way to measure the discrepancy between $\P,\hat{\Q}$ (classically it would be the KL divergence) and $\varepsilon$ is a residual term which could contain for instance the discrepancy $\operatorname{KL}(\Q^*,\hat{\Q})$ between the approximation and the true minimiser.
 Such a guarantee would give theoretical evidence that the generalisation ability of $\hat{\Q}_N$ is independent of the choice of the initialisation point $\P$ and tends to $\mathcal{O}\left( \sqrt{\frac{\varepsilon + \log(m/\delta)}{m}} \right)$.
-To the best of our knowledge, there is no work proposing an optimisation procedure such that $\operatorname{KL}(\hat{\Q}_N,\hat{\Q}) \leq f(N)  \operatorname{KL}(P,\hat{\Q})$.  This lack is unfortunate but not surprising as the $KL$ divergence is not a distance: it is not easy to incorporate optimisation guarantees, often based on geometric properties of the loss, into the KL divergence.
+To the best of our knowledge, there is no work proposing an optimisation procedure such that $\operatorname{KL}(\hat{\Q}_N,\hat{\Q}) \leq f(N)  \operatorname{KL}(\P,\hat{\Q})$.  This lack is unfortunate but not surprising as the $KL$ divergence is not a distance: it is not easy to incorporate optimisation guarantees, often based on geometric properties of the loss, into the KL divergence.
 
 \paragraph{Our aims in this paper.}
 A legitimate question is then: is it possible to extend the PAC-Bayes theory beyond the KL divergence in order to explain before training, with a bound of the form of \eqref{eq: wanted_pattern}, whether the output of optimisation procedure have high generalisation ability? We structure the present paper to provide a positive answer to this question. More precisely we develop a WPB bound of the form of \eqref{eq: wanted_pattern} for the output of the Bures-Wasserstein SGD \citep{lambert2022variational}.
@@ -137,19 +137,19 @@ We say that a function $\ell:\mathcal{H}\times\mathcal{Z}\rightarrow \mathbb{R}$
 \end{definition}
 
 \paragraph{A WPB bound for compact predictor classes.}
-We first extend the PAC-Bayes framework to the case where the discrepancy between measures is expressed through the $1$-Wasserstein distance. It is stated as follows: for uniformly $K$-lipschitz functions bounded in $[0,1]$ with  $\mathcal{H}\subseteq \mathcal{B}_R:= \bar{\mathcal{B}}(0_{\mathbb{R}^d},R)$, we have for any prior $P\in\mathcal{M}(\mathcal{H})$, with probability at least $1-\delta$, for any posterior distribution $Q\in\mathcal{M}(\mathcal{H})$
+We first extend the PAC-Bayes framework to the case where the discrepancy between measures is expressed through the $1$-Wasserstein distance. It is stated as follows: for uniformly $K$-lipschitz functions bounded in $[0,1]$ with  $\mathcal{H}\subseteq \mathcal{B}_R:= \bar{\mathcal{B}}(0_{\mathbb{R}^d},R)$, we have for any prior $\P\in\mathcal{M}(\mathcal{H})$, with probability at least $1-\delta$, for any posterior distribution $\Q\in\mathcal{M}(\mathcal{H})$
 \[ |\Delta_{\Sm}(\Q)| \leq \mathcal{O}\left(\sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(1+\W_{1}(\Q,\P)  \right) +\frac{\log\left( \frac{m}{\delta} \right)}{m} } \right). \]
 This bound extends the WPB bound of \citet{amit2022integral} to the case of a compact space of predictors. The proof technique exploits covering number arguments to prove the Lipschitzness (with high probability) of a relevant functional. The duality theorem of \citet[Theorem 5.10]{villani2009optimal} allows us to generate a local change of measure inequality (see, \emph{e.g.}, \citealp{donsker1976asymp}) required to use PAC-Bayes learning.
 This bound is stated in \Cref{th: compact_mcall} and further discussed in \Cref{sec: compact_space}. However, this result does not cover the celebrated case of PAC-Bayes with Gaussian priors and posteriors. We then develop the next result to address this important case.
 
-\paragraph{WPB bounds with Gaussians measures for unbounded losses.} Through the calculus of the residuals of Euler's Gamma function we obtain in \Cref{th: main_gaussian_lpz}, stated in \Cref{sec: wpb_gauss}, the following result when $\mathcal{H}=\mathbb{R}^d$, for loss functions lying in $[0,1]$ being uniformly $K$-lipschitz: for any gaussian prior $\P$ in a compact $C_{\alpha,\beta,M}\subseteq \operatorname{BW}(\mathbb{R}^d)$, with probability at least $1-\delta$, for any posterior distribution $Q\in \mathcal{C}$,
+\paragraph{WPB bounds with Gaussians measures for unbounded losses.} Through the calculus of the residuals of Euler's Gamma function we obtain in \Cref{th: main_gaussian_lpz}, stated in \Cref{sec: wpb_gauss}, the following result when $\mathcal{H}=\mathbb{R}^d$, for loss functions lying in $[0,1]$ being uniformly $K$-lipschitz: for any gaussian prior $\P$ in a compact $C_{\alpha,\beta,M}\subseteq \operatorname{BW}(\mathbb{R}^d)$, with probability at least $1-\delta$, for any posterior distribution $\Q\in \mathcal{C}$,
 \begin{multline*} 
     |\Delta_{\Sm}(\Q)| \\ 
     \leq \mathcal{O}\left(\sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(1+ \sqrt{\frac{d}{m}} + \W_{1}(\Q,\P)  \right) +\frac{\log\left( \frac{m}{\delta} \right)}{m}} \right), 
 \end{multline*}
 where $R= \mathcal{O}(\max \sqrt{d\log(d)},\sqrt{\log(m)})$.
 This shows that, using $R$ as an hyperparameter, we are able to maintain nearly the same convergence rate than \Cref{th: compact_mcall} at the cost of an extra factor of $\sqrt{\log(dm)}$.
-Interestingly, we are able to remove in \Cref{cor: unbounded_lpz} the boundedness assumption to obtain a WPB bound, valid for unbounded uniformly $K$-lipschitz function  with an additional boundedness assumption on $\sup_{z} \ell(0,z)$. This bound is more sensitive to the dimension of the problem when few data points are available. However, the asymptotic dependency remains (nearly) unchanged, at the cost of an extra polynomial factor in $\log(dm)$:
+Interestingly, we are able to remove in \Cref{cor: unbounded_lpz} the boundedness assumption to obtain a WPB bound, valid for unbounded uniformly $K$-lipschitz function  with an additional boundedness assumption on $\sup_{z} \ell(0,\z)$. This bound is more sensitive to the dimension of the problem when few data points are available. However, the asymptotic dependency remains (nearly) unchanged, at the cost of an extra polynomial factor in $\log(dm)$:
 \begin{align}
 |\Delta_{\Sm}(\Q)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left(1 + \W_{1}(\Q,\P)\right)+(1+K^2\log(m))\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
 \end{align}
@@ -157,14 +157,14 @@ $\Tilde{\mathcal{O}}$ hides a polynomial dependency in $(\log(d),\log(m))$. This
 
 \paragraph{A WPB bound with data-dependent prior.}
 As we aim to intricate optimisation guarantees with generalisation bounds, we have to overcome the Bayesian paradigm of data-free priors which sets the prior distribution as a comparison point. Here, it is necessary to compare the candidate posterior with the optimisation goal. To do so, we elaborate in \Cref{sec: data_dep_priors} on the idea of \citet{dziugaite2018data} who exploit differential privacy to obtain PAC-Bayesian bounds allowing to take data-dependent priors. We show that it is possible to maintain the asymptotic convergence rate of \Cref{cor: unbounded_lpz} when taking as 'prior' a Gibbs posterior.
-We introduce the following theorem holding again when $\mathcal{H}=\mathbb{R}^d$. For any gaussian prior $\P$ living in $C_{\alpha,\beta,M}$, with probability at least $1-\delta$, for any posterior distribution $Q\in C_{\alpha,\beta,M}$, we have the following asymptotic convergence rate
+We introduce the following theorem holding again when $\mathcal{H}=\mathbb{R}^d$. For any gaussian prior $\P$ living in $C_{\alpha,\beta,M}$, with probability at least $1-\delta$, for any posterior distribution $\Q\in C_{\alpha,\beta,M}$, we have the following asymptotic convergence rate
 \begin{align*}
-|\Delta_{\Sm}(\Q)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left(1 + \W_{1}(Q,P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}})\right)+(1+K^2\log(m))\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
+|\Delta_{\Sm}(\Q)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left(1 + \W_{1}(\Q,\P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}})\right)+(1+K^2\log(m))\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
 \end{align*}
 We also study non-asymptotic regimes in \Cref{th: data_dep}. While \citet{dziugaite2018data} exploited differential privacy results for the Gibbs posterior when the loss is bounded, we successfully extended these results to (possibly unbounded) uniformly Lipschitz losses. This is not specific to the WPB framework and may be of independent interest.
 
 \paragraph{PAC-Bayes provides generalisation guarantees for the Bures-Wasserstein SGD.}
-While working on WPB theory, we notice a shift from classical assumptions due to the KL divergence. Indeed, statistical assumptions (such as subgaussiannity, bounded variances) are transformed into geometric assumptions such as Lipschitzness and convex smoothness when Wasserstein distances are involved. We exploit in \Cref{sec: gene_sgd} WPB theory to provide generalisation guarantees for the Bures-Wasserstein SGD (recalled in \Cref{alg: sgd}) which approximates the best Gaussian surrogate $\hat{\Q}$ of $\Q^*:= P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}}$ (in the sense of the KL divergence, see \Cref{sec: gene_sgd} for more details).
+While working on WPB theory, we notice a shift from classical assumptions due to the KL divergence. Indeed, statistical assumptions (such as subgaussiannity, bounded variances) are transformed into geometric assumptions such as Lipschitzness and convex smoothness when Wasserstein distances are involved. We exploit in \Cref{sec: gene_sgd} WPB theory to provide generalisation guarantees for the Bures-Wasserstein SGD (recalled in \Cref{alg: sgd}) which approximates the best Gaussian surrogate $\hat{\Q}$ of $\Q^*:= \P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}}$ (in the sense of the KL divergence, see \Cref{sec: gene_sgd} for more details).
 More precisely, we show that the KL divergence and Wasserstein distances are linked within the WPB framework: the (KL-based) PAC-Bayesian learning objective of \citet{catoni2007pac}, which outputs the Gibbs posterior $\Q^*$, can be approximated by $\hat{\Q}_N$, the output of the Bures-Wasserstein SGD after $N$ optimisation steps, which is provably close from $\hat{\Q}$ with respect to the $2$-Wasserstein distance (see \Cref{th: lambert}).
 Within the WPB framework, this link is translated in \Cref{th: main_sgd} as a generalisation bound ensuring that asymptotically, the minima reached by the Bures-Wasserstein SGD has a strong generalisation ability.
 \medskip
@@ -195,7 +195,7 @@ This notion of duality holds for any cost function (in an optimal transport fram
 Let $\mathcal{H}\subseteq \mathbb{R}^d$. An $\varepsilon$-covering of $\mathcal{H}$ is a subset $C$ of $\mathcal{H}$ such that $\mathcal{H} \subseteq \cup_{x\in C} \bar{\mathcal{B}}(x,\varepsilon)$. The $\varepsilon$-covering number of $\mathcal{H}$ is defined as
 $$N(\mathcal{H},\varepsilon):= \min\{n\geq 1 \mid \exists \text{ an $\varepsilon$-covering of $\mathcal{H}$ of size $n$} \}.$$
 \end{definition}
-We also define the $\varepsilon,1$-Wasserstein to be $W_{\varepsilon}(\Q,\P)= \varepsilon + \W_{1}(\Q,\P)$. This cost function is essential to the analysis.
+We also define the $\varepsilon,1$-Wasserstein to be $\W_{\varepsilon}(\Q,\P)= \varepsilon + \W_{1}(\Q,\P)$. This cost function is essential to the analysis.
 We now state the main results of this section. Additional background is gathered in \Cref{sec: back_compact}.
 
 \subsection{A Catoni-type bound}
@@ -204,9 +204,9 @@ We propose here a WPB bound analogous to a relaxation of \citet[Theorem 1.2.6]{c
 
 \begin{theorem}
 \label{th: compact_catoni}
-For any $\varepsilon,\delta>0$, assume that $\ell\in [0,1]$ is uniformly $K$-Lipschitz and that $\mathcal{H}$ is a compact of $\mathbb{R}^d$ bounded by $R>0$. Let $P\in \mathcal{P}_1(\mathcal{H})$ be a (data-free) prior distribution and assume we choose a parameter $\lambda$ such that
+For any $\varepsilon,\delta>0$, assume that $\ell\in [0,1]$ is uniformly $K$-Lipschitz and that $\mathcal{H}$ is a compact of $\mathbb{R}^d$ bounded by $R>0$. Let $\P\in \mathcal{P}_1(\mathcal{H})$ be a (data-free) prior distribution and assume we choose a parameter $\lambda$ such that
 \[ 0< \lambda \leq  \frac{1}{K}\sqrt{\frac{2m}{2d\log(1+\frac{2R}{\varepsilon})+\log(\frac{2}{\delta})}}:= \lambda_{max}. \]
-Then, with probability $1-\delta$ , for any posterior distribution $Q\in\mathcal{P}_1(K)$,
+Then, with probability $1-\delta$ , for any posterior distribution $\Q\in\mathcal{P}_1(K)$,
 \[ \Delta_{\Sm}(\Q) \leq 4K\varepsilon + \frac{\W_{1}(\Q,\P)+2\varepsilon +\log(2/\delta)}{\lambda} + \frac{\lambda}{2m}.   \]
 \end{theorem}
 Note that we assumed the loss to be bounded, although this can be relaxed to subgaussiannity at no cost.
@@ -220,7 +220,7 @@ $$\operatorname{argmin}_{Q\in\mathcal{P}_1(\mathbb{\mathcal{H}})}\frac{\W_{1}(\Q
 \Cref{th: compact_catoni}'s proof is stated below and mixes up several arguments from optimal transport with PAC-Bayes learning through covering numbers.
 \paragraph{Proof of \Cref{th: compact_catoni}}
 
-\textit{Step 1: define a good data-dependent function.} We define, for any sample $S$ and predictor $h\in \mathcal{H}$,
+\textit{Step 1: define a good data-dependent function.} We define, for any sample $\Sm$ and predictor $h\in \mathcal{H}$,
 \[ f_{\Sm}(h) = \lambda \Delta_{\Sm}(h). \]
 This function satisfies the following lemma:
 \begin{lemma}
@@ -234,7 +234,7 @@ Let $\varepsilon>0$ assume that $0<\lambda\leq \frac{1}{K}\sqrt{\frac{2m}{\log\l
 We rename here $N:= N(\mathcal{H},\varepsilon)$. There exists an $\varepsilon$-covering $C:=\{h_1,...,h_N\}$ of $\mathcal{H}$ of size $N$.
 Then for any $h,h'\in C^2$, we have:
 \begin{align*}
-f_{\Sm}(h)-f_{\Sm}(h')  & = \frac{\lambda}{m}\sum_{i=1}^m \mathbb{E}[\ell(h,\z)-\ell(h'z)] - \left(\ell(h,\z_i)-\ell(h',\z_i))\right).
+f_{\Sm}(h)-f_{\Sm}(h')  & = \frac{\lambda}{m}\sum_{i=1}^m \mathbb{E}[\ell(h,\z)-\ell(h'\z)] - \left(\ell(h,\z_i)-\ell(h',\z_i)\right).
 \end{align*}
 We know that for any $h,h',z$, $|\ell(h,\z)-\ell(h',\z)| \leq \lambda K||h-h'||$. Then, applying Hoeffding's inequality for all pairs $h,h'\in C^2$ and performing an union bound gives that with probability at least $1-\delta$, for all pairs $(h,h')\in C^2$ :
 \begin{align*}
@@ -257,38 +257,38 @@ We do not have for the Wasserstein distance such a powerful tool than the change
 \begin{lemma}
 \label[lemma]{l: change_meas_chap_5}
 For any $\epsilon>0$, any $\delta>0$, any $$0<\lambda\leq \frac{1}{K}\sqrt{\frac{2m}{\log\left(\frac{N(\mathcal{H},\varepsilon)^2}{\delta}\right)}},$$
-we have with probability $1-\delta$ over the sample $S$, for any $P\in\mathcal{P}_1(K)$
+we have with probability $1-\delta$ over the sample $\Sm$, for any $\P\in\mathcal{P}_1(K)$
 \[ \left(\sup_{Q\in \mathcal{P}_1(K)} \mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] - 2(1+\lambda K)\varepsilon - \W_{1}(\Q,\P) \right) \leq \mathbb{E}_{h\sim \P}[ f_{\Sm}(h)].     \]
 \end{lemma}
 
 \begin{proof}[of \Cref{l: change_meas_chap_5}]
 Firstly, we introduce the cost function $c_{\varepsilon}(x,y)= \varepsilon + ||x-y||$.
 From this we notice that we can rewrite the $\varepsilon,1$- Wasserstein distance:
-\[ W_{\varepsilon}(\Q,\P)= \inf_{\pi \in \Pi(\Q,\P)} \int_{\mathcal{H}^2} c_{\varepsilon}(x,y)\mathrm{d}\pi(x,y).  \]
-Remark that because $\W_{1}$ is a distance, then $W_\varepsilon$ is symmetric. Furthermore, if we fix $\mathcal{X}=\mathcal{Y}=\mathcal{H}$ and we notice that $c_{\varepsilon}\geq 0$, then the condition for Kantorovich duality is satisfied. Thus, we apply \Cref{th: kanto_dual} as follows: for all $Q,P\in \mathcal{P}_1(\mathcal{H})$:
+\[ \W_{\varepsilon}(\Q,\P)= \inf_{\pi \in \Pi(\Q,\P)} \int_{\mathcal{H}^2} c_{\varepsilon}(x,y)\mathrm{d}\pi(x,y).  \]
+Remark that because $\W_{1}$ is a distance, then $W_\varepsilon$ is symmetric. Furthermore, if we fix $\mathcal{X}=\mathcal{Y}=\mathcal{H}$ and we notice that $c_{\varepsilon}\geq 0$, then the condition for Kantorovich duality is satisfied. Thus, we apply \Cref{th: kanto_dual} as follows: for all $\Q,\P\in \mathcal{P}_1(\mathcal{H})$:
 \begin{align*}
-W_\varepsilon(\Q,\P)= W_\varepsilon(\P,\Q) & =  \min _{\pi \in \Pi(P, Q)}  \int_{K^2} c_{\varepsilon}(h_1, h_2) d \pi(h_1, h_2)  \\
-&=\sup_{\substack{(\psi, \phi) \in L^1(Q) \times L^1(P)\\ \psi-\phi \leq c_{\varepsilon}}}\left[\int_{K} \psi(h) \mathrm{d}Q(h)- \int_{K} \phi(h) \mathrm{d}\P(h)\right] \\
-& = \sup_{\substack{(\psi, \phi) \in L^1(Q) \times L^1(P)\\ \psi-\phi \leq c_{\varepsilon}}}\left[\mathbb{E}_{h\sim \Q}[ \psi(h)]- \mathbb{E}_{h\sim \P}[ \phi(h)]\right].
+W_\varepsilon(\Q,\P)= W_\varepsilon(\P,\Q) & =  \min _{\pi \in \Pi(\P, \Q)}  \int_{K^2} c_{\varepsilon}(h_1, h_2) d \pi(h_1, h_2)  \\
+&=\sup_{\substack{(\psi, \phi) \in L^1(\Q) \times L^1(\P)\\ \psi-\phi \leq c_{\varepsilon}}}\left[\int_{K} \psi(h) \mathrm{d}\Q(h)- \int_{K} \phi(h) \mathrm{d}\P(h)\right] \\
+& = \sup_{\substack{(\psi, \phi) \in L^1(\Q) \times L^1(\P)\\ \psi-\phi \leq c_{\varepsilon}}}\left[\mathbb{E}_{h\sim \Q}[ \psi(h)]- \mathbb{E}_{h\sim \P}[ \phi(h)]\right].
 \end{align*}
 A crucial point is that for a well-chosen $\lambda$ with high probability, the pair $(f_{\Sm},f_{\Sm})$ satisfies the condition stated under the last supremum. It is formalised in the following lemma.
 \begin{lemma}
 \label{lem:kk}
-For any $\varepsilon>0$ any $\delta>0$, any $0<\lambda\leq \frac{1}{K}\sqrt{\frac{2m}{\log\left(\frac{N(\mathcal{H},\varepsilon)^2}{\delta}\right)}}$ , we have with probability at least $1-\delta$ over the sample $S$ that, for all measures $Q,P\in\mathcal{P}_1(\mathcal{H})^2$:
+For any $\varepsilon>0$ any $\delta>0$, any $0<\lambda\leq \frac{1}{K}\sqrt{\frac{2m}{\log\left(\frac{N(\mathcal{H},\varepsilon)^2}{\delta}\right)}}$ , we have with probability at least $1-\delta$ over the sample $\Sm$ that, for all measures $\Q,\P\in\mathcal{P}_1(\mathcal{H})^2$:
 \begin{itemize}
-  \item $f_{\Sm}\in L_1(Q),L_1(P)$,
+  \item $f_{\Sm}\in L_1(\Q),L_1(\P)$,
   \item for all $h,h' \in \mathcal{H}^2, f_{\Sm}(h)-f_{\Sm}(h') \leq c_{\varepsilon'}(h,h')$ with $\varepsilon':= 2(1+2\lambda K) \varepsilon$.
 \end{itemize}
 Thus, Kantorovich duality (\Cref{th: kanto_dual}) gives:
-\[ \left(\sup_{Q\in \mathcal{P}_1(\mathcal{H})} \mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] -  W_{\varepsilon'}(\Q,\P) \right)\leq \mathbb{E}_{h\sim \P}[ f_{\Sm}(h)],    \]
-and using $W_{\varepsilon'} = \varepsilon' + \W_{1}$ and the definition of $\varepsilon'$ concludes the proof.
+\[ \left(\sup_{Q\in \mathcal{P}_1(\mathcal{H})} \mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] -  \W_{\varepsilon'}(\Q,\P) \right)\leq \mathbb{E}_{h\sim \P}[ f_{\Sm}(h)],    \]
+and using $\W_{\varepsilon'} = \varepsilon' + \W_{1}$ and the definition of $\varepsilon'$ concludes the proof.
 \end{lemma}
 \begin{proof}[Proof of \Cref{lem:kk}]
 Because the space of predictors $\mathcal{H}$ is compact and that for any $\z\in\mathcal{Z}$, the loss function $\ell(.,\z)$ is $K$-Lipschitz on $\mathcal{H}$, then both the generalisation and empirical risk are continuous on $\mathcal{H}$. Thus $|f_{\Sm}|$ is also continuous and, by compacity, reaches its maximum $M_S$ on $\mathcal{H}$. Thus for any probability $\P$ on $\mathcal{H}, \mathbb{E}_{h\sim \P}[|f_{\Sm}(h)|] \leq M_S < +\infty$ almost surely. This proves the first statement.
 We notice that the second statement, given the choice of $\lambda$, is the exact conclusion  of \Cref{l: quasi_lpz_func} with probability at least $1-\delta$.
 So with probability at least $1-\delta$, Kantorovich duality gives us that for any $\P,\Q$ with $\varepsilon'= 2(1+ \lambda K) \varepsilon$,
 \begin{align*}
-\mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] - \mathbb{E}_{h\sim \P}[f_{\Sm}(h)] \leq W_{\varepsilon'}(\Q,\P).
+\mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] - \mathbb{E}_{h\sim \P}[f_{\Sm}(h)] \leq \W_{\varepsilon'}(\Q,\P).
 \end{align*}
 Re-organising the terms and taking the supremum over $\Q$ concludes the proof.
 \end{proof}
@@ -297,16 +297,16 @@ This concludes the proof of \Cref{l: change_meas_chap_5}.
 
 \textit{Step 3: The PAC-Bayes route of proof for the 1-Wasserstein distance.}
 
-We start by exploiting \Cref{l: change_meas_chap_5}: for any prior $P\in\mathcal{P}_1(K)$, for $$0<\lambda \leq  \frac{1}{K}\sqrt{\frac{2m}{\log\left(\frac{2N(K,\varepsilon)^2}{\delta}\right)}},$$
+We start by exploiting \Cref{l: change_meas_chap_5}: for any prior $\P\in\mathcal{P}_1(K)$, for $$0<\lambda \leq  \frac{1}{K}\sqrt{\frac{2m}{\log\left(\frac{2N(K,\varepsilon)^2}{\delta}\right)}},$$
 with probability at least $1-\delta/2$ we have
 \[ \left(\sup_{Q\in \mathcal{P}_1(K)} \mathbb{E}_{h\sim \Q}[ f_{\Sm}(h)] - (2(1+2\lambda K)\varepsilon - \W_{1}(\Q,\P) \right) \leq \mathbb{E}_{h\sim \P}[ f_{\Sm}(h)]. \]
 We then notice that by Jensen's inequality,  $$\mathbb{E}_{h\sim \P}[ f_{\Sm}(h)] \leq \log\left(\mathbb{E}_{h\sim \P}[ \exp(f_{\Sm}(h))]    \right).$$
 Then, by Markov's inequality we have with probability $1-\delta/2$
 \[ \mathbb{E}_{h\sim \P}[ f_{\Sm}(h)] \leq \log\left(\frac{2}{\delta}\right) + \log\left(\mathbb{E}_S\mathbb{E}_{h\sim \P}\left[ \exp(f_{\Sm}(h))   \right]\right).  \]
-By Fubini and Hoeffding lemma applied $m$ times on the iid sample $S$, we have
+By Fubini and Hoeffding lemma applied $m$ times on the iid sample $\Sm$, we have
 \[ \mathbb{E}_S\mathbb{E}_{h\sim \P}\left[ \exp(f_{\Sm}(h))\right] =  \mathbb{E}_{h\sim \P}\mathbb{E}_S\left[ \exp(f_{\Sm}(h))\right] \leq \frac{\lambda^2}{2m}. \]
 Taking an union bound gives us with probability $1-\delta$, for any posterior $\Q$:
-\[ \mathbb{E}_{h\sim \Q}[\Risk_{\D}(h)] \leq \mathbb{E}_{h\sim \Q}[R_m(h)] +   4K\varepsilon + \frac{\W_{1}(\Q,\P)+2\varepsilon +\log(2/\delta)}{\lambda} + \frac{\lambda}{2m}.   \]
+\[ \mathbb{E}_{h\sim \Q}[\Risk_{\D}(h)] \leq \mathbb{E}_{h\sim \Q}[\Risk_{\Sm}(h)] +   4K\varepsilon + \frac{\W_{1}(\Q,\P)+2\varepsilon +\log(2/\delta)}{\lambda} + \frac{\lambda}{2m}.   \]
 Finally, we know that $\mathcal{H}$ is bounded by $R$ so by \Cref{prop: covering} we have $$N^2 = N(\bar{\mathcal{B}}(0,R), \varepsilon)^2 \leq \left(1+ 2mR \right)^{2d}.$$
 Thus, we can take $\lambda$ equal to $$\frac{1}{K}\sqrt{\frac{2m}{2d\log(1+\frac{2R}{\varepsilon})+\log(\frac{2}{\delta})}}.$$
 This concludes the proof.
@@ -321,8 +321,8 @@ We now move on to a McAllester-type bound, which can be tighter than \Cref{th: c
 
 \begin{theorem}
 \label{th: compact_mcall}
-For any $\delta>0$, assume that $\ell\in[0,1]$ is uniformly $K$-Lipschitz and that $\mathcal{H}$ is a compact of $\mathbb{R}^d$. Let $P\in \mathcal{P}_1(\mathcal{H})$ a (data-free) prior distribution.
-Then, with probability $1-\delta$ , for any posterior distribution $Q\in\mathcal{P}_1(\mathcal{H})$:
+For any $\delta>0$, assume that $\ell\in[0,1]$ is uniformly $K$-Lipschitz and that $\mathcal{H}$ is a compact of $\mathbb{R}^d$. Let $\P\in \mathcal{P}_1(\mathcal{H})$ a (data-free) prior distribution.
+Then, with probability $1-\delta$ , for any posterior distribution $\Q\in\mathcal{P}_1(\mathcal{H})$:
 \[ |\Delta_{\Sm}(\Q)| \leq \sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\Q,\P)+\varepsilon_m  \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m}  }, \]
 with $\varepsilon_m = \frac{4}{\log(\frac{3}{\delta})} \left( 2 + \sqrt{\frac{\log\left(\frac{3}{\delta}\right) + 2d\log(1+2Rm)}{2m}}  \right) = \mathcal{O}\left(1 + \sqrt{\frac{d\log(Rm)}{m}}\right)$.
 \end{theorem}
@@ -338,63 +338,65 @@ More importantly, we show that in this setup, the assumption of a bounded loss i
 
 \paragraph{Two sets of assumption.} Previously, we assumed two assumptions on the losses: uniform Lipschitzness (\Cref{def: unif_lpz}) and boundedness (in $[0,1]$) on a compact of $\mathbb{R}^d$. We provide below to novel sets of hypotheses which encapsulates previous assumptions while allowing the loss to be unbounded on all $\mathbb{R}^d$.
 \begin{itemize}
-  \item \textbf{(A1)} $\ell$ is uniformly $K$-Lipschitz over  $\mathcal{H}$, and $\sup_{z\in\mathcal{Z}} || \ell(0,z)|| =D< +\infty.$
-  \item \textbf{(A2)} For any $\z\in\mathcal{Z}$, $\ell(.,\z)$ is continuously differentiable over $\mathcal{H}$, $\ell(.,\z)$ is also a convex $L$- smooth (\emph{i.e}, its gradient is $L$-Lipschitz) and $\sup_{z\in\mathcal{Z}} ||\nabla_h \ell(0,z)|| =D< +\infty$.
+  \item \textbf{(A1)} $\ell$ is uniformly $K$-Lipschitz over  $\mathcal{H}$, and $\sup_{z\in\mathcal{Z}} || \ell(0,\z)|| =D< +\infty.$
+  \item \textbf{(A2)} For any $\z\in\mathcal{Z}$, $\ell(.,\z)$ is continuously differentiable over $\mathcal{H}$, $\ell(.,\z)$ is also a convex $L$- smooth (\emph{i.e}, its gradient is $L$-Lipschitz) and $\sup_{z\in\mathcal{Z}} ||\nabla_h \ell(0,\z)|| =D< +\infty$.
 \end{itemize}
 \begin{example}
 Recall that $\mathcal{H}=\mathbb{R}^d$ and let $\phi:\mathcal{H}\rightarrow \mathbb{R}^d$.
 Also, let $\psi :\mathcal{Z}\rightarrow \mathbb{R}^d$ such that $\psi(\mathcal{Z})$ is bounded by $C_\phi >0$. We assume that both $\phi,\psi$ are continuously differentiable and that $\nabla\phi$ is $G$-Lipschitz.
 Note that the $||\phi||$ is possibly unbounded on $\mathcal{H}$.
 Then \textbf{(A2)} holds for the loss function $\ell(h,\z)= ||\phi(h)-\psi(z)||^2$
-Indeed, $\nabla_h \ell(h,\z)= 2(\nabla\phi (h) -\psi(z))$ so on any compact $\mathcal{K}$ bounded by $R$, $\nabla_h \ell$ is uniformly $2$-Lipschitz. Also $\sup_{z\in\mathcal{Z}} ||\nabla_h \ell(0,z)|| \leq 2C$.
-Note that on $\mathbb{R}^d$, $\ell(.,\z)$ is not necessarily Lipschitz for any $z$ (take the case $\phi= Id_{\mathbb{R}^d}$) so \textbf{(A1)} is not satisfied.
+Indeed, $\nabla_h \ell(h,\z)= 2(\nabla\phi (h) -\psi(z))$ so on any compact $\mathcal{K}$ bounded by $R$, $\nabla_h \ell$ is uniformly $2$-Lipschitz. Also $\sup_{z\in\mathcal{Z}} ||\nabla_h \ell(0,\z)|| \leq 2C$.
+Note that on $\mathbb{R}^d$, $\ell(.,\z)$ is not necessarily Lipschitz for any $\z$ (take the case $\phi= Id_{\mathbb{R}^d}$) so \textbf{(A1)} is not satisfied.
 \end{example}
 
 
-\paragraph{A brief summary of the proof technique.} To extend \Cref{th: compact_mcall} to the case $\mathcal{H}=\mathbb{R}^d$, we use the push-forward distribution $\mathcal{P}_{R} \# \P$ where $P\in C_{\alpha,\beta,M}$ for fixed $\alpha,\beta,M$ (notation defined in \Cref{sec: framework}).
+\paragraph{A brief summary of the proof technique.} To extend \Cref{th: compact_mcall} to the case $\mathcal{H}=\mathbb{R}^d$, we use the push-forward distribution $\mathcal{P}_{R} \# \P$ where $\P\in C_{\alpha,\beta,M}$ for fixed $\alpha,\beta,M$ (notation defined in \Cref{sec: framework}).
 The interest of this is to use \Cref{th: compact_mcall} by considering projections of the Gaussian prior and posterior. When considering Gaussian distributions, the gap between projected distributions and original ones is explicitly controlled.
-More precisely, for any $R>0$ large enough, for any $P\in C_{\alpha,\beta, M}$, $\W_{1}(P, \mathcal{P}_{R}\# \P)$ is upper bounded. This is the conclusion of an important technical lemma (\Cref{l: gaussian_tail}), stated with additional background in \Cref{sec: background_gaussian}.
+More precisely, for any $R>0$ large enough, for any $\P\in C_{\alpha,\beta, M}$, $\W_{1}(\P, \mathcal{P}_{R}\# \P)$ is upper bounded. This is the conclusion of an important technical lemma (\Cref{l: gaussian_tail}), stated with additional background in \Cref{sec: background_gaussian}.
 We state below new WPB results with Gaussian distributions for Lipschitz functions in \Cref{sec: main_sec_gaussian_lpz} and for smooth functions in \Cref{sec: main_sec_gaussian_smooth}.
 
 \subsection{PAC-Bayesian bounds for Lipschitz losses}
 \label{sec: main_sec_gaussian_lpz}
 
-This section focuses on the case of Lipschitz losses. We show that when the loss is uniformly Lipschitz, it is possible to maintain the tightness of \Cref{th: compact_mcall} on all $\mathbb{R}^d$ when the loss remains bounded. We also show that it is also possible to obtain a WPB bound when the loss function satisfies \textbf{(A1)} (\emph{i.e.} with an additional boundedness assumption on $\sup_{z} \ell(0,z)$), while remaining unbounded (\Cref{cor: unbounded_lpz}).
+This section focuses on the case of Lipschitz losses. We show that when the loss is uniformly Lipschitz, it is possible to maintain the tightness of \Cref{th: compact_mcall} on all $\mathbb{R}^d$ when the loss remains bounded. We also show that it is also possible to obtain a WPB bound when the loss function satisfies \textbf{(A1)} (\emph{i.e.} with an additional boundedness assumption on $\sup_{z} \ell(0,\z)$), while remaining unbounded (\Cref{cor: unbounded_lpz}).
 
 \begin{theorem}
 \label{th: main_gaussian_lpz}
-Assume that $d\geq 3$, $\mathcal{H}= \mathbb{R}^d$ and that the loss is uniformly $K$-Lipschitz and lies in $[0,1]$ over $\mathcal{H}$ . For any $\delta>0, 0\leq \alpha\leq \beta, M\geq 0$, let $P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution.
-Then, with probability $1-\delta$ , for any posterior distribution $Q\in C_{\alpha,\beta,M}$:
-\begin{align*}
-|\Delta_{\Sm}(\Q)|  \leq 2\frac{\beta{\sqrt{\beta}}}{m} + \sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\Q,\P)+\alpha_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m}  },
-\end{align*}
+Assume that $d\geq 3$, $\mathcal{H}= \mathbb{R}^d$ and that the loss is uniformly $K$-Lipschitz and lies in $[0,1]$ over $\mathcal{H}$ . For any $\delta>0, 0\leq \alpha\leq \beta, M\geq 0$, let $\P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution.
+Then, with probability $1-\delta$ , for any posterior distribution $\Q\in C_{\alpha,\beta,M}$:
+\begin{multline*}
+|\Delta_{\Sm}(\Q)|  \\ 
+\leq  2\frac{\beta{\sqrt{\beta}}}{m} + \sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\Q,\P)+\alpha_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m}  },
+\end{multline*}
 with $R=\mathcal{O}(\max \sqrt{d\log(d)},\sqrt{\log(m)})$ and $\alpha_m= 2(M+1)\frac{\beta\sqrt{\beta}}{m} + \varepsilon_m= \mathcal{O}\left(1 + \sqrt{\frac{d\log(Rm)}{m}}\right)$ with $\varepsilon_m$ defined in \Cref{th: compact_mcall}.
 \end{theorem}
 \Cref{th: main_gaussian_lpz} shows that, at the cost of additional residual terms, it is possible to maintain the convergence rate of \Cref{th: compact_mcall} when considering Gaussian prior and posterior within the compact $C_{\alpha,\beta,M}$. The influence of $\alpha,\beta,\gamma$ appear in the explicit value of $R$ described as it is always taken in this work as the smallest value satisfying the assumption \texttt{Rad} described in \Cref{sec: background_gaussian}.
 As in \Cref{th: compact_mcall}, the idea that a small Lipschitz constant tightens the bound is still conveyed here and is of great importance for \Cref{cor: unbounded_lpz} which provides a WPB bound for unbounded losses with higher dimension dependency when few data is available.
-\begin{proof}[Proof of \Cref{th: main_gaussian_lpz}]
+\begin{proof}[ of \Cref{th: main_gaussian_lpz}]
 We take a specific radius $R$ which is the smallest value satisfying \texttt{Rad}.
-The proof starts with a straightforward application of \Cref{th: compact_mcall} on  the compact $\mathcal{B}(0,R)$, with the prior $\mathcal{P}_{R}\# \P$, and with high probability, for any posterior $(\mathcal{P}_{R}\# \Q$ with $Q\in C_{\alpha,\beta,M}$:
-\begin{align*}
-|\Delta_{\Sm}(\mathcal{P}_{R}\# \Q)|  \leq  \sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\mathcal{P}_{R}\# \P,\mathcal{P}_{R}\# \P) + \varepsilon_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
-\end{align*}
+The proof starts with a straightforward application of \Cref{th: compact_mcall} on  the compact $\mathcal{B}(0,R)$, with the prior $\mathcal{P}_{R}\# \P$, and with high probability, for any posterior $\mathcal{P}_{R}\# \Q$ with $\Q\in C_{\alpha,\beta,M}$:
+\begin{multline*}
+|\Delta_{\Sm}(\mathcal{P}_{R}\# \Q)|  \\\leq  \sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\mathcal{P}_{R}\# \P,\mathcal{P}_{R}\# \P) + \varepsilon_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
+\end{multline*}
 From this we control the left hand-side term as follows:
 \begin{align*}
 |\Delta_{\Sm}(\Q)| &\leq |\Delta_{\Sm}(\mathcal{P}_{R}\# \Q)| + |\Delta_{\Sm}(\Q) - \Delta_{\Sm}(\mathcal{P}_{R}\# \Q) |.
 \intertext{And we also have}
 |\Delta_{\Sm}(\Q) - \Delta_{\Sm}(\mathcal{P}_{R}\# \Q) | & \leq \mathbb{E}_{h\sim \Q}\left[|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))|\right] \\
 & = \mathbb{E}_{h\sim \Q}\left[|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))| \mathds{1}(||h||>R)\right] \\
-&\leq 2Q(||h||>R) \leq 2 \frac{\beta\sqrt{2\beta}}{m},
+&\leq 2\Q(||h||>R) \leq 2 \frac{\beta\sqrt{2\beta}}{m},
 \end{align*}
 the last line holding thanks to \Cref{l: gaussian_tail} and because $\Delta_S\in[-1,1]$.
 Also we have by the triangle inequality:
-\[\W_{1}(\mathcal{P}_{R}\# \P,\mathcal{P}_{R}\# \P) \leq \W_{1}(Q, (\mathcal{P}_{R}\# \Q) + \W_{1}(\Q,\P)+ \W_{1}(P, \mathcal{P}_{R}\# \P). \]
-Because both $Q,P\in C_{\alpha,\beta,M}$, using again \Cref{l: gaussian_tail} gives:
+\[\W_{1}(\mathcal{P}_{R}\# \P,\mathcal{P}_{R}\# \P) \leq \W_{1}(\Q, (\mathcal{P}_{R}\# \Q)) + \W_{1}(\Q,\P)+ \W_{1}(\P, \mathcal{P}_{R}\# \P). \]
+Because both $\Q,\P\in C_{\alpha,\beta,M}$, using again \Cref{l: gaussian_tail} gives:
 \[\W_{1}(\mathcal{P}_{R}\# \P,\mathcal{P}_{R}\# \P) \leq  \W_{1}(\Q,\P)+2(M+1)\frac{\beta\sqrt{2\beta}}{m}. \]
 We then have:
-\begin{align*}
-|\Delta_{\Sm}(\Q)| \leq 2 \frac{\beta\sqrt{2\beta}}{m} + \sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\Q,\P)+ \alpha_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} },
-\end{align*}
+\begin{multline*}
+|\Delta_{\Sm}(\Q)| \leq 2 \frac{\beta\sqrt{2\beta}}{m} \\
++ \sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\Q,\P)+ \alpha_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} },
+\end{multline*}
 with $\alpha_m= 2(M+1)\frac{\beta\sqrt{\beta}}{m} + \varepsilon_m= \mathcal{O}(1)$. This concludes the proof.
 \end{proof}
 
@@ -402,8 +404,8 @@ with $\alpha_m= 2(M+1)\frac{\beta\sqrt{\beta}}{m} + \varepsilon_m= \mathcal{O}(1
 
 \begin{corollary}
 \label[corollary]{cor: unbounded_lpz}
-Assume that $d\geq 3$, $\mathcal{H}= \mathbb{R}^d$ and that the (unbounded) loss satisfies \textbf{(A1)}. For any $\delta>0, 0\leq \alpha\leq \beta, M\geq 0$, let $P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution.
-Then, with probability $1-\delta$, for any posterior distribution $Q\in C_{\alpha,\beta,M}$, the three following bounds holds.
+Assume that $d\geq 3$, $\mathcal{H}= \mathbb{R}^d$ and that the (unbounded) loss satisfies \textbf{(A1)}. For any $\delta>0, 0\leq \alpha\leq \beta, M\geq 0$, let $\P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution.
+Then, with probability $1-\delta$, for any posterior distribution $\Q\in C_{\alpha,\beta,M}$, the three following bounds holds.
 
 \noindent \textbf{Low-data regime} $(d\geq m)$
 \begin{align*}
@@ -429,17 +431,17 @@ Thus, even when few data is available, a well constrained (unbounded) Lipschitz 
 Note that, in the small data regime, we have the highest dimension dependency. Note also that the dimensionality of the learning problem is controlled by the Lipschitz constant with the limit rate of $$\mathcal{O}\left(\sqrt{\frac{\log\left( \frac{m}{\delta} \right)}{m}}\right)$$ which is dimension-free and is a consequence of the statistical component of PAC-Bayes learning.
 To the best of our knowledge, our work is the first to exploit geometric properties of the loss to propose PAC-Bayes bounds for unbounded and heavy-tailed losses with explicit convergence rates. Indeed, the existing literature on unbounded losses exploits either general divergence properties \citep{alquier2018simpler,picard2022change}, functional properties for heavy-tailed distribution \citep{holland2019pac}, uniform boundedness assumption on the loss over the data space \citep{haddouche2021pac} or concentration inequalities as in \Cref{chap: pb-ht} or in \citet{kuzborskij2019efron,rivasplata2020pac,jang2023tight}.
 
-\begin{proof}[Proof of \Cref{cor: unbounded_lpz}]
-Firstly, we start from  \Cref{th: compact_mcall} which gives, with probability at least $1-\delta$:
+\begin{proof}[of \Cref{cor: unbounded_lpz}]
+First, we start from  \Cref{th: compact_mcall} which gives, with probability at least $1-\delta$:
 \begin{equation}
 \label{eq: tight_mcall}
 |\Delta_{\Sm}(\Q)| \leq \sqrt{ 2K(2K+1) \frac{\log(\frac{3}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\Q,\P)+\varepsilon_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
 \end{equation}
 This last bound holds for any uniformly Lipschitz function taking value on $[0,1]$ on a compact predictor space bounded by a certain $R$.
-Let $P\in C_{\alpha,\beta,M}$.
+Let $\P\in C_{\alpha,\beta,M}$.
 We now assume \textbf{(A1)} and consider $R$ to be the smallest value satisfying \texttt{Rad}.
 Let $\ell'= \ell/(D+2KR)$. We note $D_R= D + 2KR$, then on the ball $\mathcal{B}(0,R)$, $\ell'$ takes value in $[0,1]$ (because the compact is bounded by $R$ and the loss is $K$-Lipschitz) and is $K/D_R$-Lipschitz.
-Applying \Cref{eq: tight_mcall} with $\ell'$ on $\mathcal{B}(0,R)$ and multiplying by $D_R$ gives, with high probability, for any $Q\in C_{\alpha,\beta,M}$:
+Applying \Cref{eq: tight_mcall} with $\ell'$ on $\mathcal{B}(0,R)$ and multiplying by $D_R$ gives, with high probability, for any $\Q\in C_{\alpha,\beta,M}$:
 \begin{multline*}
 |\Delta_{\Sm}(\mathcal{P}_{R}\# \Q)| \\ \leq D_R\sqrt{ 2 \frac{K}{D_R} (2 \frac{K}{D_R} +1) \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\mathcal{P}_{R}\# \P,\mathcal{P}_{R}\# \P)+\varepsilon_m \right) + \frac{\log\left( \frac{m}{\delta} \right)}{m} } \\
 =\sqrt{ 2 K(2 K+D_R) \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\mathcal{P}_{R}\# \P,\mathcal{P}_{R}\# \P)+\varepsilon_m \right) + D_R^2\frac{\log\left( \frac{m}{\delta} \right)}{m} },
@@ -463,7 +465,7 @@ Then we have:
 \begin{multline}
 \label{eq: complete_lpz_unbounded}
 |\Delta_{\Sm}(\Q)| \leq 2K(M+1)\frac{\beta\sqrt{2\beta}}{m} + \\
-\sqrt{ 2 K(2 K+D_R) \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}( Q, P)+\alpha_m \right) + D_R^2\frac{\log\left( \frac{3m}{\delta} \right)}{m} },
+\sqrt{ 2 K(2 K+D_R) \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\Q,\P)+\alpha_m \right) + D_R^2\frac{\log\left( \frac{3m}{\delta} \right)}{m} },
 \end{multline}
 where $\alpha_m= \mathcal{O}\left(1 + \sqrt{\frac{d\log(Rm)}{m}}\right)$ defined in \Cref{th: main_gaussian_lpz}.
 Finally we exploit that $R= \mathcal{O}(\sqrt{d\log(d)},\sqrt{\log(m)})$ (cf. \Cref{rem: rad_rate}) and $D_R=\mathcal{O}(1+K^2R)$, to conclude the proof for all the three regimes.
@@ -477,10 +479,11 @@ We show that under \textbf{(A2)}, it is possible to transform \Cref{th: compact_
 
 \begin{theorem}
 \label{th: main_gaussian_smooth}
-Assume that $d\geq 3$, $\mathcal{H}= \mathbb{R}^d$ and that the loss satisfies \textbf{(A2)} and lies in $[0,1]$ over $\mathcal{H}$. For any $\delta>0, 0\leq \alpha\leq \beta, M\geq 0$, let $P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution. Then, with probability $1-\delta$, for any posterior distribution $Q\in C_{\alpha,\beta,M}$:
-\begin{align*}
-|\Delta_{\Sm}(\Q)| \leq 2 \frac{\beta\sqrt{2\beta}}{m} + \sqrt{2D_R(2D_R+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\Q,\P)+ \alpha_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} },
-\end{align*}
+Assume that $d\geq 3$, $\mathcal{H}= \mathbb{R}^d$ and that the loss satisfies \textbf{(A2)} and lies in $[0,1]$ over $\mathcal{H}$. For any $\delta>0, 0\leq \alpha\leq \beta, M\geq 0$, let $\P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution. Then, with probability $1-\delta$, for any posterior distribution $\Q\in C_{\alpha,\beta,M}$:
+\begin{multline*}
+|\Delta_{\Sm}(\Q)| \leq 2 \frac{\beta\sqrt{2\beta}}{m} \\
++ \sqrt{2D_R(2D_R+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(\W_{1}(\Q,\P)+ \alpha_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} },
+\end{multline*}
 with $R= \mathcal{O}\left( \max \sqrt{d\log(d)}, \sqrt{\log(m)}   \right)$,  $D_R= D+LR$ and $\alpha_m= \mathcal{O}(1)$ is defined in \Cref{th: main_gaussian_lpz}.
 \end{theorem}
 The key idea of the proof is to state that on a compact space, a smooth function is also Lipschitz. Therefore, the proof follows the same route as the one of \Cref{th: main_gaussian_lpz}, with additional technical steps. We then defer it to \Cref{sec: proof_smooth}.
@@ -489,9 +492,9 @@ We note that, even for bounded losses, the price to pay to consider smooth funct
 \begin{corollary}
 \label[corollary]{cor: unbounded_smooth}
 Assume that $d\geq 3$, $\mathcal{H}= \mathbb{R}^d$ and that the (unbounded) loss satisfies \textbf{(A2)}. For any $\delta>0, 0\leq \alpha\leq \beta, M\geq 0$, we assume that $R>0$ is the smallest value satisfying \texttt{Rad}.
-We assume that $\sup_{z\in\mathcal{Z}} || \ell(0,z)|| =D_\ell < +\infty$.
-Let $P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution.
-Then, with probability $1-\delta$ , for any posterior distribution $Q\in C_{\alpha,\beta,M}$, the three following bounds holds.
+We assume that $\sup_{z\in\mathcal{Z}} || \ell(0,\z)|| =D_\ell < +\infty$.
+Let $\P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution.
+Then, with probability $1-\delta$ , for any posterior distribution $\Q\in C_{\alpha,\beta,M}$, the three following bounds holds.
 
 \noindent \textbf{Low-data regime} $(d\geq m)$
 \begin{align*}
@@ -513,15 +516,15 @@ For a complete formulation of the bounds, we refer to \eqref{eq: complete_smooth
 \end{corollary}
 We remark that this theorem is particularly interesting in the transitory and asymptotic regime as, contrary to \Cref{cor: unbounded_lpz}, we do not have a Lipschitz constant to attenuate the impact of the dimension (indeed we have $D_R = D + LR$ and in general $D>0$). However, this bound remains of great interest when many data are available as the smoothness assumption is often used in optimisation.
 
-\begin{proof}[Proof of \Cref{cor: unbounded_smooth}]
+\begin{proof}[of \Cref{cor: unbounded_smooth}]
 
 Firstly, we use \Cref{th: compact_mcall} which state that for any prior on a compact, loss function $\ell\in  [0,1]$ being uniformly $K$-Lipschitz on this compact gives with probability at least $1-\delta$:
 \begin{equation*}
 |\Delta_{\Sm}(\Q)| \leq \sqrt{ 2K(2K+1) \frac{\log(\frac{3}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\Q,\P)+\varepsilon_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
 \end{equation*}
-Let $P\in C_{\alpha,\beta,M}$. We fix $R$ to be the smallest value satisfying \texttt{Rad} and we assume \textbf{(A2)}.
+Let $\P\in C_{\alpha,\beta,M}$. We fix $R$ to be the smallest value satisfying \texttt{Rad} and we assume \textbf{(A2)}.
 On $\mathcal{B}(0,R)$, as seen in the proof of \Cref{th: main_gaussian_smooth}, $\ell$ is uniformly $D_R:= D+LR$-Lipschitz, so $\ell$ is bounded on this ball by $C_R:=D_\ell+RD_R= \mathcal{O}(1+R^2)$.
-We apply \Cref{th: compact_mcall} on the loss function $\ell'= \ell/C_R$ and we multiply the resulting bound by $C_R$. Recall that $\ell'$ takes value in $[0,1]$  and is $D_R/C_R$-Lipschitz. We then have with high probability, for any $Q\in C_{\alpha,\beta,M}$:
+We apply \Cref{th: compact_mcall} on the loss function $\ell'= \ell/C_R$ and we multiply the resulting bound by $C_R$. Recall that $\ell'$ takes value in $[0,1]$  and is $D_R/C_R$-Lipschitz. We then have with high probability, for any $\Q\in C_{\alpha,\beta,M}$:
 \begin{multline*}
 |\Delta_{\Sm}(\mathcal{P}_{R}\# \Q)| \\ \leq \sqrt{ 2D_R(2D_R+C_R) \frac{\log(\frac{3}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\mathcal{P}_{R}\# \P,\mathcal{P}_{R}\# \P)+\varepsilon_m \right) + C_R^2\frac{\log\left( \frac{3m}{\delta} \right)}{m} },
 \end{multline*}
@@ -535,19 +538,20 @@ We have:
 |\Delta_{\Sm}(\Q) - \Delta_{\Sm}(\mathcal{P}_{R}\# \Q) | & \leq \mathbb{E}_{h\sim \Q}\left[|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))|\right] \\
 & = \mathbb{E}_{h\sim \Q}\left[|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))| \mathds{1}(||h||>R)\right] .
 \intertext{We study the last gap more carefully:}
-|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))|& = \mathbb{E}_z[|\ell(h,\z)- \ell(\mathcal{P}_{R}(h),z)|] + \frac{1}{m}\sum_{i=1}^m |\ell(h,\z_i)- \ell(\mathcal{P}_{R}(h),z_i)|.
-\intertext{And we know that for any $z$, because $\ell$ is convex smooth:}
-\ell(h,\z)- \ell(\mathcal{P}_{R}(h),z) &\leq \nabla_h \ell(\mathcal{P}_{R}(h),z)^T(h-\mathcal{P}_{R}(h)) + \frac{L}{2}||h-\mathcal{P}_{R}(h)||^2 || \\
+|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))|& = \mathbb{E}_z[|\ell(h,\z)- \ell(\mathcal{P}_{R}(h),\z)|] + \frac{1}{m}\sum_{i=1}^m |\ell(h,\z_i)- \ell(\mathcal{P}_{R}(h),z_i)|.
+\intertext{And we know that for any $\z$, because $\ell$ is convex smooth:}
+\ell(h,\z)- \ell(\mathcal{P}_{R}(h),\z) &\leq \nabla_h \ell(\mathcal{P}_{R}(h),\z)^T(h-\mathcal{P}_{R}(h)) + \frac{L}{2}||h-\mathcal{P}_{R}(h)||^2 || \\
 & \leq D_R||h- \mathcal{P}_{R}(h)|| + \frac{L}{2}||h-\mathcal{P}_{R}(h)||^2 ||.
 \intertext{We also have by convexity:}
-\ell(\mathcal{P}_{R}(h),z) - \ell(h,\z) &\leq \nabla_h\ell(\mathcal{P}_{R}(h),z)^T(\mathcal{P}_{R}(h)-h) \\
+\ell(\mathcal{P}_{R}(h),\z) - \ell(h,\z) &\leq \nabla_h\ell(\mathcal{P}_{R}(h),\z)^T(\mathcal{P}_{R}(h)-h) \\
 & \leq D_R ||h-\mathcal{P}_{R}(h)||.
-\intertext{In any case, we have for any $h,z$: }
-|\ell(h,\z)- \ell(\mathcal{P}_{R}(h),z)| &\leq D_R||h-\mathcal{P}_{R}(h)|| + \frac{L}{2}||h-\mathcal{P}_{R}(h)||^2.
+\intertext{In any case, we have for any $h,\z$: }
+|\ell(h,\z)- \ell(\mathcal{P}_{R}(h),\z)| &\leq D_R||h-\mathcal{P}_{R}(h)|| + \frac{L}{2}||h-\mathcal{P}_{R}(h)||^2.
 \intertext{Thus:}
 |\Delta_{\Sm}(\Q) - \Delta_{\Sm}(\mathcal{P}_{R}\# \Q) | & \leq D_R\mathbb{E}_{h\sim \Q}\left[||h-\mathcal{P}_{R}(h)||\mathds{1}(||h||>R)\right] \\
 & + \frac{L}{2}\mathbb{E}_{h\sim \Q}\left[||h-\mathcal{P}_{R}(h)||^2\mathds{1}(||h||>R)\right] \\
-& \leq D_R\mathbb{E}_{h\sim \Q}\left[||h||\mathds{1}(||h||>R)\right] + \frac{L}{2}\mathbb{E}_{h\sim \Q}\left[||h||^2\mathds{1}(||h||>R)\right].
+& \leq D_R\mathbb{E}_{h\sim \Q}\left[||h||\mathds{1}(||h||>R)\right] \\
+& + \frac{L}{2}\mathbb{E}_{h\sim \Q}\left[||h||^2\mathds{1}(||h||>R)\right].
 \intertext{And thanks to \Cref{l: gaussian_tail}, we finally have:}
 |\Delta_{\Sm}(\Q) - \Delta_{\Sm}(\mathcal{P}_{R}\# \Q) | & \leq \left( D_R + \frac{L}{2}(M+1) \right)(M+1)\frac{\beta\sqrt{\beta}}{m}.
 \end{align*}
@@ -555,7 +559,7 @@ Then we have:
 \begin{multline}
 \label{eq: complete_smooth_unbounded}
 |\Delta_{\Sm}(\Q)| \leq \left( D_R + \frac{L}{2}(M+1) \right)(M+1)\frac{\beta\sqrt{\beta}}{m} + \\
-\sqrt{ 2D_R(2D_R+C_R) \frac{\log(\frac{3}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(Q, P)+\alpha_m \right) + C_R^2\frac{\log\left( \frac{3m}{\delta} \right)}{m} },
+\sqrt{ 2D_R(2D_R+C_R) \frac{\log(\frac{3}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\Q, \P)+\alpha_m \right) + C_R^2\frac{\log\left( \frac{3m}{\delta} \right)}{m} },
 \end{multline}
 where $\alpha_m= \mathcal{O}\left(1 + \sqrt{\frac{d\log(Rm)}{m}}\right)$ defined in \Cref{th: main_gaussian_lpz}.
 Finally, we exploit that $R= \mathcal{O}(\sqrt{d\log(d)},\sqrt{\log(m)})$ (cf \Cref{rem: rad_rate}), that $D_R=\mathcal{O}(1+R)$ and $C_R=\mathcal{O}(1+R^2)$, to conclude the proof for all the three regimes.
@@ -572,46 +576,49 @@ A classical way to do so is to use differential privacy as in \citet{dziugaite20
 \begin{theorem}
 \label{th: data_dep}
 Assume that $d\geq 3$, $\mathcal{H}= \mathbb{R}^d$ and that the loss is convex and satisfies \textbf{(A1)}. Let $\beta_m= \mathcal{O}(\frac{1}{\sqrt{m}})$ and $\lambda \leq \sqrt{m}$.
-Let $P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution. Then, for any $\beta_m<\delta<1$, with probability $1-\delta$ , for any posterior distribution $Q\in C_{\alpha,\beta,M}$ and the Gibbs prior $P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}}$, the following bound holds.
+Let $\P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution. Then, for any $\beta_m<\delta<1$, with probability $1-\delta$ , for any posterior distribution $\Q\in C_{\alpha,\beta,M}$ and the Gibbs prior $\P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}}$, the following bound holds.
 
 \noindent\textbf{Low-data regime} $(d\geq m)$
-\begin{align*}
-|\Delta_{\Sm}(\Q)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d^{\frac{3}{2}}}{m}\left(\sqrt{\frac{d}{m}}+  \W_{1}(Q,P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}}) +f_R\left(P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}}\right)\right)+(1+K^2d)\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
-\end{align*}
+\begin{multline*}
+|\Delta_{\Sm}(\Q)|  \leq \\
+\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d^{\frac{3}{2}}}{m}\left(\sqrt{\frac{d}{m}}+  \W_{1}(\Q,\P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}}) +f_R\left(\P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}}\right)\right)+(1+K^2d)\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
+\end{multline*}
 \textbf{Transitory regime} $(m>d,\; d\log(d)\geq \log(m))$
 
-\begin{align*}
-|\Delta_{\Sm}(\Q)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d^{\frac{3}{2}}}{m}\left(1+ \W_{1}(Q,P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}})+ f_R\left(P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}}\right)\right)+(1+K^2d)\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
-\end{align*}
+\begin{multline*}
+|\Delta_{\Sm}(\Q)|  \leq\\ 
+\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d^{\frac{3}{2}}}{m}\left(1+ \W_{1}(\Q,\P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}})+ f_R\left(\P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}}\right)\right)+(1+K^2d)\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
+\end{multline*}
 \textbf{Asymptotic regime} $(d\log(d)< \log(m))$
-\begin{align*}
-|\Delta_{\Sm}(\Q)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left(1 + \W_{1}(Q,P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}})\right)+(1+K^2\log(m))\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right),
-\end{align*}
-where $R= \mathcal{O}\left( \max \sqrt{d\log(d)}, \sqrt{\log(m)}   \right)$, $f_R(P) := \W_{1}(\mathcal{P}_{R}\#\P,\P)$.
+\begin{multline*}
+|\Delta_{\Sm}(\Q)|  \leq\\
+\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left(1 + \W_{1}(\Q,\P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}})\right)+(1+K^2\log(m))\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right),
+\end{multline*}
+where $R= \mathcal{O}\left( \max \sqrt{d\log(d)}, \sqrt{\log(m)}   \right)$, $f_R(\P) := \W_{1}(\mathcal{P}_{R}\#\P,\P)$.
 In the above $\Tilde{\mathcal{O}}$ hides a polynomial dependency in $(\log(d),\log(m))$. For an explicit formulation of the bounds, we refer to \eqref{eq: complete_data_dep}.
 \end{theorem}
-Note that in the asymptotic bound, the condition to get rid of $f_R(P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}})$ is that $\lambda$ is a fixed constant, in particular it does not depend on $m$. This is essential to apply the law of large numbers: a fixed learning rate in the Gibbs posterior is required for a bound with only explicit terms.
+Note that in the asymptotic bound, the condition to get rid of $f_R(\P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}})$ is that $\lambda$ is a fixed constant, in particular it does not depend on $m$. This is essential to apply the law of large numbers: a fixed learning rate in the Gibbs posterior is required for a bound with only explicit terms.
 Furthermore, an important message is that Lipschitz functions are well suited to the PAC-Bayes framework through Wasserstein distances. Indeed, not only are we able to recover McAllester or Catoni-type WPB bounds, but we also obtain WPB with data-dependent priors using the same techniques than PAC-Bayes learning with KL divergences. Data-dependent WPB bounds have also an additional benefit as they provide guarantees for the Bures-Wasserstein SGD of \citet{lambert2022variational} as shown in \Cref{sec: gene_sgd}.
 
-\begin{proof}[Proof of \Cref{th: data_dep}]
+\begin{proof}[of \Cref{th: data_dep}]
 Firstly, we start from a slightly modified version of \Cref{eq: complete_lpz_unbounded} which holds for any prior distribution (and not only Gaussian ones).
-To obtain it we restart from the triangle inequality $\W_{1}(\mathcal{P}_{R}\# \Q, \mathcal{P}_{R}\# \P ) \leq \W_{1}(\mathcal{P}_{R}\# \Q,Q) + \W_{1}(\Q,\P) + f_R(P)$. where $f_R(P) := \W_{1}(\mathcal{P}_{R}\#\P,\P)$ and we apply exactly the same route of proof than in \Cref{cor: unbounded_lpz}. We then obtain, for any data-free prior $\P$, with probability at least $1-\delta$, for any $Q\in C_{\alpha,\beta,M}$:
+To obtain it we restart from the triangle inequality $\W_{1}(\mathcal{P}_{R}\# \Q, \mathcal{P}_{R}\# \P ) \leq \W_{1}(\mathcal{P}_{R}\# \Q,\Q) + \W_{1}(\Q,\P) + f_R(\P)$. where $f_R(\P) := \W_{1}(\mathcal{P}_{R}\#\P,\P)$ and we apply exactly the same route of proof than in \Cref{cor: unbounded_lpz}. We then obtain, for any data-free prior $\P$, with probability at least $1-\delta$, for any $\Q\in C_{\alpha,\beta,M}$:
 \begin{multline*}
 |\Delta_{\Sm}(\Q)| \leq 2K(M+1)\frac{\beta\sqrt{2\beta}}{m} + \\
-\sqrt{ C_R \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}( Q, P)+\alpha_m  + f_R(P)\right) + D_R^2\frac{\log\left( \frac{m}{\delta} \right)}{m} },
+\sqrt{ C_R \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\Q,\P)+\alpha_m  + f_R(\P)\right) + D_R^2\frac{\log\left( \frac{m}{\delta} \right)}{m} },
 \end{multline*}
 where $D_R= D+KR$ and $C_R= 2K(2K+D_R)$ ($D,K$ defined in \textbf{(A1)}).
-We then denote by $\texttt{Bound}(S,\P,\Q,\delta)$ the bound:
+We then denote by $\texttt{Bound}(\Sm,\P,\Q,\delta)$ the bound:
 \begin{multline*}
 |\Delta_{\Sm}(\Q)| > 2K(M+1)\frac{\beta\sqrt{2\beta}}{m} + \\
-\sqrt{ C_R \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}( Q, P)+\alpha_m  + f_R(P)\right) + D_R^2\frac{\log\left( \frac{m}{\delta} \right)}{m} }.
+\sqrt{ C_R \frac{\log(\frac{1}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\Q,\P)+\alpha_m  + f_R(\P)\right) + D_R^2\frac{\log\left( \frac{m}{\delta} \right)}{m} }.
 \end{multline*}
-And for a given $\delta'$, let $\texttt{Ev}(P,\delta'):= \{S \in \mathcal{Z}^m \mid  \exists Q \in C_{\alpha,\beta,M} \text{ s.t. } \texttt{Bound}(S,\P,\Q,\delta') \text{ holds} \}$.
-We know that for a data-free prior $\P$, $\mathbb{P}_{S\in\mu^m}(S\in \texttt{Ev}(P)) \leq \delta$.
+And for a given $\delta'$, let $$\texttt{Ev}(\P,\delta'):= \{\Sm \in \mathcal{Z}^m \mid  \exists \Q \in C_{\alpha,\beta,M} \text{ s.t. } \texttt{Bound}(\Sm,\P,\Q,\delta') \text{ holds} \}$$.
+We know that for a data-free prior $\P$, $\mathbb{P}_{\Sm\in\D^m}(\Sm\in \texttt{Ev}(\P)) \leq \delta$.
 To exploit the differential privacy framework, we first assume having a differentially private probability kernel $\mathcal{P}$. We fix $\beta>0$ and re-exploit the idea of \citet{dziugaite2018data}:
 \begin{align}
 \label{eq: pac_b_diff_priv}
-\mathbb{P}_{S \sim \mu^m}\{S \in \texttt{Ev}(\mathcal{P}(S),\delta')\} & \leq \mathrm{e}^{\mathbf{I}_{\infty}^\beta(\mathcal{P} ; m)} \underset{\left(S, S^{\prime}\right) \sim \mu^{2m} }{\mathbb{P}}\left\{S \in \texttt{Ev}\left(\mathcal{P}\left(S^{\prime}\right)\right)\right\}+\beta \\
+\mathbb{P}_{\Sm \sim \D^m}\{\Sm \in \texttt{Ev}(\mathcal{P}(S),\delta')\} & \leq \mathrm{e}^{\mathbf{I}_{\infty}^\beta(\mathcal{P} ; m)} \underset{\left(S, \Sm^{\prime}\right) \sim \D^{2m} }{\mathbb{P}}\left\{\Sm \in \texttt{Ev}\left(\mathcal{P}\left(\Sm^{\prime}\right)\right)\right\}+\beta \\
 & \leq \mathrm{e}^{\mathbf{I}_{\infty}^\beta(\mathcal{P} ; m)} \delta^{\prime}+\beta = \delta .
 \end{align}
 The last line holds for any $\delta > \beta$ by fixing $\delta^{\prime}=\mathrm{e}^{-I_{\infty}^\beta(\mathcal{P} ; m)}(\delta-\beta)$.
@@ -622,21 +629,22 @@ Then thanks to \Cref{prop: rogers}, we know that for $\beta_m := \mathcal{O}(\fr
 \label{eq: rogers_bound}
 I_{\infty}^\beta(\mathcal{P}, m)=O\left(\log(m) \right) .
 \end{equation}
-The last thing to do is to prove that the probability kernel $\mathcal{P}_0(S):= P_{-\lambda' m \Riskhat_{\Sm}}$ is $(\varepsilon,\gamma)$ differentially private. This is true thanks to \Cref{prop: minami} which states that $\mathcal{P}_0$ satisfies differential privacy as long as $\lambda' \leq \lambda_{m}$ with:
+The last thing to do is to prove that the probability kernel $\mathcal{P}_0(\Sm):= P_{-\lambda' m \Riskhat_{\Sm}}$ is $(\varepsilon,\gamma)$ differentially private. This is true thanks to \Cref{prop: minami} which states that $\mathcal{P}_0$ satisfies differential privacy as long as $\lambda' \leq \lambda_{m}$ with:
 \begin{equation}
 \label{eq: inv_temp}
 \lambda_m:= \frac{1}{2K}\sqrt{\frac{\alpha \log(m)}{m\left(1-2\log\log(m) +10\log(m) \right)}} = \mathcal{O}\left(\frac{1}{\sqrt{m}}\right).
 \end{equation}
-Note that $\alpha$ intervenes because for any prior $P\in C_{\alpha,\beta,M}$, $-\log P(.)$ is $\alpha$-strongly convex.
+Note that $\alpha$ intervenes because for any prior $\P\in C_{\alpha,\beta,M}$, $-\log P(.)$ is $\alpha$-strongly convex.
 From now we consider $\lambda'= \frac{\lambda}{2Km}$ where $\lambda \leq \sqrt{m}$. We then have $\lambda' \leq \lambda_m$.
-We then know, thanks to \Cref{eq: pac_b_diff_priv} with $\beta=\beta_m$, that for any $\delta > \beta_m$,  $\mathbb{P}_{S \sim \mu^m}\{S \in \texttt{Ev}(\mathcal{P}_0(S),\delta') \leq \delta$
+We then know, thanks to \Cref{eq: pac_b_diff_priv} with $\beta=\beta_m$, that for any $\delta > \beta_m$,  $\mathbb{P}_{\Sm \sim \D^m}\{\Sm \in \texttt{Ev}(\mathcal{P}_0(\Sm),\delta') \leq \delta$
 with $\delta^{\prime}=\mathrm{e}^{-I_{\infty}^\beta(\mathcal{P} ; m)}(\delta-\beta)$
 Taking the complementary event and recalling that thanks to \Cref{eq: rogers_bound}, $\log\left(\frac{1}{\delta'}   \right) = \log\left(\frac{1}{\delta - \beta_m}   \right) + \mathcal{O}(\log(m))$ gives,
-for any data-free Gaussian prior $\P$, for any $\delta > \beta_m$, with probability at least $1-\delta$, for any $Q\in C_{\alpha,\beta,M}$:
+for any data-free Gaussian prior $\P$, for any $\delta > \beta_m$, with probability at least $1-\delta$, for any $\Q\in C_{\alpha,\beta,M}$:
 \begin{multline}
 \label{eq: complete_data_dep}
-|\Delta_{\Sm}(\Q)| \leq 2K(M+1)\frac{\beta\sqrt{2\beta}}{m} \\
-+\sqrt{ C_R \frac{\log(\frac{1}{\delta-\beta_m}) + \mathcal{O}(\log(m)) +2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}( Q, P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}})+\alpha'_m + f_R(P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}}) \right) }  \\
+|\Delta_{\Sm}(\Q)| \leq 2K(M+1)\frac{\beta\sqrt{2\beta}}{m} + \\
+\sqrt{ C_R \frac{\log(\frac{1}{\delta-\beta_m}) + \mathcal{O}(\log(m)) +2d\log\left(1 +2Rm \right)}{m} }  \\
+\times\sqrt{\left(\W_{1}( \Q, \P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}})+\alpha'_m + f_R(\P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}}) \right)} \\
 +\sqrt{ D_R^2\frac{\log\left( \frac{m}{\delta-\beta_m} \right) +\mathcal{O}(\log(m)) }{m}},
 \end{multline}
 where $\alpha'_m= \mathcal{O}(1+ \frac{d\log(m)}{m})$ has the same analytical expression than $\alpha_m$ (defined in \Cref{th: main_gaussian_lpz}) but where all the occurences of $\delta$ have been replaced by $\delta'$.
@@ -645,8 +653,8 @@ Then, exploiting that $R= \mathcal{O}(\sqrt{d\log (d)}, \sqrt{\log(m)})$, gives 
 \medskip
 
 \noindent Also, we are able to prove that asymptotically, because $R \sqrt{\log(m)}\rightarrow \infty$ when $m$ goes to infinity:
-$$f_R(P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}}) \leq \mathbb{E}[||X-\mathcal{P}_{R}(X)||] \underset{m\rightarrow \infty}{\rightarrow} 0,    $$
-where $X$ follows the Gibbs distribution $P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}}$. The convergence to zero comes from the dominated convergence theorem.
+$$f_R(\P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}}) \leq \mathbb{E}[||X-\mathcal{P}_{R}(X)||] \underset{m\rightarrow \infty}{\rightarrow} 0,    $$
+where $X$ follows the Gibbs distribution $\P_{-\frac{\lambda}{2K} \Riskhat_{\Sm}}$. The convergence to zero comes from the dominated convergence theorem.
 Indeed,
 \[ \mathbb{E}[||X-\mathcal{P}_{R}(X)||] = \int_{\mathbb{R}^d} g_m(x) \mathrm{d}\P(x), \]
 with $g_m(x)= ||x - \mathcal{P}_{R}(x)||\frac{\exp\left(-\lambda \Riskhat_{\Sm}(x) \right)}{\mathbb{E}_P[\exp\left(-\lambda \Riskhat_{\Sm}(x) \right)]}$. Thus, bounding crudely gives:
@@ -667,13 +675,13 @@ This allows us to get rid of $f_R$ for the asymptotic regime and then, conclude 
 For the sake of completeness, we recall (and precise) several elements already defined in \Cref{sec: intro_optim}.
 In PAC-Bayes learning, the following learning algorithm can be derived from a relaxation of \citet[][Theorem 1.2.6]{catoni2007pac}, for any data-free prior $\P$ and inverse PAC-Bayesian temperature $\lambda>0$:
 
-\[ \underset{Q\in \mathcal{M}(\mathcal{H})}{\operatorname{argmin}} \mathbb{E}_{h\sim \Q}[\Riskhat_{\Sm}(h)] + \frac{\operatorname{KL}(\Q,\P)}{\frac{\lambda}{2K}}.  \]
+\[ \underset{Q\in \mathcal{M}(\mathcal{H})}{\operatorname{argmin}} \mathbb{E}_{h\sim \Q}[\Riskhat_{\Sm}(h)] + 2K\frac{\operatorname{KL}(\Q,\P)}{\lambda}.  \]
 
 \noindent We considered the parameter $\frac{\lambda}{2K}$ as it was suggested by \Cref{th: data_dep}.
-A closed form solution is given by the Gibbs posterior $\Q^*:= P_{-\frac{\lambda}{2K}}$ such that $\mathrm{d}\Q^* \propto \exp(-V_S(h))\mathrm{d}h$, with $V_S(h) = \frac{\lambda}{2K}\Riskhat_{\Sm}(h) - \log(\mathrm{d}\P(h))$ and $\mathrm{d}h$ being the Lebesgue measure.
+A closed form solution is given by the Gibbs posterior $\Q^*:= \P_{-\frac{\lambda}{2K}}$ such that $\mathrm{d}\Q^* \propto \exp(-V_{\Sm}(h))\mathrm{d}h$, with $V_{\Sm}(h) = \frac{\lambda}{2K}\Riskhat_{\Sm}(h) - \log(\mathrm{d}\P(h))$ and $\mathrm{d}h$ being the Lebesgue measure.
 However, such a measure can be difficult to estimate in practice. Two solutions are available. We can estimate the Gibbs posterior through MCMC methods that rely on Markov chains which (approximately) converge to $\Q^*$. However, there is no clear stopping criterion to obtain a good approximate of the true posterior. Otherwise, we can exploit variational inference (VI) to produce rapidly a basic yet informative summary statistics on a subclass of $\mathcal{M}(\mathcal{H})$.
 In this section, we focus on the VI approach. As $\Q^*$ is the result of an optimal trade-off between the empirical loss $\Riskhat_{\Sm}$ and the $KL$ divergence (weighed by $\lambda$) acting as a regulariser, we consider the closest measure of $\operatorname{BW}(\mathbb{R}^d)$ from $\Q^*$ with respect to the KL divergence:
-\[ \hat{\Q} = \mathcal{N}(\hat{m},\hat{\Sigma}) := \underset{Q\in \operatorname{BW}(\mathbb{R}^d)}{\operatorname{argmin}} \operatorname{KL}(Q,\Q^*). \]
+\[ \hat{\Q} = \mathcal{N}(\hat{m},\hat{\Sigma}) := \underset{Q\in \operatorname{BW}(\mathbb{R}^d)}{\operatorname{argmin}} \operatorname{KL}(\Q,\Q^*). \]
 At the cost of this approximation, can we have an optimisation algorithm with convergence guarantees which goes to $\hat{\Q}$? Furthermore, if enough data is available, does $\hat{\Q}$ possess a good generalisation ability?
 We first state the assumptions holding throughout the whole section.
 
@@ -683,7 +691,7 @@ We first state the assumptions holding throughout the whole section.
   \item $\ell$ is twice differentiable, and \textbf{(A1), (A2)} hold. In particular, $\ell$ is $L$-smooth, convex and uniformly $K$-Lipschitz over $\mathcal{H}$. We furthermore assume that $L=1$.
   \item The prior $\P$ used in the definition of $\Q^*$ is a Gaussian with mean $0$ and covariance matrix $\Sigma= \text{diag}(\gamma), 1\geq\gamma>0$. We assume $\lambda \leq 2K$ in the definition of $\Q^*$.
 \end{itemize}
-Note that under \textbf{(A3)}, we have $0 \prec \alpha I \preceq \nabla^2 V_S \preceq I$.
+Note that under \textbf{(A3)}, we have $0 \prec \alpha I \preceq \nabla^2 V_{\Sm} \preceq I$.
 The work of \citet[Theorem 4]{lambert2022variational} provides convergence guarantees for SGD over the Bures-Wasserstein space when \textbf{(A3)} holds (in particular, they do not even requires the uniformly Lipschitz assumption). We first state their algorithm in \Cref{alg: sgd}.
 \begin{algorithm}[ht]
 \SetAlgoLined
@@ -693,7 +701,7 @@ The work of \citet[Theorem 4]{lambert2022variational} provides convergence guara
 Set up $\hat{\Q}_0 = \mathcal{N}(m_0,\Sigma_0)$. \\
 \For{$k= 0..N-1$}{
 Draw a sample $X_k\sim \hat{\Q}_k$.\\
-Set $m_k^+ = m_k - \eta \nabla V_S(X_k)$.\\
+Set $m_k^+ = m_k - \eta \nabla V_{\Sm}(X_k)$.\\
 Set $M_k= I- \eta (\nabla V^2(X_k) -\Sigma_k^{-1}) $.\\
 Set $\Sigma_k^+ = M_k\Sigma_k M_k$.\\
 Set $m_{k+1} = \mathcal{P}_{M}(m_k^+),\;\Sigma_{k+1} = \operatorname{clip}^{1/\alpha}\Sigma_k^+$.\\
@@ -726,7 +734,7 @@ Using \Cref{l: measures_in_compact}, we now can apply \Cref{th: data_dep} and ob
 \begin{theorem}
 \label{th: main_sgd}
 Assume \textbf{(A3)}, also assume that $d\geq 3$. Let $\beta_m= \mathcal{O}(\frac{1}{\sqrt{m}})$ and fix any $\beta_m<\delta<1$.
-Assume that we perform \Cref{alg: sgd}, with step size $\eta \asymp \frac{\alpha^2 \delta}{d}$ and the number of iterations to be $N \gtrsim \frac{d}{\alpha^3 \delta} \log \left(\W_{2}\left(Q_0, \hat{\Q}\right) / \delta\right)$.
+Assume that we perform \Cref{alg: sgd}, with step size $\eta \asymp \frac{\alpha^2 \delta}{d}$ and the number of iterations to be $N \gtrsim \frac{d}{\alpha^3 \delta} \log \left(\W_{2}\left(\Q_0, \hat{\Q}\right) / \delta\right)$.
 We also set the initialisation such that $\frac{\alpha}{9} I \preceq \Sigma_{0} \preceq \frac{1}{\alpha} I$,
 then we can upper bound the generalisation ability of $\hat{\Q}_N$, with probability $1-2\delta$:
 
@@ -743,7 +751,7 @@ As such, this bound is a bridge between optimisation and PAC-Bayes learning. To 
 Let us analyse the bound: the convergence rate depends on the quality of the approximation $\hat{\Q}$ of $\Q^*$, this says that if Gaussian measures are not suited to approximate well the Gibbs posterior, then we sacrifice some generalisation ability. However this term is also controlled by the Lipschitz constant $K$: if $K$ is small, then the learning problem is easy enough to compensate both the curse of dimensionality and a possibly bad approximation $\hat{\Q}$ of $\Q^*$.
 Again, the limit convergence rate is the statistical ersatz $\mathcal{O}\left( \sqrt{\frac{\log(m)}{m}} \right)$. This roughly says that we cannot hope to converge better than a Hoeffding test bound in this setting. Finally note also that the step $\eta$ of \Cref{alg: sgd} now depends on $\delta$: this suggests that the Bures-Wasserstein SGD needs to be tuned with a smaller step size to ensure not only convergence, but also a good generalisation ability.
 \begin{proof}[Proof of \Cref{th: main_sgd}]
-We start from \Cref{th: data_dep}, considering the asymptotic case. We have with probability $1-\delta$, for the posterior $\hat{\Q}_N$ obtained after $N$ steps of \Cref{alg: sgd} distribution $Q\in C_{\alpha,\beta,M}$ and the prior $\Q^*$:
+We start from \Cref{th: data_dep}, considering the asymptotic case. We have with probability $1-\delta$, for the posterior $\hat{\Q}_N$ obtained after $N$ steps of \Cref{alg: sgd} distribution $\Q\in C_{\alpha,\beta,M}$ and the prior $\Q^*$:
 \begin{align*}
 |\Delta_{\Sm}(\hat{\Q}_N)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left(1 + \W_{1}(\hat{\Q}_N,\Q^*)\right)+ (1+K^2\log(m))\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
 \end{align*}
@@ -774,8 +782,10 @@ We extended the Wasserstein PAC-Bayes theory beyond the results of \citet{amit20
 
 \paragraph{Can we exploit WPB for neural networks?} As shown in \Cref{fig: overview}, we had to assume, Lipschitzness, smoothness and convexity to reach \Cref{th: main_sgd}. Those assumptions are necessary in the current framework and to obtain the results of \citet{lambert2022variational} and thus, do not cover the important case of neural networks.
 Therefore, an interesting lead to investigate would be to first, avoid smoothness to reach convex neural networks \citet{bengio2005convex} and also avoid the convexity assumption to reach the broader subclass of Lipschitz neural networks (\emph{e.g} \citealp{gouk2021regularisation}).
-The case of Lipschitz neural networks is particularly interesting as WPB theory shows that a small Lipschitz constant is enough to attenuate the impact of dimensionality. Whether Lipschitzness is enough to reach WPB bound with data-dependent prior (\Cref{th: data_dep} requires an additional convexity assumption) might involve further results from differential privacy and is left for future work.
+The case of Lipschitz neural networks is particularly interesting as WPB theory shows that a small Lipschitz constant is enough to attenuate the impact of dimensionality. 
 
-\paragraph{Are the classical PAC-Bayesian techniques suited to WPB?} In \Cref{th: compact_catoni,th: compact_mcall}, we exploited a surrogate of the change of measure inequality to then exploit the PAC-Bayesian theory. However, those techniques are developed around the control of an exponential moment which appears naturally through the change of measure inequality. The surrogate is tighter as it directly involves the true moment with respect to the prior: an interesting direction would be to check whether tighter concentration bounds(or other bounds exploiting weaker assumptions than a bounded loss) are accessible. Furthermore, we exploited covering numbers to state that, with high probability, the loss is close to a Lipschitz one. Those covering numbers, while crucial, involve explicitly the dimension of the problem. This is challenging as such a dependency do not appear explicitly in KL-based PAC-Bayes learning (although they play a role in the KL term). Whether covering numbers are essential to WPB learning is an open question.
+\paragraph{Are the classical PAC-Bayesian techniques suited to WPB?} In \Cref{th: compact_catoni,th: compact_mcall}, we exploited a surrogate of the change of measure inequality to then exploit the PAC-Bayesian theory. However, those techniques are developed around the control of an exponential moment which appears naturally through the change of measure inequality. The surrogate is tighter as it directly involves the true moment with respect to the prior: an interesting direction would be to check whether tighter concentration bounds(or other bounds exploiting weaker assumptions than a bounded loss) are accessible. Furthermore, we exploited covering numbers to state that, with high probability, the loss is close to a Lipschitz one. Those covering numbers, while crucial, involve explicitly the dimension of the problem. This is challenging as such a dependency do not appear explicitly in KL-based PAC-Bayes learning (although they play a role in the KL term). 
+
+We provide elements of answer to those two questions in \Cref{chap: wpb-practical}, where we obtain tractable bounds for heavy-tailed losses, yielding sound learning algorithms for neural networks. Those benefits comes at the cost of no convergence rate for the Wasserstein term but also does not involve explicitly the dimension of $\H$,this practical tradeoff sacrifices the theoretical understanding of convergence of the generalisation gap to zero.
 
 
