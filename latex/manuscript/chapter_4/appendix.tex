@@ -200,7 +200,7 @@
     
       \begin{multline}
         \label{eq: fast_rate_grad_lpz_1}
-        \Risk_{\D}(\Q) \leq 2 \LP \hat{\Risk}_{\S_m}(\Q) + 2C_1\frac{\KL(\Q,\P) +\log(2/\delta)}{ m} \RP + \frac{c_P(\Q)}{C_1}\EE_{\z\sim\D} \LB \EE_{h\sim \Q}\LP \|\nabla_h \ell(h,\z)\|^2 \RP \RB .
+        \Risk_{\D}(\Q) \leq 2 \LP \hat{\Risk}_{\S_m}(\Q) + 2C_1\frac{\KL(\Q,\P) +\log(2/\delta)}{ m} \RP \\+ \frac{c_P(\Q)}{C_1}\EE_{\z\sim\D} \LB \EE_{h\sim \Q}\LP \|\nabla_h \ell(h,\z)\|^2 \RP \RB .
       \end{multline}
     
       We now remark that $g(h,\z):= \|\nabla_h \ell(h,\z)\|^2$ is nonnegative.
@@ -278,10 +278,15 @@
       We then apply a route of proof similar to Theorem \ref{th:poincaré_gauss}. We have : 
     
       \begin{align*}
-        \EE_{h\sim \P_{-\gamma \hat{\Risk}_{\S_m}}}\left[\mathbb{E}_{\z\sim \D}[\ell (h,\z)^2] \right] &  = \EE_{\z\sim\D} \LB \Var_{h\sim \P_{-\gamma \hat{\Risk}_{\S_m}}}\LP \ell(h,\z) \RP + \LP \EE_{h\sim\P_{-\gamma \hat{\Risk}_{\S_m}}}[\ell(h,\z)] \RP^2 \RB 
-        \intertext{Applying Poincaré's inequality then gives: }
-        & \leq  \EE_{\z\sim\D} \LB c_P(\P)e^{4\|\ell_2\|_{\infty}}\EE_{h\sim \P_{-\gamma \hat{\Risk}_{\S_m}}}\LP \|\nabla_h \ell(h,\z)\|^2 \RP + \LP \EE_{h\sim\P_{-\gamma \hat{\Risk}_{\S_m}}}[\ell(h,\z)] \RP^2 \RB  .
+        \EE_{h\sim \P_{-\gamma \hat{\Risk}_{\S_m}}}\left[\mathbb{E}_{\z\sim \D}[\ell (h,\z)^2] \right] &  = \EE_{\z\sim\D} \LB \Var_{h\sim \P_{-\gamma \hat{\Risk}_{\S_m}}}\LP \ell(h,\z) \RP + \LP \EE_{h\sim\P_{-\gamma \hat{\Risk}_{\S_m}}}[\ell(h,\z)] \RP^2 \RB
       \end{align*}
+
+      Applying Poincaré's inequality then gives:
+
+      \begin{multline*}
+        \EE_{h\sim \P_{-\gamma \hat{\Risk}_{\S_m}}}\left[\mathbb{E}_{\z\sim \D}[\ell (h,\z)^2] \right] \\ \leq  \EE_{\z\sim\D} \LB c_P(\P)e^{4\|\ell_2\|_{\infty}}\EE_{h\sim \P_{-\gamma \hat{\Risk}_{\S_m}}}\LP \|\nabla_h \ell(h,\z)\|^2 \RP + \LP \EE_{h\sim\P_{-\gamma \hat{\Risk}_{\S_m}}}[\ell(h,\z)] \RP^2 \RB  .
+      \end{multline*}
+
     
       Finally, using that $\P_{-\gamma \hat{\Risk}_{\S_m}}$ is $\texttt{QSB}(\ell,C)$ allow us to re-organise the terms as in Theorem \ref{th:poincaré_gauss}. Combining this with Lemma \ref{l: kl_bound} to bound the KL divergence concludes the proof.
       
@@ -356,28 +361,4 @@
         \[\mathbb{E}_{h\sim \P}[\Delta_{\S_m}(h)] \leq \frac{\log(1/\delta)}{\lambda} + \frac{\lambda}{2}\mathbb{E}_{h\sim\P}\Ebb_{\z\sim\D}[\ell(h,z)^2]. \]
         The last term on the right-hand side is bounded by $\sigma^2$ by assumption, then, taking $\lambda= \sqrt{\frac{2\log(1/\delta)}{\sigma^2}}$ gives finally $\mathbb{E}_{h\sim\P}\Ebb_{\z\sim\D}[\ell(h,z)^2] \leq \sqrt{2\log(1/\delta)/m}$, concludes the proof.
     \end{proof}
-    
-    \begin{comment}
-        
-    
-    \subsection{Proof of Proposition \ref{prop: sgd_bound}}
-    \label{sec: proof_sgd_bound}
-    \begin{proof}
-      We take $\mathbf{h}^* \in \mathrm{argmin}_{h\in\Hcal} \Risk_\D(h)$. We then apply Theorem \ref{th:2-wass} with $\Q,\P$ being the Dirac distributions in $\mathbf{h}_t,\mathbf{h}^*$ and $f= \Risk_\D- \hat{\Risk}_{\S_m}$ which have $2G$-Lipschitz gradients. Re-organising gives
-     \begin{align*}
-        \Risk_\D(\mathbf{h}_t) - \Risk_\D(\mathbf{h}^*) & \leq \hat{\Risk}_{\S_m}(\mathbf{h}_{T+1}) + G ||\mathbf{h}_{T+1}- \mathbf{h}^*\|^2 -  \hat{\Risk}_{\S_m}(\mathbf{h}^*)  + 2R\|\nabla\Risk_\D(\mathbf{h}_{T+1})- \nabla \hat{\Risk}_{\S_m}(\mathbf{h}_{T+1})\|.
-      \end{align*}  
-    
-      Finally, using that $\hat{\Risk}_{\S_m}(\mathbf{h}_{T+1})-  \hat{\Risk}_{\S_m}(\mathbf{h}^*) \leq 0$ and taking the infimum on $\mathbf{h^*}$ gives,
-      
-      \begin{align*}
-        \Risk_\D(\mathbf{h}_t) - \Risk_\D(\mathbf{h}^*) & \leq  \inf_{\mathbf{h}^* \in \mathrm{argmin}\; \Risk_\D}\;G||\mathbf{h}_{T+1}- \mathbf{h}^*\|^2   + 2R\|\nabla\Risk_\D(\mathbf{h}_{T+1})- \nabla \hat{\Risk}_{\S_m}(\mathbf{h}_{T+1})\|.
-      \end{align*} 
-      Finally, using that 
-      $$\|\nabla\Risk_\D(\mathbf{h}_t)- \nabla \hat{\Risk}_{\S_m}(\mathbf{h}_t)\| = \sqrt{\|\nabla\Risk_\D(\mathbf{h}_t)- \nabla \hat{\Risk}_{\S_m}(\mathbf{h}_t)\|^2},$$
-      and applying Lemma \ref{l: sgd_gradient_bounds} concludes the proof.
-    
-    \end{proof}
-    
-    \end{comment}
 \end{noaddcontents}
