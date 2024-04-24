@@ -433,10 +433,11 @@ To the best of our knowledge, our work is the first to exploit geometric propert
 
 \begin{proof}[of \Cref{cor: unbounded_lpz}]
 First, we start from  \Cref{th: compact_mcall} which gives, with probability at least $1-\delta$:
-\begin{equation}
+\begin{multline}
 \label{eq: tight_mcall}
-|\Delta_{\Sm}(\Q)| \leq \sqrt{ 2K(2K+1) \frac{\log(\frac{3}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\Q,\P)+\varepsilon_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
-\end{equation}
+|\Delta_{\Sm}(\Q)| \\
+\leq \sqrt{ 2K(2K+1) \frac{\log(\frac{3}{\delta}) + 2d\log\left(1 +2Rm \right)}{m} \left(\W_{1}(\Q,\P)+\varepsilon_m \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m} }.
+\end{multline}
 This last bound holds for any uniformly Lipschitz function taking value on $[0,1]$ on a compact predictor space bounded by a certain $R$.
 Let $\P\in C_{\alpha,\beta,M}$.
 We now assume \textbf{(A1)} and consider $R$ to be the smallest value satisfying \texttt{Rad}.
@@ -538,7 +539,8 @@ We have:
 |\Delta_{\Sm}(\Q) - \Delta_{\Sm}(\mathcal{P}_{R}\# \Q) | & \leq \mathbb{E}_{h\sim \Q}\left[|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))|\right] \\
 & = \mathbb{E}_{h\sim \Q}\left[|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))| \mathds{1}(||h||>R)\right] .
 \intertext{We study the last gap more carefully:}
-|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))|& = \mathbb{E}_z[|\ell(h,\z)- \ell(\mathcal{P}_{R}(h),\z)|] + \frac{1}{m}\sum_{i=1}^m |\ell(h,\z_i)- \ell(\mathcal{P}_{R}(h),z_i)|.
+|\Delta_{\Sm}(h) - \Delta_{\Sm}(\mathcal{P}_{R}(h))|& = \mathbb{E}_z[|\ell(h,\z)- \ell(\mathcal{P}_{R}(h),\z)|] \\
+& + \frac{1}{m}\sum_{i=1}^m |\ell(h,\z_i)- \ell(\mathcal{P}_{R}(h),z_i)|.
 \intertext{And we know that for any $\z$, because $\ell$ is convex smooth:}
 \ell(h,\z)- \ell(\mathcal{P}_{R}(h),\z) &\leq \nabla_h \ell(\mathcal{P}_{R}(h),\z)^T(h-\mathcal{P}_{R}(h)) + \frac{L}{2}||h-\mathcal{P}_{R}(h)||^2 || \\
 & \leq D_R||h- \mathcal{P}_{R}(h)|| + \frac{L}{2}||h-\mathcal{P}_{R}(h)||^2 ||.
@@ -764,11 +766,12 @@ Finally, we exploit \Cref{th: lambert} as follows:
 \end{align*}
 Note that in the last line, we were able to apply \Cref{th: lambert} thanks to \Cref{l: measures_in_compact}.
 This leads to the following bound:
-\begin{equation}
+\begin{multline}
 \label{eq: complete_bound_sgd}
-|\Delta_{\Sm}(\hat{\Q}_N)|  \leq \Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left( f(N,\eta)\sqrt{\W_{2}^2(\hat{\Q}_0,\hat{\Q})} + 1 +
+|\Delta_{\Sm}(\hat{\Q}_N)|  \\
+\leq \Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left( f(N,\eta)\sqrt{\W_{2}^2(\hat{\Q}_0,\hat{\Q})} + 1 +
 \varepsilon \right)+ (1+K^2\log(m))\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right),
-\end{equation}
+\end{multline}
 where $f(N,\eta)= \sqrt{\frac{\exp (-\alpha N \eta) \W_{2}^2\left(\hat{\Q}_0, \hat{\Q}\right)}{\delta}}$ and $\varepsilon= \sqrt{\frac{36 d \eta}{\alpha^2\delta}} + \W_{1}(\hat{\Q},\Q^*)$.
 Finally, using that with step size $\eta \asymp \frac{\alpha^2 \delta}{d}$ and the number of iterations to be $N \gtrsim \frac{d}{\alpha^3 \delta} \log \left(\W_{2}\left(\hat{\Q}_0, \hat{\Q}\right) / \delta\right)$ allows us to bound:
 $\sqrt{2\frac{\exp (-\alpha k \eta) \W_{2}^2\left(\hat{\Q}_0, \hat{\Q}\right)+\frac{36 d \eta}{\alpha^2}}{\delta}} \leq 1$.

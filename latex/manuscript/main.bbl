@@ -2869,9 +2869,8 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv}
+      \field{eprinttype}{arXiv}
       \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
-      \field{volume}{abs/2304.07048}
       \field{year}{2023}
       \keyw{report}
     \endentry
@@ -2915,12 +2914,9 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Entropy}
-      \field{number}{10}
-      \field{title}{{PAC-Bayes unleashed: generalisation bounds with unbounded losses}}
-      \field{volume}{23}
+      \field{title}{{PAC-Bayes Unleashed: Generalisation Bounds with Unbounded Losses}}
       \field{year}{2021}
-      \field{pages}{1330}
-      \range{pages}{1}
+      \keyw{journal}
     \endentry
     \entry{haddouche2024pac}{article}{}
       \name{author}{4}{}{%
@@ -2958,13 +2954,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{stat.ML}
       \field{eprinttype}{arXiv}
       \field{title}{A PAC-Bayesian Link Between Generalisation and Flat Minima}
       \field{year}{2024}
-      \verb{eprint}
-      \verb 2402.08508
-      \endverb
+      \keyw{report}
     \endentry
     \entry{haghifam2023limit}{inproceedings}{}
       \name{author}{6}{}{%
@@ -13113,12 +13106,9 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Entropy}
-      \field{number}{10}
-      \field{title}{{PAC-Bayes unleashed: generalisation bounds with unbounded losses}}
-      \field{volume}{23}
+      \field{title}{{PAC-Bayes Unleashed: Generalisation Bounds with Unbounded Losses}}
       \field{year}{2021}
-      \field{pages}{1330}
-      \range{pages}{1}
+      \keyw{journal}
     \endentry
     \entry{neu2021info}{inproceedings}{}
       \name{author}{4}{}{%
@@ -14365,9 +14355,8 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv}
+      \field{eprinttype}{arXiv}
       \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
-      \field{volume}{abs/2304.07048}
       \field{year}{2023}
       \keyw{report}
     \endentry
@@ -15004,13 +14993,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{stat.ML}
       \field{eprinttype}{arXiv}
       \field{title}{A PAC-Bayesian Link Between Generalisation and Flat Minima}
       \field{year}{2024}
-      \verb{eprint}
-      \verb 2402.08508
-      \endverb
+      \keyw{report}
     \endentry
     \entry{kuzborskij2024better}{article}{}
       \name{author}{5}{}{%
@@ -15198,14 +15184,53 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{stat.ML}
       \field{eprinttype}{arXiv}
       \field{title}{A PAC-Bayesian Link Between Generalisation and Flat Minima}
       \field{year}{2024}
       \true{nocite}
-      \verb{eprint}
-      \verb 2402.08508
-      \endverb
+      \keyw{report}
+    \endentry
+    \entry{viallard2024tighter}{article}{}
+      \name{author}{4}{}{%
+        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
+           family={Viallard},
+           familyi={V\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=820792a832c4df0979e3c3aec0f24a71}{%
+           family={Şimşekli},
+           familyi={Ş\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{fullhash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{bibnamehash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{authorbibnamehash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{authorfullhash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{title}{Tighter Generalisation Bounds via Interpolation}
+      \field{year}{2024}
+      \true{nocite}
+      \keyw{report}
     \endentry
     \entry{haddouche2023pac}{article}{}
       \name{author}{2}{}{%
@@ -15267,9 +15292,8 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv}
+      \field{eprinttype}{arXiv}
       \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
-      \field{volume}{abs/2304.07048}
       \field{year}{2023}
       \true{nocite}
       \keyw{report}
@@ -15281,23 +15305,23 @@
            familyi={H\bibinitperiod},
            given={Maxime},
            giveni={M\bibinitperiod}}}%
-        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
-           family={Guedj},
-           familyi={G\bibinitperiod},
-           given={Benjamin},
-           giveni={B\bibinitperiod}}}%
         {{hash=d2b0ee30a193e30e398df40d4e098ab1}{%
            family={Wintenberger},
            familyi={W\bibinitperiod},
            given={Olivier},
            giveni={O\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
       \strng{namehash}{425338b43dd0931a32162496c1cb2c4c}
-      \strng{fullhash}{29cc2de7242ededf00b126dd1ede1aa6}
-      \strng{bibnamehash}{29cc2de7242ededf00b126dd1ede1aa6}
-      \strng{authorbibnamehash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{fullhash}{97ca235762186d7a07d4ebe25bf2afd6}
+      \strng{bibnamehash}{97ca235762186d7a07d4ebe25bf2afd6}
+      \strng{authorbibnamehash}{97ca235762186d7a07d4ebe25bf2afd6}
       \strng{authornamehash}{425338b43dd0931a32162496c1cb2c4c}
-      \strng{authorfullhash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{authorfullhash}{97ca235762186d7a07d4ebe25bf2afd6}
       \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -15305,14 +15329,9 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{cs.LG}
-      \field{eprinttype}{arXiv}
-      \field{title}{{Optimistic Dynamic Regret Bounds}}
+      \field{title}{{Optimistically Tempered Online Learning}}
       \field{year}{2023}
       \true{nocite}
-      \verb{eprint}
-      \verb 2301.07530
-      \endverb
       \keyw{report}
     \endentry
     \entry{jobic2023federated}{article}{}
@@ -15345,14 +15364,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{cs.LG}
       \field{eprinttype}{arXiv}
       \field{title}{{Federated Learning with Nonvacuous Generalisation Bounds}}
       \field{year}{2023}
       \true{nocite}
-      \verb{eprint}
-      \verb 2310.11203
-      \endverb
       \keyw{report}
     \endentry
     \entry{viallard2023learning}{article}{}
@@ -15384,6 +15399,7 @@
       \strng{authorbibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
       \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
       \strng{authorfullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
@@ -15468,13 +15484,10 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Entropy}
-      \field{number}{10}
-      \field{title}{{PAC-Bayes unleashed: generalisation bounds with unbounded losses}}
-      \field{volume}{23}
+      \field{title}{{PAC-Bayes Unleashed: Generalisation Bounds with Unbounded Losses}}
       \field{year}{2021}
       \true{nocite}
-      \field{pages}{1330}
-      \range{pages}{1}
+      \keyw{journal}
     \endentry
     \entry{haddouche2020upper}{misc}{}
       \name{author}{3}{}{%
@@ -15507,14 +15520,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{cs.LG}
       \field{eprinttype}{arXiv}
       \field{title}{{Upper and Lower Bounds on the Performance of Kernel PCA}}
       \field{year}{2020}
       \true{nocite}
-      \verb{eprint}
-      \verb 2012.10369
-      \endverb
       \keyw{report}
     \endentry
   \enddatalist
@@ -15550,14 +15559,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{cs.LG}
       \field{eprinttype}{arXiv}
       \field{title}{{Upper and Lower Bounds on the Performance of Kernel PCA}}
       \field{year}{2020}
       \true{nocite}
-      \verb{eprint}
-      \verb 2012.10369
-      \endverb
       \keyw{report}
     \endentry
     \entry{haddouche2021pac}{article}{}
@@ -15600,13 +15605,10 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Entropy}
-      \field{number}{10}
-      \field{title}{{PAC-Bayes unleashed: generalisation bounds with unbounded losses}}
-      \field{volume}{23}
+      \field{title}{{PAC-Bayes Unleashed: Generalisation Bounds with Unbounded Losses}}
       \field{year}{2021}
       \true{nocite}
-      \field{pages}{1330}
-      \range{pages}{1}
+      \keyw{journal}
     \endentry
     \entry{haddouche2022online}{inproceedings}{}
       \name{author}{2}{}{%
@@ -15700,9 +15702,8 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv}
+      \field{eprinttype}{arXiv}
       \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
-      \field{volume}{abs/2304.07048}
       \field{year}{2023}
       \true{nocite}
       \keyw{report}
@@ -15714,23 +15715,23 @@
            familyi={H\bibinitperiod},
            given={Maxime},
            giveni={M\bibinitperiod}}}%
-        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
-           family={Guedj},
-           familyi={G\bibinitperiod},
-           given={Benjamin},
-           giveni={B\bibinitperiod}}}%
         {{hash=d2b0ee30a193e30e398df40d4e098ab1}{%
            family={Wintenberger},
            familyi={W\bibinitperiod},
            given={Olivier},
            giveni={O\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
       \strng{namehash}{425338b43dd0931a32162496c1cb2c4c}
-      \strng{fullhash}{29cc2de7242ededf00b126dd1ede1aa6}
-      \strng{bibnamehash}{29cc2de7242ededf00b126dd1ede1aa6}
-      \strng{authorbibnamehash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{fullhash}{97ca235762186d7a07d4ebe25bf2afd6}
+      \strng{bibnamehash}{97ca235762186d7a07d4ebe25bf2afd6}
+      \strng{authorbibnamehash}{97ca235762186d7a07d4ebe25bf2afd6}
       \strng{authornamehash}{425338b43dd0931a32162496c1cb2c4c}
-      \strng{authorfullhash}{29cc2de7242ededf00b126dd1ede1aa6}
+      \strng{authorfullhash}{97ca235762186d7a07d4ebe25bf2afd6}
       \field{extraname}{3}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -15738,14 +15739,9 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{cs.LG}
-      \field{eprinttype}{arXiv}
-      \field{title}{{Optimistic Dynamic Regret Bounds}}
+      \field{title}{{Optimistically Tempered Online Learning}}
       \field{year}{2023}
       \true{nocite}
-      \verb{eprint}
-      \verb 2301.07530
-      \endverb
       \keyw{report}
     \endentry
     \entry{jobic2023federated}{article}{}
@@ -15778,14 +15774,10 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{cs.LG}
       \field{eprinttype}{arXiv}
       \field{title}{{Federated Learning with Nonvacuous Generalisation Bounds}}
       \field{year}{2023}
       \true{nocite}
-      \verb{eprint}
-      \verb 2310.11203
-      \endverb
       \keyw{report}
     \endentry
     \entry{viallard2023learning}{article}{}
@@ -15817,6 +15809,7 @@
       \strng{authorbibnamehash}{faacd6fa280ec5c7cc2ce53b429846d6}
       \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
       \strng{authorfullhash}{faacd6fa280ec5c7cc2ce53b429846d6}
+      \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
@@ -15865,14 +15858,53 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{stat.ML}
       \field{eprinttype}{arXiv}
       \field{title}{A PAC-Bayesian Link Between Generalisation and Flat Minima}
       \field{year}{2024}
       \true{nocite}
-      \verb{eprint}
-      \verb 2402.08508
-      \endverb
+      \keyw{report}
+    \endentry
+    \entry{viallard2024tighter}{article}{}
+      \name{author}{4}{}{%
+        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
+           family={Viallard},
+           familyi={V\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=820792a832c4df0979e3c3aec0f24a71}{%
+           family={Şimşekli},
+           familyi={Ş\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{fullhash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{bibnamehash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{authorbibnamehash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{authorfullhash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{title}{Tighter Generalisation Bounds via Interpolation}
+      \field{year}{2024}
+      \true{nocite}
+      \keyw{report}
     \endentry
   \enddatalist
 \endrefsection

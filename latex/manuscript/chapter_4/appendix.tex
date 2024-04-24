@@ -10,7 +10,7 @@
     \begin{proof}
         We define $\P_1$ such that $d\P_1(h)\propto \exp(-V(h) - \gamma \hat{\Risk}_{\S_m}(h))dh$, then note that, by convexity assumption over $\ell_1$, $Hess(V+\gamma\hat{\Risk}_{\S_m}) \succeq \frac{1}{c_{LS}}\mathrm{Id}$. Then, applying \citet[Corollary 2.1]{chafai2004entropies}, we know that $\P_1$ satisfies a Poincaré inequality with constant $c_{LS}(\P)$. 
       
-        Finally, defining $\P_2$ such that $dP_2(h) \propto \exp(-\frac{\gamma}{m}\sum_{i=1}^m \ell_2(h,\z_i))$, thanks to the boundedness of $\ell_2$, we use \citet[Property 2.6]{guionnet2003lectures}, which ensure that $P_2 = \P_{-\gamma \hat{\Risk}_{\S_m}}d \P_1(h)$ satisfies a Log-Sobolev inequality with constant $2c_{LS}(\P)\exp(4\|\ell_2\|_{\infty}) c_P(\P)$.
+        Finally, defining $\P_2$ such that $d\P_2(h) \propto \exp(-\frac{\gamma}{m}\sum_{i=1}^m \ell_2(h,\z_i))$, thanks to the boundedness of $\ell_2$, we use \citet[Property 2.6]{guionnet2003lectures}, which ensure that $P_2 = \P_{-\gamma \hat{\Risk}_{\S_m}}d \P_1(h)$ satisfies a Log-Sobolev inequality with constant $2c_{LS}(\P)\exp(4\|\ell_2\|_{\infty}) c_P(\P)$.
         Noting that $\P_2=\P_{-\gamma\hat{\Risk_\S}}$ concludes the proof.
       \end{proof}
     
@@ -60,10 +60,10 @@
     \begin{definition}
     \label{def: wasserstein-chap-4}
     The $1$-Wasserstein distance between $P,Q \in \mathcal{M}(\mathcal{H})^2$ is defined as
-    \[ W_1(Q,P) = \inf_{\pi \in \Pi(Q,P)} \int_{\mathcal{H}^2} ||x-y||\mathrm{d}\pi(x,y). \]
+    \[ \W_1(Q,P) = \inf_{\pi \in \Pi(Q,P)} \int_{\mathcal{H}^2} ||x-y||\mathrm{d}\pi(x,y). \]
     where $\Pi(Q,P)$ denote the set of probability measures on $\mathcal{H}^2$ whose marginals are $Q$ and $P$.
     We define the $2$-Wasserstein distance on $\mathcal{P}(\mathcal{H})$ as
-    \[ W_2(Q,P) = \sqrt{\inf_{\pi \in \Pi(Q,P)} \int_{\mathcal{H}^2} ||x-y||^2\mathrm{d}\pi(x,y)}. \]
+    \[ \W_2(Q,P) = \sqrt{\inf_{\pi \in \Pi(Q,P)} \int_{\mathcal{H}^2} ||x-y||^2\mathrm{d}\pi(x,y)}. \]
     \end{definition}
     \begin{comment}
     \subsection{Stochastic Gradient Descent.}
@@ -292,7 +292,7 @@
     \subsection{Proof of Theorem \ref{th:2-wass}}
     \label{sec: proof_2-wass}
     \begin{proof}
-      We assume first $G=1$. We start from the Kantorovich duality formula \citep[Theorem 5.10]{villani2009optimal} instantiated with the cost function $c(x,y)= \|x-y\|^2$. We have for any $\Q,\P$, because $W_2$ is a distance:
+      We assume first $G=1$. We start from the Kantorovich duality formula \citep[Theorem 5.10]{villani2009optimal} instantiated with the cost function $c(x,y)= \|x-y\|^2$. We have for any $\Q,\P$, because $\W_2$ is a distance:
       
      \begin{align}
         \label{eq: kantorovich}
@@ -327,21 +327,21 @@
     \begin{proof}
       We fix $R>0$ and we start from \Cref{th:2-wass} with predictor space $\Hcal_0=\Bcal(\zerobf,R)$, $f$ being gradient-Lipschitz on this ball and prior and posterior $\Pcal_R\#\Q,\Pcal_R\#\P$,
       
-      \[ \mathbb{E}_{h\sim \Q}\LB f\LP\Pcal_R(h)\RP \RB \leq \frac{G}{2}W_2^2\LP\Pcal_R\#\Q,\Pcal_R\#\P \RP + \mathbb{E}_{h\sim \P}\LB f\LP\Pcal_R(h)\RP \RB + 2R\mathbb{E}_{h\sim \Q} \LB \LM\nabla f \LP\Pcal_R(h)  \RP \RM \RB.  \]
+      \[ \mathbb{E}_{h\sim \Q}\LB f\LP\Pcal_R(h)\RP \RB \leq \frac{G}{2}\W_2^2\LP\Pcal_R\#\Q,\Pcal_R\#\P \RP + \mathbb{E}_{h\sim \P}\LB f\LP\Pcal_R(h)\RP \RB + 2R\mathbb{E}_{h\sim \Q} \LB \LM\nabla f \LP\Pcal_R(h)  \RP \RM \RB.  \]
     
-      We first prove that $W_2^2\LP\Pcal_R\#\Q,\Pcal_R\#\P \RP \leq W_2^2(\Q,\P)$. Let $\pi\in \Gamma(\Q,\P)$ being the optimal transport coupling from $\P$ to $\Q$, \ie 
-      \[ W_2^2(\Q,\P)= \mathbb{E}_{(X,Y)\sim \pi} \LB\|X-Y\|^2\RB.   \]
+      We first prove that $\W_2^2\LP\Pcal_R\#\Q,\Pcal_R\#\P \RP \leq \W_2^2(\Q,\P)$. Let $\pi\in \Gamma(\Q,\P)$ being the optimal transport coupling from $\P$ to $\Q$, \ie 
+      \[ \W_2^2(\Q,\P)= \mathbb{E}_{(X,Y)\sim \pi} \LB\|X-Y\|^2\RB.   \]
       Then notice that if we denote by $\pi_1= (\Pcal_R,\Pcal_R)\#\pi$, then $\pi_1\in \Gamma\LP \Pcal_R\#\Q, \Pcal_R\#\P\RP$ and so:
     
       \begin{align*}
-        W_2^2\LP\Pcal_R\#\Q,\Pcal_R\#\P \RP & \leq \mathbb{E}_{(X,Y)\sim \pi_1}\LB \|X-Y\|^2 \RB \\
+        \W_2^2\LP\Pcal_R\#\Q,\Pcal_R\#\P \RP & \leq \mathbb{E}_{(X,Y)\sim \pi_1}\LB \|X-Y\|^2 \RB \\
         & = \mathbb{E}_{(X,Y)\sim \pi_1}\LB \|\Pcal_R(X)-\Pcal_R(Y)\|^2 \RB.
         \intertext{Using that $\Pcal_R$ is $1$-Lipschitz gives,}
-        W_2^2\LP\Pcal_R\#\Q,\Pcal_R\#\P \RP & \leq \mathbb{E}_{(X,Y)\sim \pi_1}\LB \|X-Y\|^2 \RB\\
-        & = W_2^2(\Q,\P).
+        \W_2^2\LP\Pcal_R\#\Q,\Pcal_R\#\P \RP & \leq \mathbb{E}_{(X,Y)\sim \pi_1}\LB \|X-Y\|^2 \RB\\
+        & = \W_2^2(\Q,\P).
       \end{align*}
     
-      Then we need to control $W_2^2(\Q,\P)$. To do so, we use the fact that $\P$ is $\Lsob(c_{LS})$ to affirm, through Otto-Villani's theorem \citep[Theorem 1]{otto2000gene} that the following holds: $W_2^2(\Q,\P)\leq \frac{c_{LS}(\P)}{2}\KL(\Q,\P)$. This concludes the proof. 
+      Then we need to control $\W_2^2(\Q,\P)$. To do so, we use the fact that $\P$ is $\Lsob(c_{LS})$ to affirm, through Otto-Villani's theorem \citep[Theorem 1]{otto2000gene} that the following holds: $\W_2^2(\Q,\P)\leq \frac{c_{LS}(\P)}{2}\KL(\Q,\P)$. This concludes the proof. 
     \end{proof}
     
     \subsection{Proof of \Cref{th:wpb-grad}}
@@ -349,7 +349,7 @@
     \begin{proof}
         We start from \Cref{th:2-wass}, using that $\Delta_{\S_m}$ is $G$-gradient-Lipschitz for any $m$ to obtain:
         \begin{align*}
-            \mathbb{E}_{h\sim \Q}[\Delta_{\S_m}(h)] \leq \frac{G}{2}W_2^2(Q,P) + \mathbb{E}_{h\sim \P}[\Delta_{\S_m}(h)] +D \mathbb{E}_{h\sim\Q}[\|\nabla \Delta_{\S_m} (h)\|]
+            \mathbb{E}_{h\sim \Q}[\Delta_{\S_m}(h)] \leq \frac{G}{2}\W_2^2(Q,P) + \mathbb{E}_{h\sim \P}[\Delta_{\S_m}(h)] +D \mathbb{E}_{h\sim\Q}[\|\nabla \Delta_{\S_m} (h)\|]
         \end{align*}
         The only thing left to control is $\mathbb{E}_{h\sim \P}[\Delta_{\S_m}(h)]$. For this, we use that $P$ alongisde the supermartingale concentration inequality of \citet[Corollary 17]{chugg2023unified} instantiated with prior equal to posterior, \iid data showing that, for any $\lambda >0,$ with probability at least $1-\delta$, 
     
