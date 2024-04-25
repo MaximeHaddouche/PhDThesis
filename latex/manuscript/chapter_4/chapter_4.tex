@@ -1,4 +1,4 @@
-\chapter[Mitigating Initialisation Impact through Flat Minima: Transitory Fast Rates for Small Gradients]{Mitigating Initialisation Impact through Flat Minima: Transitory Fast Rates for Small Gradients}
+\chapter[Mitigating Initialisation Impact through Flat Minima: Fast Rates for Small Gradients]{Mitigating Initialisation Impact through Flat Minima: Fast Rates for Small Gradients}
 \label{chap:gen-flat-minima}
 \addchapterlof
 \addchapterloa
@@ -16,15 +16,16 @@
 
 \begin{abstract}
 \vspace{-0.2cm}
-This is the PLS paper, precise that the supermartingales bounds are richer than simply recovering classical batch guarantees: we can incorporate gradient norms, which explains generalisation when a flat minima is reached.
+In \Cref{chap:online-pb} we saw that a way to attenuate the impact of the prior, seen as an initialisation, in PAC-Bayes training is online learning, allowing the prior to evolve alongside the posterior through time. However, a legitimate question is to wonder whether the prior could be attenuated, even in the batch learning setting which is widely used in practice. Maintaining the vision of the prior as initialisation, we propose in this chapter to attenuate the impact of the prior in the batch setting through faster convergence rate. The proposed results hold when a flat minimum has been reached, \ie a minimum whose its neighbourhood nearly minimises the loss as well. Then, a sharper understanding of generalisation can be reached when exploiting the benefits of a successful optimisation process. Indeed, this study is particularly meaningful in the context of deep learning, where it has been shown that flat minimum (also known as sharpness) correlates to a good generalisation ability.  
 \end{abstract}
 
 \newpage
 
 \section{Introduction}
 
+Can we make the impact of the prior vanish at a faster rate than $1/\sqrt{m}$ in the context of batch learning? While this is desirable from an optimisation perspective, this is not what is proposed by classical PAC-Bayes bounds, considering all elements of $\Mcal(\Hcal)$ simultaneously. The challenge of this study is to obtain faster rates for a smaller class of posteriors. Doing so, we aim to attenuate the impact of the initialisation (seen as prior) for nonnegative heavy-tailed losses, potentially satisfying geometric assumptions such as gradient-lipschitz, making a promising step towards concrete optimisation settings. The practical way to do so is to obtain results holding only for posteriors distributions focusing on \emph{flat minima}, which can be seen, \eg in deep learning, as a benefit of a successful optimisation process.
 
-Dating back to \citet{hochreiter1997flat}, it has been hypothesised that the notion of `flatness' (or sometimes equivalently referred to as `sharpness') has tight links with the generalisation error: among the minima (belonging to $\hat{\Risk}_{\S_m}$) that is found by the learning algorithm, the `flatter' the minimum is, the lower is the generalisation error.
+Indeed, dating back to \citet{hochreiter1997flat}, it has been hypothesised that the notion of `flatness' (or sometimes equivalently referred to as `sharpness') has tight links with the generalisation error: among the minima (belonging to $\hat{\Risk}_{\S_m}$) that is found by the learning algorithm, the `flatter' the minimum is, the lower is the generalisation error.
 While the initial flatness notion was (vaguely) defined through low Kolmogorov complexity, there is no single formal definition of `flatness'.
 Hence, several flatness notions have been considered, which typically are based on the second-order derivatives of the empirical risk around the local minimum found by the algorithm, such as $\mathrm{trace}(\nabla^2 \hat{\Risk}_{\S_m}(h))$, see \eg, \citet{jastrzkebski2017three, wen2023sharpness}.
 
@@ -276,9 +277,9 @@ When Gibbs posteriors are involved, KL divergence is controllable by a gradient 
 \begin{theorem}\label{th: gibbs_pacb}
 For any $C>0$, any $\gamma>0$, any prior $\P$ being $\Lsob(c_{LS})$, any $\ell\geq 0$ and any $\delta\in [0,1]$, we have the following inequalities.
 If $\ell\in [0,1]$, then with probability at least $1-\delta$ over the sample $\S$, for any $m>0$, and any $\Q\in\Mcal(\Hcal)$:
-\begin{align*}
-    \Risk_{\D}(\P_{-\gamma \hat{\Risk}_{\S_m}}) & \leq 2 \LP \hat{\Risk}_{\S_m}(\P_{-\gamma \hat{\Risk}_{\S_m}}) + \frac{\gamma^2 c_{LS}(\P)}{4m} \EE_{h\sim \P_{-\gamma \hat{\Risk}_{\S_m}}}\LB \|\nabla_h \hat{\Risk}_{\S_m}(h) \|^2 \RB + \frac{\log(1/\delta)}{m} \RP .
-\end{align*}
+\begin{multline*}
+    \Risk_{\D}(\P_{-\gamma \hat{\Risk}_{\S_m}}) \\ \leq 2 \LP \hat{\Risk}_{\S_m}(\P_{-\gamma \hat{\Risk}_{\S_m}}) + \frac{\gamma^2 c_{LS}(\P)}{4m} \EE_{h\sim \P_{-\gamma \hat{\Risk}_{\S_m}}}\LB \|\nabla_h \hat{\Risk}_{\S_m}(h) \|^2 \RB + \frac{\log(1/\delta)}{m} \RP .
+\end{multline*}
 
 If $\ell= \ell_1+\ell_2$ with $\ell_1$ convex, twice differentiable and $\ell_2$ bounded, assume that $\P$ satisfies the conditions of \Cref{prop:gibbs_logsob}. Then for any $\frac{2}{C}> \lambda>0$, with probability at least $1-\delta$ over the sample $\S$, for any $m>0$, such that $\Q$ is $\texttt{QSB}(\ell,C)$ and $\ell(.,\z)\in \mathrm{H}^{1}(\P_{-\gamma \hat{\Risk}_{\S_m}})$:
 
@@ -387,4 +388,4 @@ For both MNIST and FashionMNIST, the constant $C$ decreases from approximately 0
 
 \section{Conclusion}
 
-We provide novel PAC-Bayes generalisation bounds, converging faster than $\frac{1}{\sqrt{m}}$ when a low empirical error is reached and that expected gradients are vanishing. This conveys the message that flat minima helps generalisation. However, to complete this analysis, the crucial question is to understand how optimisation algorithms successfully reach flat minima in the overparametrised setting. This important question is left as future work.
+This chapter showed that it is possible to exploit the benefits of a successful optimisation process to obtain faster rates, making a promising step forward a better understanding of deep neural networks, whose generalisation ability correlates well to flat minima. However, while we exploited potential benefits of optimisation process to make PAC-Bayes in line with optimisaiton, we still do not know whether an optimisation algorithm will reach a flat minima. This is somewhat unconsistent as optimisation processes are often supported by deterministic convergence guarantees. To fill this gap we show in \Cref{chap: wass-pb} that it is possible to incorporate directly optimisation guarantees onto PAC-Bayes bounds, making a supplementary step towards optimisation.
