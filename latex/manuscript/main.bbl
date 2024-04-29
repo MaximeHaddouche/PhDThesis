@@ -6952,6 +6952,47 @@
       \field{year}{2023}
       \keyw{conference}
     \endentry
+    \entry{viallard2024tighter}{article}{}
+      \name{author}{4}{}{%
+        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
+           family={Viallard},
+           familyi={V\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=820792a832c4df0979e3c3aec0f24a71}{%
+           family={Şimşekli},
+           familyi={Ş\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{fullhash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{bibnamehash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{authorbibnamehash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{authorfullhash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \field{extraname}{3}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{title}{Tighter Generalisation Bounds via Interpolation}
+      \field{year}{2024}
+      \keyw{report}
+    \endentry
     \entry{villani2009optimal}{book}{}
       \name{author}{1}{}{%
         {{hash=9a5829eabef68d560b86bf71527fd874}{%
@@ -15041,6 +15082,47 @@
       \field{journaltitle}{arXiv preprint arXiv:2402.09201}
       \field{title}{{Better-than-KL PAC-Bayes Bounds}}
       \field{year}{2024}
+    \endentry
+    \entry{viallard2024tighter}{article}{}
+      \name{author}{4}{}{%
+        {{hash=7c9262287d6ed2aca924c9d3861f359d}{%
+           family={Viallard},
+           familyi={V\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0f4630dd13ac3d89b33000debafd22d5}{%
+           family={Haddouche},
+           familyi={H\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=820792a832c4df0979e3c3aec0f24a71}{%
+           family={Şimşekli},
+           familyi={Ş\bibinitperiod},
+           given={Umut},
+           giveni={U\bibinitperiod}}}%
+        {{hash=dbe4c731302e63fe6b122f974c402be2}{%
+           family={Guedj},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{fullhash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{bibnamehash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{authorbibnamehash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \strng{authornamehash}{3960349947df7a7aad575c1d866c14bb}
+      \strng{authorfullhash}{7d8d0b2a4bf9dd43508f4f7cda7dfe4f}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{title}{Tighter Generalisation Bounds via Interpolation}
+      \field{year}{2024}
+      \keyw{report}
     \endentry
     \entry{li2018pac}{article}{}
       \name{author}{3}{}{%

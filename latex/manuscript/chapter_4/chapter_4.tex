@@ -128,7 +128,7 @@ We then define the \emph{error} of $\Q\in \Mcal(\Hcal)$ for any datum $\z\in\Zca
   \begin{assumption}
     \label{hyp:relaxed_bounded}
     We say that $\Q\in\Mcal(\Hcal)$ is \emph{quadratically self-bounded} with respect to $\ell$ and constant $C>0$ (namely $\texttt{QSB}(\ell,C)$) if
-    \[ \mathbb{E}_{\z\sim \D}\LB \Err(\ell,\Q,\z)^2 \RB \leq C \Risk_\D(\Q) \LP = C\mathbb{E}_{\z\sim \D}\LB \Err(\ell,\Q,\z) \RB \RP   \]
+    \[ \mathbb{E}_{\z\sim \D}\LB \Err(\ell,\Q,\z)^2 \RB \leq C \Risk_\D(\Q) \LP = C\mathbb{E}_{\z\sim \D}\LB \Err(\ell,\Q,\z) \RB \RP.   \]
   \end{assumption}
 Assumption \ref{hyp:relaxed_bounded} is a relaxation of boundedness, as if $\ell\in[0,C]$ then it is $\texttt{QSB}(\ell,C)$.
 It is an alternative to the bounded expected variance assumption in anytime-valid PAC-Bayes bounds as in \Cref{chap: pb-ht} and \citep{chugg2023unified}.
@@ -336,7 +336,7 @@ Assume $\Hcal$ has a finite diameter $D>0$, $\ell\geq 0$ and that for any $m$, t
 Assume that $\mathbb{E}_{h\sim\P}\Ebb_{\z\sim\D}[\ell(h,z)^2] \leq \sigma^2$, then the following holds with probability at least $1-\delta$, for any $m>0$ and any $\Q$:
 \begin{multline*}
     \Risk_D(\Q) \leq \hat{\Risk}_{\S_m}(\Q) + \frac{G}{2} \W_2^2(\Q,\P) + \sqrt{\frac{2\sigma^2\log\LP \frac{1}{\delta} \RP}{m}} \\
-    + D \mathbb{E}_{h\sim \Q}\LP \left\| \nabla_h \Risk_\D(h) - \nabla_h \hat{\Risk}_{\S_m}(h) \right\| \RP
+    + D \mathbb{E}_{h\sim \Q}\LP \left\| \nabla_h \Risk_\D(h) - \nabla_h \hat{\Risk}_{\S_m}(h) \right\| \RP.
 \end{multline*}
 \end{theorem}
 Proof is deferred to \Cref{sec:proof_wpb-grad}.  

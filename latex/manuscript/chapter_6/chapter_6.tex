@@ -1,5 +1,5 @@
 %!TEX root = main.tex
-\chapter[Wasserstein PAC-Bayes in Practice: Genrealisation-Driven Learning Algorithms for Deterministic Predictors]{Wasserstein PAC-Bayes in Practice: Genrealisation-Driven Learning Algorithms for Deterministic Predictors}
+\chapter[Wasserstein PAC-Bayes in Practice: Generalisation-Driven Learning Algorithms for Deterministic Predictors]{Wasserstein PAC-Bayes in Practice: Genrealisation-Driven Learning Algorithms for Deterministic Predictors}
 \label{chap: wpb-practical}
 \addchapterlof
 \addchapterloe
@@ -39,7 +39,7 @@ On the other hand, \cite{chee2021learning} exploited PAC-Bayesian tools to obtai
 
 \textbf{Contributions.}
 The theoretical understanding of the high-probability generalisation bounds based on the Wasserstein distance is still limited.
-The aim of this paper is not only to prove generalisation bounds (for different learning settings) based on the optimal transport theory but also to propose new learning algorithms derived from our theoretical results.
+The aim of this chapter is not only to prove generalisation bounds (for different learning settings) based on the optimal transport theory but also to propose new learning algorithms derived from our theoretical results.
 \begin{enumerate}[label={\it (\roman*)}]
     \item Using the supermartingale toolbox introduced in \Cref{chap: pb-ht}, we prove in \Cref{sec:wasserstein-batch}, novel PAC-Bayesian bounds based on the Wasserstein distance for \iid data.
     While \cite{amit2022integral} proposed a McAllester-like bound for bounded losses, we propose a Catoni-like bound (see \eg, \citealp[Theorem 4.1]{alquier2016properties}) valid for heavy-tailed losses with bounded order 2 moments.
@@ -158,7 +158,7 @@ Combining those techniques provides our PAC-Bayesian bounds.
 \textbf{Analysis of our bounds.} Our results hold for Lipschitz losses and allow us to consider heavy-tailed losses with bounded order 2 moments.
 While such an assumption on the loss is more restrictive than in classical PAC-Bayes, allowing heavy-tailed losses is strictly less restrictive. 
 While \Cref{theorem:supervised-ht} is our most general statement, \Cref{theorem:supervised-nnl} allows recovering a tighter result (without empirical variance terms) for non-negative heavy-tailed losses. 
-An important point is that the variance terms are considered with respect to the prior distributions $\P_{i,\S}$  and not $\Q$ as in \Cref{chap: pb-ht}. This is crucial as these papers rely on the implicit assumption of order 2 moments, holding uniformly for all $\Q\in\Mcal(\H)$, while we only require this assumption for the prior distributions $(\P_{i,\S})_{i=1,\dots,K}$.
+An important point is that the variance terms are considered with respect to the prior distributions $\P_{i,\S}$  and not $\Q$ as in \Cref{chap: pb-ht}. This is crucial as these chapters rely on the implicit assumption of order 2 moments, holding uniformly for all $\Q\in\Mcal(\H)$, while we only require this assumption for the prior distributions $(\P_{i,\S})_{i=1,\dots,K}$.
 Such an assumption is in line with the PAC-Bayesian literature, which often relies on bounding an averaged quantity with respect to the prior.
 This strength is a consequence of the Kantorovich-Rubinstein duality.
 To illustrate this, consider \iid data with distribution $\D$ admitting a finite variance bounded by $V$ and the loss $\loss(h,z)= |h-z|$ where both $h$ and $z$ lie in the real axis.

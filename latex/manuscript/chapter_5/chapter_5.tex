@@ -18,7 +18,7 @@
 \vspace{-0.2cm}
 
 \begin{abstract}
-    To make PAC-Bayes consistent with practical optimisation which often considers deterministic predictors, we need to consider PAC-Bayes learning beyond the KL divergence term which has been a cornerstone of PAC-Bayes since its emergence. In this paper, we develop PAC-Bayes learning with Wasserstein distances, allowing to trade statistical assumptions for geometric ones. We also develop an explicit bridge with optimisation by incorporating the convergence guarantees of the \emph{Bures-Wasserstein SGD} into a generalisation bound. This is possible when considering the prior distribution as the learning objective.    
+    To make PAC-Bayes consistent with practical optimisation which often considers deterministic predictors, we need to consider PAC-Bayes learning beyond the KL divergence term which has been a cornerstone of PAC-Bayes since its emergence. In this chapter, we develop PAC-Bayes learning with Wasserstein distances, allowing to trade statistical assumptions for geometric ones. We also develop an explicit bridge with optimisation by incorporating the convergence guarantees of the \emph{Bures-Wasserstein SGD} into a generalisation bound. This is possible when considering the prior distribution as the learning objective.    
 \end{abstract}
 
 \newpage
@@ -29,7 +29,7 @@ In \Cref{chap: pb-ht,chap:online-pb,chap:gen-flat-minima}, we challenged many in
 A recent line of work led by \citet{amit2022integral} investigates PAC-Bayes generalisation bounds with a Wasserstein distance rather than the KL. This idea has been simultaneously developed by \citet{ohana2023shedding} for sliced adaptive Wasserstein distances.
 Also the recent work of \citet{mbacke2023pacbayesian} provides PAC-Bayesian bounds for adversarial generative models where the quantity of interest is a Wasserstein distance (although the complexity measure remains a KL divergence).
 
-In the present paper, we propose a major development of the emerging \emph{Wasserstein PAC-Bayes} (WPB) theory.
+In the present chapter, we propose a major development of the emerging \emph{Wasserstein PAC-Bayes} (WPB) theory.
 \citet{amit2022integral} provided the first high-probability WPB bounds with explicit convergence rates (for bounded losses) only for finite predictor classes or for linear regression problems. We extend those results to a broader framework including uncountable predictor classes and unbounded losses. We first propose a novel  WPB bound valid on any compact for bounded lipschitz losses. From this, we demonstrate that the WPB framework allows to bypass both the compactness assumption on the predictor class and the bounded loss assumption: Wasserstein PAC-Bayes only requires Lipschitz or smooth functions to be used. We obtain explicit bounds for the case of prior and posterior distributions taken within a compact space of Gaussian measures.
 We also extend those results to the case of data-dependent priors, which is of interest when one compares the output of an algorithmic procedure to its minimisation objective.
 
@@ -38,7 +38,7 @@ As Wasserstein distance recently appeared as complexity measure in expected gene
 More precisely, we focus on the Bures-Wasserstein SGD \citep{altschuler2021aver,lambert2022variational} and show that the output of this algorithm, with enough data, after enough optimisation steps, is able to generalise well, independently of the quality of the initialisation point. The take-home message is that if an optimisation method has convergence guarantees with respect to a Wasserstein distance, then WPB theory allow us to determine, before any training, whether the algorithmic output will generalise well.
 
 \paragraph{Outline.}
-The remainder of this section is structured as follows: we state in \Cref{sec: framework} the framework and notation. In \Cref{sec: intro_optim}, we describe how current PAC-Bayes procedures are designed and how their efficiency is evaluated, and we discuss current limitations.
+The reminder of this chapter is structured as follows: we state in \Cref{sec: framework} the framework and notation. In \Cref{sec: intro_optim}, we describe how current PAC-Bayes procedures are designed and how their efficiency is evaluated, and we discuss current limitations.
 In \Cref{sec: intro_contrib}, we describe our main contributions, showing how we establish a WPB theory (using techniques which differ from those in \citealp{amit2022integral}) in order to exploit the optimisation results of \citet{lambert2022variational}.
 
 \Cref{sec: compact_space} gathers results for compact predictor spaces, \Cref{sec: wpb_gauss} gives WPB bounds for Gaussian prior and posterior, \Cref{sec: data_dep_priors} contains a WPB bound with a data-dependent prior for unbounded Lipschitz losses. \Cref{sec: gene_sgd} establishes a link between optimisation and generalisation by exploiting the results of \citet{lambert2022variational} to establish new generalisation guarantees for the Bures-Wasserstein SGD. We defer to \Cref{sec: background} additional background notes and to \Cref{sec: proofs_chap_5} proofs which are not essential to the understanding of our contributions.
@@ -113,8 +113,8 @@ where $f$ is a function decreasing to $0$ as $N$ goes to infinity, which comes f
 Such a guarantee would give theoretical evidence that the generalisation ability of $\hat{\Q}_N$ is independent of the choice of the initialisation point $\P$ and tends to $\mathcal{O}\left( \sqrt{\frac{\varepsilon + \log(m/\delta)}{m}} \right)$.
 To the best of our knowledge, there is no work proposing an optimisation procedure such that $\operatorname{KL}(\hat{\Q}_N,\hat{\Q}) \leq f(N)  \operatorname{KL}(\P,\hat{\Q})$.  This lack is unfortunate but not surprising as the $KL$ divergence is not a distance: it is not easy to incorporate optimisation guarantees, often based on geometric properties of the loss, into the KL divergence.
 
-\paragraph{Our aims in this paper.}
-A legitimate question is then: is it possible to extend the PAC-Bayes theory beyond the KL divergence in order to explain before training, with a bound of the form of \eqref{eq: wanted_pattern}, whether the output of optimisation procedure have high generalisation ability? We structure the present paper to provide a positive answer to this question. More precisely we develop a WPB bound of the form of \eqref{eq: wanted_pattern} for the output of the Bures-Wasserstein SGD \citep{lambert2022variational}.
+\paragraph{Our aims in this chapter.}
+A legitimate question is then: is it possible to extend the PAC-Bayes theory beyond the KL divergence in order to explain before training, with a bound of the form of \eqref{eq: wanted_pattern}, whether the output of optimisation procedure have high generalisation ability? We structure the present chapter to provide a positive answer to this question. More precisely we develop a WPB bound of the form of \eqref{eq: wanted_pattern} for the output of the Bures-Wasserstein SGD \citep{lambert2022variational}.
 
 
 
@@ -746,7 +746,7 @@ then we can upper bound the generalisation ability of $\hat{\Q}_N$, with probabi
 \end{align*}
 where $\Tilde{\mathcal{O}}$ hides a polynomial dependency in $(\log(d),\log(m))$. We refer to \eqref{eq: complete_bound_sgd} for a bound presenting the explicit influence of the Bures-Wasserstein SGD.
 \end{theorem}
-\Cref{th: main_sgd} is based on \Cref{eq: complete_bound_sgd} which answers the question stated in the 'Our aims in this paper' paragraph of \Cref{sec: intro_optim}. We successfully designed a bound of the form of \eqref{eq: wanted_pattern} by incorporating the optimisation guarantees of \citet{lambert2022variational} onto a statistical framework.
+\Cref{th: main_sgd} is based on \Cref{eq: complete_bound_sgd} which answers the question stated in the 'Our aims in this chapter' paragraph of \Cref{sec: intro_optim}. We successfully designed a bound of the form of \eqref{eq: wanted_pattern} by incorporating the optimisation guarantees of \citet{lambert2022variational} onto a statistical framework.
 As such, this bound is a bridge between optimisation and PAC-Bayes learning. To the best of our knowledge, it is the first time that PAC-Bayes is able to explain why the minimiser attained by an optimisation procedure on a measure space is also able to generalise well. Until now PAC-Bayes guarantees were used as a check-in procedure, which means that during the optimisation phase it is possible to see whether the candidate predictor is able to generalise well. On the contrary our bound higlights, before any training, that the output of the Bures-Wasserstein SGD will become better at generalising, with the limit rate of $\sqrt{\frac{Kd}{m}\W_{1}(\hat{\Q},\Q^*) + \frac{\log(m)}{m}}$.
 \medskip
 
