@@ -1,7 +1,7 @@
 {\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.1}A brief introduction to statistical learning}{\reset@font\mtcSfont 19}{section.1.1}}
 {\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Generalisation bounds.}{\reset@font\mtcPfont 20}{section*.21}}
 {\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode How to choose the complexity term ? An introductory example.}{\reset@font\mtcPfont 20}{section*.22}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.2}An information-theoretic exposition of PAC-Bayes learning}{\reset@font\mtcSfont 21}{section.1.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.2}An information-theoretic exposure of PAC-Bayes learning}{\reset@font\mtcSfont 21}{section.1.2}}
 {\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode A theory suited for \Cref {ex: neural_net}?}{\reset@font\mtcPfont 25}{section*.24}}
 {\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.3}From theory to learning algorithms}{\reset@font\mtcSfont 25}{section.1.3}}
 {\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode A general pattern for PAC-Bayesian algorithms}{\reset@font\mtcPfont 26}{section*.27}}
