@@ -20,7 +20,7 @@
 \minitoc
 
 \begin{abstract}
-  While \Cref{chap: pb-ht} showed weak statistical assumptions were reachable in PAC-Bayes, allowing its use in a wide range of concrete optimisation settings, the role of the prior $\P$ remains untreated. To tackle this issue, we propose here to consider $\P$ as the initialisation point of a learning algorithm. Then, to attenuate its impact in PAC-Bayes procedures, we develop \emph{Online PAC-Bayes learning}, which consider a sequence $(\\Q_{i},\\P_{i})_{i=1\cdots m}$ of pairs (posterior,prior) evolving through time. Thus, the impact of initialisation $\P=\P_1$ is attenuated through the evolution of $\\P_{i}$ during the learning phase. We develop the first Online PAC-Bayes bounds and propose experiments showing that online PAC-Bayes outperforms SGD in several cases.
+  While \Cref{chap: pb-ht} showed weak statistical assumptions were reachable in PAC-Bayes, allowing its use in a wide range of concrete optimisation settings, the role of the prior $\P$ remains untreated. To tackle this issue, we propose here to consider $\P$ as the initialisation point of a learning algorithm. Then, to attenuate its impact in PAC-Bayes procedures, we develop \emph{Online PAC-Bayes learning}, which consider a sequence $(\Q_{i},\P_{i})_{i=1\cdots m}$ of pairs (posterior,prior) evolving through time. Thus, the impact of initialisation $\P=\P_1$ is attenuated through the evolution of $\P_{i}$ during the learning phase. We develop the first Online PAC-Bayes bounds and propose experiments showing that online PAC-Bayes outperforms SGD in several cases.
 \end{abstract}
 
 
@@ -436,7 +436,7 @@ While the algorithm differs from the one derived \Cref{th: main_thm_online}, we 
 
  \section{Conclusion}
 
- \Cref{chap:online-pb} builds a bridge between online learning and generalisation. As seen in \Cref{sec: experiments}, considering online PAC-Bayes procedures mitigates the impact of the prior in the learning process and thus, fit the optimisation view of the prior as in initialisation point (\Cref{fig: recap-optim}), yielding performances comparable to online gradient descent. 
+ \Cref{chap:online-pb} bridges a gap between online learning and generalisation. As seen in \Cref{sec: experiments}, considering online PAC-Bayes procedures mitigates the impact of the prior in the learning process and thus, fit the optimisation view of the prior as in initialisation point (\Cref{fig: recap-optim}), yielding performances at least comparable to online gradient descent. 
 However, while Online PAC-Bayes is a promising step forward optimisation, with time-efficient procedures (\Cref{sec: disintegrated_bounds}), some questions remains: \textit{(i)} Is it possible to propagate the view of prior as initialisation directly for batch algorithms? \textit{(ii)} Is it possible to obtain PAC-Bayes learning algorithms directly for deterministic predictors instead of using disintegrated results in order to be consistent with practitioners, often avoiding stochastic predictors?
 
  Elements of answer to \textit{(i)} lie in \Cref{chap:gen-flat-minima}, showing that flat minimum, often attained in the context of deep neural network with much more parameters than training data, allows to attenuate the impact of the prior through a fast convergence rate. \textit{(ii)} is tackled in \Cref{chap: wass-pb,chap: wpb-practical} where the KL divergence is traded for a Wasserstein distance. 

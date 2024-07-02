@@ -2870,7 +2870,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprinttype}{arXiv}
-      \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
+      \field{title}{{Wasserstein PAC-Bayes Learning: Exploiting Optimisation Guarantees to Explain Generalisation}}
       \field{year}{2023}
       \keyw{report}
     \endentry
@@ -14397,7 +14397,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprinttype}{arXiv}
-      \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
+      \field{title}{{Wasserstein PAC-Bayes Learning: Exploiting Optimisation Guarantees to Explain Generalisation}}
       \field{year}{2023}
       \keyw{report}
     \endentry
@@ -15375,7 +15375,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprinttype}{arXiv}
-      \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
+      \field{title}{{Wasserstein PAC-Bayes Learning: Exploiting Optimisation Guarantees to Explain Generalisation}}
       \field{year}{2023}
       \true{nocite}
       \keyw{report}
@@ -15785,7 +15785,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprinttype}{arXiv}
-      \field{title}{{Wasserstein PAC-Bayes Learning: A Bridge Between Generalisation and Optimisation}}
+      \field{title}{{Wasserstein PAC-Bayes Learning: Exploiting Optimisation Guarantees to Explain Generalisation}}
       \field{year}{2023}
       \true{nocite}
       \keyw{report}
