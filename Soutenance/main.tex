@@ -94,12 +94,12 @@ Université de Lille\\
 
 \begin{xframe}{\bf Two classical bounds}
 
-    \begin{block}{{\bf McAllester's bound (Maurer's improvement) \citet[Theorem 5]{Maurer2004}}~{\small ($\ell\in[0,1]$)}}
+    \begin{block}{{\bf McAllester's bound (Maurer's improvement) \citet[Theorem 5]{maurer2004note}}~{\small ($\ell\in[0,1]$)}}
         For any $\P\in\Mcal(\H)$, with probability $1{-}\delta$ over $\Sm\sim\Dcal^m$, for any $\Q\in \Mcal(\Hcal)$,
        $$\Risk_{\D}(\Q) \le \Riskhat_{\S}(\Q)+\sqrt{\frac{\KL(\Q,\P)+\ln\frac{2\sqrt{m}}{\delta}}{2m}}$$
      \end{block}
 
-    \begin{block}{{\bf Catoni's bound \citet[Theorem 4.1]{AlquierRidgwayChopin2016}}~{\small ($\ell$ $\sigma$-subgaussian)}}
+    \begin{block}{{\bf Catoni's bound \citet[Theorem 4.1]{alquier2016properties}}~{\small ($\ell$ $\sigma$-subgaussian)}}
         For $\lambda>0$, $\P\in\Mcal(\H)$, with probability $1{-}\delta$ over $\Sm\sim\Dcal^m$, for any $\Q\in \Mcal(\Hcal)$,
        $$\Risk_{\D}(\Q) \le \Riskhat_{\S}(\Q)+\frac{\KL(\Q,\P)+\ln\frac{1}{\delta}}{\lambda} + \frac{\lambda\sigma^2}{2m}$$
      \end{block}
@@ -137,6 +137,35 @@ Université de Lille\\
     }
 \end{xframe}
 
+\begin{xframe}{Common practices}
+    \vspace{0.5cm}
+    {\bf Instantiation}
+    \begin{itemize}
+        \item Use of multiple data-free priors (grid + union bounds) 
+        \item Sacrifice some part of the data to train the prior.
+        \item $\mathcal{C}$ is often a set of Gaussians (closed form of the KL)
+    \end{itemize}
+    \vspace{1cm}
+    {\bf Efficiency}
+        \begin{itemize}
+            \item Non-vacuous generalisation guarantees attainable for small deep nets (\citealp{dziugaite2017computing} and following works)
+            \item Possibility to obtain faster convergence rates via small variance \citep{tolstikhin2013pac}
+            \item When vacuous, use of PAC-Bayes bounds as correlation measures for generalisation \citep{neyshabur2017explor}
+        \end{itemize}
+\end{xframe}
+
+\begin{xframe}{Take home messages}
+    \vspace{0.5cm}
+    In 20+ years of development:
+    \begin{itemize}
+      \item PAC-Bayes strongly inspired by the Bayesian paradigm for theory and implementations.
+      \item $\rightarrow$ consequences on the vision of the priors
+      \item Little attention has been raised on statistical assumptions (\iid data, subgaussian losses) except few works: PAC-Bayes for martingales \citep{seldin2012pac}, and relaxing the subgaussian assumption \citep{kuzborskij2019efron}.
+      \item Priors and posteriors are designed \wrt to the KL divergence: either Gibbs (closed form) or Gaussian (computation)
+    \end{itemize}
+    \vspace{0.5 cm}
+    {\green{\bf \Large All of this makes sense from an information-theoretic perspective}}
+  \end{xframe}
 
 \begin{xframe}{To sum up: PAC-Bayes Through Information Theory }
     \begin{figure}
@@ -144,6 +173,35 @@ Université de Lille\\
         \includegraphics[scale=0.14]{recap-info.pdf}
     \end{figure}
   \end{xframe}
+
+\begin{xframe}{A gap between Information Theory and practical Optimisation}
+    \begin{block}{An elementary example}
+        Training a deep neural net via SGD on a certain $\Sm$.
+    \end{block}
+\vspace{0.5cm}
+{\bf To perform this optimisation}
+    \begin{itemize}
+        \item No statistical assumption is needed
+        \item Random initialisation (no prior knowledge)
+        \item Use of deterministic predictors (elements of $\H$ not $\Mcal(\Hcal)$)
+    \end{itemize}
+    \vspace{0.5cm}
+    \uncover<2->{\red{\bf \Large None of these fits the basic information-theoretic PAC-Bayes approach !}}\\
+    \vspace{0.5cm}
+    \uncover<3->{\orange{\bf \Large Can we think PAC-Bayes learning from an optimisation perspective? }}
+\end{xframe}
+
+\begin{xframe}{Towards an optimisation perspective}
+    \vspace{1cm}
+    \begin{itemize}
+        \item \textbf{Existing attempts:} mix up PAC-Bayes with geometric properties of optimisation procedures (SGD, Langevin dynamics,...)  \citep{london2017pac,dziugaite2018entropy,neu2021info,clerico2022generalisation,haghifam2023limit,zhou2023toward} $\rightarrow$ new convergence properties, minimax rates.
+        \item \green{\bf Contribution of this thesis:} propose general principles to derive novel bounds fitted with current practice in optimisation.
+    \end{itemize}
+    \vspace{0.5cm}
+
+    \uncover<2->{{\bf \Large Optimisation-driven PAC-Bayes aims to develop theory from practical constraints, Information theoretic PAC-Bayes tends to the opposite.}}
+
+\end{xframe}
 
   \begin{xframe}{Contribution: PAC-Bayes with an Optimisation Perspective }
     \begin{figure}
