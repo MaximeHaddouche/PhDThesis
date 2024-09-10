@@ -183,7 +183,7 @@ Université de Lille\\
     \begin{itemize}
         \item No statistical assumption is needed
         \item Random initialisation (no prior knowledge)
-        \item Use of deterministic predictors (elements of $\H$ not $\Mcal(\Hcal)$)
+        \item Use of deterministic predictors (elements of $\Hcal$ not $\Mcal(\Hcal)$)
     \end{itemize}
     \vspace{0.5cm}
     \uncover<2->{\red{\bf \Large None of these fits the basic information-theoretic PAC-Bayes approach !}}\\
@@ -199,7 +199,8 @@ Université de Lille\\
     \end{itemize}
     \vspace{0.5cm}
 
-    \uncover<2->{{\bf \Large Optimisation-driven PAC-Bayes aims to develop theory from practical constraints, Information theoretic PAC-Bayes tends to the opposite.}}
+
+    \uncover<2->{{\blue{\Large To broadly sum up:}}\\\vspace{0.5cm}{\bf \Large Optimisation-driven PAC-Bayes aims to develop theory from practical constraints, Information theoretic PAC-Bayes tends to the opposite.}}
 
 \end{xframe}
 
@@ -220,7 +221,57 @@ Université de Lille\\
   \end{figure}
 \end{xframe}
 
-%Detail the main supermartingale bounds for batch learning
+\begin{xframe}{Weakening the subgaussian assumption}
+    \vspace{0.5cm}
+    \begin{itemize}
+        \item Classical PAC-Bayes bounds assume \iid $\Sm$ and the loss either bounded, subgaussian or subexponential (few exceptions \eg: \citealp{audibert2011robust,seldin2012pac,alquier2018simpler} among others)
+        \item In particular: \citet{kuzborskij2019efron} considered only finite variance assumption for independent $\Sm$.
+    \end{itemize}
+    \vspace{0.5cm}
+    \green{\bf \Large Contribution: New PAC-Bayes bounds for any dataset $\S$ and finite variance assumption} 
+    
+\end{xframe}
+
+\begin{xframe}{A PAC-Bayesian bound for unbounded martingales}
+    
+    \begin{block}{\bf Theorem}
+        For any data-free prior $\P\in \mathcal{M}(\mathcal{H})$, any $\lambda>0$, any collection of martingales $(M_m(h))_{m\geq 1}$ indexed by $h\in\mathcal{H}$, the following holds with probability $1-\delta$ over the sample $\S=(\z_i)_{i\in\mathbb{N}}$, for all $m\in\mathbb{N}/\{0\}$, $\Q\in\mathcal{M}(\mathcal{H})$:
+\[|M_m(\Q)| \leq   \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda } + \frac{\lambda}{2}\left([M]_m(\Q) + \langle M\rangle_m(\Q) \right).  \]
+    \end{block}
+\vspace{0.5cm}
+
+\uncover<2->{\green{Novelty: no assumption on the $(M_m)_{m\geq 1}$ except the finiteness of $([M_m],\langle M\rangle_m)_{m\geq 1}$  and holds uniformly on all $m\geq 1$ }\\
+\vspace{0.5cm} 
+Toolbox: Ville's inequality and supermartingales}
+\end{xframe}
+
+\begin{xframe}{Instantiation}
+    \vspace{0.5cm}
+    A crucial particular case: batch learning with \iid $\S$\\
+    \vspace{0.3cm}
+    \begin{block}{\bf Corollary}
+        For any data-free prior $P\in \mathcal{M}(\mathcal{H})$, any $\lambda>0$ and $\ell\geq 0$, the following holds with probability $1-\delta$ over the sample $\S=(\z_i)_{i\in\mathbb{N}}$, for all $m\in\mathbb{N}/\{0\}$, $Q\in\mathcal{M}(\mathcal{H})$
+\begin{multline*}\mathbb{E}_{h\sim \Q} [\Risk(h)] \leq   \mathbb{E}_{h\sim \Q} \left[\Riskhat_{\Sm}(h) + \frac{\lambda}{2m}\sum_{i=1}^m \ell(h,z_i)^2\right] \\
+  + \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda m} + \frac{\lambda}{2}\mathbb{E}_{h\sim \Q} [\mathrm{Quad}(h)],
+\end{multline*}
+where $Quad(h)= \mathbb{E}_{\z\sim\D}[\ell(h,z)^2]$.
+    \end{block}
+\end{xframe}
+
+\begin{xframe}{Take-home message}
+    \vspace{1cm}
+    A first step towards the optimisation perspective of PAC-Bayes by weakening statistical assumptions. \\
+    
+    \vspace{1cm}However, we're still close from information theory: 
+    \begin{enumerate}
+        \item $\P$ does not fit the optimisation view of the prior  
+        \item KL term remains close from information theory.
+    \end{enumerate}
+    \vspace{1cm}
+    {\orange{\bf \Large How do we deal with those inquiries?}}
+    \vspace{0.5cm}
+\end{xframe}
+
 
 \section{Mitigating Initialisation Impact by Real-Time Control: Online PAC- Bayes Learning}
 
@@ -229,6 +280,91 @@ Université de Lille\\
         \centering
         \includegraphics[scale=0.14]{diagram-chap-3.pdf}
     \end{figure}
+  \end{xframe}
+
+  \begin{xframe}{Prior as initialisation point}
+    \vspace{0.5cm}
+    {\blue{\bf \Large Usually, $\P$ is a regulariser containing prior information}}
+    \vspace{0.5cm}
+    {\red{\bf \Large Practical issue: no clue in choice of $\P$ (used as initialisation),$\rightarrow$ regularisation may harm learning}}
+    \vspace{0.5cm}
+    {\orange{\bf \Large In this case, can we reduce the impact of $\P$ in PAC-Bayes training?}}
+    \vspace{0.5cm}
+
+    {\green{\bf \Large Yes, thanks to Online Learning, which allows to consider an evolving sequence of priors $(\P_i)_{i\geq 1}$ ! }\\
+    
+    \begin{block}{\bf Additional Setting}
+        $(\mathcal{F}_i)_{i\geq 1}$ is a filtration adapted to $\S$ and $\P_i$ is said to be an \emph{online predictive sequence} if for all $i$, $\P_i$ is a stochastic kernel $\mathcal{F}_{i-1}$ measurable and for all $i$, $\P_i \ll \P_1$.
+    \end{block}}
+
+  \end{xframe}
+
+  \begin{xframe}{An online PAC-Bayesian bound for heavy-tailed losses}
+
+    \begin{block}{\bf Theorem}
+        For any distribution $\D_\S$, any $\lambda>0$ and any online predictive sequence $(\P_{i})_{i\geq 1}$, with probability at least $1-\delta$ over $\S$ the following, holding for the sequence $\P_{i,\S}:= \P_{i}(\S,.)$, any posterior sequence $(\Q_{i})_{i\geq 1}$ and any $m\geq 1$:
+
+  \begin{multline*}
+     \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right]  \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] \\+\frac{\lambda}{2}\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \hat{V}_i(h_i,\z_i) + V_i(h_i) \right]
+     + \sum_{i=1}^m\frac{\operatorname{KL}(\Q_{i}, \P_{i,\S})}{\lambda}  + \frac{\log(1/\delta)}{\lambda}.
+  \end{multline*}
+  With for all $i$, $\hat{V}_i(h_i,\z_i)= (\ell(h_i,\z_i)-\mathbb{E}_{i-1}[\ell(h_i,\z_i)])^2$ is the empirical variance at time $i$ and $V_i(h_i)= \mathbb{E}_{i-1}[\hat{V}(h_i,\z_i)]$ is the true conditional variance.
+    \end{block}
+   
+    
+  \end{xframe}
+
+  \begin{xframe}{A corollary for bounded variance}
+    Assuming variance terms uniformly bounded by $K^2/2$ (strictly weaker than assuming bounded losses) gives :
+
+    \begin{block}{\bf Corollary}
+        For any distribution $\D_\S$, any $\lambda>0$ and any online predictive sequence $(\P_{i})_{i\geq 1}$, with probability at least $1-\delta$ over $\S$ the following, holding for the sequence $\P_{i,\S}:= \P_{i}(\S,.)$, any posterior sequence $(\Q_{i})_{i\geq 1}$ and any $m\geq 1$:
+
+  \begin{multline*}
+     \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right]  \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] \\
+     + \sum_{i=1}^m\frac{\operatorname{KL}(\Q_{i}, \P_{i,\S})}{\lambda}  +\frac{\lambda mK^2}{2} + \frac{\log(1/\delta)}{\lambda}.
+  \end{multline*}
+    \end{block}
+  \end{xframe}
+
+  \begin{xframe}{An Online PAC-Bayesian procedure}
+    \vspace{0.5cm}
+    \begin{align*}
+        \hat{\Q}_1= \P_1, \quad \forall i\geq1\; \hat{\Q}_{i+1}&= \underset{Q\in\mathcal{M}(\mathcal{H})}{\mathrm{argmin}} \mathbb{E}_{h_i\sim \Q} \; [\ell(h_i,\z_i)] + \frac{\operatorname{KL}(\Q, \P_{i})}{\lambda} \\
+        \intertext{which leads to the explicit formulation}
+        \frac{d\hat{\Q}_{i+1}}{d\P_{i}}(h)& = \frac{\exp\left(-\lambda  \ell(h,\z_i)\right)}{\mathbb{E}_{h\sim \P_{i}}\left[\exp\left(-\lambda  \ell(h,\z_i)\right)\right]}.
+      \end{align*}
+
+      \uncover<2->{\vspace{0.5cm}
+      {\red{\bf \Large Drawback: Gibbs posteriors are costful to implement}}\\
+      \vspace{0.5cm}
+      {\green{\bf \Large Solution: Disintegrated Online PAC-Bayes Algorithm}}}
+
+
+  \end{xframe}
+
+  \begin{xframe}{Practice}
+    Disintegrated algorithm in a nutshell : $\hat{\Q}_i= \mathcal{N}(\hat{w}_i,\sigma^2 \mathrm{Id})$ and:
+    \[ \hat{w}_{i+1}:= \operatorname{argmin}_{w\in\mathbb{R}^d} \ell(w + \varepsilon_i,z_i) + \Psi(w+ \varepsilon_i,w, w_i^0)   \]
+
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.4]{online-pb.png}
+    \end{figure}
+    
+  \end{xframe}
+
+  \begin{xframe}{Take-home messages}
+    \vspace{0.5cm}
+    {\green{\Large\bf Success: Online PAC-Bayes mitigates the impact of the prior, seen as an initialisation point, yielding performances at least comparable to online gradient descent. }}\\
+    \vspace{1cm}
+    {\orange{\Large\bf However, two questions remain open: }}
+
+    \begin{enumerate}
+        \item Is it possible to propagate the view of prior as initialisation directly for batch algorithms?
+        \item Is it possible to obtain PAC-Bayes learning algorithms directly for deterministic predictors instead of using disintegrated results in order to be consistent with practitioners, often avoiding stochastic predictors?
+    \end{enumerate}
+    
   \end{xframe}
 
 %Detail Online PAC-Bayes bounds alongside algorithmic results
