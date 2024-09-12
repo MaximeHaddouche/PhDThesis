@@ -234,10 +234,10 @@ Université de Lille\\
 
 \begin{xframe}{A PAC-Bayesian bound for unbounded martingales}
     
-    \begin{block}{\bf Theorem}
+    \begin{blueblock}{\bf Theorem}
         For any data-free prior $\P\in \mathcal{M}(\mathcal{H})$, any $\lambda>0$, any collection of martingales $(M_m(h))_{m\geq 1}$ indexed by $h\in\mathcal{H}$, the following holds with probability $1-\delta$ over the sample $\S=(\z_i)_{i\in\mathbb{N}}$, for all $m\in\mathbb{N}/\{0\}$, $\Q\in\mathcal{M}(\mathcal{H})$:
 \[|M_m(\Q)| \leq   \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda } + \frac{\lambda}{2}\left([M]_m(\Q) + \langle M\rangle_m(\Q) \right).  \]
-    \end{block}
+    \end{blueblock}
 \vspace{0.5cm}
 
 \uncover<2->{\green{Novelty: no assumption on the $(M_m)_{m\geq 1}$ except the finiteness of $([M_m],\langle M\rangle_m)_{m\geq 1}$  and holds uniformly on all $m\geq 1$ }\\
@@ -249,13 +249,13 @@ Toolbox: Ville's inequality and supermartingales}
     \vspace{0.5cm}
     A crucial particular case: batch learning with \iid $\S$\\
     \vspace{0.3cm}
-    \begin{block}{\bf Corollary}
+    \begin{blueblock}{\bf Corollary}
         For any data-free prior $P\in \mathcal{M}(\mathcal{H})$, any $\lambda>0$ and $\ell\geq 0$, the following holds with probability $1-\delta$ over the sample $\S=(\z_i)_{i\in\mathbb{N}}$, for all $m\in\mathbb{N}/\{0\}$, $Q\in\mathcal{M}(\mathcal{H})$
 \begin{multline*}\mathbb{E}_{h\sim \Q} [\Risk(h)] \leq   \mathbb{E}_{h\sim \Q} \left[\Riskhat_{\Sm}(h) + \frac{\lambda}{2m}\sum_{i=1}^m \ell(h,z_i)^2\right] \\
   + \frac{\operatorname{KL}(\Q,\P) +\log(2/\delta)}{\lambda m} + \frac{\lambda}{2}\mathbb{E}_{h\sim \Q} [\mathrm{Quad}(h)],
 \end{multline*}
 where $Quad(h)= \mathbb{E}_{\z\sim\D}[\ell(h,z)^2]$.
-    \end{block}
+    \end{blueblock}
 \end{xframe}
 
 \begin{xframe}{Take-home message}
@@ -301,7 +301,7 @@ where $Quad(h)= \mathbb{E}_{\z\sim\D}[\ell(h,z)^2]$.
 
   \begin{xframe}{An online PAC-Bayesian bound for heavy-tailed losses}
 
-    \begin{block}{\bf Theorem}
+    \begin{blueblock}{\bf Theorem}
         For any distribution $\D_\S$, any $\lambda>0$ and any online predictive sequence $(\P_{i})_{i\geq 1}$, with probability at least $1-\delta$ over $\S$ the following, holding for the sequence $\P_{i,\S}:= \P_{i}(\S,.)$, any posterior sequence $(\Q_{i})_{i\geq 1}$ and any $m\geq 1$:
 
   \begin{multline*}
@@ -309,7 +309,7 @@ where $Quad(h)= \mathbb{E}_{\z\sim\D}[\ell(h,z)^2]$.
      + \sum_{i=1}^m\frac{\operatorname{KL}(\Q_{i}, \P_{i,\S})}{\lambda}  + \frac{\log(1/\delta)}{\lambda}.
   \end{multline*}
   With for all $i$, $\hat{V}_i(h_i,\z_i)= (\ell(h_i,\z_i)-\mathbb{E}_{i-1}[\ell(h_i,\z_i)])^2$ is the empirical variance at time $i$ and $V_i(h_i)= \mathbb{E}_{i-1}[\hat{V}(h_i,\z_i)]$ is the true conditional variance.
-    \end{block}
+    \end{blueblock}
    
     
   \end{xframe}
@@ -317,14 +317,14 @@ where $Quad(h)= \mathbb{E}_{\z\sim\D}[\ell(h,z)^2]$.
   \begin{xframe}{A corollary for bounded variance}
     Assuming variance terms uniformly bounded by $K^2/2$ (strictly weaker than assuming bounded losses) gives :
 
-    \begin{block}{\bf Corollary}
+    \begin{blueblock}{\bf Corollary}
         For any distribution $\D_\S$, any $\lambda>0$ and any online predictive sequence $(\P_{i})_{i\geq 1}$, with probability at least $1-\delta$ over $\S$ the following, holding for the sequence $\P_{i,\S}:= \P_{i}(\S,.)$, any posterior sequence $(\Q_{i})_{i\geq 1}$ and any $m\geq 1$:
 
   \begin{multline*}
      \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}]    \right]  \leq \sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}}\left[ \ell(h_i,\z_i) \right] \\
      + \sum_{i=1}^m\frac{\operatorname{KL}(\Q_{i}, \P_{i,\S})}{\lambda}  +\frac{\lambda mK^2}{2} + \frac{\log(1/\delta)}{\lambda}.
   \end{multline*}
-    \end{block}
+    \end{blueblock}
   \end{xframe}
 
   \begin{xframe}{An Online PAC-Bayesian procedure}
@@ -382,50 +382,15 @@ where $Quad(h)= \mathbb{E}_{\z\sim\D}[\ell(h,z)^2]$.
 \begin{xframe}{Flat minimum}
     \textbf{What is a flat minimum?}
     \\
-    \uncover<2->{\blue{A minimum such that its neighbourhood nearly minimises the loss.}
+  \blue{A minimum such that its neighbourhood nearly minimises the loss.}
     \vspace{1cm}
     \begin{figure}
         \includegraphics[scale= 0.5]{figures/flat-minima.png} 
     \end{figure}
-{\tiny Image from \citet{liebenwein2021sparse}. }}
+{\tiny Image from \citet{liebenwein2021sparse}. }
 \end{xframe}
 
 
-\begin{xframe}{Flat minima and generalisation are correlated!}
-    \textbf{Correlations with generalisation recently emerged:}
-    \vspace{0.5cm}
-    \begin{xitemize}
-        \item Flat minima of $\Riskhat_\S$.\\ PAC-Bayes based correlation measure : works for many datasets \citep{neyshabur2017explor,jiang2020fantastic,dziugaite2020search}
-        \vspace{0.5cm}
-        \item Flat minima of the adversarial loss in the context of adversarially robust learning. \citep{Stutz2021}
-        \vspace{0.5cm}
-        \item Flat minima implies generalisation for 2-layers nets \citep{wen2023sharpness}.
-         
-    \end{xitemize}
-    \vspace{0.7cm}
-
-    \uncover<2->{\blue{\textbf{Can we go beyond correlation or 2-layers net and obtain sound generalisation bounds involving directly flat minima?}}}
-    
-\end{xframe}
-
-\begin{xframe}{Essential tools: Poincaré and log-Sobolev inequalities}
-    \small{\green{Notation:} for any $\Q$, $\mathrm{H}^{1}(\Q) := \left\{ f\in \mathrm{L}^2(\Q)\cap \mathrm{D}_1(\mathbb{R}^d)\mid \|\nabla f\|\in \mathrm{L}^2(\Q) \right\}$}
-    \begin{block}{\textbf{Poincaré}}
-        $\Q$ is $\Poinc(c_{P})$ if for all  $f\in \mathrm{H}^{1}(\Q)$: 
-
-        \[ \Var(f) \leq c_{P}(\Q) \EE_{h\sim \Q}\left[ \|\nabla f (h)\|^2 \right],  \]
-  
-    \end{block}
-
-    \begin{block}{\bf Log-Sobolev}
-        $\Q$ is $\Lsob(c_{LS})$ if for all function $f\in \mathrm{H}^{1}(\Q)$:
-
-        \[ \EE_{h\sim\Q}\LB f^2(h)\log\LP \frac{f^2(h)}{\mathbb{E}_{h\sim\Q}\LB f^2(h)\RB}\RP \RB \leq c_{LS}(\Q) \EE_{h\sim \Q}\left[ \|\nabla f (h)\|^2 \right],  \]
-    \end{block}
-    \vspace{0.5cm}
-    \uncover<2->{\textbf{Gaussian distributions and Gibbs posteriors are \Poinc \, and \Lsob!}}
-
-\end{xframe}
 
 
 \begin{xframe}{Fast-rate generalisation bounds for flat minima (1)}
@@ -456,92 +421,35 @@ where $Quad(h)= \mathbb{E}_{\z\sim\D}[\ell(h,z)^2]$.
 \end{xframe}
 
 \begin{xframe}{Fast-rate generalisation bounds via flat minima (2)}
-  \begin{block}{\bf Theorem}
+    \vspace{1cm}
+  \begin{blueblock}{\bf Theorem}
       For any $C>0$, data-free prior $\P$, with probability at least $1-\delta$ for any $m>0$, and $\Q$ being $\Poinc(c_P)$, $\texttt{QSB}(\ell,C)$,
       \begin{align*}
       \Risk_{\D}(\Q) \leq  2\hat{\Risk}_{\S}(\Q) + 2C\frac{KL(\Q,\P) +\log(1/\delta)}{ m}  
        + \frac{1}{C} c_{P}(\Q)\EE_{\z\sim\D} \LB \EE_{h\sim \Q}\LP \|\nabla_h \ell(h,\z)\|^2 \RP \RB .
     \end{align*}
-  \end{block}
+  \end{blueblock}
 
-  \uncover<2->{ \begin{block}{\bf \red{If $\D$ is also \Poinc:}}
-       With more minor technical assumptions, for any $\Q$ being $\Poinc(c_P)$ with $\Risk_\D(\Q)\leq C$:
-    \begin{multline*}
-      \Risk_{\D}(\Q) \leq 2 \hat{\Risk}_{\S}(\Q) + 2C\frac{KL(\Q,\P) +\log(1/\delta)}{  m} \\
-      + \frac{1}{C}\LP c_{P}(\Q)\EE_{\z\sim\D} \LB \EE_{h\sim \Q}\LP \|\nabla_h \ell(h,\z)\|^2 \RP \RB  + c_{P}(\D)\EE_{\z\sim\D} \LP \left\|\EE_{h\sim\Q}[\nabla_z \ell(h,\z)] \right\|^2\RP  \RP.
-    \end{multline*} 
-  \end{block}} 
+  
 \end{xframe}
 
 
 \begin{xframe}{Fully empirical fast rate}
-    \textbf{Current drawback: bounds are not empirical.}
+    \red{\textbf{Drawback: bound not empirical.}}
     \vspace{0.3cm}
     
-    \uncover<2->{\green{\textbf{Solution: $\mathcal{C}^2$ gradient-lipschitz losses!}}
+    \green{\textbf{Solution: $\mathcal{C}^2$ gradient-lipschitz losses!}}
     
-    \begin{block}{\bf Theorem}
+    \begin{blueblock}{\bf Theorem}
         For any $C_1,C_2,c>0$, with probability at least $1-\delta$, for any $m>0$, $\Q$ being $\Poinc(c_P)$ with constant $c$, $\texttt{QSB}(\ell,C_1)$, $\texttt{QSB}\LP\|\nabla_h \ell\|^2,C_2\RP$, 
-
+  
     \begin{align*}
       \Risk_{\D}(\Q) \leq &\; 2 \hat{\Risk}_{\S}(\Q) + \mathcal{O}\left( \EE_{h\sim \Q}\LB \frac{1}{m}\sum_{i=1}^m \|\nabla_h\ell(h,\z_i)\|^2 \RB  + \frac{\KL(\Q,\P) +\log(1/\delta)}{m}\right).
     \end{align*}
-    \end{block}
-    }
-\end{xframe}
+    \end{blueblock}
+    \vspace{0.5cm}
+    \uncover<2->{\bf Those bounds: holds for Gaussian and Gibbs. Other results for Gibbs posteriors in the manuscript!}
 
-\begin{xframe}{Take-home messages}
-    \vspace{1.5cm}
-    \Large{
-        If $\Q$ satisfies either
-        \begin{enumerate}
-            \item Flat minima for $\Riskhat_\S$ and $\Risk_\D$, 
-            \item if $\ell$ gradient-lipschitz, flat minima for $\Riskhat_\S$ and empirical gradient norms, 
-        \end{enumerate}
-    \textbf{then $\Q$ generalises well!}
-    }
-\end{xframe}
-
-\begin{xframe}{Gibbs posteriors}
-    \textbf{Current limitation: with Poincaré posteriors, KL is uncontrolled.}
-    \vspace{0.3cm}
-    
-    \uncover<2->{\green{\textbf{Solution: consider Gibbs posterior with log-Sobolev priors!}}
-    
-    \begin{block}{\bf Definition}
-       $\P_{-\gamma \hat{\Risk}_\S}$ is the Gibbs posterior \wrt prior $\P$ with \emph{inverse temperature} $\gamma>0$  if  $$d\P_{-\gamma \hat{\Risk}_\S}(h)\propto \exp\LP - \gamma \hat{\Risk}_\S(h) \RP dP(h)$$. 
-    \end{block}
-    \vspace{0.3cm}
-    \begin{block}{\bf Why focus on those?}
-        \begin{xitemize}
-        \item Minimise Catoni's bound \citep[Theorem 4.1]{AlquierRidgwayChopin2016}
-        \item if $\P$ \Lsob (+ technical assumptions) and $\ell= \ell_1 + \ell_2$ ($\ell_1$ convex, twice differentiable, $\ell_2$ bounded) then $\P_{-\gamma \hat{\Risk}_\S}$ is $\Lsob$.
-    \end{xitemize}
-    \end{block}
-    }
-\end{xframe}
-
-\begin{xframe}{Understanding Gibbs posteriors through flat minima}
-
-    \begin{block}{\bf Theorem}
-        For any $C>0$, any $\gamma>0$, any prior $\P$ $\Lsob(c_{LS})$ (+ technical assumptions), if $\ell=\ell_1+\ell_2$ (as above), then with probability at least $1-\delta$, for any $m>0$, $\Q$ being $\texttt{QSB}(\ell,C)$:
-
-  \begin{multline*}
-    \Risk_{\D}(\P_{-\gamma \hat{\Risk}_\S})  \leq 2  \hat{\Risk}_{\S}(\P_{-\gamma \hat{\Risk}_\S}) + \\
-    \mathcal{O}\LP C\frac{\gamma^2\EE_{h\sim \P_{-\gamma \hat{\Risk}_\S}}\LB \|\nabla_h \hat{\Risk}_\S(h) \|^2 \RB+\log(1/\delta)}{ m} + \frac{ 1 }{C} \EE_{\z\sim\D} \LB \EE_{h\sim \P_{-\gamma \hat{\Risk}_\S}}\LP \|\nabla_h \ell(h,\z)\|^2 \RP \RB \RP.
-  \end{multline*} 
-    \end{block}
-    \uncover<2->{\bf KL small if a flat minima on $\Riskhat_\S$ is reached: \\\blue{$\rightarrow$ Flat minima fully explain generalisation here!}}
-\end{xframe}
-
-\begin{xframe}{Take-home messages}
-    \vspace{1.5cm}
-    \Large{
-        \begin{enumerate}
-            \item Gibbs posterior generalises well if they reach a flat minima on both $\Riskhat_\S$ and $\Risk_\D$.
-            \item Flatness of the minimum on $\Riskhat_\S$ controls the expansion of KL.
-        \end{enumerate}
-    }
 \end{xframe}
 
 \begin{xframe}{Result for deterministic predictors}
@@ -550,52 +458,34 @@ where $Quad(h)= \mathbb{E}_{\z\sim\D}[\ell(h,z)^2]$.
     \red{\textbf{Drawback: results hold for probabilistic predictors}}
     
     \vspace{0.3cm}
-    \uncover<2->{\green{\textbf{Answer: Exploit the 2-Wasserstein distance to obtain guarantees valid for deterministic predictors (Diracs) }}}
+    \uncover<2->{\green{\textbf{Solution: Exploit the 2-Wasserstein distance to obtain guarantees valid for deterministic predictors (Diracs) }}}
 
     
 \end{xframe}
 
-\begin{xframe}{Convergence guarantees for non-convex SGD}
-
-    \begin{block}{\bf Key tool: a novel change of measure inequality}
-        For any $f$ gradient lipschitz, any $\P,\Q$:
-
-         \[ \mathbb{E}_{h\sim \Q}[f(h)] \leq \frac{G}{2}W_2^2(Q,P) + \mathbb{E}_{h\sim \P}[f(h)] +D \mathbb{E}_{h\sim\Q}[\|\nabla f (h)\|].  \]
-
-         \textbf{NB:} a variant of this formula with a KL is attainable if $\Q<<\P$ and $\P$ is $\Lsob$ !
-    \end{block}
-
-    \begin{block}{\bf Assumption}
-        \begin{xitemize}
-            \item Gradient-lipschitz loss.
-            \item $\P \propto exp(-V(h))dh$
-        \end{xitemize}
-    \end{block}
-\end{xframe}
-
 \begin{xframe}{Result}
 \vspace{1cm}
-\begin{block}{\bf Theorem}
+\begin{blueblock}{\bf Theorem}
     Let $\delta\in(0,1)$ and $P\in\Mcal(\Hcal)$ a data-free prior.
 Assume $\Hcal$ has a finite diameter $D>0$, $\ell\geq 0$ and that for any $m$, the generalisation gap $\Delta_{\S_m}$ is $G$ gradient-Lipschitz.
 Assume that $\mathbb{E}_{h\sim\P}\Ebb_{\z\sim\D}[\ell(h,z)^2] \leq \sigma^2$, then the following holds with probability at least $1-\delta$, for any $m>0$ and any $\Q$:
 \begin{align*}
     \Risk_D(\Q) \leq \hat{\Risk}_{\S_m}(\Q) + \frac{G}{2} W_2^2(\Q,\P) + \sqrt{\frac{2\sigma^2\log\LP \frac{1}{\delta} \RP}{m}} + D \mathbb{E}_{h\sim \Q}\LP \left\| \nabla_h \Risk_\D(h) - \nabla_h \hat{\Risk}_{\S_m}(h) \right\| \RP
 \end{align*}
-\end{block}
+\end{blueblock}
  
 \end{xframe}
 
-\begin{xframe}{Conclusion}
+\begin{xframe}{To sum up}
     \vspace{1cm}
     \Large
     \begin{xitemize}
         \item We mathematically quantify the impact of flat minima in generalisation: momentum in Catoni's bound!
         \item The \texttt{QSB} condition is verified on basic neural nets (classification) with constant $C$ sharper than 1! 
-        \item A crucial future lead: understanding why optimisation procedures on deep nets lead to flat minima: \textbf{here we are only able to explain why flat minima generalise well, not how we reach them.}
+        \item Wasserstein distance allows to involve Dirac predictors
     \end{xitemize}
-
-    Full paper available at \url{https://arxiv.org/abs/2402.08508}
+    \vspace{0.5cm}
+    \orange{\bf\Large Can we draw deeper links between Wasserstein distances and PAC-Bayes? }
     
 \end{xframe}
 
@@ -608,18 +498,185 @@ Assume that $\mathbb{E}_{h\sim\P}\Ebb_{\z\sim\D}[\ell(h,z)^2] \leq \sigma^2$, th
     \end{figure}
   \end{xframe}
 
-%Explain the broad ideas, put only few bounds
+  \begin{xframe}{Why choosing a Wasserstein distance?}
+   \vspace{0.5cm}
+   {\Large\bf \green{Two major strength of Wasserstein distances in the optimisation perspective}\\
+   \vspace{0.5cm}
+   \begin{itemize}
+    \item True distances: Dirac priors are allowed
+    \item $W_2$ captures a lot of geometric information \eg convergence guarantees for optimisation on measure spaces
+   \end{itemize}
+   }
+   \vspace{0.5cm}
+   \uncover<2->{ \bf \Large \orange{Is it possible to obtain WPB bounds with explicit convergence rate?}}
+  \end{xframe}
+
+  \begin{xframe}{Presentation of the results}
+    \vspace{1.2cm}
+    \begin{enumerate}
+        \item We obtain WPB bounds for infinite classes of predictors with a classical convergence rate $\mathcal{O}(1/\sqrt{m})$ at the cost of the curse of dimensionality. 
+
+        $\mapsto$ Asymptotic yet interpretable guarantees
+
+        \item We show that it is possible to exploit the geometric convergence guarantees of the \emph{Bures-Wasserstein SGD} to explain its generalisation ability 
+    \end{enumerate}
+    
+\end{xframe}
+
+\begin{xframe}{A WPB bound for compact predictor space}
+
+
+        \begin{blueblock}{Theorem}
+            For any $\delta>0$, assume that $\ell\in[0,1]$ is $K$-Lipschitz wrt to $h$ and that $\mathcal{H}$ is a compact of $\mathbb{R}^d$ bounded in norm by $R$. Let $\P\in \mathcal{P}_1(\mathcal{H})$ a (data-free) prior distribution.
+            Then, with probability $1-\delta$ , for any posterior distribution $\Q\in\mathcal{P}_1(\mathcal{H})$:
+            \[ |\Delta_S(\Q)| \leq \sqrt{2K(2K+1)\frac{2d\log\left(3\frac{1 +2Rm }{\delta}\right)}{m} \left(W_1(\Q,\P)+\varepsilon_m  \right) + \frac{\log\left( \frac{3m}{\delta} \right)}{m}  }, \]
+            with $\varepsilon_m =  \mathcal{O}\left(1 + \sqrt{\frac{d\log(Rm)}{m}}\right)$. 
+        \end{blueblock}
+    
+\end{xframe}
+
+\begin{xframe}{WPB bounds for Gaussian distributions}
+    \begin{blueblock}{Theorem}
+        Assume that $d\geq 3$, $\mathcal{H}= \mathbb{R}^d$ and that the loss is K-lipschitz. For any $\delta>0, 0\leq \alpha\leq \beta, M\geq 0$, let $\P\in C_{\alpha,\beta,M}$ a (data-free) prior distribution.
+        Then, with probability $1-\delta$, for any posterior distribution $\Q\in C_{\alpha,\beta,M}$, the following bound holds.
+        
+        \textbf{Asymptotic regime} ($d\log(d)< \log(m)$)
+        \begin{align*}
+        |\Delta_S(\Q)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left(1 + W_1(\Q,\P)\right)+ (1+K^2\log(m))\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
+        \end{align*}
+        In all these formulas, $\Tilde{\mathcal{O}}$ hides a polynomial dependency in $(\log(d),\log(m))$.
+    \end{blueblock}
+\end{xframe}
+
+\begin{xframe}{Remarks}
+    \vspace{0.5cm}
+    {\bf \Large 
+    \begin{itemize}
+        \item Bounds for low-data regime ($d\leq m$) and transitory regime ($m>d,\; d\log(d)\geq \log(m)$) are also available in the paper $\rightarrow$ worse dependencies in the dimension
+        \item Results for Gaussian $\Q,\P$ and gradient-lipschitz losses available
+        \item Trade of statistical assumptions (boundedness) for geometric ones (lipschitz)
+        \item For lipschitz losses, Differential Privacy allows replacing $\P$ by a Gibbs posterior (up to negligible terms) 
+    \end{itemize}
+    }
+\end{xframe}
+
+
+
+
+\begin{xframe}{The Bures-Wasserstein SGD }
+    \begin{block}{\bf A variational inference algorithm}
+        Goal: find $\hat{\Q}$ the best Gaussian approximation of $\Q^*:= \P_{-\frac{\lambda}{2K}\Risk_\S}$ through a sequence $(\hat{\Q}_k)_{k\geq 1}$.
+    \end{block}
+    \begin{blueblock}{Theorem}
+        Assume having a smooth convex loss with a log-strongly convex prior. Under technical assumptions on $\eta,\hat{\Q}_0$, Bures-Wasserstein SGD satisfies for all $k \in \mathbb{N}$,
+        $$
+        \mathbb{E} W_2^2\left(\hat{\Q}_k, \hat{\Q}\right) \leq \exp (-\alpha k \eta) W_2^2\left(\hat{\Q}_0, \hat{\Q}\right)+\frac{36 d \eta}{\alpha^2} .
+        $$
+        In particular, $\mathbb{E} W_2^2\left(\hat{\Q}_k, \hat{\Q}\right) \leq \varepsilon^2$ with suitable $\eta,k$.
+    \end{blueblock}
+
+\end{xframe}
+
+\begin{xframe}{Exploiting optimisation guarantees for generalisation}
+    \begin{block}{\bf Main assumptions}
+        \textbf{(A3):} $\mathcal{H}=\mathbb{R}^d$ $\ell$ is twice differentiable, $L$-smooth, convex and  $K$-Lipschitz.
+        
+       $\P=  \Ncal(0,\Sigma)$ with $\Sigma= \text{diag}(\gamma), 1\geq\gamma>0$. Also $\lambda \leq 2K$ in the definition of $Q^*$.
+ 
+    \end{block}
+    \begin{blueblock}{Theorem (informal)}
+        Assume \textbf{(A3)}, $d\geq 3$. Let $\beta_m= \mathcal{O}(\frac{1}{\sqrt{m}})$ and fix any $\beta_m<\delta<1$.
+        Bures-Wasserstein SGD, with adapted initialisation and parameters $\eta,N$ satisfies, with probability $1-2\delta$:
+        
+        \noindent \textbf{Asymptotic regime} $(d\log(d)< \log(m))$
+        \begin{align*}
+        |\Delta_S(\hat{\Q}_N)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left(1 + W_1(\hat{\Q},\Q^*)\right)+ (1+K^2\log(m)) \frac{\log\left( \frac{m}{\delta} \right)}{m}} \right),
+        \end{align*}
+        where $\Tilde{\mathcal{O}}$ hides a polynomial dependency in $(\log(d),\log(m))$.
+    \end{blueblock}
+\end{xframe}
+
+\begin{xframe}{A quick sum up}
+    \vspace{1cm}
+    {\bf \Large \green{Strength: Wasserstein PAC-Bayes yields generic generalisation bounds with geometric assumption and an interpretable one for the Bures Wasserstein SGD}}
+    \\
+    \vspace{0.5cm}
+    {\bf \Large \red{Drawback: explicit dependency on $d$ $\rightarrow$ vacuous for deep nets }}
+    \\
+    \vspace{0.5cm}
+    {\bf \Large \orange{Can we derive WPB bounds useful for practical optimisation of deep nets? }}
+
+
+\end{xframe}
 
 \section{Wasserstein PAC-Bayes in Practice: Generalisation-Driven Algorithms for Deterministic Predictors}
 
-\begin{xframe}{Wasserstein PAC-Bayes in Practice Allows Dirac Predictors}
+\begin{xframe}{Wasserstein PAC-Bayes in Practice}
     \begin{figure}
         \centering
         \includegraphics[scale=0.14]{diagram-chap-6.pdf}
     \end{figure}
   \end{xframe}
 
-%Insist on algorithms
+  \begin{xframe}{WPB bound for batch learning}
+    Idea: split $\Sm$ into $L$ parts $\S_1,...,\S_L$ and exploit supermartingale techniques.
+    {\bf Assumptions:} 
+
+    \begin{itemize}
+        \item $\ell$ is non-negative and $K$-Lipschitz
+        \item for any $1\leq i\leq L,\S$, $\EE_{h\sim \P_{i}(.,\S), z\sim \mu}[ \ell(h,z)^2]\leq 1$ 
+        \item Prior $\P_{i,\S}$ depend on $\S/\S_i$.
+    \end{itemize}
+    
+    \begin{blueblock}{Theorem}
+        For any $\delta\in(0,1]$, with probability at least $1-\delta$ over the sample $\Sm$, the following holds for the distributions $\P_{i,\S}\defeq \P_i(\S,.)$ and for any $\Q\in\Mcal(\Hcal)$: 
+        \begin{align*}
+        \ \EE_{\h\sim\Q}\left[ \Risk_{\D}(\h) - \hat{\Risk}_{\Sm}(\h) \right] \le \sum_{i=1}^{L} \frac{2|\S_i|K}{m} \W(\Q, \P_{i,\S}) + \sum_{i=1}^{L} \sqrt{\frac{|\S_i|\ln\frac{L}{\delta}}{m^2}}.
+        \end{align*}
+    \end{blueblock}
+\end{xframe}
+
+\begin{xframe}{WPB bound for online learning}
+    
+    
+    {\bf Assumptions:} 
+    \begin{itemize}
+        \item $\ell$ is non-negative and $L$-Lipschitz
+        \item for any $i,\S$, $\EE_{h\sim \P_{i}(.,\S)}\LB \EE_{i-1}[\ell(h,\z_i)^2] \RB \leq 1$ (\emph{bounded order 2 moments for priors})
+        \item Sequence of priors $\P_i, i\geq 1$ all past-dependent (online predictive sequence).
+    \end{itemize}
+    \begin{blueblock}{Theorem}
+        For any $\delta\in(0,1]$, with probability at least $1-\delta$ over the sample $\S$, any online predictive sequence (used as priors) $(\P_i)_{i\geq 1}$, we have with probability at least $1-\delta$ over the sample $S\sim\mu$, the following, holding for the data-dependent measures $\P_{i,S}\defeq \P_i(S,.)$ and any posterior sequence $(\Q_i)_{i\geq 1}$:
+        
+        \begin{align*}
+        \frac{1}{m}\sum_{i=1}^m \mathbb{E}_{h_i\sim \Q_{i}} \Big[\mathbb{E}[\ell(h_i,\z_i) \mid \mathcal{F}_{i-1}] - \ell(h_i,\z_i) \Big]  \le \frac{2L}{m}\sum_{i=1}^{m}\W(\Q_{i}, \P_{i,\S}) + \sqrt{\frac{\ln\frac{1}{\delta}}{m}}.
+        \end{align*}
+    \end{blueblock}
+\end{xframe}
+
+\begin{xframe}{New optimisation goals}
+    \begin{blueblock}{Batch}
+        \begin{align*}
+        \operatorname{argmin}_{\h_{\wbf}\in\Hcal} \left\{\hat{\Risk}_{\Sm}(\h_{\wbf}) + \varepsilon\LB\sum_{i=1}^{K} \frac{|\S_i|}{m} \|\wbf-\wbf_i\|_2\RB\right\}.
+        \end{align*}
+    \end{blueblock}
+
+    \begin{blueblock}{Online}
+        \begin{align*}
+        \forall i \geq 1, h_i\in  \operatorname{argmin}_{\h_{\wbf}\in\Hcal} \left\{ \loss(\h_{\wbf}, \z_i) + \|\wbf{-}\wbf_{i-1}\| \mid \|\wbf{-}\wbf_{i-1}\| \le 1\right\}.
+        \end{align*}
+    \end{blueblock}
+\end{xframe}
+
+
+\begin{xframe}{Experiments}
+    Classification problem on MNIST solved with linear models and fully connected neural networks.
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.35]{figures/tables.png}
+    \end{figure}
+    
+\end{xframe}
 
 \section{Conclusion}
 
