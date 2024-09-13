@@ -35,13 +35,40 @@ Université de Lille\\
 \end{xframe}
 
 \section{Overwiew of the PhD}
-%TODO General introduction on PhD, Inria London, Collaborators, research projects in and out the manuscript
+
+    \begin{xframe}{Context of the PhD}
+        \vspace{1cm}
+        \begin{itemize}
+            \item PhD under the supervision of Benjamin Guedj
+            \item Inria London Programme: Collaboration entre Inria et University College London
+        \end{itemize}
+    \vspace{0.5cm}
+        \begin{blackblock}{}
+            {\bf \Large Many thanks to my co-authors: Pierre Jobic, Omar Rivasplata, John Shawe-Taylor, Umut Simsekli, Paul Viallard.}
+        \end{blackblock}
+    \end{xframe}
+
+    \begin{frame}[allowframebreaks]{Publications included in the manuscript}
+        \begin{refsection}[publications.bib]
+            \nocite{*}
+            \printbibliography[heading={subbibliography}, keyword={conference}, title={Conference article}]
+            \printbibliography[heading={subbibliography}, keyword={journal}, title={Journal article}]
+            \printbibliography[heading={subbibliography}, keyword={report}, title={Research Report}]
+            \end{refsection}
+    \end{frame}
+
+    \begin{frame}[allowframebreaks]{Other Publications}
+        \begin{refsection}[publications-out.bib]
+            \nocite{*}
+            \printbibliography[heading={subbibliography}, keyword={conference}, title={Conference article}]
+            \printbibliography[heading={subbibliography}, keyword={journal}, title={Journal article}]
+            \printbibliography[heading={subbibliography}, keyword={report}, title={Research Report}]
+            \end{refsection}
+    \end{frame}
+
+
 
 \section{Introduction to PAC-Bayes Learning}
-%Keep those two slides, + detail Catoni, McAllester bound and associated algorithms + biblio
-%Also detail the two diagrams to explain the goal of the PhD
-%At the beginning of each part, detail which part of the diagram we are investigating 
-
 
 
    \begin{xframe}{What is PAC-Bayes ?}
@@ -124,17 +151,16 @@ Université de Lille\\
     \begin{block}{\bf Quick sum up}
         PAC-Bayes algorithms minimise theoretical bounds $\rightarrow$ sound theoretical guarantees comes with our posterior. 
     \end{block}
-    \textbf{Drawbacks} Often hard to optimise on $\Mcal(\Hcal)$, and Gibbs posterior implementation is time-consuming. 
-
+    \vspace{0.5cm}
+    \red{\Large \bf Drawbacks Often hard to optimise on $\Mcal(\Hcal)$, and Gibbs posterior implementation is time-consuming. }
+    \vspace{0.5cm}
     \uncover<2->{ 
-        \begin{block}{\bf Questions}
-            \begin{enumerate}
+        \orange{\bf \Large Questions
+            \begin{itemize}
                 \item How are those algorithms instantiated in practice?
-                \item Are these algorithms efficient and do they come with non-vacuous theoretical guarantees? %add the fact that there is fast-rate pac bayes bounds
-              \end{enumerate}
-        \end{block}
-
-    }
+                \item Are these algorithms efficient and do they come with non-vacuous theoretical guarantees?
+              \end{itemize}}
+        }
 \end{xframe}
 
 \begin{xframe}{Common practices}
@@ -679,6 +705,43 @@ Assume that $\mathbb{E}_{h\sim\P}\Ebb_{\z\sim\D}[\ell(h,z)^2] \leq \sigma^2$, th
 \end{xframe}
 
 \section{Conclusion}
+
+\begin{xframe}{Conclusion}
+    \vspace{0.5cm}
+    \begin{blackblock}{}
+        {\bf\Large We challenge the classic perspective on PAC-Bayes.}
+    \end{blackblock}
+    \vspace{0.5cm}
+    \begin{itemize}
+        \item \emph{Strong statistical assumptions?} PAC-Bayes bounds hold with finite variance. Sometimes, not even required with (gradient) lispchitz losses. 
+        \item \emph{What's perspective for the prior?} We can avoid the Bayesian one: either initialisation point or learning objective $\rightarrow$ novel results to either reduce the impact of the prior or highlight it.
+        \item \emph{ PAC-Bayes is useful for stochastic predictors only?} Wasserstein PAC-Bayes shows that it's not $\rightarrow$ deterministic predictors allowed: unveil a novel geometric perspective.
+    \end{itemize}
+\end{xframe}
+
+\begin{xframe}{Future leads}
+    \vspace{0.5cm}
+    \begin{redblock}{}
+        \red{\bf \Large Many open questions on the interplays of optimisation and generalisation.}
+    \end{redblock}
+    \vspace{0.5cm}
+    \begin{itemize}
+        \item Can we relax the finite variance assumption to obtain generalisation bounds?
+        \item Can we further exploit flat minima to understand generalisation?
+        \item Can we reach Wasserstein PAC-Bayes bound as simple and efficient than a KL one? 
+        \item Investigating the links between Online Learning and Wasserstein PAC-Bayes (directly using the 2 Wasserstein)?
+    \end{itemize}
+
+\end{xframe}
+
+\begin{xframe}{}
+    \vspace{4cm}
+
+        \centering{\bf \LARGE Thank you for your attention !}
+
+
+\end{xframe}
+
 
 
 
