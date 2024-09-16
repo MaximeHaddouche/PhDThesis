@@ -125,7 +125,7 @@ To make PAC-Bayes learning useful to explain the generalisation ability of minim
 \begin{definition}
 \label{def: wasserstein}
 The $1$-Wasserstein distance between $\P,\Q \in \mathcal{P}_1(\mathcal{H})$ is defined as
-\[ \W_{1}(\Q,\P) = \inf_{\pi \in \Pi(\Q,\P)} \int_{\mathcal{H}^2} ||x-y||\mathrm{d}\pi(x,y). \]
+\[ \W_{1}(\Q,\P) = \inf_{\pi \in \Pi(\Q,\P)} \int_{\mathcal{H}^2} ||x-y||\mathrm{d}\pi(x,y), \]
 where $\Pi(\Q,\P)$ denote the set of probability measures on $\mathcal{H}^2$ whose marginals are $\Q$ and $\P$.
 We define the $2$-Wasserstein distance on $\mathcal{P}_2(\mathcal{H})$ as
 \[ \W_{2}(\Q,\P) = \sqrt{\inf_{\pi \in \Pi(\Q,\P)} \int_{\mathcal{H}^2} ||x-y||^2\mathrm{d}\pi(x,y)}. \]
@@ -161,7 +161,7 @@ We introduce the following theorem holding again when $\mathcal{H}=\mathbb{R}^d$
 \begin{align*}
 |\Delta_{\Sm}(\Q)|  \leq\Tilde{\mathcal{O}}\left( \sqrt{2K\frac{d}{m}\left(1 + \W_{1}(\Q,\P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}})\right)+(1+K^2\log(m))\frac{\log\left( \frac{m}{\delta} \right)}{m}}   \right).
 \end{align*}
-We also study non-asymptotic regimes in \Cref{th: data_dep}. While \citet{dziugaite2018data} exploited differential privacy results for the Gibbs posterior when the loss is bounded, we successfully extended these results to (possibly unbounded) uniformly Lipschitz losses. This is not specific to the WPB framework and may be of independent interest.
+We also study non-asymptotic regimes in \Cref{th: data_dep}. While \citet{dziugaite2018data} exploited differential privacy results for the Gibbs posterior when the loss function is bounded, we successfully extended these results to (possibly unbounded) uniformly Lipschitz losses. This is not specific to the WPB framework and may be of independent interest.
 
 \paragraph{PAC-Bayes provides generalisation guarantees for the Bures-Wasserstein SGD.}
 While working on WPB theory, we notice a shift from classical assumptions due to the KL divergence. Indeed, statistical assumptions (such as subgaussiannity, bounded variances) are transformed into geometric assumptions such as Lipschitzness and convex smoothness when Wasserstein distances are involved. We exploit in \Cref{sec: gene_sgd} WPB theory to provide generalisation guarantees for the Bures-Wasserstein SGD (recalled in \Cref{alg: sgd}) which approximates the best Gaussian surrogate $\hat{\Q}$ of $\Q^*:= \P_{-\frac{\lambda}{2K}\Riskhat_{\Sm}}$ (in the sense of the KL divergence, see \Cref{sec: gene_sgd} for more details).
@@ -236,11 +236,11 @@ Then for any $h,h'\in C^2$, we have:
 \begin{align*}
 f_{\Sm}(h)-f_{\Sm}(h')  & = \frac{\lambda}{m}\sum_{i=1}^m \mathbb{E}[\ell(h,\z)-\ell(h'\z)] - \left(\ell(h,\z_i)-\ell(h',\z_i)\right).
 \end{align*}
-We know that for any $h,h',z$, $|\ell(h,\z)-\ell(h',\z)| \leq \lambda K||h-h'||$. Then, applying Hoeffding's inequality for all pairs $h,h'\in C^2$ and performing an union bound gives that with probability at least $1-\delta$, for all pairs $(h,h')\in C^2$ :
+We know that for any $h,h',z$, $|\ell(h,\z)-\ell(h',\z)| \leq K||h-h'||$. Then, applying Hoeffding's inequality for all pairs $h,h'\in C^2$ and performing an union bound gives that with probability at least $1-\delta$, for all pairs $(h,h')\in C^2$ :
 \begin{align*}
 f_{\Sm}(h)-f_{\Sm}(h')  \leq \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}} \lambda K ||h-h'||.
 \end{align*}
-So for any $h,h'\in \mathcal{H}^2$ there exists $h_0,h'_0\in C^2$ such that $||h-h_0||\leq \varepsilon$ and $||h-h_0||\leq \varepsilon$. Thus, we have
+So for any $h,h'\in \mathcal{H}^2$ there exists $h_0,h'_0\in C^2$ such that $||h-h_0||\leq \varepsilon$ and $||h'-h'_0||\leq \varepsilon$. Thus, we have
 \begin{align*}
 f_{\Sm}(h)-f_{\Sm}(h')  & = f_{\Sm}(h)-f_{\Sm}(h_0) + f_{\Sm}(h_0)-f(h'_0)+ f_{\Sm}(h'_0)-f_{\Sm}(h') \\
 & \leq 2\lambda K \left(||h-h_0|| + ||h'-h'_0||\right) + \sqrt{\frac{\log\left(\frac{N^2}{\delta}\right)}{2m}} \lambda K ||h_0-h_0'|| \\
@@ -338,8 +338,8 @@ More importantly, we show that in this setup, the assumption of a bounded loss i
 
 \paragraph{Two sets of assumption.} Previously, we assumed two assumptions on the losses: uniform Lipschitzness (\Cref{def: unif_lpz}) and boundedness (in $[0,1]$) on a compact of $\mathbb{R}^d$. We provide below to novel sets of hypotheses which encapsulates previous assumptions while allowing the loss to be unbounded on all $\mathbb{R}^d$.
 \begin{itemize}
-  \item \textbf{(A1)} $\ell$ is uniformly $K$-Lipschitz over  $\mathcal{H}$, and $\sup_{z\in\mathcal{Z}} || \ell(0,\z)|| =D< +\infty.$
-  \item \textbf{(A2)} For any $\z\in\mathcal{Z}$, $\ell(.,\z)$ is continuously differentiable over $\mathcal{H}$, $\ell(.,\z)$ is also a convex $L$- smooth (\emph{i.e}, its gradient is $L$-Lipschitz) and $\sup_{z\in\mathcal{Z}} ||\nabla_h \ell(0,\z)|| =D< +\infty$.
+  \item \textbf{(A1)} $\ell$ is uniformly $K$-Lipschitz over  $\mathcal{H}$, and $\sup_{z\in\mathcal{Z}} || \ell(0,\z)|| \leq D< +\infty.$
+  \item \textbf{(A2)} For any $\z\in\mathcal{Z}$, $\ell(.,\z)$ is continuously differentiable over $\mathcal{H}$, $\ell(.,\z)$ is also a convex $L$- smooth (\emph{i.e}, its gradient is $L$-Lipschitz) and $\sup_{z\in\mathcal{Z}} ||\nabla_h \ell(0,\z)|| \leq D< +\infty$.
 \end{itemize}
 \begin{example}
 Recall that $\mathcal{H}=\mathbb{R}^d$ and let $\phi:\mathcal{H}\rightarrow \mathbb{R}^d$.

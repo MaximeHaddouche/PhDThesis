@@ -16,13 +16,13 @@
 
 
 \begin{abstract}
-\Cref{chap: pb-ht} provide PAC-Bayes bounds holding with weak statistical assumptions (finite variance), this is promising to encompass various learning situations involving optimisation algorithms such as heavy-tailed SGD \citep{gurbuzbalaban2020heavy} where assumptions such as bounded or subgaussian losses do not hold. Furthermore those results go beyond \iid assumption on $\S$ and hold for all datasets $(\Sm)_{m\geq 1}$ simultaneously. Such a flexible setting is in line with various optimisation frameworks, where new data can be available after the beginning of the learning process and be incorporated on-the-fly to the ongoing training, regardless of their potential correlation with previous data. Then, the theoretical results proposed in this chapter are a promising step toward practical settings where data may exhibit heavy-tailed behaviours and the loss function to be unbounded.
+\Cref{chap: pb-ht} provide PAC-Bayes bounds holding with weak statistical assumptions (finite variance, which is what we consider as heavy-tailed in this manuscript), this is promising to encompass various learning situations involving optimisation algorithms such as heavy-tailed SGD \citep{gurbuzbalaban2020heavy} where assumptions such as bounded or subgaussian losses do not hold. Furthermore those results go beyond \iid assumption on $\S$ and hold for all datasets $(\Sm)_{m\geq 1}$ simultaneously. Such a flexible setting is in line with various optimisation frameworks, where new data can be available after the beginning of the learning process and be incorporated on-the-fly to the ongoing training, regardless of their potential correlation with previous data. Then, the theoretical results proposed in this chapter are a promising step toward practical settings where data may exhibit heavy-tailed behaviours and the loss function to be unbounded.
 \end{abstract}
 
 \section{Introduction}
 
 In \Cref{chap:intro-pac-bayes}, McAllester's and Catoni's bound \citep{mcallester2003pac,catoni2007pac} have been presented as key theoretical results with practical repercussions through their associated learning algorithm. However, the bounded or subgaussian assumption on the loss makes those results limited to tackle many real-life situations.
-Indeed, from an optimisation perspective, as stated in Section 1.4 of \Cref{chap:intro-pac-bayes}, generalisation bounds should hold with weak statistical assumptions to make PAC-Bayes compatible with heavy-tailed data. Several works already proposed routes to overcome the boundedness constraint:  \citet[][Chapter 5]{catoni2004statistical} already proposed PAC-Bayes bounds for classification tasks and regressions ones with quadratic loss under a subexponential assumption. This technique has later been exploited in \citet{alquier2013sparse} for the single-index model, and by \citet{guedj2013pac} for nonparametric sparse additive regression, both under the assumption that the noise is subexponential. However all these works are dealing with light-tailed losses.
+Indeed, from an optimisation perspective, as stated in Section 1.4 of \Cref{chap:intro-pac-bayes}, generalisation bounds should hold with weak statistical assumptions to make PAC-Bayes compatible with heavy-tailed data. Several works already proposed routes to overcome the boundedness constraint:  \citet[][Chapter 5]{catoni2004statistical} already proposed PAC-Bayes bounds for classification tasks and regressions ones with quadratic loss under a subexponential assumption. This technique has later been exploited in \citet{alquier2013sparse} for the single-index model, and by \citet{guedj2013pac} for nonparametric sparse additive regression, both under the assumption that the noise is subexponential. However all these works are dealing with light-tailed losses.\footnote{A loss $\ell$ is light(heavy)-tailed if for all $h$, $\ell(h,.)$ is light(heavy)-tailed}
 \citet{alquier2018simpler,holland2019pac, kuzborskij2019efron, haddouche2021pac} proposed extensions beyond light-tailed losses.
 This chapter stands in the continuation of this spirit while developing and exploiting a novel technical toolbox.
 To better highlight the novelty of our approach, we first present the two classical building blocks of PAC-Bayes.
@@ -124,8 +124,8 @@ where $\Delta M_{m}=M_{m}-M_{m-1}, \Delta[M]_{m}=\Delta M_{m}^{2}$ and $\Delta\l
 We define $
 V_{m}(\eta)=\exp \left(\eta M_{m}-\frac{\eta^{2}}{2}\left([M]_{m}+\langle M\rangle_{m}\right)\right) .
 $
-Then, for all $\eta \in \mathbb{R},\left(V_{m}(\eta)\right)$ is a positive supermartingale with $\mathbb{E}\left[V_{m}(\eta)\right] \leq 1$ where $[M]_{m}(h):=\sum_{i=1}^m \Delta[M]_{m},
-\langle M\rangle_{m}(h):=\sum_{i=1}^m\Delta\langle M\rangle_{m}.$
+Then, for all $\eta \in \mathbb{R},\left(V_{m}(\eta)\right)$ is a positive supermartingale with $\mathbb{E}\left[V_{m}(\eta)\right] \leq 1$ where $[M]_{m}(h):=\sum_{i=1}^m \Delta[M]_{m}(h),
+\langle M\rangle_{m}(h):=\sum_{i=1}^m\Delta\langle M\rangle_{m}(h).$
 \end{lemma}
 In the sequel, this lemma will be helpful to design a supermartingale (\emph{i.e.}, to choose a relevant $f_m$ for any $m$) without further assumption.
 
@@ -140,7 +140,7 @@ More precisely, \Cref{sec: main_result_mart} contains our novel PAC-Bayes bound 
 We eventually apply our main result for martingales in \Cref{sec: bandit} to the setting of multi-armed bandit. Doing so, we provably extend a result of \citet{seldin2012bandit} to the case of unbounded rewards.
 
 \Cref{sec: pac_b_background} gathers more details on PAC-Bayes,
-we draw in \Cref{sec: extensions} a detailed comparison between our new results and a few classical ones.  We show that adapting our bounds to the assumptions made in those papers allows to recover similar or improved bounds.
+we draw in \Cref{sec: extensions} a detailed comparison between our new results and a few classical ones.  We show that adapting our bounds to the assumptions made in those papers allows recovering similar or improved bounds.
 We defer to \Cref{sec: proofs} the proofs of \Cref{sec: iid_case,sec: bandit}.
 
 
@@ -194,7 +194,7 @@ in \Cref{sec: iid_case,sec: extensions} more concrete instantiations.
 \label{sec: proof_main_thm}
 
 \begin{proof}[of \Cref{th: main_thm}]
-We fix $\eta\in\mathbb{R}$ and we consider the function $f_m$ to be for all $(\S,h)$:
+We fix $\eta\in\mathbb{R}$, and we consider the function $f_m$ to be for all $(\S,h)$:
 \begin{align*}
 f_m(\S,h) & := \eta M_m(h) - \frac{\eta^2}{2} \left( [M]_m(h) + \langle M \rangle_m(h)   \right)\\
 & = \sum_{i=1}^m \eta\Delta M_i(h)  - \frac{\eta^2}{2}(\Delta[M]_i(h) + \Delta \langle M\rangle_i(h)),
@@ -279,24 +279,24 @@ For any data-free prior $P\in \mathcal{M}(\mathcal{H})$, any $\lambda>0$ the fol
 \end{theorem}
 
 Proof is furnished in \Cref{sec: proofs}.
-\paragraph{About the choice of $\lambda$.}A novelty in this theorem is that the bound holds \emph{simultaneously on all $m>0$} -- this is due to the use of Ville's inequality.
+\paragraph{About the choice of $\lambda$.} A novelty in this theorem is that the bound holds \emph{simultaneously on all $m>0$} -- this is due to the use of Ville's inequality.
 This sheds a new light on the choice of $\lambda$. Indeed, taking a localised $ \lambda$ depending on a given sample size (e.g. $\lambda_m= 1/\sqrt{m}$) ensures convergence guarantees for the expected generalisation gap. Doing so, our bound matches the usual PAC-Bayes literature (i.e. a bound holding with high probability for a single $m$). However the novelty brought by \Cref{th: main_thm_iid} is that our bound holds for unbounded losses for all times simultaneously. This suggests that taking a sample size-dependent $\lambda$ may not be the best answer. We detail an instance of this fact below when one thinks of $\lambda$ as a parameter of an optimisation objective.
 Indeed, our bound suggests a new optimisation objective for unbounded losses which is for any $m>0$:
 \begin{equation}
   \label{eq: optim_obj}
   \operatorname{argmin_{Q}}  \mathbb{E}_{h\sim \Q} \left[\frac{1}{m}\sum_{i=1}^m\left(\ell(h,z_i) + \frac{\lambda}{2} \ell(h,z_i)^2\right)\right] + \frac{\operatorname{KL}(\Q,\P)}{\lambda m}.
 \end{equation}
-\Cref{eq: optim_obj} differs from the classical objective of \citet[][Thm 1.2.6]{catoni2007pac} (described in \eqref{eq: alg-catoni}) on the additional quadratic term $\frac{\lambda}{2} \ell(h,z_i)^2$. Note that this objective implies a bound on the theoretical order 2 moment to be meaningful as we do not include it in our objective. Note that this constraint is less restrictive than Catoni's objective which requires a bounded loss.  This objective stresses the role of the parameter $\lambda$ as being involved in a new explicit tradeoff between the KL term and the efficiency on training data.
+\Cref{eq: optim_obj} differs from the classical objective of \citet[][Thm 1.2.6]{catoni2007pac} (described in \eqref{eq: alg-catoni}) on the additional quadratic term $\frac{\lambda}{2} \ell(h,z_i)^2$. Note that this objective implies a bound on the theoretical order 2 moment to be meaningful as we do not include it in our objective. Note that this constraint is less restrictive than Catoni's objective which requires a bounded loss.  This objective stresses the role of the parameter $\lambda$ as being involved in a new explicit trade-off between the KL term and the efficiency on training data.
 
 Also, this optimisation objective is valid for any sample size $m$, this means that our $\lambda$ should not depend on certain dataset size but should be fixed in order to ensure a learning algorithm with generalisation guarantees at all time. This draws a parallel with Stochastic Gradient Descent with fixed learning step.
 
 
 \textbf{About the underlying assumptions in this bound.} Our result  is empirical (all terms can be computer or approximated) at the exception of the term $\mathbb{E}_{h\sim \Q} [\mathrm{Quad}(h)]$. This invites to choose carefully the class of posteriors, in order to bound this second-order moment with minimal assumptions.
-For instance, if we consider the particular case of the quadratic loss $\ell(h,z)= (h-z)^2$, then we only need to assume that our data have a finite variance if we restrict our posteriors to have both bounded means and variance. This assumption is striclty less restrictive than the classical subgaussian/subgamma assumption classically appearing in the literature.
+For instance, if we consider the particular case of the quadratic loss $\ell(h,z)= (h-z)^2$, then we only need to assume that our data have a finite variance if we restrict our posteriors to have both bounded means and variance. This assumption is strictly less restrictive than the classical subgaussian/subgamma assumption classically appearing in the literature.
 
-\textbf{Comparison with literature.} Back to the bounded case, we note that instantiating the boundedness assumption in \cref{th: main_thm_iid} make us recover the result of \citet[][Theorem 4.1]{alquier2016properties} for the subgaussian case. We also remark that instantiating the HYPE condition conditioning \citet[][Theorem 3]{haddouche2021pac} allow us to improve their result as we transformed the control of an exponential moment into one on a second-order moment. More details are gathered in \Cref{sec: extensions}.
-We also compare \Cref{th: main_thm_iid} to \citet[][Theorem 3]{kuzborskij2019efron} which is a PAC-Bayes bound for unbounded losses obtained through a concentration inequality from \citet{delapena2009self}. They arrived to what they denote as semi-empirical inequalities which also involve empirical and theoretical variance terms (and not an exponential moment).Their bound holds for independent data and a single posterior.
-First of all, note that \Cref{th: main_thm_iid} holds for any posterior, which is strictly more general. Note also that our bound is a straightforward corollary of \Cref{th: main_thm} which holds for any martingale (thus for any data distribution in a learning theory framework) and so, exploits a different toolbox than \citet{kuzborskij2019efron} (control of a supermartingale vs. concentration bounds for independent data). We insist that a fundamental novelty in our work is to extend the conclusion of \cite{kuzborskij2019efron} to the case of non-independent data: it is possible to perform PAC-Bayes learning for unbounded losses at the expense of the control of second-order moments.
+\textbf{Comparison with literature.} Back to the bounded case, we note that instantiating the boundedness assumption in \cref{th: main_thm_iid} make us recover the result of \citet[][Theorem 4.1]{alquier2016properties} for the subgaussian case. We also remark that instantiating the HYPE condition \citet[][Theorem 3]{haddouche2021pac} allow us to improve their result as we transformed the control of an exponential moment into one on a second-order moment. More details are gathered in \Cref{sec: extensions}.
+We also compare \Cref{th: main_thm_iid} to \citet[][Theorem 3]{kuzborskij2019efron} which is a PAC-Bayes bound for unbounded losses obtained through a concentration inequality from \citet{delapena2009self}. They arrived to what they denote as semi-empirical inequalities which also involve empirical and theoretical variance terms (and not an exponential moment). Their bound holds for independent data and a single posterior.
+First, note that \Cref{th: main_thm_iid} holds for any posterior, which is strictly more general. Note also that our bound is a straightforward corollary of \Cref{th: main_thm} which holds for any martingale (thus for any data distribution in a learning theory framework) and so, exploits a different toolbox than \citet{kuzborskij2019efron} (control of a supermartingale vs. concentration bounds for independent data). We insist that a fundamental novelty in our work is to extend the conclusion of \cite{kuzborskij2019efron} to the case of non-independent data: it is possible to perform PAC-Bayes learning for unbounded losses at the expense of the control of second-order moments.
 Note also that their bound is slightly tighter than ours as their result is \Cref{th: main_thm_iid} being optimised in $\lambda$ (which is something we cannot do as the resulting $\lambda$ would be data-dependent).
 
 
@@ -314,7 +314,7 @@ We exploit our main result in the context of the multi-armed bandit problem -- w
 At each round $i$, the player executes an action $A_i$ according to a policy $\pi_i$. We then set the filtration $(\mathcal{F}_i)_{i\geq 1}$ to be $\mathcal{F}_i = \sigma\left( \{\pi_j,A_j,R_j \mid 1\leq j\leq m\}    \right)$.
 
 
-\paragraph{Assumptions.}We suppose here that $(R_i)_{i\geq 1}$ is an iid sequence and that at each time $i$, $A_i$ and $R_i$ are independent and that $\pi_i$ is $\mathcal{F}_{i-1}$ measurable. This means that the player is not aware of the rewards each round and performs its current move with regards to the past.
+\paragraph{Assumptions.} We suppose here that $(R_i)_{i\geq 1}$ is an iid sequence and that at each time $i$, $A_i$ and $R_i$ are independent and that $\pi_i$ is $\mathcal{F}_{i-1}$ measurable. This means that the player is not aware of the rewards at each round and performs its current move \wrt the past.
 
 We also add two technical assumptions. First, the order two moment of the expected reward is uniformly bounded: $\sup_{a\in\mathcal{A}} \mathbb{E}_{R_1}[R_1(a)^2] \leq C$. This assumption is strictly less restrictive than the boundedness assumption made in \cite{seldin2012bandit}. Similarly to this work, we also assume that there exists a sequence $(\varepsilon_i)_{i\geq 1}$ such that $\inf_{a\in\mathcal{A}} \pi_i(a) \geq \varepsilon_i$.
 We say that $(\pi_i)_{i\geq 1}$ is \emph{bounded from below by} $(\varepsilon_i)_{i\geq 1}$.

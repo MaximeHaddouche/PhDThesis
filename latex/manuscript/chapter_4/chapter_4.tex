@@ -16,7 +16,7 @@
 
 \begin{abstract}
 \vspace{-0.2cm}
-\Cref{chap:online-pb} showed that a way to attenuate the impact of the prior, seen as an initialisation, in PAC-Bayes is online learning, allowing the evolution of the prior through time. However, a legitimate question is whether the prior could be attenuated, even in the batch learning setting, widely used in practice. Maintaining the vision of the prior as initialisation, we propose in this chapter to attenuate its impact in the batch setting through convergence rate faster than $1/\sqrt{m}$. The proposed results hold when a flat minimum has been reached, \ie a minimum whose its neighbourhood nearly minimises the loss as well. Then, a sharper understanding of generalisation can be reached when exploiting the benefits of a successful optimisation process. Indeed, this study is particularly meaningful in the context of deep learning, where it has been shown that flat minimum (also known as sharpness) correlates to a good generalisation ability.  
+\Cref{chap:online-pb} showed that a way to attenuate the impact of the prior, seen as an initialisation, in PAC-Bayes is online learning, allowing the evolution of the prior through time. However, a legitimate question is whether the prior could be attenuated, even in the batch learning setting, widely used in practice. Maintaining the vision of the prior as initialisation, we propose in this chapter to attenuate its impact in the batch setting through convergence rate faster than $1/\sqrt{m}$. The proposed results hold when a flat minimum has been reached, \ie a minimum whose its neighbourhood nearly minimise the loss as well. Then, a sharper understanding of generalisation can be reached when exploiting the benefits of a successful optimisation process. Indeed, this study is particularly meaningful in the context of deep learning, where it has been shown that flat minimum (also known as sharpness) correlates to a good generalisation ability.  
 \end{abstract}
 
 \newpage
@@ -101,14 +101,14 @@ Gibbs posteriors are a class of closed-form solutions for relaxation of \citet[T
 \Cref{prop:gibbs_logsob} shows that when the prior and the loss satisfies a few properties, then the associated Gibbs posterior is $\Lsob(c_{LS})$.
 
 \begin{proposition}\label{prop:gibbs_logsob}
-Assume that $\P$ is a probability measure on $\mathbb{R}^d$ such that $d\P(h) \propto \exp(-V(x))$ with $V$ a smooth function such that $Hess(V)\succeq \frac{2}{c_{LS}(\P)}\mathrm{Id}$.
+Assume that $\P$ is a probability measure on $\mathbb{R}^d$ such that $d\P(h) \propto \exp(-V(x))$ with $V$ a smooth function such that $Hess(V)\succeq \frac{2}{c_{LS}(\P)}\mathrm{Id}$ (We say that $A\succeq B$ if $A-B$ is a positive semidefinite matrix.).
 Assume that $\ell= \ell_1 + \ell_2$ with $\ell_1$ convex, twice differentiable and $\ell_2$ bounded. 
 Then for any $\gamma>0$, the Gibbs posterior $\Q= \P_{-\gamma\hat{\Risk}_{\S_m}}$ is $\Lsob(c_{LS})$ with constant $c_{LS}(\Q)= c_{LS}(\P)\exp\LP 4\|\ell_2\|_{\infty}\RP $.
 \end{proposition}
 \Cref{prop:gibbs_logsob} applies, \eg, when $\P$ is a Gaussian prior $\P=\Ncal(\mu_\P,\Sigma_\P)$. Notice that in this case $c_{LS}(\P)= 2\|\Sigma_\P\|_{op}$. This property is a straightforward application of \citet[Corollary 2.1]{chafai2004entropies} with \citet[Property 2.6]{guionnet2003lectures} and is stated in \Cref{sec: supp_background} for completeness.
 Finally, notice that satisfying a log-Sobolev inequality is stronger than satisfying a Poincaré one. This is stated for instance in \citet[Proposition 2.1]{ledoux2006concentration} and properly recalled in \Cref{sec: supp_background}. 
 
-\section{Reaching a flat minimum allows Poincaré posteriors to generalise well}
+\section{Reaching a flat minimum allows Poincaré posteriors generalising well}
 \label{sec:poincare_gauss}
 
 \subsection{Fast rate PAC-Bayes bounds for heavy-tailed losses}  
@@ -327,7 +327,7 @@ Proof is deferred to \Cref{sec: proof_kl-change}.
 Corollary \ref{cor:kl-change} involves a KL divergence and an Euclidean predictor space $\Hcal= \Rbb^d$. This comes at the cost of approximating $\Q,\P$ by $\Pcal_R\#\Q,\Pcal_R\#\P$. Thus, $R$ is now an hyperparameter which arbitrates a tradeoff between the quality of our approximations and the looseness of the bound (if the gradient norm is large). A notable strength is that the smoothness assumption is relaxed on smoothness over $\Bcal(\zerobf,R)$.
 \\
 
-\noindent{}From Theorem \ref{th:2-wass}, we now derive a novel generalisation bound allowing deterministic predictors.
+\noindent From Theorem \ref{th:2-wass}, we now derive a novel generalisation bound allowing deterministic predictors.
 
 \begin{theorem}
 \label{th:wpb-grad}
@@ -362,7 +362,7 @@ Each of these (convolutional) layers is followed by a Leaky ReLU activation func
 Moreover, an average pooling with a $8{\times}8$-kernel is performed before the Softmax activation function.
 To initialise the weights of the network, we use \citet{glorot2010understanding} uniform initializer, while the biases are initialised in $[-\frac{1}{\sqrt{250}}, +\frac{1}{1/\sqrt{250}}]$ uniformly (except the first layer, the interval is $[-\frac{1}{5}, +\frac{1}{5}]$).
 Hence, in this case, $\Hcal$ is the set of neural networks with a fixed architecture, and parametrised with a vector $\wbf$.
-while the posterior distribution $\Q$ is a Gaussian measure $\Ncal(\wbf, \sigma^2\textrm{Id})$ centered on the parameters $\wbf$ associated with the model; $\sigma$ is set to $10^{-4}$. 
+While the posterior distribution $\Q$ is a Gaussian measure $\Ncal(\wbf, \sigma^2\textrm{Id})$ centered on the parameters $\wbf$ associated with the model; $\sigma$ is set to $10^{-4}$. 
 Note that this distribution respects the $\Poinc(c_P)$ assumption; see \Cref{sec:fast_rates_gradient_h}.
 We train the neural network with the (vanilla) stochastic gradient descent algorithm, where the batch size is equal to $512$, and the learning rate is fixed to $10^{-2}$.
 We train for at least $10^{4}$ gradient steps and finish the current epoch when this number of iterations is reached.

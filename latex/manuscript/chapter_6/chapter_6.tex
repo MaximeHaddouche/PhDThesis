@@ -286,7 +286,7 @@ This loss has subgradients everywhere, which is convenient in practice.
 We go a step further by {\it (a)}  setting $L=\frac{1}{2}$ and {\it (b)} adding a parameter $\varepsilon>0$ to obtain the objective
 \begin{align}
     \label{eq:batch-alg-exp}
-    \argmin_{h_{\wbf}\in\Hcal}\left\{ \Riskhat_{\Sm}(h_{\wbf}) + \varepsilon\LB\sum_{i=1}^{K} \frac{|\Sm^{i}|}{m} d\LP h_\wbf,h_{\wbf_i}\RP\RB\right\{.
+    \argmin_{h_{\wbf}\in\Hcal}\left\{ \Riskhat_{\Sm}(h_{\wbf}) + \varepsilon\LB\sum_{i=1}^{K} \frac{|\Sm^{i}|}{m} d\LP h_\wbf,h_{\wbf_i}\RP\RB\right\}.
 \end{align}
 To (approximately) solve \Cref{eq:batch-alg-exp}, we propose a two-step algorithm.
 First, \textsc{Priors Learning} learns $K$ hypotheses $h_{\wbf_1}, \dots, h_{\wbf_K} \in \H$ by minimising the empirical risk via stochastic gradient descent.

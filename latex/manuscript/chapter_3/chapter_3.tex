@@ -26,7 +26,7 @@
 
 \section{Introduction}
 
- Batch learning is somewhat the dominant learning paradigm in which we aim to design the best predictor by collecting a training dataset which is then used for inference or prediction. Classical algorithms such as SVMs \citep[see][among many others]{cristianini2000introduction} or feedforward neural networks \citep{svozil1997introduction} are popular examples of efficient batch learning. While the mathematics of batch learning constitute a vivid and well understood research field, in practice this might not be aligned with the way practitionners collect data, which can be sequential when too much information is available at a given time (\emph{e.g.} the number of micro-transactions made in finance on a daily basis). Indeed batch learning is not designed to properly handle dynamic systems.
+ Batch learning is somewhat the dominant learning paradigm in which we aim to design the best predictor by collecting a training dataset which is then used for inference or prediction. Classical algorithms such as SVMs \citep[see][among many others]{cristianini2000introduction} or feedforward neural networks \citep{svozil1997introduction} are popular examples of efficient batch learning. While the mathematics of batch learning constitute a vivid and well understood research field, in practice this might not be aligned with the way practitionners collect data, which can be sequential when too much information is available at a given time (\emph{e.g.} the number of microtransactions made in finance on a daily basis). Indeed, batch learning is not designed to properly handle dynamic systems.
 
 
  Online learning (OL)  \citep{zinkevich2003online,shalev2012online,hazan2016introduction} fills this gap by treating data as a continuous stream with a potentially changing learning goal.
@@ -61,7 +61,7 @@ We consider a predictor space $\mathcal{H}$ and a loss funtion $\ell: \mathcal{H
     A \emph{stochastic kernel} from $\mathcal{Z}^m$ to $\mathcal{H}$ is defined as a mapping $\Q: \mathcal{Z}^m\times \Sigma_{\mathcal{H}} \rightarrow [0;1]$ where
     \begin{itemize}
         \item For any $B\in \Sigma_{\mathcal{H}}$, the function  $\Sm=(\z_1,...,\z_m)\mapsto Q(\Sm,B)$ is measurable,
-        \item For any $\Sm\in\mathcal{Z}^m$, the function $B\mapsto Q(\Sm,B)$ is a probability measure over $\mathcal{H}$.
+        \item For any $\Sm\in\mathcal{Z}^m$, the function $B\mapsto \Q(\Sm,B)$ is a probability measure over $\mathcal{H}$.
     \end{itemize}
     We denote by $\texttt{Stoch}(\mathcal{Z}^m,\mathcal{H})$ the set of all stochastic kernels from $\mathcal{Z}^m$ to $\mathcal{H}$ and for a fixed $S$, we set $\Q_{\Sm}:= \Q(\Sm,.)$ the data-dependent prior associated to the sample $\Sm$ through $\Q$.
 \end{definition}
@@ -102,9 +102,9 @@ The proof is deferred to \Cref{sec: proof_main_thm_online}. See \Cref{sec: discu
 
 \textbf{Analysis of the different terms in the bound.}
 Our PAC-Bayesian bound formally differs in many points from the classical ones.
-  On the left-hand side of the bound, the sum of the averaged expected loss conditioned to the past appears. Having such a sum of expectations instead of a single one is necessary to assess the quality of all our predictions. Indeed, because data may be dependent, one can not consider a single expectation as in the iid case. We also stress that taking an online predictive sequence as priors leads to control losses conditioned to the past, which differs from classical PAC-Bayes results designed to bound the expected loss. This term, while original in the PAC-Bayesian framework (to the best of our knowledge) recently appeared (in a modified form) in \citet[Prop 3]{wintenberger2021stochastic}. See \Cref{sec: deeper_analysis_main_thm} for further disucssions.
+  On the left-hand side of the bound, the sum of the averaged expected loss conditioned to the past appears. Having such a sum of expectations instead of a single one is necessary to assess the quality of all our predictions. Indeed, because data may be dependent, one can not consider a single expectation as in the \iid case. We also stress that taking an online predictive sequence as priors leads to control losses conditioned to the past, which differs from classical PAC-Bayes results designed to bound the expected loss. This term, while original in the PAC-Bayesian framework (to the best of our knowledge) recently appeared (in a modified form) in \citet[Prop 3]{wintenberger2021stochastic}. See \Cref{sec: deeper_analysis_main_thm} for further discussions.
 
-  On the right hand-side of the bound, online counterparts of classical PAC-Bayes terms appear. At time $i$, the measure $\Q_{i}$ (i.e. $\Q_{i,\Sm}$ according to \Cref{rem: notations}) has a tradeoff to achieve between an overfitted prediction of $\z_i$ (the case $\Q_{i}=\delta_{z_i}$ where $\delta$ is a Dirac measure) and a too weak impact of the new data with regards to our prior knowledge (the case $\Q_{i}=\P_{i}$). The quantity $\lambda>0$ can be seen as a regulariser to adjust the relative impact of both terms.
+  On the right hand-side of the bound, online counterparts of classical PAC-Bayes terms appear. At time $i$, the measure $\Q_{i}$ (i.e. $\Q_{i,\Sm}$ according to \Cref{rem: notations}) has a tradeoff to achieve between an overfitted prediction of $\z_i$ (the case $\Q_{i}=\delta_{z_i}$ where $\delta$ is a Dirac measure) and a too weak impact of the new data \wrt our prior knowledge (the case $\Q_{i}=\P_{i}$). The quantity $\lambda>0$ can be seen as a regulariser to adjust the relative impact of both terms.
 
 
 \textbf{Influence of $\lambda$.}
@@ -118,7 +118,7 @@ We now move on to the design of online PAC-Bayesian algorithms.
 
 \label{sec: online_pacb_procedure}
 
-OL algorithms (we refer to \citealp{hazan2016introduction}  an introduction to the field) are producing sequences of predictors by learning from a dynamic data stream (see \Cref{sec: OGD_reminder} for an example). Recall that, in the OL framework, an algorithm outputs at time $i$ a predictor which is $\mathcal{F}_{i-1}$-measurable. Here, our goal is to design an online procedure derived from \Cref{th: main_thm_online} which outputs an online predictive sequence (which is assimilated, according to \Cref{rem: notations}, to a sequence of distributions).
+OL algorithms (we refer to \citealp{hazan2016introduction} for an introduction to the field) are producing sequences of predictors by learning from a dynamic data stream (see \Cref{sec: OGD_reminder} for an example). Recall that, in the OL framework, an algorithm outputs at time $i$ a predictor which is $\mathcal{F}_{i-1}$-measurable. Here, our goal is to design an online procedure derived from \Cref{th: main_thm_online} which outputs an online predictive sequence (which is assimilated, according to \Cref{rem: notations}, to a sequence of distributions).
 
 
 \textbf{Online PAC-Bayesian (OPB) training bound.} We state a corollary of our main result which paves the way to an online algorithm. This constructive procedure motivates the name \emph{ Online PAC-Bayesian training bound} (\OPBTrain in short).
@@ -148,21 +148,21 @@ Note that in this case, our posterior sequence is an online predictive sequence 
 \end{align}
 
   Thus, the formulation of \Cref{eq: catoni_formulation}, which has been highlighted by \citet[Sec. 5.1]{catoni2003pac} shows that our online procedure produces Gibbs posteriors.
- So, PAC-Bayesian theory provides sound justification for the somewhat intuitive online procedure in \Cref{eq: pacb_online_alg}: at time $i$, we adjust our new measure $\hat{\Q}_{i+1}$ by optimising a tradeoff between the impact of the newly arrived data $\z_i$ and the one of prior knowledge $\hat{\Q}_i$.
+ So, PAC-Bayesian theory provides sound justification for the somewhat intuitive online procedure in \Cref{eq: pacb_online_alg}: at time $i$, we adjust our new measure $\hat{\Q}_{i+1}$ by optimising a trade-off between the impact of the newly arrived data $\z_i$ and the one of prior knowledge $\hat{\Q}_i$.
 
 
  Notice that $\hat{\Q}$ is an online predictive sequence: $\hat{\Q}_i$ is $\mathcal{F}_{i-1}$-measurable for all $i$ as it depends only on $\hat{\Q}_{i-1}$ and $\z_{i-1}$. Furthermore, one has $\hat{\Q}_{i} \ll \hat{\Q}_{i-1}$ for all $i$ as $\hat{\Q}_{i}$ is defined as an argmin and the KL term is finite if and only it is absolutely continuous w.r.t. $\hat{\Q}_{i-1}$.
 
 
 \begin{remark}
-  In \Cref{cor: online_procedure}, while the right hand-side is the reason we considered \Cref{eq: pacb_online_alg}, the left hand side still needs to be analysed. It expresses how the posterior $\hat{\Q}_{i+1}$ (designed from $\hat{\Q}_i,\z_i$) generalises well on average to any new draw of $\z_i$. More precisely, this term measures how much the training of $\hat{\Q}_{i+1}$ is overfitting on $\z_i$. A low value of it ensures our online predictive sequence, which is obtained from a single dataset, is robust to the randomness of $\Sm$, hence the interest of optimising the right hand side of the bound.
+  In \Cref{cor: online_procedure}, while the right hand-side is the reason we considered \Cref{eq: pacb_online_alg}, the left hand side still needs to be analysed. It expresses how the posterior $\hat{\Q}_{i+1}$ (designed from $\hat{\Q}_i,\z_i$) generalises well on average to any new draw of $\z_i$. More precisely, this term measures how much the training of $\hat{\Q}_{i+1}$ is overfitting on $\z_i$. A low value of it ensures our online predictive sequence, which is obtained from a single dataset, is robust to the randomness of $\Sm$, hence the interest of optimising the right-hand side of the bound.
   This is a supplementary reason we refer to \Cref{cor: online_procedure} as an \OPBTrain bound as it provide robustness guarantees for our training.
 \end{remark}
 
 
 
 \textbf{Online PAC-Bayesian (OPB) test bound.}
-However, \Cref{cor: online_procedure} does not say if $\hat{\Q}_{i+1}$ will produce good predictors to minimise $\ell(.,\z_{i+1})$, which is the objective of $\hat{\Q}_{i+1}$ in the OL framework (we only have access to the past to predict the future). We then need to provide an \emph{Online PAC-Bayesian (OPB) test bound} (\OPBTest bound) to quantify our prediction's accuracy. We now derive an \OPBTest bound from \Cref{th: main_thm_online}.
+However, \Cref{cor: online_procedure} does not say if $\hat{\Q}_{i+1}$ will produce good predictors to minimise $\ell(.,\z_{i+1})$, which is the objective of $\hat{\Q}_{i+1}$ in the OL framework (we only have access to the past to predict the future). We then need to provide an \emph{Online PAC-Bayesian (OPB) test bound} (\OPBTest bound) to quantify our prediction's accuracy. We now derive a \OPBTest bound from \Cref{th: main_thm_online}.
 
 \begin{corollary}[\normalfont\textsc{OPBTest}]
   \label{cor: test_bound_online}.
@@ -203,7 +203,7 @@ $\operatorname{argmin}_{\Q} \mathbb{E}_{h\sim \Q} \; [\frac{1}{m}\sum_{i=1}^m \e
 
 
 \textbf{Analogy with Online Gradient Descent (OGD).} We propose an analogy between the procedure \Cref{eq: pacb_online_alg_specific_case} and the celebrated OGD algorithm (see \Cref{sec: OGD_reminder} for a recap). First we remark that our minimisation problem is equivalent to
-$\operatorname{argmin}_{\Q} \lambda\mathbb{E}_{h_i\sim \Q} \; [\ell(h_i,\z_i)] + \operatorname{KL}(Q\| \hat{\Q}_{i})$.
+$\operatorname{argmin}_{\Q} \lambda\mathbb{E}_{h_i\sim \Q} \; [\ell(h_i,\z_i)] + \operatorname{KL}(\Q\| \hat{\Q}_{i})$.
 Then we assume that for any $i, \hat{\Q}_i=\mathcal{N}(\hat{m}_i,I_d)$ with $\hat{m_i}\in\mathbb{R}^d$  and we set $\mathcal{L}_i(\hat{m}_i)= \mathbb{E}_{h_i\sim \hat{\Q}_i} \; [\ell(h_i,\z_i)] $ .
 The minimisation problem becomes: $\operatorname{argmin}_{\hat{m}} \lambda\mathcal{L}_i(\hat{m}) + \frac{1}{2} \| \hat{m} - \hat{m}_i \|^2$.
 And so using the first order Taylor expansion, we use the approximation $ \mathcal{L}_i(\hat{m}) \approx \mathcal{L}_i(\hat{m}_i ) + \langle \hat{m}- \hat{m_i}, \nabla \mathcal{L}_i(\hat{m}_i) \rangle $ which finally transform our argmin into the following optimisation process: $\hat{m}_{i+1} = \hat{m_i} - \lambda \nabla \mathcal{L}_i(\hat{m}_i)$ which is exactly OGD on the loss sequence $\mathcal{L}_i$.
@@ -220,16 +220,16 @@ The guarantees \citet{cherief2019generalization} provided for SVB hold for Gauss
 
 \textbf{Strength of our result.} We emphasize two points. First, to the best of our knowledge, \Cref{cor: online_procedure} is the first bound which theoretically suggests \Cref{eq: pacb_online_alg_specific_case} as a learning algorithm.
 Second, we stress that \Cref{eq: pacb_online_alg_specific_case}
-is a particular case of \Cref{cor: online_procedure} and our result can lead to other fruitful routes. For instance, we consider the idea of adding noise to our measures at each time step to avoid overfitting (this idea has been used \emph{e.g.} in \citealp{neelakantan2015adding} in the context of deep neural networks): if our online predicitve sequence $(\hat{\Q}_i)$ can be defined through a sequence of parameter vectors $\hat{\mu}$, then we can define $\P_{i}$ by adding a small noise on $\hat{\mu}_i$ and thus giving more freedom through stochasticity.
+is a particular case of \Cref{cor: online_procedure} and our result can lead to other fruitful routes. For instance, we consider the idea of adding noise to our measures at each time step to avoid overfitting (this idea has been used \emph{e.g.} in \citealp{neelakantan2015adding} in the context of deep neural networks): if our online predictive sequence $(\hat{\Q}_i)$ can be defined through a sequence of parameter vectors $\hat{\mu}$, then we can define $\P_{i}$ by adding a small noise on $\hat{\mu}_i$ and thus giving more freedom through stochasticity.
 
-Thus, we see that our procedure led us to the use of the Gibbs posteriors of Catoni. However, in practice, Gaussian distributions are preferred \citep[\emph{e.g.}][]{dziugaite2017computing, rivasplata2019pac,perez2021progress,perezortiz2021learning,perez2021tighter}).
+Thus, we see that our procedure led us to the use of the Gibbs posteriors of Catoni. However, in practice, Gaussian distributions are preferred \citep[\emph{e.g.}][]{dziugaite2017computing, rivasplata2019pac,perez2021progress,perezortiz2021learning,perez2021tighter}.
 That is why we focus next on new online PAC-Bayesian algorithms involving Gaussian distributions.
 
 
 \section{Disintegrated online algorithms for Gaussian distributions.}
 \label{sec: OPBD_procedure}
-We dig deeper in the field of disintegrated PAC-Bayesian bounds, originally explored by \citet{catoni2007pac,blanchard2007occam}, further studied by \citet{alquier2013sparse,guedj2013pac} and recently developed by \citet{rivasplata2020pac,viallard2023general} (see \Cref{sec: disintegrated_bounds} for a short presentation of the bound we adapted and used). The strength of the disintegrated approach is that we have directly guarantees on the random draw of a single predictor, which avoids to consider expectations over the predictor space.
-This fact is particularly significant in our work as the procedure precised in \Cref{eq: catoni_formulation}, require the estimation of an exponential moment to be efficient, which may be costful.
+We dig deeper in the field of disintegrated PAC-Bayesian bounds, originally explored by \citet{catoni2007pac,blanchard2007occam}, further studied by \citet{alquier2013sparse,guedj2013pac} and recently developed by \citet{rivasplata2020pac,viallard2023general} (see \Cref{sec: disintegrated_bounds} for a short presentation of the bound we adapted and used). The strength of the disintegrated approach is that we have directly guarantees on the random draw of a single predictor, which avoids considering expectations over the predictor space.
+This fact is particularly significant in our work as the procedure precised in \Cref{eq: catoni_formulation}, require the estimation of an exponential moment to be efficient, which may be costly.
 We then show that disintegrated PAC-Bayesian bounds can be adapted to the OL framework, and that they have the potential to generate proper online algorithms with weak computational cost and sound efficiency guarantees.
 
 \textbf{Online PAC-Bayesian disintegrated (OPBD) training bounds.} We present a general form for \emph{online PAC-Bayes disintegrated (OPBD) training bounds}. The terminology comes from the way we craft those bounds: from PAC-Bayesian disintegrated bounds we use the same tools as in \Cref{th: main_thm_online} to create the first online PAC-Bayesian disintegrated bounds.
@@ -298,7 +298,7 @@ The reason is that \cite{rivasplata2020pac} proposed a bound involving a disinte
 \textbf{Comparison with \cite{hoeven2018many}.} Theorem 3 of \citet{hoeven2018many} recovers OGD from the exponential weights algorithm by taking a sequence of moving distributions being Gaussians with fixed variance which is exactly what we consider here. From these, they retrieve the classical OGD algorithm as well as its classical convergence rate. Let us compare our results with theirs.
 
 First, if we fix a single step $\eta$ in their bound and assume two traditional assumptions for OGD (a finite diameter $D$ of the convex set and an uniform bound $G$ on the loss gradients), we recover for the OGD (greedy GD in \citealp{hoeven2018many}) a rate of $ \frac{D^2}{2\sigma^2\eta} + \frac{\eta\sigma^2TG^2}{2}$. This is, up to constants and notation changes, exactly our $\Psi_i$ ($i\in\{1,2\}$).
-Also, we notice a difference in the way to use Gaussian distributions: Theorem 3 of \citet{hoeven2018many} is based on their Lemma 1 which provides guarantees for the expected regret. This is a clear incentive to consider as predictors the mean of the sucessive Gaussians of interest. On the contrary, \Cref{cor: OPBD_optim_funcs} involves a supplementary level of randomness by considering predictors $h_i$ drawn from our Gaussians. This additional randomness appears in our optimisation process (\Cref{alg: OPBD_alg}).
+Also, we notice a difference in the way to use Gaussian distributions: Theorem 3 of \citet{hoeven2018many} is based on their Lemma 1 which provides guarantees for the expected regret. This is a clear incentive to consider as predictors the mean of the successive Gaussians of interest. On the contrary, \Cref{cor: OPBD_optim_funcs} involves a supplementary level of randomness by considering predictors $h_i$ drawn from our Gaussians. This additional randomness appears in our optimisation process (\Cref{alg: OPBD_alg}).
 Finally, notice that \citet{hoeven2018many} based their whole work on the use of a KL divergence  while \Cref{cor: OPBD_optim_funcs} not only exploit a disintegrated KL ($\Psi_1$) but also a Rényi $\alpha$-divergence ($\Psi_2$). Note that we propose a result only for $\alpha=2$ for the sake of space constraints but any other value of $\alpha$ leads to another optimisation objective to explore.
 
 
@@ -332,7 +332,7 @@ We now state a corollary which gives disintegrated guarantees for any online pre
 \section{Experiments}
 \label{sec: experiments}
 
-We adapt the experimental framework introduced in \citet[Sec.5]{cherief2019generalization} to our algorithms (anonymised code available \href{https://anonymous.4open.science/r/Online-PAC-Bayes-learning-044F}{here}). We conduct experiments on several real-life datasets, in classification and
+We adapt the experimental framework introduced in \citet[Sec.5]{cherief2019generalization} to our algorithms. We conduct experiments on several real-life datasets, in classification and
 linear regression. Our objective is twofold: check the convergence of our learning methods and compare their efficiencies with classical algorithms. We first introduce our experimental setup.
 
 \paragraph{Algorithms.}
@@ -348,13 +348,13 @@ Then the adversary reveals the true value $y_{t}$ and the learner suffers the lo
 
 \paragraph{Datasets.} We consider four real world dataset: two for classification (Breast Cancer and Pima Indians), and two for regression (Boston Housing and California Housing). All datasets except the Pima Indians have been directly extracted from \texttt{sklearn} \citep{pedregosa2011scikit}.
 Breast Cancer dataset \citep{street1993nuclear} is available \href{https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)}{here} and comes from the UCI ML repository  as well as the Boston Housing dataset \citep{belsley2005regression} which can be obtained \href{https://archive.ics.uci.edu/ml/machine-learning-databases/housing/}{here}. California Housing dataset \citep{pace1997sparse} comes from the StatLib repository and is available \href{https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html}{here}.
-Finally, Pima Indians dataset \citep{smith1988using} has been recovered from this Kaggle \href{https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database}{repository}.  Note that we randomly permuted the observations to avoid to learn irrelevant human ordering of data (such that date or label).
+Finally, Pima Indians dataset \citep{smith1988using} has been recovered from this Kaggle \href{https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database}{repository}.  Note that we randomly permuted the observations to avoid learning irrelevant human ordering of data (such that date or label).
 
 \paragraph{Parameter settings.}
- We ran our experiments on a 2021 MacBookPro with an M1 chip and 16 Gb RAM.
+ We ran our experiments on a 2021 MacBook Pro with an M1 chip and 16 Gb RAM.
  For OGD, the initialisation point is $\mathbf{0}_{\mathbb{R}^d}$ and the values of the learning rates are set to $\eta=1 / \sqrt{m}$.
  For SVB, mean is initialised to $\mathbf{0}_{\mathbb{R}^d}$ and covariance matrix to $\text{Diag}(1)$. Step at time $i$ is $\eta_i= 0.1/\sqrt{i}$.
- For both of the OPB algorithms with Gibbs posterior, we chose $\lambda= 1/m$. As priors, we took respectively a centered Gaussian vector with the covariance matrix $\text{Diag}(\sigma^2)$ ($\sigma=1.5$) and an iid vector following the standard Laplace distribution.
+ For both of the OPB algorithms with Gibbs posterior, we chose $\lambda= 1/m$. As priors, we took respectively a centered Gaussian vector with the covariance matrix $\text{Diag}(\sigma^2)$ ($\sigma=1.5$) and an \iid vector following the standard Laplace distribution.
  For the OPBD algorithm with $\Psi_{\normalfont1}$, we chose $\lambda = 10^{-4}/m$, the initial mean is $\mathbf{0}_{\mathbb{R}^d}$ and
  our fixed covariance matrix is $\text{Diag}(\sigma^2)$ with $\sigma= 3.10^{-3}$.
  For the OPBD algorithm with $\Psi_{\normalfont1}$, we chose $\lambda = 2.10^{-3}/m$, the initial mean is $\mathbf{0}_{\mathbb{R}^d}$ and our covariance matrix is $\text{Diag}(\sigma^2)$ with $\sigma= 10^{-2}$.  The reason of those higher scale parameters and variance is that  $\Psi$ from \citet{rivasplata2020pac} is more stochastic (yet unstable) than the one \citet{viallard2023general}.
@@ -384,7 +384,7 @@ Finally, Pima Indians dataset \citep{smith1988using} has been recovered from thi
 \label{fig: exp_results}
  \end{figure}
 
- \paragraph{Empirical findings.} OPB with Gaussian prior ('Gibbs Gauss') outperforms OGD on all datasets except California Housing (on which this method is not implemented ) while OPB with Laplace prior ('Gibbs Laplace') always fail w.r.t. OGD. OPB methods fail to compete with SVB on the Boston Housing dataset. OPBD methods compete with SVB on regression problems and clearly outperforms OGD on classification tasks. OPBD with $\Psi_{\normalfont2}$ (labeled as 'OPBD Via' in \Cref{fig: exp_results}) performs better on the California Housing dataset while OPBD with $\Psi_{\normalfont1}$ (labeled as 'OPBD Riva') is more efficient on the Boston Housing dataset. Both methods performs roughly equivalently on classification tasks.  This brief experimental validation shows the consistency of all our online procedures as we observe a visible decrease of the cumulative losses through time. It particularly shows that OPBD procedures improve on OGD on these dataset. We refer to \Cref{sec: error_bars} for additional table gathering the error bars of our OPBD methods.
+ \paragraph{Empirical findings.} OPB with Gaussian prior ('Gibbs Gauss') outperforms OGD on all datasets except California Housing (on which this method is not implemented ) while OPB with Laplace prior ('Gibbs Laplace') always fail w.r.t. OGD. OPB methods fail to compete with SVB on the Boston Housing dataset. OPBD methods compete with SVB on regression problems and clearly outperforms OGD on classification tasks. OPBD with $\Psi_{\normalfont2}$ (labeled as 'OPBD Via' in \Cref{fig: exp_results}) performs better on the California Housing dataset while OPBD with $\Psi_{\normalfont1}$ (labeled as 'OPBD Riva') is more efficient on the Boston Housing dataset. Both methods perform roughly equivalently on classification tasks.  This brief experimental validation shows the consistency of all our online procedures as we observe a visible decrease of the cumulative losses through time. It particularly shows that OPBD procedures improve on OGD on those dataset. We refer to \Cref{sec: error_bars} for additional table gathering the error bars of our OPBD methods.
 
 \paragraph{Why do we perform better than OGD?} As stated in \Cref{sec: OPBD_procedure}, OGD can be recovered as a Gaussian approximation of the exponential weights algorithm (EWA). Thus, a legitimate question is why do we perform better than OGD as our OPBD methods are also based on a Gaussian surrogate of EWA?  \cite{hoeven2018many} only used Gaussians distributions with fixed variance as a technical tool when the considered predictors are the Gaussian means. In our work, we exploited a richer characteristic of our distributions in the sense our predictors are points sampled from our Gaussians and not only the means. This also has consequences in our learning algorithm as at time $i$ of our \Cref{alg: OPBD_alg}, our optimisation step involves a noise $\varepsilon_i\sim \mathcal{N}(0,\sigma^2\mathbf{I})$. Thus, we believe that OPBD methods should perform at least as well as OGD.
 We write 'at least' as we think that the higher flexibility due to this additional level of randomness might result in slightly better empirical performances, as seen on the few datasets in \Cref{fig: exp_results}.
@@ -413,15 +413,15 @@ We now state the main theorem of this section.
 
 Proof lies in \Cref{sec: proof_main_thm_online-ht}.
 
-\textbf{Analysis of the bound.} This bound is, to our knowledge, the first Online PAC-Bayes bound in literature holding for heavy-tailed losses. It is semi-empirical as the variance and empirical variance terms have theoretical components. However, these terms can be controlled with assumptions on conditional second-order moments and not on exponential ones (as made in \Cref{sec: main_bound} where the bounded loss assumption was used to obtain conditional subgaussianity). To emphasise our point, we consider as in \Cref{sec: iid_case} the case of the quadratic loss $\ell(h,z)= (h-z)^2$. Here, we only need to assume that our data have a finite variance if we restrict our posteriors to have both bounded means and variance. Also the meaning of the online predictive sequence $\P_{i}$ is that we must be able to design properly a sequence of priors before drawing our data, this can be for instance an online algorithm whihc generate a prior distribution from past data at each time step.
+\textbf{Analysis of the bound.} This bound is, to our knowledge, the first Online PAC-Bayes bound in literature holding for heavy-tailed losses. It is semi-empirical as the variance and empirical variance terms have theoretical components. However, these terms can be controlled with assumptions on conditional second-order moments and not on exponential ones (as made in \Cref{sec: main_bound} where the bounded loss assumption was used to obtain conditional subgaussianity). To emphasise our point, we consider as in \Cref{sec: iid_case} the case of the quadratic loss $\ell(h,z)= (h-z)^2$. Here, we only need to assume that our data have a finite variance if we restrict our posteriors to have both bounded means and variance. Also the meaning of the online predictive sequence $\P_{i}$ is that we must be able to design properly a sequence of priors before drawing our data, this can be for instance an online algorithm which generate a prior distribution from past data at each time step.
 
-Finally, we note that if we assume being able to bound simultaneaously all condtional means and variance (which is strictly less restrictive than bounding the loss),then  \Cref{th: opb-ht} suggests a new online learning objective which is an online counterpart to \Cref{eq: optim_obj}.
+Finally, we note that if we assume being able to bound simultaneaously all conditional means and variance (which is strictly less restrictive than bounding the loss), then \Cref{th: opb-ht} suggests a new online learning objective which is an online counterpart to \Cref{eq: optim_obj}.
 
 \begin{align}
     \forall i\geq1\; \hat{\Q}_{i+1}&= \underset{\Q\in\mathcal{M}(\mathcal{H})}{\mathrm{argmin}} \mathbb{E}_{h_i\sim \Q} \; \left[\ell(h_i,\z_i)+ \frac{\lambda}{2}\ell(h_i,\z_i)^2\right] + \frac{\operatorname{KL}(\Q, \P_{i,\S})}{\lambda}
 \end{align}
 
-While the algorithm differs from the one derived \Cref{th: main_thm_online}, we can still draws many links with this theorem.
+While the algorithm differs from the one derived \Cref{th: main_thm_online}, we can still draw many links with this theorem.
 
 \begin{itemize}
   \item If we assume our loss to be bounded, then we can upper bound our empirical/theoretical variance terms to recover exactly \Cref{th: main_thm_online}. \Cref{th: opb-ht} then shows that finite order two moments are sufficient to perform online PAC-Bayes.
